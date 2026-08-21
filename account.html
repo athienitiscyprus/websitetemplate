@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Departments — Athienitis Supermarket</title>
-<meta name="description" content="Bakery, butchery, delicatessen, fish market, fruit market, the cellar, eatery, living and gifts at Athienitis Supermarket, Nicosia.">
+<title>Your account — Athienitis Supermarket</title>
+<meta name="description" content="Sign in or create an account to order for collection and collect Bonus Card points.">
 <meta name="theme-color" content="#f26f21">
-<link rel="canonical" href="https://athienitiscyprus.github.io/websitetemplate/departments.html">
-<meta property="og:title" content="Departments — Athienitis Supermarket">
-<meta property="og:description" content="Bakery, butchery, delicatessen, fish market, fruit market, the cellar, eatery, living and gifts at Athienitis Supermarket, Nicosia.">
+<link rel="canonical" href="https://athienitiscyprus.github.io/websitetemplate/account.html">
+<meta property="og:title" content="Your account — Athienitis Supermarket">
+<meta property="og:description" content="Sign in or create an account to order for collection and collect Bonus Card points.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://athienitiscyprus.github.io/websitetemplate/departments.html">
+<meta property="og:url" content="https://athienitiscyprus.github.io/websitetemplate/account.html">
 <meta property="og:image" content="https://athienitiscyprus.github.io/websitetemplate/assets/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/logo.png">
@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
-
+<meta name="robots" content="noindex">
 </head>
 <body data-base="">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -58,7 +58,7 @@
       </ul>
     </nav>
     <div class="header__tools">
-      <form class="search" data-search role="search" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="visually-hidden" for="q-departments">Search</label><input id="q-departments" type="search" name="q" data-i18n="search.placeholder" data-i18n-attr="placeholder" placeholder="Search products…"><div class="search__results" hidden></div></form>
+      <form class="search" data-search role="search" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="visually-hidden" for="q-account">Search</label><input id="q-account" type="search" name="q" data-i18n="search.placeholder" data-i18n-attr="placeholder" placeholder="Search products…"><div class="search__results" hidden></div></form>
       <a class="icon-btn account-link" href="account.html" data-account-link aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span data-i18n="account.login">Sign in</span></a>
       <button class="icon-btn" type="button" data-cart-open aria-label="Basket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 9H5z"/><path d="M8 10l3-6M16 10l-3-6"/></svg><span class="badge is-empty" data-cart-count>0</span></button>
       <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -104,53 +104,46 @@
   </aside>
 </div>
 
-<main id="main">
+<main id="main" data-account-page>
 <section class="page-hero">
   <div class="container">
-    <div class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.departments">All departments</span></div>
-    <span class="eyebrow" data-i18n="depts.eyebrow">Our stations</span>
-    <h1 class="h1" style="margin-top:12px" data-i18n="depts.title"></h1>
-    <p class="lead" data-i18n="depts.lead"></p>
+    <div class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.account">Account</span></div>
+    <h1 class="h1" data-i18n="account.title"></h1>
+    <p class="lead" data-i18n="account.lead"></p>
   </div>
 </section>
 <section class="section">
-  <div class="container"><div class="depts"><a class="dept dept--4 dept--photo reveal" data-delay="0" href="shops/bakery.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/bakery,bread?lock=1101" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4c0 1.5-1 2-2 2v6a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-6c-1 0-2-.5-2-2z"/><path d="M10 6v2M14 6v2"/></svg></span><h3 data-i18n="dept.bakery"></h3><p data-i18n="dept.bakery.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="dept dept--4 dept--photo reveal" data-delay="1" href="shops/butchery.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/butcher,meat?lock=1102" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14a6 6 0 0 1 6-8c3 0 8 2 8 5.5S14 19 9 19a4 4 0 0 1-4-5z"/><path d="M9 13a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/></svg></span><h3 data-i18n="dept.butchery"></h3><p data-i18n="dept.butchery.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="dept dept--4 dept--photo reveal" data-delay="2" href="shops/deli.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/cheese,delicatessen?lock=1103" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-lime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-5 9 5v8H3z"/><path d="M3 10h18"/><circle cx="8" cy="14" r="1"/><circle cx="14" cy="15" r="1.2"/></svg></span><h3 data-i18n="dept.deli"></h3><p data-i18n="dept.deli.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="dept dept--4 dept--photo reveal" data-delay="0" href="shops/fish.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/fish,market,seafood?lock=1104" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4 7-6 11-6 2 0 4 1 6 3l-2 3 2 3c-2 2-4 3-6 3-4 0-8-2-11-6z"/><path d="M3 12l3-3M3 12l3 3"/><circle cx="16" cy="11" r="1" fill="currentColor"/></svg></span><h3 data-i18n="dept.fish"></h3><p data-i18n="dept.fish.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="dept dept--4 dept--photo reveal" data-delay="1" href="shops/fruit.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/fruit,market,vegetables?lock=1105" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-4 0-7 3-7 7a5 5 0 0 0 5 5h4a5 5 0 0 0 5-5c0-4-3-7-7-7z"/><path d="M12 8V5M12 5c1-2 3-2 4-1"/></svg></span><h3 data-i18n="dept.fruit"></h3><p data-i18n="dept.fruit.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="dept dept--4 dept--photo reveal" data-delay="2" href="shops/cellar.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/wine,cellar,bottles?lock=1106" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-ink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8l-1 7a3 3 0 0 1-6 0z"/><path d="M12 13v7M8 20h8"/></svg></span><h3 data-i18n="dept.cellar"></h3><p data-i18n="dept.cellar.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="dept dept--4 dept--photo reveal" data-delay="0" href="shops/eatery.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/restaurant,food,greek?lock=1107" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h16a8 8 0 0 0-16 0z"/><path d="M2 17h20"/><path d="M12 5v2"/></svg></span><h3 data-i18n="dept.eatery"></h3><p data-i18n="dept.eatery.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="dept dept--4 dept--photo reveal" data-delay="1" href="shops/living.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/kitchenware,home,interior?lock=1108" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-lime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3 data-i18n="dept.living"></h3><p data-i18n="dept.living.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="dept dept--4 dept--photo reveal" data-delay="2" href="shops/gifts.html">
-  <div class="dept__img"><img src="https://loremflickr.com/900/675/gift,toys,shop?lock=1109" alt="" loading="lazy"></div>
-  <div><span class="dept__icon c-leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="5"/><path d="M5 13v8h14v-8M12 8v13"/><path d="M12 8c-2 0-4-1-4-3s3-2 4 3c1-5 4-5 4-3s-2 3-4 3z"/></svg></span><h3 data-i18n="dept.gifts"></h3><p data-i18n="dept.gifts.p"></p></div>
-  <span class="dept__link"><span data-i18n="dept.link">Visit the counter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a></div></div>
+  <div class="container">
+    <div class="auth" data-when-guest>
+      <div class="tabs" role="tablist"><button type="button" role="tab" data-tab="login" aria-selected="true" data-i18n="account.login">Sign in</button><button type="button" role="tab" data-tab="register" aria-selected="false" data-i18n="account.register">Create account</button></div>
+      <div data-panel="login">
+        <form data-login-form novalidate>
+          <div><label for="l-email" data-i18n="account.email">Email</label><input id="l-email" name="email" type="email" required autocomplete="email"></div>
+          <div><label for="l-pass" data-i18n="account.password">Password</label><input id="l-pass" name="password" type="password" required autocomplete="current-password" minlength="4"></div>
+          <div class="form-error" hidden></div>
+          <button class="btn btn--primary" type="submit"><span data-i18n="account.login">Sign in</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+      </div>
+      <div data-panel="register" hidden>
+        <form data-register-form novalidate>
+          <div><label for="r-name" data-i18n="account.name">Full name</label><input id="r-name" name="name" type="text" required autocomplete="name"></div>
+          <div><label for="r-email" data-i18n="account.email">Email</label><input id="r-email" name="email" type="email" required autocomplete="email"></div>
+          <div><label for="r-pass" data-i18n="account.password">Password</label><input id="r-pass" name="password" type="password" required autocomplete="new-password" minlength="4"></div>
+          <div><label data-i18n="account.type">Account type</label>
+            <div class="radio-row"><label><input type="radio" name="type" value="private" checked><span data-i18n="account.type.private">Private customer</span></label><label><input type="radio" name="type" value="business"><span data-i18n="account.type.business">Business / restaurant</span></label></div></div>
+          <div class="form-error" hidden></div>
+          <button class="btn btn--primary" type="submit"><span data-i18n="account.register">Create account</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+      </div>
+      <p class="form-note" style="text-align:center;margin-top:18px" data-i18n="account.demo"></p>
+    </div>
+    <div class="auth" data-when-authed hidden>
+      <div class="form-success is-visible" data-placed hidden style="margin:0 0 24px"><span data-i18n="order.placed"></span> <b></b></div>
+      <div class="panel"><span class="eyebrow" data-i18n="account.hello">Hello</span><h2 class="h3" style="margin-top:8px" data-me-name></h2><p class="muted" style="margin-top:4px"><span data-me-email></span> · <span data-me-type></span></p>
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap"><button class="btn btn--primary btn--sm" type="button" data-cart-open><span data-i18n="cart.title">Your basket</span></button><a class="btn btn--ghost btn--sm" href="offers.html" data-i18n="nav.offers">Offers</a><button class="btn btn--ghost btn--sm" type="button" data-logout data-i18n="account.logout">Sign out</button></div></div>
+      <div class="panel" style="margin-top:18px"><h3 data-i18n="account.orders">Your orders</h3><div data-orders></div></div>
+    </div>
+  </div>
 </section>
 </main>
 

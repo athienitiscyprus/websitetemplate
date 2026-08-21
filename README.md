@@ -11,8 +11,18 @@ Static, dependency-free website proposal for Athienitis Supermarket (Nicosia). B
 | `blog.html` · `blog/<slug>.html` · `blog/<slug>.el.html` | Blog index + each article as a separate English and Greek page (hreflang-linked) |
 | `faq.html` | FAQ with `FAQPage` structured data in both languages (for search engines and LLM answer engines) |
 | `app.html` | The Athienitis app — App Store / Google Play "coming soon" landing page, replaces web ordering |
+| `offers.html` | Every discounted product, grouped by counter, with a sticky counter sub-nav |
+| `recipes.html` | Recipes built from catalog products, "add all ingredients" to basket |
+| `business.html` | Trade delivery bundles for restaurants, cafés, bars, hotels; business accounts get 5% off |
+| `search.html` | Product search results (the header search box also shows live suggestions) |
+| `account.html` | Sign in / create account (private or business), order history |
 | `contact.html` | Contact details, live opening status, map, enquiry form |
 | `404.html`, `sitemap.xml`, `robots.txt` | GitHub Pages not-found page and crawler files |
+
+## Shop layer (demo)
+`js/catalog.js` holds 54 template products (6 per counter, 18 on offer), 3 recipes and 4 business bundles, with EN/EL names and keyword-matched photos. `js/shop.js` renders product grids wherever a `data-products="section:bakery"`, `data-products="discounts"` or `data-products="discounts:fish"` container appears, and runs the basket drawer, checkout, accounts and search.
+
+Accounts, basket and orders are stored in the browser's `localStorage` so the demo works on GitHub Pages without a server. For production, replace the `STORE`/`Account`/`Cart` functions in `shop.js` with API calls and move the catalog to a CMS or the app backend.
 
 ## Features
 - **EN / EL switch** with no reload; remembered across visits, Greek browsers default to EL. UI strings live in `js/main.js` (`I18N`); shop-page copy is injected per page (`window.SHOP_CONTENT`); blog articles are separate files per language and the switch navigates between them.

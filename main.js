@@ -211,7 +211,28 @@
       "faq.more": "Didn't find it? Ask us directly.",
 
       "shop.items": "What you'll find", "shop.tip": "Counter tip", "shop.hours": "Hours",
-      "shop.other": "Other counters", "shop.order": "Order ahead"
+      "shop.other": "Other counters", "shop.order": "Order ahead",
+      "shop.add": "Add to basket", "shop.none": "No products to show.", "shop.products": "Products", "shop.deals": "Deals at this counter",
+      "shop.allproducts": "All products at this counter",
+      "unit.loaf": "loaf", "unit.each": "each", "unit.box": "box", "unit.kg": "kg", "unit.pack": "pack", "unit.platter": "platter", "unit.bunch": "bunch", "unit.jar": "jar", "unit.bottle": "bottle", "unit.portion": "portion", "unit.cup": "cup", "unit.slice": "slice", "unit.set": "set",
+      "cart.title": "Your basket", "cart.empty": "Your basket is empty.", "cart.added": "Added to basket", "cart.items": "items",
+      "cart.sub": "Subtotal", "cart.saved": "You save", "cart.trade": "Business discount (5%)", "cart.total": "Total", "cart.checkout": "Place order", "cart.continue": "Keep shopping", "cart.note": "Collection in-store · delivery for business accounts. Demo checkout — no payment is taken.",
+      "search.placeholder": "Search products…", "search.none": "No products match.", "search.title": "Results for", "search.count": "products found",
+      "account.login": "Sign in", "account.register": "Create account", "account.title": "Your account", "account.lead": "Sign in to order, track your basket and collect Bonus Card points.",
+      "account.name": "Full name", "account.email": "Email", "account.password": "Password", "account.type": "Account type", "account.type.private": "Private customer", "account.type.business": "Business / restaurant",
+      "account.err.invalid": "Email or password is incorrect.", "account.err.exists": "An account with this email already exists — sign in instead.",
+      "account.hello": "Hello", "account.logout": "Sign out", "account.orders": "Your orders", "order.none": "No orders yet.", "order.status": "Being prepared", "order.placed": "Order placed — we'll have it ready for collection.",
+      "account.demo": "Demo accounts are stored only in this browser.",
+      "offers.in": "Offers in", "offers.page.title": "Every discount, in one place.", "offers.page.lead": "All reduced products across the nine counters. Prices valid in-store and via the app until Sunday.", "offers.count": "products on offer",
+      "recipes.eyebrow": "Recipes", "recipes.title": "Cook it tonight.", "recipes.lead": "Simple dishes built from what's on our counters. Add all the ingredients to your basket in one tap.",
+      "recipe.serves": "serves", "recipe.ingredients": "From the market", "recipe.method": "Method", "recipe.basket": "Ingredients total", "recipe.addall": "Add all to basket",
+      "business.eyebrow": "For businesses", "business.title": "Delivery bundles for restaurants, cafés and hotels.", "business.lead": "Weekly or daily deliveries across Nicosia at trade prices. Choose a bundle or build your own with a business account (5% off every order).",
+      "business.cta": "Open a business account", "bundle.add": "Add bundle to basket",
+      "business.f1": "Delivered before service", "business.f1.p": "Bakery and fresh counters dispatch from 06:00; dry goods and cellar from 09:00.",
+      "business.f2": "Invoiced monthly", "business.f2.p": "One VAT invoice per month, with product-level detail for your accountant.",
+      "business.f3": "A dedicated contact", "business.f3.p": "One person who knows your menu and calls when something's better this week.",
+      "nav.offers": "Offers", "nav.recipes": "Recipes", "nav.business": "For businesses", "nav.business.short": "Business", "nav.account": "Account",
+      "home.recipes": "Three dinners from the counters", "home.business": "Run a kitchen? See the trade bundles."
     },
     el: {
       "status.open": "Ανοιχτά τώρα · κλείνουμε {0}",
@@ -354,11 +375,34 @@
       "faq.more": "Δεν το βρήκατε; Ρωτήστε μας απευθείας.",
 
       "shop.items": "Τι θα βρείτε", "shop.tip": "Συμβουλή πάγκου", "shop.hours": "Ωράριο",
-      "shop.other": "Άλλοι πάγκοι", "shop.order": "Παραγγείλτε εκ των προτέρων"
+      "shop.other": "Άλλοι πάγκοι", "shop.order": "Παραγγείλτε εκ των προτέρων",
+      "shop.add": "Στο καλάθι", "shop.none": "Δεν υπάρχουν προϊόντα.", "shop.products": "Προϊόντα", "shop.deals": "Προσφορές αυτού του πάγκου",
+      "shop.allproducts": "Όλα τα προϊόντα του πάγκου",
+      "unit.loaf": "τεμ.", "unit.each": "τεμ.", "unit.box": "κουτί", "unit.kg": "κιλό", "unit.pack": "συσκ.", "unit.platter": "πλατό", "unit.bunch": "ματσάκι", "unit.jar": "βάζο", "unit.bottle": "φιάλη", "unit.portion": "μερίδα", "unit.cup": "ποτήρι", "unit.slice": "κομμάτι", "unit.set": "σετ",
+      "cart.title": "Το καλάθι σας", "cart.empty": "Το καλάθι σας είναι άδειο.", "cart.added": "Προστέθηκε στο καλάθι", "cart.items": "προϊόντα",
+      "cart.sub": "Υποσύνολο", "cart.saved": "Κερδίζετε", "cart.trade": "Έκπτωση επιχείρησης (5%)", "cart.total": "Σύνολο", "cart.checkout": "Ολοκλήρωση παραγγελίας", "cart.continue": "Συνέχεια αγορών", "cart.note": "Παραλαβή από το κατάστημα · διανομή για επιχειρήσεις. Δοκιμαστικό ταμείο — δεν γίνεται χρέωση.",
+      "search.placeholder": "Αναζήτηση προϊόντων…", "search.none": "Δεν βρέθηκαν προϊόντα.", "search.title": "Αποτελέσματα για", "search.count": "προϊόντα βρέθηκαν",
+      "account.login": "Σύνδεση", "account.register": "Δημιουργία λογαριασμού", "account.title": "Ο λογαριασμός σας", "account.lead": "Συνδεθείτε για να παραγγείλετε, να δείτε το καλάθι σας και να συλλέγετε πόντους Bonus Card.",
+      "account.name": "Ονοματεπώνυμο", "account.email": "Email", "account.password": "Κωδικός", "account.type": "Τύπος λογαριασμού", "account.type.private": "Ιδιώτης", "account.type.business": "Επιχείρηση / εστιατόριο",
+      "account.err.invalid": "Λάθος email ή κωδικός.", "account.err.exists": "Υπάρχει ήδη λογαριασμός με αυτό το email — συνδεθείτε.",
+      "account.hello": "Γεια σας", "account.logout": "Αποσύνδεση", "account.orders": "Οι παραγγελίες σας", "order.none": "Δεν υπάρχουν παραγγελίες ακόμη.", "order.status": "Σε προετοιμασία", "order.placed": "Η παραγγελία καταχωρήθηκε — θα είναι έτοιμη για παραλαβή.",
+      "account.demo": "Οι δοκιμαστικοί λογαριασμοί αποθηκεύονται μόνο σε αυτόν τον browser.",
+      "offers.in": "Προσφορές στο", "offers.page.title": "Όλες οι εκπτώσεις, σε ένα μέρος.", "offers.page.lead": "Όλα τα μειωμένα προϊόντα από τους εννέα πάγκους. Οι τιμές ισχύουν στο κατάστημα και στην εφαρμογή μέχρι την Κυριακή.", "offers.count": "προϊόντα σε προσφορά",
+      "recipes.eyebrow": "Συνταγές", "recipes.title": "Μαγειρέψτε το απόψε.", "recipes.lead": "Απλά πιάτα από ό,τι έχουν οι πάγκοι μας. Προσθέστε όλα τα υλικά στο καλάθι με ένα άγγιγμα.",
+      "recipe.serves": "άτομα", "recipe.ingredients": "Από την αγορά", "recipe.method": "Εκτέλεση", "recipe.basket": "Σύνολο υλικών", "recipe.addall": "Όλα στο καλάθι",
+      "business.eyebrow": "Για επιχειρήσεις", "business.title": "Πακέτα διανομής για εστιατόρια, καφέ και ξενοδοχεία.", "business.lead": "Εβδομαδιαίες ή καθημερινές παραδόσεις σε όλη τη Λευκωσία σε τιμές χονδρικής. Επιλέξτε πακέτο ή φτιάξτε το δικό σας με επαγγελματικό λογαριασμό (5% έκπτωση σε κάθε παραγγελία).",
+      "business.cta": "Άνοιγμα επαγγελματικού λογαριασμού", "bundle.add": "Πακέτο στο καλάθι",
+      "business.f1": "Παράδοση πριν το σέρβις", "business.f1.p": "Φούρνος και φρέσκα φεύγουν από τις 06:00· ξηρά και κάβα από τις 09:00.",
+      "business.f2": "Μηνιαία τιμολόγηση", "business.f2.p": "Ένα τιμολόγιο ΦΠΑ τον μήνα, με ανάλυση ανά προϊόν για τον λογιστή σας.",
+      "business.f3": "Προσωπικός συνεργάτης", "business.f3.p": "Ένας άνθρωπος που ξέρει το μενού σας και σας καλεί όταν κάτι είναι καλύτερο αυτή την εβδομάδα.",
+      "nav.offers": "Προσφορές", "nav.recipes": "Συνταγές", "nav.business": "Για επιχειρήσεις", "nav.business.short": "Επιχειρήσεις", "nav.account": "Λογαριασμός",
+      "home.recipes": "Τρία δείπνα από τους πάγκους", "home.business": "Έχετε κουζίνα; Δείτε τα επαγγελματικά πακέτα."
     }
   };
 
   var currentLang = "en";
+  var langListeners = [];
+  window.ATH = { t: function (k, a) { return t(k, a); }, lang: function () { return currentLang; }, onLang: function (fn) { langListeners.push(fn); } };
 
   function t(key, arg) {
     var dict = I18N[currentLang] || I18N.en;
@@ -398,6 +442,7 @@
       });
     }
     if (!fixed) { try { localStorage.setItem("athienitis-lang", currentLang); } catch (e) { /* private mode */ } }
+    langListeners.forEach(function (fn) { fn(currentLang); });
   }
 
   function initLang() {
