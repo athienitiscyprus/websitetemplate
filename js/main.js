@@ -232,7 +232,17 @@
       "business.f2": "Invoiced monthly", "business.f2.p": "One VAT invoice per month, with product-level detail for your accountant.",
       "business.f3": "A dedicated contact", "business.f3.p": "One person who knows your menu and calls when something's better this week.",
       "nav.offers": "Offers", "nav.recipes": "Recipes", "nav.business": "For businesses", "nav.business.short": "Business", "nav.account": "Account",
-      "home.recipes": "Three dinners from the counters", "home.business": "Run a kitchen? See the trade bundles."
+      "home.recipes": "Three dinners from the counters", "home.business": "Run a kitchen? See the trade bundles",
+      "home.more": "More from Athienitis", "home.app": "The app, coming soon", "home.gallery": "Inside the market",
+      "order.status.preparing": "Being prepared", "order.status.collected": "Collected", "order.status.delivered": "Delivered", "order.reorder": "Order again",
+      "account.overview": "Overview", "account.details": "Personal details", "account.address": "Delivery address", "account.noaddress": "No address saved yet", "account.saved": "Details saved",
+      "account.phone": "Phone", "account.company": "Company name", "account.vat": "VAT number", "account.street": "Street & number", "account.area": "Area", "account.city": "City", "account.postcode": "Postcode", "account.notes": "Delivery notes", "account.save": "Save details",
+      "account.points": "Bonus points", "account.ordersn": "Orders", "account.spent": "Total spent", "account.recent": "Recent orders", "account.viewall": "All orders", "account.welcome": "Welcome back,",
+      "account.noaccount": "No account yet?", "account.have": "Already have an account?", "account.demo.title": "Try a demo account", "account.demo.lead": "One click signs you in. Password for all demo accounts is “demo”.",
+      "account.login.lead": "Sign in to see your orders, reorder in one tap and track Bonus Card points.", "account.register.lead": "Takes a minute. Business accounts get delivery, 5% off and monthly invoicing.",
+      "login.title": "Welcome back.", "register.title": "Create your account.",
+      "ai.title": "Athienitis assistant", "ai.sub": "Answers in seconds · 24/7", "ai.placeholder": "Ask about hours, offers, products, orders…", "ai.hello": "Hi! I'm the Athienitis assistant. Ask me about opening hours, this week's offers, where to find a product, your orders or deliveries for your business.",
+      "ai.c1": "What are the opening hours?", "ai.c2": "What's on offer this week?", "ai.c3": "Where is my order?", "ai.c4": "Do you deliver to restaurants?"
     },
     el: {
       "status.open": "Ανοιχτά τώρα · κλείνουμε {0}",
@@ -396,7 +406,17 @@
       "business.f2": "Μηνιαία τιμολόγηση", "business.f2.p": "Ένα τιμολόγιο ΦΠΑ τον μήνα, με ανάλυση ανά προϊόν για τον λογιστή σας.",
       "business.f3": "Προσωπικός συνεργάτης", "business.f3.p": "Ένας άνθρωπος που ξέρει το μενού σας και σας καλεί όταν κάτι είναι καλύτερο αυτή την εβδομάδα.",
       "nav.offers": "Προσφορές", "nav.recipes": "Συνταγές", "nav.business": "Για επιχειρήσεις", "nav.business.short": "Επιχειρήσεις", "nav.account": "Λογαριασμός",
-      "home.recipes": "Τρία δείπνα από τους πάγκους", "home.business": "Έχετε κουζίνα; Δείτε τα επαγγελματικά πακέτα."
+      "home.recipes": "Τρία δείπνα από τους πάγκους", "home.business": "Έχετε κουζίνα; Δείτε τα επαγγελματικά πακέτα",
+      "home.more": "Περισσότερα από τον Αθηαινίτη", "home.app": "Η εφαρμογή, σύντομα", "home.gallery": "Μέσα στην αγορά",
+      "order.status.preparing": "Σε προετοιμασία", "order.status.collected": "Παραλήφθηκε", "order.status.delivered": "Παραδόθηκε", "order.reorder": "Ξανά η ίδια",
+      "account.overview": "Επισκόπηση", "account.details": "Προσωπικά στοιχεία", "account.address": "Διεύθυνση παράδοσης", "account.noaddress": "Δεν έχει αποθηκευτεί διεύθυνση", "account.saved": "Τα στοιχεία αποθηκεύτηκαν",
+      "account.phone": "Τηλέφωνο", "account.company": "Επωνυμία", "account.vat": "ΑΦΜ", "account.street": "Οδός & αριθμός", "account.area": "Περιοχή", "account.city": "Πόλη", "account.postcode": "Τ.Κ.", "account.notes": "Σημειώσεις παράδοσης", "account.save": "Αποθήκευση",
+      "account.points": "Πόντοι Bonus", "account.ordersn": "Παραγγελίες", "account.spent": "Σύνολο αγορών", "account.recent": "Πρόσφατες παραγγελίες", "account.viewall": "Όλες οι παραγγελίες", "account.welcome": "Καλώς ήρθατε ξανά,",
+      "account.noaccount": "Δεν έχετε λογαριασμό;", "account.have": "Έχετε ήδη λογαριασμό;", "account.demo.title": "Δοκιμάστε έναν λογαριασμό επίδειξης", "account.demo.lead": "Ένα κλικ σας συνδέει. Ο κωδικός για όλους είναι «demo».",
+      "account.login.lead": "Συνδεθείτε για να δείτε παραγγελίες, να ξαναπαραγγείλετε με ένα άγγιγμα και να δείτε τους πόντους σας.", "account.register.lead": "Παίρνει ένα λεπτό. Οι επαγγελματικοί λογαριασμοί έχουν διανομή, 5% έκπτωση και μηνιαίο τιμολόγιο.",
+      "login.title": "Καλώς ήρθατε ξανά.", "register.title": "Δημιουργήστε λογαριασμό.",
+      "ai.title": "Βοηθός Αθηαινίτη", "ai.sub": "Απαντήσεις σε δευτερόλεπτα · 24/7", "ai.placeholder": "Ρωτήστε για ωράριο, προσφορές, προϊόντα, παραγγελίες…", "ai.hello": "Γεια σας! Είμαι ο βοηθός του Αθηαινίτη. Ρωτήστε με για ωράριο, προσφορές εβδομάδας, πού θα βρείτε ένα προϊόν, τις παραγγελίες σας ή διανομές για την επιχείρησή σας.",
+      "ai.c1": "Ποιο είναι το ωράριο;", "ai.c2": "Τι προσφορές έχει αυτή την εβδομάδα;", "ai.c3": "Πού είναι η παραγγελία μου;", "ai.c4": "Κάνετε διανομή σε εστιατόρια;"
     }
   };
 
@@ -529,7 +549,30 @@
   /* -----------------------------------------------------------------------
      4. Scroll reveal (respects prefers-reduced-motion via CSS)
      ----------------------------------------------------------------------- */
+  function initTransitions() {
+    // fade the page in; fade out on internal navigation (View Transitions where supported)
+    document.documentElement.classList.add("has-js");
+    requestAnimationFrame(function () { document.body.classList.add("page-in"); });
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest("a[href]"); if (!a) return;
+      var href = a.getAttribute("href");
+      if (e.metaKey || e.ctrlKey || e.shiftKey || a.target === "_blank" || /^(https?:|mailto:|tel:|#)/.test(href) || href.indexOf("#") === 0) return;
+      if (a.origin !== location.origin && a.protocol !== "file:") return;
+      e.preventDefault(); document.body.classList.add("page-out");
+      setTimeout(function () { window.location.href = href; }, 260);
+    });
+    window.addEventListener("pageshow", function (ev) { if (ev.persisted) document.body.classList.remove("page-out"); });
+    var bar = document.createElement("div"); bar.className = "progress"; document.body.appendChild(bar);
+    var tick = function () { var h = document.documentElement; var p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1); bar.style.transform = "scaleX(" + p + ")"; };
+    window.addEventListener("scroll", tick, { passive: true }); tick();
+  }
+
   function initReveal() {
+    // auto-stagger children of grids
+    document.querySelectorAll(".products, .posts, .depts, .features, .bundles, .recipes, .tiles, .gallery, .offers").forEach(function (grid) {
+      Array.prototype.forEach.call(grid.children, function (c, i) { if (!c.classList.contains("reveal")) { c.classList.add("reveal"); c.style.transitionDelay = (Math.min(i, 8) * 70) + "ms"; } });
+    });
     var els = document.querySelectorAll(".reveal");
     if (!("IntersectionObserver" in window)) {
       els.forEach(function (el) { el.classList.add("is-visible"); });
@@ -541,6 +584,11 @@
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
     els.forEach(function (el) { io.observe(el); });
+    window.ATH.observe = function (root) {
+      (root || document).querySelectorAll(".products, .posts, .bundles, .recipes").forEach(function (grid) {
+        Array.prototype.forEach.call(grid.children, function (c, i) { if (!c.classList.contains("reveal")) { c.classList.add("reveal"); c.style.transitionDelay = (Math.min(i, 8) * 60) + "ms"; } io.observe(c); });
+      });
+    };
   }
 
   /* -----------------------------------------------------------------------
@@ -656,6 +704,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("is-loaded");
+    initTransitions();
     initCounters();
     initParallax();
     initFaq();

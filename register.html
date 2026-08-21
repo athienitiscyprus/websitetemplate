@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Search — Athienitis Supermarket</title>
-<meta name="description" content="Search products across all counters.">
+<title>Create account — Athienitis Supermarket</title>
+<meta name="description" content="Create a private or business account at Athienitis Supermarket.">
 <meta name="theme-color" content="#f26f21">
-<link rel="canonical" href="https://athienitiscyprus.github.io/websitetemplate/search.html">
-<meta property="og:title" content="Search — Athienitis Supermarket">
-<meta property="og:description" content="Search products across all counters.">
+<link rel="canonical" href="https://athienitiscyprus.github.io/websitetemplate/register.html">
+<meta property="og:title" content="Create account — Athienitis Supermarket">
+<meta property="og:description" content="Create a private or business account at Athienitis Supermarket.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://athienitiscyprus.github.io/websitetemplate/search.html">
+<meta property="og:url" content="https://athienitiscyprus.github.io/websitetemplate/register.html">
 <meta property="og:image" content="https://athienitiscyprus.github.io/websitetemplate/assets/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/logo.png">
@@ -58,7 +58,7 @@
       </ul>
     </nav>
     <div class="header__tools">
-      <form class="search" data-search role="search" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="visually-hidden" for="q-search">Search</label><input id="q-search" type="search" name="q" data-i18n="search.placeholder" data-i18n-attr="placeholder" placeholder="Search products…"><div class="search__results" hidden></div></form>
+      <form class="search" data-search role="search" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="visually-hidden" for="q-register">Search</label><input id="q-register" type="search" name="q" data-i18n="search.placeholder" data-i18n-attr="placeholder" placeholder="Search products…"><div class="search__results" hidden></div></form>
       <a class="icon-btn account-link" href="account.html" data-account-link aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span data-i18n="account.login">Sign in</span></a>
       <button class="icon-btn" type="button" data-cart-open aria-label="Basket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 9H5z"/><path d="M8 10l3-6M16 10l-3-6"/></svg><span class="badge is-empty" data-cart-count>0</span></button>
       <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -105,14 +105,35 @@
 </div>
 
 <main id="main">
-<section class="page-hero">
-  <div class="container">
-    <div class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="search.title">Results for</span></div>
-    <h1 class="h1"><span data-i18n="search.title">Results for</span> “<span data-search-query></span>”</h1>
-    <p class="lead" style="margin-top:12px"><span data-search-count>0</span> <span data-i18n="search.count">products found</span></p>
+<div class="auth-split">
+  <div class="auth-split__media"><img src="https://loremflickr.com/1000/1200/market,stall,fresh?lock=1902" alt=""><div class="auth-split__quote"><b data-i18n="bonus.title"></b><span data-i18n="bonus.perk1"></span></div></div>
+  <div class="auth-split__form">
+    <div class="auth">
+      <h1 data-i18n="register.title">Create your account.</h1>
+      <p class="lead" data-i18n="account.register.lead"></p>
+      <form data-register-form novalidate>
+        <div><label data-i18n="account.type">Account type</label>
+          <div class="radio-row"><label><input type="radio" name="type" value="private" checked><span data-i18n="account.type.private">Private customer</span></label><label><input type="radio" name="type" value="business"><span data-i18n="account.type.business">Business / restaurant</span></label></div></div>
+        <div><label for="r-name" data-i18n="account.name">Full name</label><input id="r-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="form-row">
+          <div><label for="r-email" data-i18n="account.email">Email</label><input id="r-email" name="email" type="email" required autocomplete="email"></div>
+          <div><label for="r-phone" data-i18n="account.phone">Phone</label><input id="r-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div><label for="r-pass" data-i18n="account.password">Password</label><input id="r-pass" name="password" type="password" required autocomplete="new-password" minlength="4"></div>
+        <div><label for="r-street" data-i18n="account.street">Street & number</label><input id="r-street" name="street" type="text" autocomplete="street-address"></div>
+        <div class="form-row">
+          <div><label for="r-area" data-i18n="account.area">Area</label><input id="r-area" name="area" type="text"></div>
+          <div><label for="r-postcode" data-i18n="account.postcode">Postcode</label><input id="r-postcode" name="postcode" type="text" autocomplete="postal-code"></div>
+        </div>
+        <div><label for="r-city" data-i18n="account.city">City</label><input id="r-city" name="city" type="text" value="Nicosia" autocomplete="address-level2"></div>
+        <div class="form-error" hidden></div>
+        <button class="btn btn--primary" type="submit"><span data-i18n="account.register">Create account</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <p class="auth__alt"><span data-i18n="account.have"></span> <a href="login.html" data-i18n="account.login">Sign in</a></p>
+      <p class="form-note" style="text-align:center" data-i18n="account.demo"></p>
+    </div>
   </div>
-</section>
-<section class="section"><div class="container"><div class="products" data-search-results></div></div></section>
+</div>
 </main>
 
 <footer class="footer">

@@ -989,5 +989,309 @@ window.CATALOG = {
     "desc": "Μικτή κάσα κυπριακών λευκών και κόκκινων, craft λάγκερ και Προσέκο σε τιμές χονδρικής."
    }
   }
+ ],
+ "seedUsers": [
+  {
+   "name": "Maria Georgiou",
+   "email": "maria@example.com",
+   "pass_": "demo",
+   "type": "private",
+   "phone": "99 123 456",
+   "address": {
+    "street": "14 Kyriakou Matsi",
+    "area": "Pallouriotissa",
+    "city": "Nicosia",
+    "postcode": "1046",
+    "notes": "Ring the bell twice"
+   },
+   "bonus": 1963,
+   "orders": [
+    {
+     "id": "482113",
+     "at": "2026-08-15T10:20:00",
+     "status": "collected",
+     "items": [
+      [
+       "bk1",
+       2
+      ],
+      [
+       "dl1",
+       1
+      ],
+      [
+       "fr1",
+       2
+      ],
+      [
+       "cl1",
+       1
+      ]
+     ]
+    },
+    {
+     "id": "481077",
+     "at": "2026-08-08T17:05:00",
+     "status": "collected",
+     "items": [
+      [
+       "bt1",
+       3
+      ],
+      [
+       "fr3",
+       1
+      ],
+      [
+       "fr5",
+       1
+      ],
+      [
+       "bk1",
+       1
+      ]
+     ]
+    },
+    {
+     "id": "479902",
+     "at": "2026-07-30T09:40:00",
+     "status": "collected",
+     "items": [
+      [
+       "fs1",
+       1
+      ],
+      [
+       "fr1",
+       1
+      ],
+      [
+       "fr3",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Andreas Christou",
+   "email": "andreas@example.com",
+   "pass_": "demo",
+   "type": "private",
+   "phone": "96 555 010",
+   "address": {
+    "street": "3 Stasinou Avenue, Flat 4",
+    "area": "Strovolos",
+    "city": "Nicosia",
+    "postcode": "2003",
+    "notes": ""
+   },
+   "bonus": 640,
+   "orders": [
+    {
+     "id": "482210",
+     "at": "2026-08-19T12:15:00",
+     "status": "preparing",
+     "items": [
+      [
+       "et1",
+       2
+      ],
+      [
+       "et5",
+       2
+      ],
+      [
+       "et6",
+       1
+      ]
+     ]
+    },
+    {
+     "id": "480515",
+     "at": "2026-08-02T18:30:00",
+     "status": "collected",
+     "items": [
+      [
+       "cl2",
+       2
+      ],
+      [
+       "cl5",
+       1
+      ],
+      [
+       "gf1",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Taverna Elia",
+   "email": "orders@tavernaelia.cy",
+   "pass_": "demo",
+   "type": "business",
+   "phone": "22 333 444",
+   "company": "Taverna Elia Ltd",
+   "vat": "CY10234567X",
+   "address": {
+    "street": "88 Ledra Street",
+    "area": "Old Town",
+    "city": "Nicosia",
+    "postcode": "1011",
+    "notes": "Deliver to kitchen door on Onasagorou, before 10:00"
+   },
+   "bonus": 0,
+   "orders": [
+    {
+     "id": "482001",
+     "at": "2026-08-17T06:10:00",
+     "status": "delivered",
+     "items": [
+      [
+       "bt1",
+       6
+      ],
+      [
+       "bt3",
+       4
+      ],
+      [
+       "dl1",
+       10
+      ],
+      [
+       "fr1",
+       8
+      ],
+      [
+       "fr3",
+       4
+      ],
+      [
+       "bk1",
+       10
+      ]
+     ]
+    },
+    {
+     "id": "481430",
+     "at": "2026-08-10T06:05:00",
+     "status": "delivered",
+     "items": [
+      [
+       "bt1",
+       6
+      ],
+      [
+       "bt3",
+       4
+      ],
+      [
+       "dl1",
+       10
+      ],
+      [
+       "fr1",
+       8
+      ],
+      [
+       "fr3",
+       4
+      ],
+      [
+       "bk1",
+       10
+      ]
+     ]
+    },
+    {
+     "id": "480870",
+     "at": "2026-08-03T06:12:00",
+     "status": "delivered",
+     "items": [
+      [
+       "bt2",
+       4
+      ],
+      [
+       "fs3",
+       3
+      ],
+      [
+       "fs4",
+       2
+      ],
+      [
+       "cl1",
+       6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Café Kipos",
+   "email": "hello@cafekipos.cy",
+   "pass_": "demo",
+   "type": "business",
+   "phone": "22 777 123",
+   "company": "Kipos Coffee Ltd",
+   "vat": "CY10987654B",
+   "address": {
+    "street": "21 Makarios Avenue",
+    "area": "Engomi",
+    "city": "Nicosia",
+    "postcode": "2404",
+    "notes": "Side entrance, ask for Elena"
+   },
+   "bonus": 0,
+   "orders": [
+    {
+     "id": "482190",
+     "at": "2026-08-19T05:55:00",
+     "status": "delivered",
+     "items": [
+      [
+       "bk2",
+       30
+      ],
+      [
+       "bk3",
+       20
+      ],
+      [
+       "bk5",
+       4
+      ],
+      [
+       "dl3",
+       4
+      ]
+     ]
+    },
+    {
+     "id": "482050",
+     "at": "2026-08-18T05:58:00",
+     "status": "delivered",
+     "items": [
+      [
+       "bk2",
+       30
+      ],
+      [
+       "bk3",
+       20
+      ],
+      [
+       "dl3",
+       4
+      ]
+     ]
+    }
+   ]
+  }
  ]
 };

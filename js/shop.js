@@ -23,15 +23,33 @@
   };
 
   /* ----- account ---------------------------------------------------------- */
+  function seedUsers() {
+    if (STORE.get("seeded", false) || !C.seedUsers) return;
+    var u = STORE.get("users", {});
+    C.seedUsers.forEach(function (su) {
+      if (u[su.email]) return;
+      var orders = su.orders.map(function (o) {
+        var items = o.items.map(function (it) { return { id: it[0], qty: it[1] }; });
+        var total = items.reduce(function (n, x) { var p = byId(x.id); return n + (p ? p.price * x.qty : 0); }, 0);
+        if (su.type === "business") total *= 0.95;
+        return { id: o.id, at: new Date(o.at).getTime(), status: o.status, items: items, total: Math.round(total * 100) / 100 };
+      });
+      u[su.email] = { name: su.name, email: su.email, pass: su.pass_, type: su.type, phone: su.phone || "", company: su.company || "", vat: su.vat || "",
+        address: su.address || {}, bonus: su.bonus || 0, created: Date.now(), orders: orders };
+    });
+    STORE.set("users", u); STORE.set("seeded", true);
+  }
+
   var Account = {
     current: function () { return STORE.get("session", null); },
     users: function () { return STORE.get("users", {}); },
     register: function (name, email, pass, type) {
       var u = Account.users(); email = email.toLowerCase();
       if (u[email]) return { error: "exists" };
-      u[email] = { name: name, email: email, pass: pass, type: type || "private", created: Date.now(), orders: [] };
+      u[email] = { name: name, email: email, pass: pass, type: type || "private", phone: "", company: "", vat: "", address: {}, bonus: 0, created: Date.now(), orders: [] };
       STORE.set("users", u); STORE.set("session", { email: email }); return { ok: true };
     },
+    update: function (patch) { var u = Account.users(); var me = Account.me(); if (!me) return; Object.keys(patch).forEach(function (k) { me[k] = patch[k]; }); u[me.email] = me; STORE.set("users", u); },
     login: function (email, pass) {
       var u = Account.users()[email.toLowerCase()];
       if (!u || u.pass !== pass) return { error: "invalid" };
@@ -39,7 +57,7 @@
     },
     logout: function () { STORE.set("session", null); },
     me: function () { var s = Account.current(); return s ? Account.users()[s.email] || null : null; },
-    addOrder: function (order) { var u = Account.users(); var me = Account.me(); if (!me) return; me.orders.unshift(order); u[me.email] = me; STORE.set("users", u); }
+    addOrder: function (order) { var u = Account.users(); var me = Account.me(); if (!me) return; me.orders.unshift(order); me.bonus = (me.bonus || 0) + Math.floor(order.total); u[me.email] = me; STORE.set("users", u); }
   };
 
   /* ----- basket ----------------------------------------------------------- */
@@ -99,7 +117,7 @@
       Object.keys(C.sections).forEach(function (s) {
         var list = C.products.filter(function (p) { return p.section === s && p.was; });
         if (!list.length) return;
-        html += '<section class="disc-group reveal is-visible" id="' + s + '"><div class="section__head" style="margin-bottom:22px"><div><span class="eyebrow">' + esc(t("dept." + s)) + '</span><h2 class="h3" style="margin-top:8px">' + esc(t("offers.in")) + ' ' + esc(t("dept." + s)) + '</h2></div><a class="btn btn--ghost btn--sm" href="' + base + 'shops/' + s + '.html">' + esc(t("dept.link")) + '</a></div><div class="products">' + list.map(productCard).join("") + '</div></section>';
+        html += '<section class="disc-group" id="' + s + '"><div class="section__head" style="margin-bottom:22px"><div><span class="eyebrow">' + esc(t("dept." + s)) + '</span><h2 class="h3" style="margin-top:8px">' + esc(t("offers.in")) + ' ' + esc(t("dept." + s)) + '</h2></div><a class="btn btn--ghost btn--sm" href="' + base + 'shops/' + s + '.html">' + esc(t("dept.link")) + '</a></div><div class="products">' + list.map(productCard).join("") + '</div></section>';
       });
       el.innerHTML = html;
     });
@@ -113,7 +131,7 @@
       var total = r.items.reduce(function (n, it) { var p = byId(it[0]); return n + (p ? p.price * it[1] : 0); }, 0);
       var ings = r.items.map(function (it) { var p = byId(it[0]); return p ? '<li>' + it[1] + ' × ' + esc(p.name[lang()] || p.name.en) + '</li>' : ""; }).join("");
       var steps = d.steps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("");
-      return '<article class="recipe reveal is-visible"><div class="recipe__img"><img src="' + r.img + '" alt="" loading="lazy"><span class="recipe__meta">' + r.minutes + ' min · ' + r.serves + ' ' + esc(t("recipe.serves")) + '</span></div>' +
+      return '<article class="recipe"><div class="recipe__img"><img src="' + r.img + '" alt="" loading="lazy"><span class="recipe__meta">' + r.minutes + ' min · ' + r.serves + ' ' + esc(t("recipe.serves")) + '</span></div>' +
         '<div class="recipe__body"><h3>' + esc(d.title) + '</h3><p>' + esc(d.desc) + '</p>' +
         '<div class="recipe__cols"><div><h4>' + esc(t("recipe.ingredients")) + '</h4><ul class="recipe__ings">' + ings + '</ul></div><div><h4>' + esc(t("recipe.method")) + '</h4><ol class="recipe__steps">' + steps + '</ol></div></div>' +
         '<div class="recipe__foot"><span>' + esc(t("recipe.basket")) + ' <b>' + money(total) + '</b></span><button class="btn btn--primary btn--sm" type="button" data-add-recipe="' + r.id + '">' + esc(t("recipe.addall")) + '</button></div></div></article>';
@@ -126,7 +144,7 @@
       var d = b[lang()] || b.en;
       var ings = b.items.filter(function (it) { return it[1] > 0; }).map(function (it) { var p = byId(it[0]); return p ? '<li>' + it[1] + ' × ' + esc(p.name[lang()] || p.name.en) + '</li>' : ""; }).join("");
       var off = Math.round((1 - b.price / b.was) * 100);
-      return '<article class="bundle reveal is-visible"><div class="bundle__img"><img src="' + b.img + '" alt="" loading="lazy"><span class="product__off">-' + off + '%</span></div>' +
+      return '<article class="bundle"><div class="bundle__img"><img src="' + b.img + '" alt="" loading="lazy"><span class="product__off">-' + off + '%</span></div>' +
         '<div class="bundle__body"><span class="eyebrow eyebrow--orange">' + esc(d.who) + '</span><h3>' + esc(d.title) + '</h3><p>' + esc(d.desc) + '</p><ul class="recipe__ings">' + ings + '</ul>' +
         '<div class="bundle__foot"><div class="product__price"><b>' + money(b.price) + '</b><s>' + money(b.was) + '</s></div><button class="btn btn--primary btn--sm" type="button" data-add-bundle="' + b.id + '">' + esc(t("bundle.add")) + '</button></div></div></article>';
     }).join("");
@@ -199,28 +217,42 @@
   }
 
   /* ----- account UI ------------------------------------------------------- */
+  function orderRow(o) {
+    var n = o.items.reduce(function (k, x) { return k + x.qty; }, 0);
+    var names = o.items.slice(0, 3).map(function (x) { var p = byId(x.id); return p ? (p.name[lang()] || p.name.en) : ""; }).join(", ") + (o.items.length > 3 ? " …" : "");
+    var cls = o.status === "preparing" ? "c-orange" : "c-leaf";
+    return '<div class="order"><div><b>#' + o.id + '</b><small>' + new Date(o.at).toLocaleDateString(lang() === "el" ? "el-GR" : "en-GB", { day: "numeric", month: "short", year: "numeric" }) + ' · ' + n + ' ' + esc(t("cart.items")) + '</small><small class="order__names">' + esc(names) + '</small></div><span class="pill ' + cls + '">' + esc(t("order.status." + (o.status || "preparing"))) + '</span><b>' + money(o.total) + '</b><button class="btn btn--ghost btn--sm" type="button" data-reorder="' + o.id + '">' + esc(t("order.reorder")) + '</button></div>';
+  }
+
   function renderAccountUI() {
     var me = Account.me();
     document.querySelectorAll("[data-account-link]").forEach(function (a) {
-      a.querySelector("span").textContent = me ? me.name.split(" ")[0] : t("account.login");
+      var sp = a.querySelector("span"); if (sp) sp.textContent = me ? me.name.split(" ")[0] : t("account.login");
+      a.setAttribute("href", base + (me ? "account.html" : "login.html"));
     });
     var page = document.querySelector("[data-account-page]"); if (!page) return;
-    var authed = page.querySelector("[data-when-authed]"), guest = page.querySelector("[data-when-guest]");
-    if (authed) authed.hidden = !me; if (guest) guest.hidden = !!me;
-    if (me) {
-      page.querySelectorAll("[data-me-name]").forEach(function (e) { e.textContent = me.name; });
-      page.querySelectorAll("[data-me-email]").forEach(function (e) { e.textContent = me.email; });
-      page.querySelectorAll("[data-me-type]").forEach(function (e) { e.textContent = t("account.type." + me.type); });
-      var ol = page.querySelector("[data-orders]");
-      if (ol) ol.innerHTML = me.orders.length ? me.orders.map(function (o) {
-        return '<div class="order"><div><b>#' + o.id + '</b><small>' + new Date(o.at).toLocaleDateString(lang() === "el" ? "el-GR" : "en-GB") + ' · ' + o.items.reduce(function (n, x) { return n + x.qty; }, 0) + ' ' + esc(t("cart.items")) + '</small></div><span class="pill c-leaf">' + esc(t("order.status")) + '</span><b>' + money(o.total) + '</b></div>';
-      }).join("") : '<p class="muted">' + esc(t("order.none")) + '</p>';
-    }
+    if (!me) { window.location.replace(base + "login.html?next=account"); return; }
+    page.querySelectorAll("[data-me-name]").forEach(function (e) { e.textContent = me.name; });
+    page.querySelectorAll("[data-me-first]").forEach(function (e) { e.textContent = me.name.split(" ")[0]; });
+    page.querySelectorAll("[data-me-email]").forEach(function (e) { e.textContent = me.email; });
+    page.querySelectorAll("[data-me-type]").forEach(function (e) { e.textContent = t("account.type." + me.type); });
+    page.querySelectorAll("[data-me-bonus]").forEach(function (e) { e.textContent = (me.bonus || 0).toLocaleString(); });
+    page.querySelectorAll("[data-me-orders-n]").forEach(function (e) { e.textContent = me.orders.length; });
+    page.querySelectorAll("[data-me-spent]").forEach(function (e) { e.textContent = money(me.orders.reduce(function (n, o) { return n + o.total; }, 0)); });
+    page.querySelectorAll("[data-business-only]").forEach(function (e) { e.hidden = me.type !== "business"; });
+    var addr = me.address || {};
+    page.querySelectorAll("[data-me-address]").forEach(function (e) { e.textContent = addr.street ? [addr.street, addr.area, addr.city + (addr.postcode ? " " + addr.postcode : "")].filter(Boolean).join(", ") : t("account.noaddress"); });
+    var f = page.querySelector("[data-details-form]");
+    if (f && !f._filled) { f._filled = true; f.name.value = me.name; f.phone.value = me.phone || ""; f.company.value = me.company || ""; f.vat.value = me.vat || ""; f.street.value = addr.street || ""; f.area.value = addr.area || ""; f.city.value = addr.city || "Nicosia"; f.postcode.value = addr.postcode || ""; f.notes.value = addr.notes || ""; }
+    var ol = page.querySelector("[data-orders]");
+    if (ol) ol.innerHTML = me.orders.length ? me.orders.map(orderRow).join("") : '<p class="muted">' + esc(t("order.none")) + '</p>';
+    var recent = page.querySelector("[data-orders-recent]");
+    if (recent) recent.innerHTML = me.orders.length ? me.orders.slice(0, 2).map(orderRow).join("") : '<p class="muted">' + esc(t("order.none")) + '</p>';
   }
 
   function checkout() {
     var me = Account.me();
-    if (!me) { window.location.href = base + "account.html?next=checkout"; return; }
+    if (!me) { window.location.href = base + "login.html?next=checkout"; return; }
     var tot = Cart.totals();
     var order = { id: String(Date.now()).slice(-6), at: Date.now(), items: Cart.items(), total: tot.total };
     Account.addOrder(order); Cart.clear(); openDrawer(false);
@@ -238,26 +270,38 @@
     else if (e.target.closest("[data-cart-open]")) { e.preventDefault(); openDrawer(true); }
     else if (e.target.closest("[data-cart-close]")) openDrawer(false);
     else if ((b = e.target.closest("[data-checkout]"))) checkout();
-    else if (e.target.closest("[data-logout]")) { Account.logout(); renderAccountUI(); renderCartUI(); }
+    else if ((b = e.target.closest("[data-reorder]"))) { var me2 = Account.me(); var o = me2 && me2.orders.filter(function (x) { return x.id === b.getAttribute("data-reorder"); })[0]; if (o) { o.items.forEach(function (x) { Cart.add(x.id, x.qty); }); toast(t("cart.added")); openDrawer(true); } }
+    else if (e.target.closest("[data-logout]")) { Account.logout(); renderCartUI(); window.location.href = base + "index.html"; }
+    else if ((b = e.target.closest("[data-demo-login]"))) { Account.login(b.getAttribute("data-demo-login"), "demo"); afterAuth(); }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") openDrawer(false); });
 
+  var params = new URLSearchParams(location.search);
+  function afterAuth() {
+    var next = params.get("next");
+    if (next === "checkout" && Cart.count()) { checkout(); return; }
+    window.location.href = base + "account.html";
+  }
   function initAccountForms() {
-    var login = document.querySelector("[data-login-form]"), reg = document.querySelector("[data-register-form]");
-    var params = new URLSearchParams(location.search);
-    function after() {
-      renderAccountUI();
-      if (params.get("next") === "checkout" && Cart.count()) checkout();
-    }
+    var login = document.querySelector("[data-login-form]"), reg = document.querySelector("[data-register-form]"), det = document.querySelector("[data-details-form]");
+    if ((login || reg) && Account.me() && !params.get("next")) { window.location.replace(base + "account.html"); return; }
     if (login) login.addEventListener("submit", function (e) {
       e.preventDefault(); if (!login.checkValidity()) { login.reportValidity(); return; }
       var r = Account.login(login.email.value, login.password.value);
-      var err = login.querySelector(".form-error"); err.hidden = !r.error; if (r.error) err.textContent = t("account.err.invalid"); else after();
+      var err = login.querySelector(".form-error"); err.hidden = !r.error; if (r.error) err.textContent = t("account.err.invalid"); else afterAuth();
     });
-    if (reg) reg.addEventListener("submit", function (e) {
-      e.preventDefault(); if (!reg.checkValidity()) { reg.reportValidity(); return; }
-      var r = Account.register(reg.name.value, reg.email.value, reg.password.value, reg.type.value);
-      var err = reg.querySelector(".form-error"); err.hidden = !r.error; if (r.error) err.textContent = t("account.err.exists"); else after();
+    if (reg) {
+      if (params.get("type") === "business") { var rb = reg.querySelector("input[value='business']"); if (rb) rb.checked = true; }
+      reg.addEventListener("submit", function (e) {
+        e.preventDefault(); if (!reg.checkValidity()) { reg.reportValidity(); return; }
+        var r = Account.register(reg.name.value, reg.email.value, reg.password.value, reg.type.value);
+        var err = reg.querySelector(".form-error"); err.hidden = !r.error; if (r.error) err.textContent = t("account.err.exists"); else { Account.update({ phone: reg.phone.value, address: { street: reg.street.value, area: reg.area.value, city: reg.city.value, postcode: reg.postcode.value, notes: "" } }); afterAuth(); }
+      });
+    }
+    if (det) det.addEventListener("submit", function (e) {
+      e.preventDefault(); if (!det.checkValidity()) { det.reportValidity(); return; }
+      Account.update({ name: det.name.value, phone: det.phone.value, company: det.company.value, vat: det.vat.value, address: { street: det.street.value, area: det.area.value, city: det.city.value, postcode: det.postcode.value, notes: det.notes.value } });
+      det._filled = false; renderAccountUI(); toast(t("account.saved"));
     });
     var placed = params.get("placed"); var msg = document.querySelector("[data-placed]");
     if (placed && msg) { msg.hidden = false; msg.querySelector("b").textContent = "#" + placed; }
@@ -265,14 +309,16 @@
       tab.addEventListener("click", function () {
         document.querySelectorAll("[data-tab]").forEach(function (x) { x.setAttribute("aria-selected", x === tab ? "true" : "false"); });
         document.querySelectorAll("[data-panel]").forEach(function (p) { p.hidden = p.getAttribute("data-panel") !== tab.getAttribute("data-tab"); });
+        history.replaceState(null, "", "#" + tab.getAttribute("data-tab"));
       });
     });
+    var h = location.hash.slice(1); var tb = h && document.querySelector("[data-tab='" + h + "']"); if (tb) tb.click();
   }
 
-  function renderAll() { renderProducts(); renderRecipes(); renderBundles(); renderCartUI(); renderAccountUI(); }
+  function renderAll() { renderProducts(); renderRecipes(); renderBundles(); renderCartUI(); renderAccountUI(); if (window.ATH && window.ATH.observe) window.ATH.observe(); }
 
   document.addEventListener("DOMContentLoaded", function () {
-    initSearch(); initAccountForms(); renderAll();
+    seedUsers(); initSearch(); initAccountForms(); renderAll();
     if (window.ATH) window.ATH.onLang(renderAll);
   });
   window.ATHShop = { Cart: Cart, Account: Account, search: search };

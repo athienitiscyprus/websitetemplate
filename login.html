@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Search — Athienitis Supermarket</title>
-<meta name="description" content="Search products across all counters.">
+<title>Sign in — Athienitis Supermarket</title>
+<meta name="description" content="Sign in to order for collection, reorder in one tap and track Bonus Card points.">
 <meta name="theme-color" content="#f26f21">
-<link rel="canonical" href="https://athienitiscyprus.github.io/websitetemplate/search.html">
-<meta property="og:title" content="Search — Athienitis Supermarket">
-<meta property="og:description" content="Search products across all counters.">
+<link rel="canonical" href="https://athienitiscyprus.github.io/websitetemplate/login.html">
+<meta property="og:title" content="Sign in — Athienitis Supermarket">
+<meta property="og:description" content="Sign in to order for collection, reorder in one tap and track Bonus Card points.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://athienitiscyprus.github.io/websitetemplate/search.html">
+<meta property="og:url" content="https://athienitiscyprus.github.io/websitetemplate/login.html">
 <meta property="og:image" content="https://athienitiscyprus.github.io/websitetemplate/assets/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/logo.png">
@@ -58,7 +58,7 @@
       </ul>
     </nav>
     <div class="header__tools">
-      <form class="search" data-search role="search" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="visually-hidden" for="q-search">Search</label><input id="q-search" type="search" name="q" data-i18n="search.placeholder" data-i18n-attr="placeholder" placeholder="Search products…"><div class="search__results" hidden></div></form>
+      <form class="search" data-search role="search" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="visually-hidden" for="q-login">Search</label><input id="q-login" type="search" name="q" data-i18n="search.placeholder" data-i18n-attr="placeholder" placeholder="Search products…"><div class="search__results" hidden></div></form>
       <a class="icon-btn account-link" href="account.html" data-account-link aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span data-i18n="account.login">Sign in</span></a>
       <button class="icon-btn" type="button" data-cart-open aria-label="Basket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 9H5z"/><path d="M8 10l3-6M16 10l-3-6"/></svg><span class="badge is-empty" data-cart-count>0</span></button>
       <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -105,14 +105,24 @@
 </div>
 
 <main id="main">
-<section class="page-hero">
-  <div class="container">
-    <div class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="search.title">Results for</span></div>
-    <h1 class="h1"><span data-i18n="search.title">Results for</span> “<span data-search-query></span>”</h1>
-    <p class="lead" style="margin-top:12px"><span data-search-count>0</span> <span data-i18n="search.count">products found</span></p>
+<div class="auth-split">
+  <div class="auth-split__media"><img src="https://loremflickr.com/1000/1200/grocery,shopping,basket?lock=1901" alt=""><div class="auth-split__quote"><b data-i18n="hero.title"></b><span data-i18n="hero.eyebrow"></span></div></div>
+  <div class="auth-split__form">
+    <div class="auth">
+      <h1 data-i18n="login.title">Welcome back.</h1>
+      <p class="lead" data-i18n="account.login.lead"></p>
+      <form data-login-form novalidate>
+        <div><label for="l-email" data-i18n="account.email">Email</label><input id="l-email" name="email" type="email" required autocomplete="email"></div>
+        <div><label for="l-pass" data-i18n="account.password">Password</label><input id="l-pass" name="password" type="password" required autocomplete="current-password" minlength="4"></div>
+        <div class="form-error" hidden></div>
+        <button class="btn btn--primary" type="submit"><span data-i18n="account.login">Sign in</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <p class="auth__alt"><span data-i18n="account.noaccount"></span> <a href="register.html" data-i18n="account.register">Create account</a></p>
+      <div class="demo-accounts"><h3 data-i18n="account.demo.title"></h3><p data-i18n="account.demo.lead"></p><ul><li><button type="button" data-demo-login="maria@example.com"><img src="https://loremflickr.com/80/80/portrait,person?lock=1900" alt=""><span><b>Maria Georgiou</b><small data-i18n="account.type.private"></small></span></button></li><li><button type="button" data-demo-login="andreas@example.com"><img src="https://loremflickr.com/80/80/portrait,person?lock=1901" alt=""><span><b>Andreas Christou</b><small data-i18n="account.type.private"></small></span></button></li><li><button type="button" data-demo-login="orders@tavernaelia.cy"><img src="https://loremflickr.com/80/80/restaurant,logo?lock=1902" alt=""><span><b>Taverna Elia</b><small data-i18n="account.type.business"></small></span></button></li><li><button type="button" data-demo-login="hello@cafekipos.cy"><img src="https://loremflickr.com/80/80/cafe,coffee?lock=1903" alt=""><span><b>Café Kipos</b><small data-i18n="account.type.business"></small></span></button></li></ul></div>
+      <p class="form-note" style="text-align:center;margin-top:14px" data-i18n="account.demo"></p>
+    </div>
   </div>
-</section>
-<section class="section"><div class="container"><div class="products" data-search-results></div></div></section>
+</div>
 </main>
 
 <footer class="footer">

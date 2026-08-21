@@ -15,7 +15,8 @@ Static, dependency-free website proposal for Athienitis Supermarket (Nicosia). B
 | `recipes.html` | Recipes built from catalog products, "add all ingredients" to basket |
 | `business.html` | Trade delivery bundles for restaurants, cafés, bars, hotels; business accounts get 5% off |
 | `search.html` | Product search results (the header search box also shows live suggestions) |
-| `account.html` | Sign in / create account (private or business), order history |
+| `login.html` · `register.html` | Split-layout sign-in and registration (private or business, with delivery address); one-click demo accounts |
+| `account.html` | Customer dashboard: Bonus points, order history with "order again", personal details, delivery address |
 | `contact.html` | Contact details, live opening status, map, enquiry form |
 | `404.html`, `sitemap.xml`, `robots.txt` | GitHub Pages not-found page and crawler files |
 
@@ -24,10 +25,17 @@ Static, dependency-free website proposal for Athienitis Supermarket (Nicosia). B
 
 Accounts, basket and orders are stored in the browser's `localStorage` so the demo works on GitHub Pages without a server. For production, replace the `STORE`/`Account`/`Cart` functions in `shop.js` with API calls and move the catalog to a CMS or the app backend.
 
+## Demo accounts
+Four template customers are seeded into the browser on first visit (password `demo`): Maria Georgiou and Andreas Christou (private), Taverna Elia and Café Kipos (business, with delivery addresses, VAT numbers and order history). The login page has one-click buttons for each. Edit `SEED_USERS` in `js/catalog.js`.
+
+## AI customer service
+`js/assistant.js` adds the chat bubble on every page. It answers from the site's own data — opening hours and live open/closed status, location, offers, product search, the signed-in customer's orders and points, Bonus Card terms, business delivery, the app — in English or Greek, entirely client-side. To plug in a real model, set `window.AI_ENDPOINT` to a backend URL that accepts `POST {messages, lang, context}` and returns `{reply}`; the local engine stays as the fallback.
+
 ## Features
 - **EN / EL switch** with no reload; remembered across visits, Greek browsers default to EL. UI strings live in `js/main.js` (`I18N`); shop-page copy is injected per page (`window.SHOP_CONTENT`); blog articles are separate files per language and the switch navigates between them.
 - **Live "Open now / Closed"** badge in Europe/Nicosia time, today highlighted in the hours table. Edit `HOURS` in `js/main.js`.
 - **SEO / GEO:** canonical + Open Graph on every page, `GroceryStore` schema with departments and opening hours, `Store` schema per counter, `Article` schema per post, `FAQPage` schema (EN + EL), `MobileApplication` schema, sitemap and robots.
+- **Page transitions:** fade-out on internal links and fade-in on load, a scroll progress bar under the header, and staggered scroll-reveal for every grid (products, posts, tiles, gallery, features).
 - **Animations:** orchestrated hero load sequence, count-up stats, pointer-follow stickers, image zoom on hover, Ken Burns shop heroes, floating phone mockup, FAQ accordion, scroll reveals — all disabled under `prefers-reduced-motion`.
 - Sticky header with mega menus, mobile drawer, keyboard-visible focus, skip link.
 - Forms work without a backend (local success state). Add `data-endpoint="https://formspree.io/f/XXXX"` to any `<form>` to receive submissions.
