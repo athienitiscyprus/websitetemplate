@@ -81,13 +81,18 @@
       "nav.eatery": "Eatery",
       "nav.bonus": "Bonus Card",
       "nav.contact": "Contact",
-      "nav.orders": "Order online",
+      "nav.orders": "Get the app",
+      "nav.blog": "Blog",
+      "nav.home": "Home",
+      "nav.faq": "FAQ",
+      "nav.app": "The App",
       "nav.departments": "All departments",
 
       "hero.eyebrow": "Pallouriotissa, Nicosia · since 1963",
       "hero.title": "Your neighbourhood supermarket, done properly.",
       "hero.lead": "Fresh bread from our own bakery, a butcher who knows your name, and a cellar worth browsing. Everything for the house, in one friendly place on John Kennedy Avenue.",
       "hero.cta1": "Explore the departments",
+      "story.t4": "Bonus Card launches; the Athienitis app is announced.",
       "hero.cta2": "Weekly offers",
       "hero.meta1": "years serving Nicosia",
       "hero.meta2": "specialist counters",
@@ -128,7 +133,6 @@
       "story.t1": "First store opens in Pallouriotissa, Nicosia.",
       "story.t2": "Bakery and butchery counters added.",
       "story.t3": "Living, Gifts and The Cellar join the market.",
-      "story.t4": "Bonus Card launches; online ordering begins.",
       "story.photo": "Photo placeholder — storefront or bakery counter",
       "story.badge": "years of service",
 
@@ -174,7 +178,40 @@
       "form.success": "Thank you — your message has been sent. We'll reply within one working day.",
       "contact.title": "We're happy to help.",
       "contact.lead": "Questions about a product, an order or the Bonus Card? Call, visit or send us a message below.",
-      "contact.send": "Send message"
+      "contact.send": "Send message",
+      "contact.formtitle": "Send us a message",
+      "contact.ordernote": "Looking to order? Phone orders are welcome on 22 877 909 — and the Athienitis app is coming soon.",
+
+      "app.eyebrow": "Coming soon",
+      "app.title": "The whole market, in your pocket.",
+      "app.lead": "The Athienitis app lets you order from every counter, pick a collection slot, pay in-app and track Bonus Card points — launching soon on the App Store and Google Play.",
+      "app.f1": "Order from all nine counters", "app.f1.p": "Butchery cuts, bakery orders, deli platters and the weekly shop in one basket.",
+      "app.f2": "Choose a pickup slot", "app.f2.p": "Pick a 30-minute window. Your order is packed and waiting at the collection desk.",
+      "app.f3": "Bonus Card built in", "app.f3.p": "Scan at the till, see your points live, redeem with one tap.",
+      "app.f4": "Home delivery in Nicosia", "app.f4.p": "Same-day delivery within the city, planned for the first update.",
+      "app.notify": "Get notified at launch",
+      "app.store": "Download on the App Store", "app.play": "Get it on Google Play", "app.soon": "Coming soon",
+      "app.phone.greet": "Good morning, Andreas",
+      "app.phone.points": "Bonus points",
+      "app.phone.order": "Your order",
+      "app.phone.ready": "Ready 11:30",
+      "app.cta.home": "Order via the app",
+      "app.banner": "Ordering is moving to the Athienitis app. Until launch, phone orders are welcome.",
+
+      "blog.eyebrow": "From the counters",
+      "blog.title": "Notes from the market.",
+      "blog.lead": "Buying guides, recipes and seasonal news written by the people behind each counter.",
+      "blog.read": "Read article", "blog.all": "All articles", "blog.min": "min read",
+      "blog.back": "All articles", "blog.more": "More from the market",
+      "blog.visit": "Visit the counter",
+
+      "faq.eyebrow": "FAQ",
+      "faq.title": "Questions people ask us.",
+      "faq.lead": "Short, direct answers about the store, its departments, ordering and the Bonus Card.",
+      "faq.more": "Didn't find it? Ask us directly.",
+
+      "shop.items": "What you'll find", "shop.tip": "Counter tip", "shop.hours": "Hours",
+      "shop.other": "Other counters", "shop.order": "Order ahead"
     },
     el: {
       "status.open": "Ανοιχτά τώρα · κλείνουμε {0}",
@@ -187,7 +224,11 @@
       "nav.eatery": "Εστιατόριο",
       "nav.bonus": "Bonus Card",
       "nav.contact": "Επικοινωνία",
-      "nav.orders": "Παραγγελία online",
+      "nav.orders": "Η εφαρμογή",
+      "nav.blog": "Blog",
+      "nav.home": "Αρχική",
+      "nav.faq": "Συχνές ερωτήσεις",
+      "nav.app": "Η Εφαρμογή",
       "nav.departments": "Όλα τα τμήματα",
 
       "hero.eyebrow": "Παλλουριώτισσα, Λευκωσία · από το 1963",
@@ -234,7 +275,7 @@
       "story.t1": "Ανοίγει το πρώτο κατάστημα στην Παλλουριώτισσα.",
       "story.t2": "Προστίθενται φούρνος και κρεοπωλείο.",
       "story.t3": "Σπίτι, Δώρα και Η Κάβα εντάσσονται στην αγορά.",
-      "story.t4": "Ξεκινά η Bonus Card και οι online παραγγελίες.",
+      "story.t4": "Ξεκινά η Bonus Card· ανακοινώνεται η εφαρμογή Athienitis.",
       "story.photo": "Θέση φωτογραφίας — πρόσοψη ή πάγκος φούρνου",
       "story.badge": "χρόνια υπηρεσίας",
 
@@ -280,7 +321,40 @@
       "form.success": "Ευχαριστούμε — το μήνυμά σας στάλθηκε. Θα απαντήσουμε εντός μίας εργάσιμης ημέρας.",
       "contact.title": "Είμαστε εδώ για να βοηθήσουμε.",
       "contact.lead": "Ερωτήσεις για προϊόν, παραγγελία ή Bonus Card; Καλέστε, επισκεφθείτε μας ή στείλτε μήνυμα.",
-      "contact.send": "Αποστολή"
+      "contact.send": "Αποστολή",
+      "contact.formtitle": "Στείλτε μας μήνυμα",
+      "contact.ordernote": "Θέλετε να παραγγείλετε; Τηλεφωνικά στο 22 877 909 — και η εφαρμογή Athienitis έρχεται σύντομα.",
+
+      "app.eyebrow": "Έρχεται σύντομα",
+      "app.title": "Όλη η αγορά, στην τσέπη σας.",
+      "app.lead": "Η εφαρμογή Athienitis σάς επιτρέπει να παραγγέλνετε από κάθε πάγκο, να επιλέγετε ώρα παραλαβής, να πληρώνετε μέσα από την εφαρμογή και να παρακολουθείτε τους πόντους Bonus Card — σύντομα σε App Store και Google Play.",
+      "app.f1": "Παραγγελία από όλους τους πάγκους", "app.f1.p": "Κρέατα, ψωμιά, πλατό τυριών και τα ψώνια της εβδομάδας σε ένα καλάθι.",
+      "app.f2": "Επιλογή ώρας παραλαβής", "app.f2.p": "Διαλέξτε παράθυρο 30 λεπτών. Η παραγγελία σας είναι συσκευασμένη και σας περιμένει.",
+      "app.f3": "Bonus Card ενσωματωμένη", "app.f3.p": "Σκανάρετε στο ταμείο, δείτε τους πόντους ζωντανά, εξαργυρώστε με ένα άγγιγμα.",
+      "app.f4": "Διανομή στη Λευκωσία", "app.f4.p": "Αυθημερόν διανομή εντός πόλης, σχεδιασμένη για την πρώτη ενημέρωση.",
+      "app.notify": "Ειδοποιήστε με στην κυκλοφορία",
+      "app.store": "Κατεβάστε από το App Store", "app.play": "Διαθέσιμο στο Google Play", "app.soon": "Σύντομα",
+      "app.phone.greet": "Καλημέρα, Ανδρέα",
+      "app.phone.points": "Πόντοι Bonus",
+      "app.phone.order": "Η παραγγελία σας",
+      "app.phone.ready": "Έτοιμη 11:30",
+      "app.cta.home": "Παραγγελία από την εφαρμογή",
+      "app.banner": "Οι παραγγελίες μεταφέρονται στην εφαρμογή Athienitis. Μέχρι τότε, δεχόμαστε τηλεφωνικές παραγγελίες.",
+
+      "blog.eyebrow": "Από τους πάγκους",
+      "blog.title": "Σημειώσεις από την αγορά.",
+      "blog.lead": "Οδηγοί αγοράς, συνταγές και εποχιακά νέα από τους ανθρώπους πίσω από κάθε πάγκο.",
+      "blog.read": "Διαβάστε το άρθρο", "blog.all": "Όλα τα άρθρα", "blog.min": "λεπτά ανάγνωσης",
+      "blog.back": "Όλα τα άρθρα", "blog.more": "Περισσότερα από την αγορά",
+      "blog.visit": "Επισκεφθείτε τον πάγκο",
+
+      "faq.eyebrow": "Συχνές ερωτήσεις",
+      "faq.title": "Ερωτήσεις που μας κάνουν.",
+      "faq.lead": "Σύντομες, άμεσες απαντήσεις για το κατάστημα, τα τμήματα, τις παραγγελίες και την Bonus Card.",
+      "faq.more": "Δεν το βρήκατε; Ρωτήστε μας απευθείας.",
+
+      "shop.items": "Τι θα βρείτε", "shop.tip": "Συμβουλή πάγκου", "shop.hours": "Ωράριο",
+      "shop.other": "Άλλοι πάγκοι", "shop.order": "Παραγγείλτε εκ των προτέρων"
     }
   };
 
@@ -293,6 +367,8 @@
   }
 
   function applyLang(lang) {
+    var fixed = document.body.getAttribute("data-lang-fixed");
+    if (fixed) lang = fixed; // page content is in one language; chrome follows it
     currentLang = I18N[lang] ? lang : "en";
     document.documentElement.lang = currentLang;
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
@@ -305,17 +381,45 @@
     document.querySelectorAll("[data-lang]").forEach(function (btn) {
       btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === currentLang ? "true" : "false");
     });
-    try { localStorage.setItem("athienitis-lang", currentLang); } catch (e) { /* private mode */ }
+    // Blocks authored separately per language (blog lists, FAQ): show the matching one
+    document.querySelectorAll("[data-lang-only]").forEach(function (el) {
+      el.hidden = el.getAttribute("data-lang-only") !== currentLang;
+    });
+    // Shop pages: long-form content comes from window.SHOP_CONTENT
+    if (window.SHOP_CONTENT) {
+      document.querySelectorAll("[data-shop]").forEach(function (el) {
+        var shop = window.SHOP_CONTENT[el.getAttribute("data-shop")];
+        if (!shop) return;
+        var d = shop[currentLang] || shop.en;
+        var v = d[el.getAttribute("data-field")];
+        var i = el.getAttribute("data-index");
+        if (i !== null && Array.isArray(v)) v = v[parseInt(i, 10)];
+        if (typeof v === "string") el.textContent = v;
+      });
+    }
+    if (!fixed) { try { localStorage.setItem("athienitis-lang", currentLang); } catch (e) { /* private mode */ } }
   }
 
   function initLang() {
     var saved = null;
     try { saved = localStorage.getItem("athienitis-lang"); } catch (e) { /* ignore */ }
     if (!saved && /^el\b/i.test(navigator.language || "")) saved = "el";
+    var fixedLang = document.body.getAttribute("data-lang-fixed");
+    var altUrl = document.body.getAttribute("data-alt-url");
+    if (fixedLang && altUrl && saved && saved !== fixedLang && !/[?&]stay=1/.test(location.search)) {
+      window.location.replace(altUrl + "?stay=1"); return;
+    }
     updateOpenStatus();
     applyLang(saved || "en");
     document.querySelectorAll("[data-lang]").forEach(function (btn) {
-      btn.addEventListener("click", function () { applyLang(btn.getAttribute("data-lang")); });
+      btn.addEventListener("click", function () {
+        var target = btn.getAttribute("data-lang");
+        var alt = document.body.getAttribute("data-alt-url");
+        var fixed = document.body.getAttribute("data-lang-fixed");
+        try { localStorage.setItem("athienitis-lang", target); } catch (e) { /* ignore */ }
+        if (fixed && alt && target !== fixed) { window.location.href = alt; return; }
+        applyLang(target);
+      });
     });
     // keep the badge fresh if the tab stays open
     setInterval(function () { updateOpenStatus(); applyLang(currentLang); }, 60000);
@@ -451,7 +555,65 @@
     document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
   }
 
+  /* -----------------------------------------------------------------------
+     8. Count-up numbers (hero stats)
+     ----------------------------------------------------------------------- */
+  function initCounters() {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll("[data-count]").forEach(function (el) {
+      var target = parseInt(el.getAttribute("data-count"), 10);
+      if (reduce || isNaN(target)) { el.textContent = target; return; }
+      var start = null, dur = 1200;
+      function step(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* -----------------------------------------------------------------------
+     9. Hero stickers follow the pointer slightly (desktop only)
+     ----------------------------------------------------------------------- */
+  function initParallax() {
+    var wrap = document.querySelector(".stickers");
+    if (!wrap || !window.matchMedia("(hover: hover)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var items = wrap.querySelectorAll(".sticker");
+    wrap.addEventListener("mousemove", function (e) {
+      var r = wrap.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      items.forEach(function (it, i) {
+        var depth = (i + 1) * 6;
+        it.style.setProperty("--px", (x * depth) + "px");
+        it.style.setProperty("--py", (y * depth) + "px");
+      });
+    });
+    wrap.addEventListener("mouseleave", function () {
+      items.forEach(function (it) { it.style.setProperty("--px", "0px"); it.style.setProperty("--py", "0px"); });
+    });
+  }
+
+  /* -----------------------------------------------------------------------
+     10. FAQ accordion (native <details>, one open at a time + smooth height)
+     ----------------------------------------------------------------------- */
+  function initFaq() {
+    var all = document.querySelectorAll(".faq details");
+    all.forEach(function (d) {
+      d.addEventListener("toggle", function () {
+        if (d.open) all.forEach(function (o) { if (o !== d && o.open) o.open = false; });
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("is-loaded");
+    initCounters();
+    initParallax();
+    initFaq();
     initLang();
     initHeader();
     initReveal();

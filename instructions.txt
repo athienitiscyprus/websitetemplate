@@ -1,4 +1,0 @@
-The project's reposiroty is not connected but is an empty public repository with the following url:
-https://github.com/athienitiscyprus/websitetemplate.git
-The project will also be hosted on github pages
-the original website of the company has the following link and you may use it for branding colors and get some structural design reference but we should improve it so take this as a base and improve it https://www.athienitis.com/
