@@ -109,6 +109,11 @@ def cmd_preview():
     except Exception: pass
 
 def rel_for(file_rel, target_rel):
+    """Path to write into a given file. Scripts (js/catalog.js) are shared by pages at
+    every depth, so they get a site-root-relative path that the storefront resolves
+    at runtime; HTML pages get a path relative to their own folder."""
+    if file_rel.endswith(".js"):
+        return target_rel
     depth = file_rel.count("/")
     return ("../" * depth) + target_rel
 
@@ -125,6 +130,7 @@ def replace_in_files(r, old_id, new_src_rel_or_url):
         prev = load_state().get(r["slot"], {}).get("current")
         if prev and not prev.startswith("http"):
             txt2 = txt2.replace(rel_for(f, prev), new)
+            if f.endswith(".js"): txt2 = txt2.replace("../" + prev, new)   # older tool versions wrote ../ into scripts
         elif prev and prev.startswith("http"):
             txt2 = txt2.replace(prev, new)
         if txt2 != txt:
@@ -154,7 +160,9 @@ def cmd_set(slot, source, resize=True):
                 done = True; print(f"Resized to {w}x{h} → {os.path.relpath(dest, ROOT)}")
             except ImportError:
                 print("Pillow not installed — copying without resizing (pip install pillow to enable).")
-        if not done: shutil.copy2(src, dest); print(f"Copied → {os.path.relpath(dest, ROOT)}")
+        if not done:
+            if os.path.abspath(src) != os.path.abspath(dest): shutil.copy2(src, dest)
+            print(f"Using → {os.path.relpath(dest, ROOT)}")
         new = os.path.relpath(dest, ROOT).replace(os.sep, "/")
     n = replace_in_files(r, r["photo_id"], new)
     state[slot] = {"current": new, "original": r["url"]}; save_state(state)

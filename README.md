@@ -70,7 +70,9 @@ python tools/replace_image.py set shop_bakery https://…/photo.jpg     # use a 
 python tools/replace_image.py set shop_bakery ~/Desktop/bakery.jpg    # local file → resized to slot size, saved in assets/img/, all pages updated
 python tools/replace_image.py undo shop_bakery      # back to the original
 ```
-Local files are resized with Pillow (`pip install pillow`); relative paths are computed per page so `shops/` and `blog/` keep working. Commit the changed files and `assets/img/` afterwards.
+Local files are resized with Pillow (`pip install pillow`). HTML pages get a path relative to their folder; `js/catalog.js` gets a site-root path (`assets/img/…`) that the storefront resolves at runtime, because that one script is shared by pages at every depth. Commit the changed files and `assets/img/` afterwards.
+
+**Upgrading from an earlier tool version:** if your `js/catalog.js` contains `../assets/img/...`, run `python tools/replace_image.py set <slot> assets/img/<slot>.jpg --no-resize` for each replaced slot (or just re-run your original `set` commands) — the new tool rewrites the old form.
 
 ## Deploy on GitHub Pages
 1. Push the contents of this folder to the repository root (`main` branch).

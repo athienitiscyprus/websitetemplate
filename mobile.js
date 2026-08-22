@@ -14,6 +14,7 @@
   function lang() { return window.ATH ? window.ATH.lang() : "en"; }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function money(n) { return "€" + n.toFixed(2); }
+  function imgUrl(src) { return window.ATHimg ? window.ATHimg(src) : src; }
   var ICON = {
     home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>',
     grid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>',
@@ -67,14 +68,14 @@
       var C = window.CATALOG || { sections: {} };
       searchEl.querySelector(".msearch__counters").innerHTML = Object.keys(C.sections).map(function (k) {
         var sp = (C.products || []).filter(function (p) { return p.section === k; })[0];
-        return '<a href="' + base + 'shops/' + k + '.html"><img src="' + (sp ? sp.img : "") + '" alt=""><span>' + esc(t("dept." + k)) + '</span></a>';
+        return '<a href="' + base + 'shops/' + k + '.html"><img src="' + (sp ? imgUrl(sp.img) : "") + '" alt=""><span>' + esc(t("dept." + k)) + '</span></a>';
       }).join("");
       searchEl.querySelector("[data-msearch-close]").addEventListener("click", function () { openSearch(false); });
       searchEl.addEventListener("click", function (e) { var b = e.target.closest("[data-q]"); if (b) { var i = searchEl.querySelector("input"); i.value = b.getAttribute("data-q"); i.dispatchEvent(new Event("input")); i.focus(); } });
       var form = searchEl.querySelector("form"), input = form.querySelector("input"), box = form.querySelector(".search__results");
       input.addEventListener("input", function () {
         var r = window.ATHShop ? window.ATHShop.search(input.value).slice(0, 8) : [];
-        box.innerHTML = r.map(function (p) { return '<a href="' + base + 'search.html?q=' + encodeURIComponent(input.value) + '"><img src="' + p.img + '" alt=""><span><b>' + esc(p.name[lang()] || p.name.en) + '</b><small>' + esc(t("dept." + p.section)) + '</small></span><em>' + money(p.price) + '</em></a>'; }).join("") || (input.value.length >= 2 ? '<div class="search__empty">' + esc(t("search.none")) + '</div>' : "");
+        box.innerHTML = r.map(function (p) { return '<a href="' + base + 'search.html?q=' + encodeURIComponent(input.value) + '"><img src="' + imgUrl(p.img) + '" alt=""><span><b>' + esc(p.name[lang()] || p.name.en) + '</b><small>' + esc(t("dept." + p.section)) + '</small></span><em>' + money(p.price) + '</em></a>'; }).join("") || (input.value.length >= 2 ? '<div class="search__empty">' + esc(t("search.none")) + '</div>' : "");
         box.hidden = !box.innerHTML;
       });
       form.addEventListener("submit", function (e) { e.preventDefault(); if (input.value.trim()) window.location.href = base + "search.html?q=" + encodeURIComponent(input.value); });
@@ -93,7 +94,7 @@
       wrap.innerHTML = keys.map(function (k, i) {
         var sp = (C.products || []).filter(function (p) { return p.section === k; })[0];
         var deals = (C.products || []).filter(function (p) { return p.section === k && p.was; }).length;
-        return '<a class="mchip" href="' + base + 'shops/' + k + '.html" style="--i:' + i + '"><img src="' + (sp ? sp.img : "") + '" alt="" loading="lazy"><span>' + esc(t("dept." + k)) + '</span>' + (deals ? '<i>' + deals + ' ' + esc(t("m.deals")) + '</i>' : "") + '</a>';
+        return '<a class="mchip" href="' + base + 'shops/' + k + '.html" style="--i:' + i + '"><img src="' + (sp ? imgUrl(sp.img) : "") + '" alt="" loading="lazy"><span>' + esc(t("dept." + k)) + '</span>' + (deals ? '<i>' + deals + ' ' + esc(t("m.deals")) + '</i>' : "") + '</a>';
       }).join("");
     }
     render(); hero.appendChild(wrap);
@@ -107,19 +108,27 @@
       if (c._armed) { c._update && c._update(); return; }
       var dots = c.nextElementSibling && c.nextElementSibling.classList.contains("m-dots") ? c.nextElementSibling : null;
       if (!dots && !c.classList.contains("mchips") && !c.classList.contains("mjourney__cards")) { dots = document.createElement("div"); dots.className = "m-dots"; c.parentNode.insertBefore(dots, c.nextSibling); }
+      var lastBest = null;
       function update() {
+        // Uses offsetLeft (no layout reads per child) and only touches the DOM when the centred card changes.
         var kids = Array.prototype.filter.call(c.children, function (k) { return !k.hidden; }); if (!kids.length) return;
-        var mid = c.getBoundingClientRect().left + c.clientWidth / 2, best = null, bd = 1e9;
-        kids.forEach(function (k) { var r = k.getBoundingClientRect(); var d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = k; } });
-        kids.forEach(function (k) { k.classList.toggle("is-focus", k === best); });
+        var mid = c.scrollLeft + c.clientWidth / 2, best = null, bd = 1e9;
+        for (var i = 0; i < kids.length; i++) { var k = kids[i]; var d = Math.abs(k.offsetLeft + k.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = k; } }
+        if (best === lastBest) return;
+        if (lastBest) lastBest.classList.remove("is-focus"); best.classList.add("is-focus"); lastBest = best;
         if (dots) { if (dots.children.length !== kids.length) dots.innerHTML = kids.map(function () { return "<i></i>"; }).join(""); Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle("is-on", kids[i] === best); }); }
         if (c._onFocus) c._onFocus(kids.indexOf(best), kids.length);
       }
-      var raf; c.addEventListener("scroll", function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
-      window.addEventListener("resize", update);
-      c._update = update; c._armed = true; update();
-      // first card should start centred
-      requestAnimationFrame(function () { var f = c.children[0]; if (f && c.scrollLeft === 0) { c.scrollLeft = 0; update(); } });
+      // While the finger is down or momentum is running we only sample every ~120ms; the final
+      // position is settled on scrollend (or a short quiet period), so nothing fights the snap.
+      var timer = null, throttled = false;
+      c.addEventListener("scroll", function () {
+        if (!throttled) { throttled = true; setTimeout(function () { throttled = false; update(); }, 120); }
+        clearTimeout(timer); timer = setTimeout(update, 90);
+      }, { passive: true });
+      if ("onscrollend" in window) c.addEventListener("scrollend", update);
+      window.addEventListener("resize", function () { lastBest = null; update(); });
+      c._update = function () { lastBest = null; update(); }; c._armed = true; update();
     });
   }
   function refreshCarousels() { document.querySelectorAll(".m-carousel").forEach(function (c) { c._update && c._update(); }); }
@@ -129,7 +138,7 @@
     var how = document.querySelector(".how"); if (!how || how.querySelector(".mjourney")) return;
     var imgs = Array.prototype.map.call(how.querySelectorAll(".how__frame img"), function (i) { return i.getAttribute("src"); });
     var C = window.CATALOG || { products: [] };
-    function pimg(id) { var p = C.products.filter(function (x) { return x.id === id; })[0]; return p ? p.img : ""; }
+    function pimg(id) { var p = C.products.filter(function (x) { return x.id === id; })[0]; return p ? imgUrl(p.img) : ""; }
     var wrap = document.createElement("div"); wrap.className = "mjourney";
     function render() {
       var fx = [

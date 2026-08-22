@@ -581,7 +581,7 @@
     });
     window.addEventListener("pageshow", function (ev) { if (ev.persisted) document.body.classList.remove("page-out"); });
     var bar = document.createElement("div"); bar.className = "progress"; document.body.appendChild(bar);
-    var tick = function () { var h = document.documentElement; var p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1); bar.style.transform = "scaleX(" + p + ")"; };
+    var pt = false; var tick = function () { if (pt) return; pt = true; requestAnimationFrame(function () { pt = false; var h = document.documentElement; var p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1); bar.style.transform = "scaleX(" + p + ")"; }); };
     window.addEventListener("scroll", tick, { passive: true }); tick();
   }
 
@@ -764,14 +764,21 @@
       });
     }
     build();
-    var words = function () { return el.querySelectorAll(".mw, .chip"); };
+    var ws = el.querySelectorAll(".mw, .chip"), lastN = -1, ticking = false;
     function onScroll() {
-      var r = el.getBoundingClientRect(); var vh = window.innerHeight;
-      var p = (vh * 0.85 - r.top) / (r.height + vh * 0.35); p = Math.max(0, Math.min(1, p));
-      var ws = words(); var n = Math.floor(p * (ws.length + 2));
-      ws.forEach(function (w, i) { w.classList.toggle("on", i < n); });
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var r = el.getBoundingClientRect(); var vh = window.innerHeight;
+        if (r.bottom < -vh || r.top > vh * 2) return;            // far off-screen: nothing to do
+        var p = (vh * 0.85 - r.top) / (r.height + vh * 0.35); p = Math.max(0, Math.min(1, p));
+        var n = Math.floor(p * (ws.length + 2)); if (n === lastN) return;
+        var lo = Math.min(n, lastN < 0 ? 0 : lastN), hi = Math.max(n, lastN < 0 ? 0 : lastN);
+        for (var i = lo; i < hi && i < ws.length; i++) ws[i].classList.toggle("on", i < n);   // only the words that changed
+        lastN = n;
+      });
     }
-    if (REDUCE) { words().forEach(function (w) { w.classList.add("on"); }); return; }
+    if (REDUCE) { ws.forEach(function (w) { w.classList.add("on"); }); return; }
     window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
     window.ATH.onLang(function () {
       // re-translate the text spans then re-split
@@ -779,7 +786,7 @@
       var keys = ["manifesto.1", "manifesto.2", "manifesto.3", "manifesto.4"]; var chips = el.querySelectorAll(".chip"); var k = 0;
       var out = document.createDocumentFragment();
       keys.forEach(function (key, idx) { var sp = document.createElement("span"); sp.textContent = t(key); out.appendChild(sp); if (chips[idx]) out.appendChild(chips[idx]); });
-      el.innerHTML = ""; el.appendChild(out); build(); onScroll();
+      el.innerHTML = ""; el.appendChild(out); build(); ws = el.querySelectorAll(".mw, .chip"); lastN = -1; onScroll();
     });
   }
 
@@ -795,7 +802,7 @@
   function initMarquee() {
     var track = document.querySelector("[data-marquee]"); if (!track || !window.CATALOG) return;
     var items = window.CATALOG.products.filter(function (p) { return p.was || p.tag; }).slice(0, 12);
-    var html = items.map(function (p) { return '<a class="marquee__item" href="' + (document.body.getAttribute("data-base") || "") + 'shops/' + p.section + '.html"><img src="' + p.img + '" alt="" loading="lazy"><span>' + (p.name[currentLang] || p.name.en) + '</span></a>'; }).join("");
+    var html = items.map(function (p) { return '<a class="marquee__item" href="' + (document.body.getAttribute("data-base") || "") + 'shops/' + p.section + '.html"><img src="' + (window.ATHimg ? window.ATHimg(p.img) : p.img) + '" alt="" loading="lazy"><span>' + (p.name[currentLang] || p.name.en) + '</span></a>'; }).join("");
     track.innerHTML = html + html;
   }
 
@@ -820,10 +827,13 @@
 
   function initHideHeader() {
     var h = document.querySelector(".header"); if (!h || REDUCE) return;
-    var last = 0;
+    var last = 0, hidden = false, tk = false;
     window.addEventListener("scroll", function () {
-      var y = window.scrollY; if (Math.abs(y - last) < 8) return;
-      h.classList.toggle("is-hidden", y > last && y > 240); last = y;
+      if (tk) return; tk = true;
+      requestAnimationFrame(function () {
+        tk = false; var y = window.scrollY; if (Math.abs(y - last) < 12) return;
+        var want = y > last && y > 240; if (want !== hidden) { hidden = want; h.classList.toggle("is-hidden", want); } last = y;
+      });
     }, { passive: true });
   }
 

@@ -34,6 +34,10 @@
   .drawer { padding-bottom: 100px; }
   .drawer .search { display: none !important; }
   .header.is-hidden { transform: translateY(-100%); }
+  .header { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(255,255,255,.97); }
+  html.dark .header { background: rgba(18,26,16,.97); }
+  .reveal { transition-duration: .45s; }
+  .tile img, .dept__img img, .product__img img, .post__img img { transition: none; }
 
   /* ---- hero: short, scannable ---- */
   .hero { padding: 22px 0 8px; overflow: visible; }
@@ -53,14 +57,15 @@
 
   /* counter chips carousel (replaces stickers) */
   .mchips { --w: 128px; margin: 18px calc(-1 * var(--gutter)) 0; padding-top: 4px; padding-bottom: 14px; }
-  .mchips.m-carousel > .mchip { opacity: 1; transform: scale(.94); }
-  .mchips.m-carousel > .mchip.is-focus { transform: none; box-shadow: var(--shadow-lg); }
+  .mchips.m-carousel > .mchip { opacity: 1; }
+  .mchips.m-carousel > .mchip.is-focus { box-shadow: var(--shadow-lg); }
+  .mchip.is-focus img { transform: scale(1.04); }
   .mchip { position: relative; aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden; background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; isolation: isolate; scroll-snap-align: start; animation: chipIn .6s var(--ease) both; animation-delay: calc(var(--i) * 60ms + .3s); }
-  .mchip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s var(--ease); }
+  .mchip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .5s ease; transform: translateZ(0); }
   .mchip::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(30,42,25,0) 35%, rgba(30,42,25,.9)); }
   .mchip span { font-family: var(--font-display); font-weight: 600; font-size: 16px; line-height: 1.1; }
   .mchip i { font-style: normal; font-size: 11px; font-weight: 800; margin-top: 4px; color: var(--lime); }
-  .mchip.is-focus img { transform: scale(1.06); }
+
   @keyframes chipIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
 
   /* ---- generic horizontal snap carousel ---- */
@@ -68,10 +73,10 @@
      with the neighbours peeking in on both sides */
   .m-carousel { --w: 74vw; display: flex !important; grid-template-columns: none !important; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 6px; margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(50vw - var(--w) / 2); scroll-padding-inline: calc(50vw - var(--w) / 2); }
   .m-carousel::-webkit-scrollbar { display: none; }
-  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; scroll-snap-stop: always; transform: scale(.92); opacity: .72; transition: transform .45s var(--ease), opacity .35s; }
-  .m-carousel > .is-focus { transform: none; opacity: 1; }
-  .m-carousel > .reveal { transform: scale(.92); }
-  .m-carousel > .reveal.is-visible.is-focus { transform: none; }
+  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; opacity: .78; transition: opacity .3s ease; will-change: opacity; }
+  .m-carousel > .is-focus { opacity: 1; }
+  .m-carousel > .reveal { transform: none; }
+  .m-carousel { contain: layout paint; will-change: scroll-position; }
   .depts.m-carousel { --w: 72vw; } .depts.m-carousel > * { min-height: 230px; }
   .tiles.m-carousel { --w: 78vw; } .tiles.m-carousel > * { aspect-ratio: 16/10; }
   .posts.m-carousel { --w: 80vw; }
@@ -178,7 +183,7 @@
   .cart__rm { grid-column: 3; grid-row: 1; }
 
   /* ---- bottom tab bar ---- */
-  .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 350; display: grid; grid-template-columns: repeat(5, 1fr); align-items: end; padding: 6px 4px calc(8px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); animation: tabIn .5s var(--ease) .2s both; }
+  .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 350; display: grid; grid-template-columns: repeat(5, 1fr); align-items: end; padding: 6px 4px calc(8px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.96); border-top: 1px solid var(--line); animation: tabIn .5s var(--ease) .2s both; }
   html.dark .tabbar { background: rgba(18,26,16,.92); }
   @keyframes tabIn { from { transform: translateY(100%); } to { transform: none; } }
   .tabbar__item { position: relative; display: grid; justify-items: center; gap: 3px; padding: 6px 2px; font-size: 10.5px; font-weight: 700; color: var(--ink-3); text-align: center; border-radius: 12px; transition: color .2s, transform .2s var(--ease); }
@@ -273,8 +278,8 @@
   .mjourney__track { position: relative; height: 4px; border-radius: 2px; background: var(--line); margin: 0 0 16px; overflow: hidden; }
   .mjourney__track i { position: absolute; inset: 0; width: 25%; background: linear-gradient(90deg, var(--orange), var(--lime)); border-radius: 2px; transition: width .5s var(--ease); }
   .mstep { position: relative; border-radius: 22px; overflow: hidden; background: var(--ink); color: #fff; aspect-ratio: 4/5; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; isolation: isolate; }
-  .mstep > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.12); transition: transform 6s linear; }
-  .mstep.is-focus > img { transform: scale(1); }
+  .mstep > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: translateZ(0) scale(1.06); transition: transform 2.5s ease-out; }
+  .mstep.is-focus > img { transform: translateZ(0) scale(1); }
   .mstep::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(30,42,25,.05) 30%, rgba(30,42,25,.92)); }
   .mstep__num { position: absolute; top: 14px; left: 14px; width: 40px; height: 40px; border-radius: 50%; background: var(--orange); color: #fff; display: grid; place-items: center; font-family: var(--font-display); font-weight: 600; font-size: 18px; box-shadow: 0 8px 20px rgba(0,0,0,.3); }
   .mstep__tag { position: absolute; top: 14px; right: 14px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--ink); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; opacity: 0; transform: translateY(-6px); transition: opacity .4s .2s, transform .4s var(--ease) .2s; }

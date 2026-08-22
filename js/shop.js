@@ -21,6 +21,8 @@
   function t(k, a) { return window.ATH ? window.ATH.t(k, a) : k; }
   function lang() { return window.ATH ? window.ATH.lang() : "en"; }
   function money(n) { return "€" + n.toFixed(2); }
+  function imgUrl(src) { return !src || /^(https?:)?\/\//.test(src) || src.indexOf("data:") === 0 ? src : base + src.replace(/^(\.\.\/)+/, ""); }
+  window.ATHimg = imgUrl;
   function byId(id) { for (var i = 0; i < C.products.length; i++) if (C.products[i].id === id) return C.products[i]; return null; }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
@@ -105,7 +107,7 @@
     var off = p.was ? Math.round((1 - p.price / p.was) * 100) : 0;
     var sec = C.sections[p.section] || {};
     return '<article class="product" data-product="' + p.id + '">' +
-      '<a class="product__img" href="' + base + 'products/' + p.id + '.html"><img src="' + p.img + '" alt="" loading="lazy">' +
+      '<a class="product__img" href="' + base + 'products/' + p.id + '.html"><img src="' + imgUrl(p.img) + '" alt="" loading="lazy">' +
       (off ? '<span class="product__off">-' + off + '%</span>' : '') +
       (p.tag === "fresh" ? '<span class="product__fresh">' + esc(t("dept.tag.fresh")) + '</span>' : '') + '</a>' +
       '<div class="product__body"><a class="product__cat ' + (sec.color || "") + '" href="' + base + 'shops/' + p.section + '.html">' + esc(t("dept." + p.section)) + '</a>' +
@@ -125,7 +127,7 @@
       if (spec.indexOf("similar:") === 0) { var cur = byId(spec.split(":")[1]); list = cur ? C.products.filter(function (p) { return p.section === cur.section && p.id !== cur.id; }).slice(0, 4) : []; }
       if (spec.indexOf("pairs:") === 0) { var cp = byId(spec.split(":")[1]); var secs = cp && C.pairs ? C.pairs[cp.section] || [] : []; list = []; secs.forEach(function (sx) { var cand = C.products.filter(function (p) { return p.section === sx; }); var pick = cand.filter(function (p) { return p.was; })[0] || cand[0]; if (pick) list.push(pick); if (list.length < 4) { var second = cand.filter(function (p) { return p !== pick; })[0]; if (second && list.length < 4 && secs.length < 4) list.push(second); } }); list = list.slice(0, 4); }
       if (limit) list = list.slice(0, limit);
-      el.innerHTML = list.length ? list.map(productCard).join("") : '<p class="muted">' + esc(t("shop.none")) + '</p>';
+      if (!el.hidden) el.innerHTML = list.length ? list.map(productCard).join("") : '<p class="muted">' + esc(t("shop.none")) + '</p>';
       if (el.hasAttribute("data-count-target")) { var c = document.querySelector(el.getAttribute("data-count-target")); if (c) c.textContent = list.length; }
     });
     // discounts grouped by section
@@ -148,7 +150,7 @@
       var total = r.items.reduce(function (n, it) { var p = byId(it[0]); return n + (p ? p.price * it[1] : 0); }, 0);
       var ings = r.items.map(function (it) { var p = byId(it[0]); return p ? '<li>' + it[1] + ' × ' + esc(p.name[lang()] || p.name.en) + '</li>' : ""; }).join("");
       var steps = d.steps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("");
-      return '<article class="recipe"><div class="recipe__img"><img src="' + r.img + '" alt="" loading="lazy"><span class="recipe__meta">' + r.minutes + ' min · ' + r.serves + ' ' + esc(t("recipe.serves")) + '</span></div>' +
+      return '<article class="recipe"><div class="recipe__img"><img src="' + imgUrl(r.img) + '" alt="" loading="lazy"><span class="recipe__meta">' + r.minutes + ' min · ' + r.serves + ' ' + esc(t("recipe.serves")) + '</span></div>' +
         '<div class="recipe__body"><h3>' + esc(d.title) + '</h3><p>' + esc(d.desc) + '</p>' +
         '<div class="recipe__cols"><div><h4>' + esc(t("recipe.ingredients")) + '</h4><ul class="recipe__ings">' + ings + '</ul></div><div><h4>' + esc(t("recipe.method")) + '</h4><ol class="recipe__steps">' + steps + '</ol></div></div>' +
         '<div class="recipe__foot"><span>' + esc(t("recipe.basket")) + ' <b>' + money(total) + '</b></span><button class="btn btn--primary btn--sm" type="button" data-add-recipe="' + r.id + '">' + esc(t("recipe.addall")) + '</button></div></div></article>';
@@ -161,7 +163,7 @@
       var d = b[lang()] || b.en;
       var ings = b.items.filter(function (it) { return it[1] > 0; }).map(function (it) { var p = byId(it[0]); return p ? '<li>' + it[1] + ' × ' + esc(p.name[lang()] || p.name.en) + '</li>' : ""; }).join("");
       var off = Math.round((1 - b.price / b.was) * 100);
-      return '<article class="bundle"><div class="bundle__img"><img src="' + b.img + '" alt="" loading="lazy"><span class="product__off">-' + off + '%</span></div>' +
+      return '<article class="bundle"><div class="bundle__img"><img src="' + imgUrl(b.img) + '" alt="" loading="lazy"><span class="product__off">-' + off + '%</span></div>' +
         '<div class="bundle__body"><span class="eyebrow eyebrow--orange">' + esc(d.who) + '</span><h3>' + esc(d.title) + '</h3><p>' + esc(d.desc) + '</p><ul class="recipe__ings">' + ings + '</ul>' +
         '<div class="bundle__foot"><div class="product__price"><b>' + money(b.price) + '</b><s>' + money(b.was) + '</s></div><button class="btn btn--primary btn--sm" type="button" data-add-bundle="' + b.id + '">' + esc(t("bundle.add")) + '</button></div></div></article>';
     }).join("");
@@ -181,7 +183,7 @@
         var r = search(input.value).slice(0, 6);
         if (!box) return;
         box.innerHTML = r.map(function (p) {
-          return '<a href="' + base + 'search.html?q=' + encodeURIComponent(input.value) + '"><img src="' + p.img + '" alt=""><span><b>' + esc(p.name[lang()] || p.name.en) + '</b><small>' + esc(t("dept." + p.section)) + '</small></span><em>' + money(p.price) + '</em></a>';
+          return '<a href="' + base + 'search.html?q=' + encodeURIComponent(input.value) + '"><img src="' + imgUrl(p.img) + '" alt=""><span><b>' + esc(p.name[lang()] || p.name.en) + '</b><small>' + esc(t("dept." + p.section)) + '</small></span><em>' + money(p.price) + '</em></a>';
         }).join("") || (input.value.length >= 2 ? '<div class="search__empty">' + esc(t("search.none")) + '</div>' : "");
         box.hidden = !box.innerHTML;
       });
@@ -217,7 +219,7 @@
       var items = Cart.items();
       el.innerHTML = items.length ? items.map(function (x) {
         var p = byId(x.id); if (!p) return "";
-        return '<div class="cart__row"><img src="' + p.img + '" alt=""><div><b>' + esc(p.name[lang()] || p.name.en) + '</b><small>' + money(p.price) + ' / ' + esc(t("unit." + p.unit)) + '</small></div>' +
+        return '<div class="cart__row"><img src="' + imgUrl(p.img) + '" alt=""><div><b>' + esc(p.name[lang()] || p.name.en) + '</b><small>' + money(p.price) + ' / ' + esc(t("unit." + p.unit)) + '</small></div>' +
           '<div class="qty"><button type="button" data-qty="' + x.id + '" data-delta="-1" aria-label="−">−</button><span>' + x.qty + '</span><button type="button" data-qty="' + x.id + '" data-delta="1" aria-label="+">+</button></div>' +
           '<b class="cart__line">' + money(p.price * x.qty) + '</b><button class="cart__rm" type="button" data-remove="' + x.id + '" aria-label="Remove">×</button></div>';
       }).join("") : '<p class="cart__empty">' + esc(t("cart.empty")) + '</p>';
@@ -273,7 +275,7 @@
     var page = document.querySelector("[data-account-page]"); if (!page) return;
     if (!me) { window.location.replace(base + "login.html?next=account"); return; }
     page.querySelectorAll("[data-me-name]").forEach(function (e) { e.textContent = me.name; });
-    page.querySelectorAll("[data-me-avatar]").forEach(function (e) { e.src = me.avatar || (C.avatars || {})[me.type] || ""; e.alt = me.name; });
+    page.querySelectorAll("[data-me-avatar]").forEach(function (e) { e.src = imgUrl(me.avatar || (C.avatars || {})[me.type] || ""); e.alt = me.name; });
     page.querySelectorAll("[data-me-first]").forEach(function (e) { e.textContent = me.name.split(" ")[0]; });
     page.querySelectorAll("[data-me-email]").forEach(function (e) { e.textContent = me.email; });
     page.querySelectorAll("[data-me-type]").forEach(function (e) { e.textContent = t("account.type." + me.type); });
@@ -366,11 +368,12 @@
     pg.querySelectorAll("[data-p-name]").forEach(function (e) { e.textContent = p.name[lang()] || p.name.en; });
     var d = C.desc && C.desc[p.section]; if (d) pg.querySelector("[data-p-desc]").textContent = d[lang()] || d.en;
     document.title = (p.name[lang()] || p.name.en) + " — Athienitis";
+    var hero = pg.querySelector(".pdp__media img"); if (hero && !/^https?:/.test(p.img)) hero.src = imgUrl(p.img);
     var recs = C.recipes.filter(function (r) { return r.items.some(function (it) { return it[0] === p.id; }); });
     var sec = pg.querySelector("[data-p-recipes]"), list = pg.querySelector("[data-p-recipe-list]");
     if (sec && list) {
       sec.hidden = !recs.length;
-      list.innerHTML = recs.map(function (r) { var rd = r[lang()] || r.en; return '<article class="post"><a class="post__img" href="' + base + 'recipes.html"><img src="' + r.img + '" alt="" loading="lazy"></a><div class="post__body"><div class="post__meta"><span>' + r.minutes + ' min · ' + r.serves + ' ' + esc(t("recipe.serves")) + '</span></div><h3><a href="' + base + 'recipes.html">' + esc(rd.title) + '</a></h3><p>' + esc(rd.desc) + '</p><button class="btn btn--primary btn--sm" type="button" data-add-recipe="' + r.id + '" style="align-self:flex-start;margin-top:auto">' + esc(t("recipe.addall")) + '</button></div></article>'; }).join("");
+      list.innerHTML = recs.map(function (r) { var rd = r[lang()] || r.en; return '<article class="post"><a class="post__img" href="' + base + 'recipes.html"><img src="' + imgUrl(r.img) + '" alt="" loading="lazy"></a><div class="post__body"><div class="post__meta"><span>' + r.minutes + ' min · ' + r.serves + ' ' + esc(t("recipe.serves")) + '</span></div><h3><a href="' + base + 'recipes.html">' + esc(rd.title) + '</a></h3><p>' + esc(rd.desc) + '</p><button class="btn btn--primary btn--sm" type="button" data-add-recipe="' + r.id + '" style="align-self:flex-start;margin-top:auto">' + esc(t("recipe.addall")) + '</button></div></article>'; }).join("");
     }
     if (!pg._qty) {
       pg._qty = 1;
