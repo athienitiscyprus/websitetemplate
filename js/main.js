@@ -110,7 +110,7 @@
 
       "depts.eyebrow": "Our stations",
       "depts.title": "Every counter, run by people who care about it.",
-      "depts.lead": "The market is organised into specialist stations. Pick a counter below to see what's on, who runs it, and what to ask for.",
+      "depts.lead": "The market is organised into ten specialist stations. Pick a counter below to see what's on, who runs it, and what to ask for.",
       "depts.all": "See all departments",
       "dept.tag.fresh": "Fresh daily",
       "dept.tag.new": "New",
@@ -122,6 +122,7 @@
       "dept.cellar": "The Cellar", "dept.cellar.p": "Cypriot wines, Commandaria, zivania and an international selection.",
       "dept.eatery": "Eatery", "dept.eatery.p": "Sit down for a proper lunch or grab something hot to take home.",
       "dept.living": "Living", "dept.living.p": "Bed & bath, kitchenware, candles and DIY for the home.",
+      "dept.cleaning": "Cleaning", "dept.cleaning.p": "Detergents, sprays, eco refills and paper — by the bottle or by the case.",
       "dept.gifts": "Gifts & Other", "dept.gifts.p": "Beauty, clothing, stationery and toys — for every occasion.",
       "dept.link": "Visit the counter",
 
@@ -233,7 +234,7 @@
       "business.f3": "A dedicated contact", "business.f3.p": "One person who knows your menu and calls when something's better this week.",
       "nav.offers": "Offers", "nav.recipes": "Recipes", "nav.business": "For businesses", "nav.business.short": "Business", "nav.account": "Account",
       "home.recipes": "Three dinners from the counters", "home.business": "Run a kitchen? See the trade bundles",
-      "home.more": "More from Athienitis", "m.counters": "Counters", "m.search": "Search", "cart.short": "Basket", "m.view": "View basket", "m.popular": "Popular searches", "m.deals": "deals",
+      "home.more": "More from Athienitis", "m.counters": "Counters", "m.step": "Step", "m.swipe": "Swipe to see the next step", "m.reward": "Free coffee at 200 pts", "m.search": "Search", "cart.short": "Basket", "m.view": "View basket", "m.popular": "Popular searches", "m.deals": "deals",
       "manifesto.1": "Shop fresh bread,", "manifesto.2": "the day's catch", "manifesto.3": "and a proper bottle", "manifesto.4": "from people who've run the same counters for decades. One basket, one till, one friendly corner of Nicosia.",
       "how.eyebrow": "How it works", "how.title": "From the counter to your kitchen.", "how.badge": "Ready for collection",
       "how.s1": "Browse the counters", "how.s1.p": "Nine specialist counters online, with this week's offers and what's fresh today.",
@@ -302,6 +303,7 @@
       "dept.cellar": "Η Κάβα", "dept.cellar.p": "Κυπριακά κρασιά, Κουμανδαρία, ζιβανία και διεθνής συλλογή.",
       "dept.eatery": "Εστιατόριο", "dept.eatery.p": "Καθίστε για ένα σωστό μεσημεριανό ή πάρτε κάτι ζεστό για το σπίτι.",
       "dept.living": "Σπίτι", "dept.living.p": "Λευκά είδη, είδη κουζίνας, κεριά και DIY για το σπίτι.",
+      "dept.cleaning": "Καθαριστικά", "dept.cleaning.p": "Απορρυπαντικά, σπρέι, οικολογικά refills και χαρτικά — με το μπουκάλι ή με το κιβώτιο.",
       "dept.gifts": "Δώρα & Άλλα", "dept.gifts.p": "Ομορφιά, ρούχα, χαρτικά και παιχνίδια — για κάθε περίσταση.",
       "dept.link": "Επισκεφθείτε τον πάγκο",
 
@@ -414,7 +416,7 @@
       "business.f3": "Προσωπικός συνεργάτης", "business.f3.p": "Ένας άνθρωπος που ξέρει το μενού σας και σας καλεί όταν κάτι είναι καλύτερο αυτή την εβδομάδα.",
       "nav.offers": "Προσφορές", "nav.recipes": "Συνταγές", "nav.business": "Για επιχειρήσεις", "nav.business.short": "Επιχειρήσεις", "nav.account": "Λογαριασμός",
       "home.recipes": "Τρία δείπνα από τους πάγκους", "home.business": "Έχετε κουζίνα; Δείτε τα επαγγελματικά πακέτα",
-      "home.more": "Περισσότερα από τον Αθηαινίτη", "m.counters": "Πάγκοι", "m.search": "Αναζήτηση", "cart.short": "Καλάθι", "m.view": "Δείτε το καλάθι", "m.popular": "Δημοφιλείς αναζητήσεις", "m.deals": "προσφορές",
+      "home.more": "Περισσότερα από τον Αθηαινίτη", "m.counters": "Πάγκοι", "m.step": "Βήμα", "m.swipe": "Σύρετε για το επόμενο βήμα", "m.reward": "Δωρεάν καφές στους 200 πόντους", "m.search": "Αναζήτηση", "cart.short": "Καλάθι", "m.view": "Δείτε το καλάθι", "m.popular": "Δημοφιλείς αναζητήσεις", "m.deals": "προσφορές",
       "manifesto.1": "Ψωνίστε φρέσκο ψωμί,", "manifesto.2": "το ψάρι της ημέρας", "manifesto.3": "και μια σωστή φιάλη", "manifesto.4": "από ανθρώπους που κρατούν τους ίδιους πάγκους για δεκαετίες. Ένα καλάθι, ένα ταμείο, μια φιλική γωνιά της Λευκωσίας.",
       "how.eyebrow": "Πώς λειτουργεί", "how.title": "Από τον πάγκο στην κουζίνα σας.", "how.badge": "Έτοιμη για παραλαβή",
       "how.s1": "Δείτε τους πάγκους", "how.s1.p": "Εννέα εξειδικευμένοι πάγκοι online, με τις προσφορές της εβδομάδας και ό,τι είναι φρέσκο σήμερα.",

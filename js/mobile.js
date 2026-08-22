@@ -106,13 +106,61 @@
   function initCarousels() {
     document.querySelectorAll("[data-mobile='carousel']").forEach(function (el) { el.classList.add("m-carousel"); });
     document.querySelectorAll(".m-carousel").forEach(function (c) {
-      if (c._dots || REDUCE) return;
-      var io = new IntersectionObserver(function (entries) { entries.forEach(function (e) { e.target.classList.toggle("is-focus", e.intersectionRatio > 0.75); }); }, { root: c, threshold: [0.75] });
-      Array.prototype.forEach.call(c.children, function (ch) { io.observe(ch); });
-      c._dots = true;
+      if (c._armed) { c._update && c._update(); return; }
+      var dots = c.nextElementSibling && c.nextElementSibling.classList.contains("m-dots") ? c.nextElementSibling : null;
+      if (!dots && !c.classList.contains("mchips") && !c.classList.contains("mjourney__cards")) { dots = document.createElement("div"); dots.className = "m-dots"; c.parentNode.insertBefore(dots, c.nextSibling); }
+      function update() {
+        var kids = Array.prototype.filter.call(c.children, function (k) { return !k.hidden; }); if (!kids.length) return;
+        var mid = c.getBoundingClientRect().left + c.clientWidth / 2, best = null, bd = 1e9;
+        kids.forEach(function (k) { var r = k.getBoundingClientRect(); var d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = k; } });
+        kids.forEach(function (k) { k.classList.toggle("is-focus", k === best); });
+        if (dots) { if (dots.children.length !== kids.length) dots.innerHTML = kids.map(function () { return "<i></i>"; }).join(""); Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle("is-on", kids[i] === best); }); }
+        if (c._onFocus) c._onFocus(kids.indexOf(best), kids.length);
+      }
+      var raf; c.addEventListener("scroll", function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
+      window.addEventListener("resize", update);
+      c._update = update; c._armed = true; update();
+      // first card should start centred
+      requestAnimationFrame(function () { var f = c.children[0]; if (f && c.scrollLeft === 0) { c.scrollLeft = 0; update(); } });
     });
   }
-  function refreshCarousels() { document.querySelectorAll(".m-carousel").forEach(function (c) { c._dots = false; }); initCarousels(); }
+  function refreshCarousels() { document.querySelectorAll(".m-carousel").forEach(function (c) { c._update && c._update(); }); }
+
+  /* ----- "How it works" journey (replaces the desktop sticky panel) --------- */
+  function buildJourney() {
+    var how = document.querySelector(".how"); if (!how || how.querySelector(".mjourney")) return;
+    var imgs = Array.prototype.map.call(how.querySelectorAll(".how__frame img"), function (i) { return i.getAttribute("src"); });
+    var C = window.CATALOG || { products: [] };
+    function pimg(id) { var p = C.products.filter(function (x) { return x.id === id; })[0]; return p ? p.img : ""; }
+    var wrap = document.createElement("div"); wrap.className = "mjourney";
+    function render() {
+      var fx = [
+        '<span class="fx-chip fx-pop"><img src="' + pimg("bk1") + '" alt="">' + esc(t("dept.bakery")) + '</span><span class="fx-chip fx-pop"><img src="' + pimg("bt1") + '" alt="">' + esc(t("dept.butchery")) + '</span><span class="fx-chip fx-pop"><img src="' + pimg("cl1") + '" alt="">' + esc(t("dept.cellar")) + '</span>',
+        '<span class="fx-chip fx-pop is-orange">+ ' + esc(t("shop.add")) + '</span><span class="fx-chip fx-pop">3 ' + esc(t("cart.items")) + ' · €14.60</span>',
+        '<span class="fx-chip fx-pop is-lime">' + esc(t("how.badge")) + '</span><span class="fx-chip fx-pop">11:30 – 12:00</span>',
+        '<span class="fx-points fx-pop">+15<small>' + esc(t("account.points")) + '</small></span><span class="fx-chip fx-pop is-lime">' + esc(t("m.reward")) + '</span>'
+      ];
+      wrap.innerHTML = '<div class="mjourney__track"><i></i></div><div class="mjourney__cards m-carousel">' + [0, 1, 2, 3].map(function (i) {
+        return '<div class="mstep mstep--copy"><img src="' + imgs[i] + '" alt="" loading="lazy"><span class="mstep__num">' + (i + 1) + '</span><span class="mstep__tag">' + esc(t("m.step")) + ' ' + (i + 1) + '/4</span><h3>' + esc(t("how.s" + (i + 1))) + '</h3><p>' + esc(t("how.s" + (i + 1) + ".p")) + '</p><div class="mstep__fx">' + fx[i] + '</div></div>';
+      }).join("") + '</div><p class="mjourney__hint"><span>' + esc(t("m.swipe")) + '</span>' + ICON.arrow + '</p>';
+      var cars = wrap.querySelector(".m-carousel"); cars._armed = false;
+      cars._onFocus = function (i, n) { wrap.querySelector(".mjourney__track i").style.width = ((i + 1) / n * 100) + "%"; };
+      initCarousels();
+    }
+    how.querySelector(".container").appendChild(wrap); render();
+    if (window.ATH) window.ATH.onLang(render);
+  }
+
+  /* ----- drawer gets language + dark-mode + open status (top bar is hidden) -- */
+  function buildDrawerTools() {
+    var drawer = document.querySelector(".drawer"); if (!drawer || drawer.querySelector(".drawer__tools")) return;
+    var tools = document.createElement("div"); tools.className = "drawer__tools";
+    var status = document.querySelector(".topbar .status"), lang = document.querySelector(".topbar .lang"), mode = document.querySelector(".topbar .mode-toggle");
+    var right = document.createElement("div"); right.style.cssText = "display:flex;gap:8px;align-items:center";
+    if (status) tools.appendChild(status);
+    if (mode) right.appendChild(mode); if (lang) right.appendChild(lang);
+    tools.appendChild(right); drawer.insertBefore(tools, drawer.firstChild);
+  }
 
   /* ----- floating basket pill ---------------------------------------------- */
   function initBasketPill() {
@@ -150,7 +198,7 @@
   function boot() {
     if (!MQ.matches) return;
     document.documentElement.classList.add("is-mobile");
-    buildTabBar(); buildChips(); initCarousels(); initBasketPill(); initTouch(); initTop();
+    buildDrawerTools(); buildTabBar(); buildChips(); buildJourney(); initCarousels(); initBasketPill(); initTouch(); initTop();
     if (window.ATH) window.ATH.onLang(function () { document.querySelectorAll(".tabbar [data-i18n], .mpill [data-i18n]").forEach(function (n) { n.textContent = t(n.getAttribute("data-i18n")); }); });
     // products render asynchronously — re-arm carousels after shop.js paints
     var mo = new MutationObserver(function () { initCarousels(); });

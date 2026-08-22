@@ -96,6 +96,18 @@
   ]
  },
  {
+  "slot": "shop_cleaning",
+  "description": "Cleaning hero — cleaning products",
+  "photo_id": "1585421514738-01798e348b17",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_cleaning",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/cleaning.html"
+  ]
+ },
+ {
   "slot": "shop_gifts",
   "description": "Gifts hero — wrapped presents",
   "photo_id": "1513201099705-a9746e1e201f",
@@ -634,6 +646,66 @@
   "photo_id": "1584285405429-136bf988919c",
   "size": "600x450",
   "url": "https://images.unsplash.com/photo-1584285405429-136bf988919c?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cn1",
+  "description": "Product photo: Laundry detergent, 3L",
+  "photo_id": "1582735689369-4fe89db7114c",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cn2",
+  "description": "Product photo: Washing-up liquid, 1L",
+  "photo_id": "1628177142898-93e36e4e3a50",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cn3",
+  "description": "Product photo: Kitchen surface spray",
+  "photo_id": "1563453392212-326f5e854473",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cn4",
+  "description": "Product photo: Eco refill: all-purpose, 1L",
+  "photo_id": "1615486363873-05cfe8dc2f6d",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1615486363873-05cfe8dc2f6d?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cn5",
+  "description": "Product photo: Floor cleaner, 2L",
+  "photo_id": "1527515637462-cff94eecc1ac",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cn6",
+  "description": "Product photo: Kitchen roll, 6 pack",
+  "photo_id": "1584622650111-993a426fbf0a",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn6",
   "files": [
    "js/catalog.js"
   ]

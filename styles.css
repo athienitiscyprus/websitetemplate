@@ -432,7 +432,7 @@ a.sticker { cursor: pointer; }
 .dept-full ul li { padding: 6px 12px; border-radius: 999px; background: var(--paper-2); border: 1px solid var(--line); font-size: 14px; font-weight: 600; }
 .dept-full__media .photo { aspect-ratio: 4/3; }
 
-.subnav { position: sticky; top: 78px; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.subnav { position: sticky; top: 78px; z-index: 50; transition: top .4s var(--ease); background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .subnav ul { display: flex; gap: 4px; overflow-x: auto; padding: 10px 0; scrollbar-width: none; }
 .subnav ul::-webkit-scrollbar { display: none; }
 .subnav a { display: inline-block; padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
@@ -1037,3 +1037,9 @@ html.dark .footer p, html.dark .footer li a { color: #c3cbbb; }
 html.dark .lang button[aria-pressed="true"] { background: var(--orange); color: #fff; }
 html.dark .sticker--c { color: #1e2a19; }
 html.dark .ai__fab { background: var(--orange); }
+
+/* subnav sits at the very top once the header has tucked away */
+.header.is-hidden ~ main .subnav, .header.is-hidden ~ .subnav { top: 0; }
+.subnav--counters a.is-active { background: var(--orange); color: #fff; }
+.subnav--counters { background: rgba(255,255,255,.96); }
+html.dark .subnav--counters { background: var(--paper-2); }

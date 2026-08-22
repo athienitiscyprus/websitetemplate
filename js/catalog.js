@@ -25,6 +25,9 @@ window.CATALOG = {
   "living": {
    "color": "c-lime"
   },
+  "cleaning": {
+   "color": "c-lime"
+  },
   "gifts": {
    "color": "c-leaf"
   }
@@ -628,6 +631,82 @@ window.CATALOG = {
    "unit": "set",
    "kw": "glass jars",
    "img": "https://images.unsplash.com/photo-1584285405429-136bf988919c?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv6"
+  },
+  {
+   "id": "cn1",
+   "section": "cleaning",
+   "name": {
+    "en": "Laundry detergent, 3L",
+    "el": "Απορρυπαντικό ρούχων, 3L"
+   },
+   "price": 8.9,
+   "unit": "each",
+   "kw": "laundry",
+   "img": "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn1",
+   "was": 10.5
+  },
+  {
+   "id": "cn2",
+   "section": "cleaning",
+   "name": {
+    "en": "Washing-up liquid, 1L",
+    "el": "Υγρό πιάτων, 1L"
+   },
+   "price": 2.4,
+   "unit": "each",
+   "kw": "dish soap",
+   "img": "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn2"
+  },
+  {
+   "id": "cn3",
+   "section": "cleaning",
+   "name": {
+    "en": "Kitchen surface spray",
+    "el": "Σπρέι επιφανειών κουζίνας"
+   },
+   "price": 3.2,
+   "unit": "each",
+   "kw": "spray",
+   "img": "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn3",
+   "was": 3.8
+  },
+  {
+   "id": "cn4",
+   "section": "cleaning",
+   "name": {
+    "en": "Eco refill: all-purpose, 1L",
+    "el": "Οικολογικό refill γενικής χρήσης, 1L"
+   },
+   "price": 2.9,
+   "unit": "each",
+   "kw": "refill eco",
+   "img": "https://images.unsplash.com/photo-1615486363873-05cfe8dc2f6d?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn4",
+   "tag": "fresh"
+  },
+  {
+   "id": "cn5",
+   "section": "cleaning",
+   "name": {
+    "en": "Floor cleaner, 2L",
+    "el": "Καθαριστικό δαπέδου, 2L"
+   },
+   "price": 4.6,
+   "unit": "each",
+   "kw": "floor",
+   "img": "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn5"
+  },
+  {
+   "id": "cn6",
+   "section": "cleaning",
+   "name": {
+    "en": "Kitchen roll, 6 pack",
+    "el": "Χαρτί κουζίνας, 6 τεμ."
+   },
+   "price": 5.4,
+   "unit": "pack",
+   "kw": "paper roll",
+   "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn6",
+   "was": 6.2
   },
   {
    "id": "gf1",
