@@ -25,7 +25,22 @@ Notes
 """
 import sys, os, json, re, shutil, webbrowser, html
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+def find_root():
+    """Locate the site root (the folder containing images.json), whether this script
+    lives in tools/, in the repo root, or is run from anywhere else."""
+    here = os.path.dirname(os.path.abspath(__file__))
+    candidates = [os.getcwd(), here, os.path.dirname(here)]
+    for c in list(candidates):
+        d = c
+        for _ in range(4):            # walk up a few levels too
+            candidates.append(d); d = os.path.dirname(d)
+    for c in candidates:
+        if os.path.exists(os.path.join(c, "images.json")) and os.path.exists(os.path.join(c, "index.html")):
+            return c
+    sys.exit("Could not find images.json. Run this script from the website folder (the one with index.html), "
+             "or keep it inside that folder or its tools/ subfolder.")
+
+ROOT = find_root()
 MANIFEST = os.path.join(ROOT, "images.json")
 ASSETS = os.path.join(ROOT, "assets", "img")
 STATE = os.path.join(ROOT, "tools", "replacements.json")
@@ -85,7 +100,7 @@ def write_preview(rows):
     return out
 
 def abs_src(src):
-    return src if src.startswith("http") else "file://" + os.path.join(ROOT, src)
+    return src if src.startswith("http") else "../" + src   # preview.html lives in tools/
 
 def cmd_preview():
     p = write_preview(sorted(load(), key=lambda r: (group(r["slot"]), r["slot"])))

@@ -769,6 +769,70 @@
   ]
  },
  {
+  "slot": "demo_avatar_0",
+  "description": "Avatar: Maria Georgiou",
+  "photo_id": "1494790108377-be9c29b29330",
+  "size": "160x160",
+  "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=75&slot=demo_avatar_0",
+  "files": [
+   "js/catalog.js",
+   "login.html"
+  ]
+ },
+ {
+  "slot": "demo_avatar_1",
+  "description": "Avatar: Andreas Christou",
+  "photo_id": "1500648767791-00dcc994a43e",
+  "size": "160x160",
+  "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=75&slot=demo_avatar_1",
+  "files": [
+   "js/catalog.js",
+   "login.html"
+  ]
+ },
+ {
+  "slot": "demo_avatar_2",
+  "description": "Avatar: Taverna Elia",
+  "photo_id": "1517248135467-4c7edcad34c4",
+  "size": "160x160",
+  "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=160&h=160&q=75&slot=demo_avatar_2",
+  "files": [
+   "js/catalog.js",
+   "login.html"
+  ]
+ },
+ {
+  "slot": "demo_avatar_3",
+  "description": "Avatar: Café Kipos",
+  "photo_id": "1554118811-1e0d58224f24",
+  "size": "160x160",
+  "url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=160&h=160&q=75&slot=demo_avatar_3",
+  "files": [
+   "js/catalog.js",
+   "login.html"
+  ]
+ },
+ {
+  "slot": "avatar_default_private",
+  "description": "Default avatar for new private accounts",
+  "photo_id": "1543168256-418811576931",
+  "size": "160x160",
+  "url": "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=160&h=160&q=75&slot=avatar_default_private",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "avatar_default_business",
+  "description": "Default avatar for new business accounts",
+  "photo_id": "1441986300917-64674bd600d8",
+  "size": "160x160",
+  "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=160&h=160&q=75&slot=avatar_default_business",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
   "slot": "hero_sticker_bakery",
   "description": "Home hero sticker — bakery & butchery",
   "photo_id": "1608198093002-ad4e005484ec",
@@ -1139,16 +1203,6 @@
   ]
  },
  {
-  "slot": "account_avatar",
-  "description": "Account page avatar placeholder",
-  "photo_id": "1494790108377-be9c29b29330",
-  "size": "120x120",
-  "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&h=120&q=75&slot=account_avatar",
-  "files": [
-   "account.html"
-  ]
- },
- {
   "slot": "account_tile_offers",
   "description": "Account tile — offers",
   "photo_id": "1542838132-92c53300491e",
@@ -1184,46 +1238,6 @@
   "photo_id": "1543168256-418811576931",
   "size": "1000x1200",
   "url": "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=1000&h=1200&q=75&slot=login_side",
-  "files": [
-   "login.html"
-  ]
- },
- {
-  "slot": "demo_avatar_0",
-  "description": "Login page demo account avatar: Maria Georgiou",
-  "photo_id": "1494790108377-be9c29b29330",
-  "size": "80x80",
-  "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=75&slot=demo_avatar_0",
-  "files": [
-   "login.html"
-  ]
- },
- {
-  "slot": "demo_avatar_1",
-  "description": "Login page demo account avatar: Andreas Christou",
-  "photo_id": "1500648767791-00dcc994a43e",
-  "size": "80x80",
-  "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=75&slot=demo_avatar_1",
-  "files": [
-   "login.html"
-  ]
- },
- {
-  "slot": "demo_avatar_2",
-  "description": "Login page demo account avatar: Taverna Elia",
-  "photo_id": "1517248135467-4c7edcad34c4",
-  "size": "80x80",
-  "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=80&h=80&q=75&slot=demo_avatar_2",
-  "files": [
-   "login.html"
-  ]
- },
- {
-  "slot": "demo_avatar_3",
-  "description": "Login page demo account avatar: Café Kipos",
-  "photo_id": "1554118811-1e0d58224f24",
-  "size": "80x80",
-  "url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=80&h=80&q=75&slot=demo_avatar_3",
   "files": [
    "login.html"
   ]

@@ -824,7 +824,58 @@
     }, { passive: true });
   }
 
+  /* -----------------------------------------------------------------------
+     12. Seasonal theme + dark mode (config in js/config.js)
+     ----------------------------------------------------------------------- */
+  function orthodoxEaster(y) { // Meeus Julian algorithm -> Gregorian date
+    var a = y % 4, b = y % 7, c = y % 19, d = (19 * c + 15) % 30, e = (2 * a + 4 * b - d + 34) % 7, m = Math.floor((d + e + 114) / 31), day = ((d + e + 114) % 31) + 1;
+    var dt = new Date(Date.UTC(y, m - 1, day)); dt.setUTCDate(dt.getUTCDate() + 13); return dt;
+  }
+  function pickTheme() {
+    var cfg = window.ATH_CONFIG || {}; var t = cfg.theme || "default";
+    if (t !== "auto") return t;
+    var now = new Date(), y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
+    if (m === 11 || (m === 0 && d <= 6)) return "christmas";
+    var e = orthodoxEaster(y); var start = new Date(e); start.setDate(e.getDate() - 35);
+    if (now >= start && now <= new Date(e.getTime() + 2 * 864e5)) return "easter";
+    if (m >= 5 && m <= 7) return "summer";
+    return "default";
+  }
+  var THEME = null;
+  function applyTheme() {
+    var cfg = window.ATH_CONFIG || {}; var name = pickTheme(); var th = cfg.themes && cfg.themes[name];
+    document.documentElement.setAttribute("data-theme", name);
+    if (!th) return;
+    THEME = th;
+    var r = document.documentElement.style;
+    r.setProperty("--orange", th.accent); r.setProperty("--orange-deep", th.accent2); r.setProperty("--orange-tint", th.tint); r.setProperty("--lime", th.lime);
+    var meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute("content", th.accent);
+  }
+  function renderCampaign() {
+    var slot = document.querySelector("[data-campaign]"); if (!slot || !THEME) return;
+    var c = THEME.campaign; var L = c[currentLang] || c.en; var base = document.body.getAttribute("data-base") || "";
+    slot.innerHTML = '<section class="campaign reveal"><div class="container"><div class="campaign__card"><div class="campaign__copy"><span class="eyebrow">' + L.eyebrow + '</span><h2 class="h2">' + L.title + '</h2><p class="lead">' + L.lead + '</p><a class="btn btn--primary" href="' + base + c.href + '">' + L.cta + '</a></div><div class="campaign__media"><img src="' + c.photo + '" alt=""></div></div></div></section>';
+    if (window.ATH && window.ATH.observe) { slot.querySelector(".campaign").classList.add("is-visible"); }
+    var tk = document.querySelector(".ticker__track"); var msgs = THEME.ticker && THEME.ticker[currentLang];
+    if (tk && msgs) tk.innerHTML = msgs.concat(msgs).map(function (m) { return "<span><i></i><span>" + m + "</span></span>"; }).join("");
+  }
+  function initMode() {
+    var saved = null; try { saved = localStorage.getItem("athienitis-mode"); } catch (e) { /* ignore */ }
+    var prefers = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var dark = saved ? saved === "dark" : prefers;
+    document.documentElement.classList.toggle("dark", dark);
+    document.querySelectorAll("[data-mode-toggle]").forEach(function (b) {
+      b.setAttribute("aria-pressed", dark ? "true" : "false");
+      b.addEventListener("click", function () {
+        dark = !document.documentElement.classList.contains("dark");
+        document.documentElement.classList.toggle("dark", dark); b.setAttribute("aria-pressed", dark ? "true" : "false");
+        try { localStorage.setItem("athienitis-mode", dark ? "dark" : "light"); } catch (e) { /* ignore */ }
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    applyTheme(); initMode();
     document.body.classList.add("is-loaded");
     initTransitions();
     initHeroWords(); initManifesto(); initSteps(); initMarquee(); initMagnetic(); initTilt(); initHideHeader();
@@ -832,6 +883,7 @@
     initParallax();
     initFaq();
     initLang();
+    renderCampaign(); window.ATH.onLang(renderCampaign);
     initHeader();
     initReveal();
     initSubnav();

@@ -89,8 +89,9 @@
     function ask(q) {
       if (!q.trim()) return; add("user", q); input.value = ""; typing(true);
       var done = function (reply) { setTimeout(function () { typing(false); add("bot", reply); }, 500 + Math.min(q.length * 12, 900)); };
-      if (window.AI_ENDPOINT) {
-        fetch(window.AI_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history, lang: lang(), context: { hours: HOURS_TXT.en, offers: C.products.filter(function (p) { return p.was; }).map(function (p) { return p.name.en + " " + p.price; }) } }) })
+      var AI_EP = window.AI_ENDPOINT || (window.ATH_CONFIG && window.ATH_CONFIG.aiEndpoint);
+      if (AI_EP) {
+        fetch(AI_EP, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history, lang: lang(), context: { hours: HOURS_TXT.en, offers: C.products.filter(function (p) { return p.was; }).map(function (p) { return p.name.en + " " + p.price; }) } }) })
           .then(function (r) { return r.json(); }).then(function (j) { done(j.reply || localAnswer(q)); }).catch(function () { done(localAnswer(q)); });
       } else done(localAnswer(q));
     }

@@ -996,6 +996,7 @@ window.CATALOG = {
    "email": "maria@example.com",
    "pass_": "demo",
    "type": "private",
+   "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=75&slot=demo_avatar_0",
    "phone": "99 123 456",
    "address": {
     "street": "14 Kyriakou Matsi",
@@ -1078,6 +1079,7 @@ window.CATALOG = {
    "email": "andreas@example.com",
    "pass_": "demo",
    "type": "private",
+   "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=75&slot=demo_avatar_1",
    "phone": "96 555 010",
    "address": {
     "street": "3 Stasinou Avenue, Flat 4",
@@ -1133,6 +1135,7 @@ window.CATALOG = {
    "email": "orders@tavernaelia.cy",
    "pass_": "demo",
    "type": "business",
+   "avatar": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=160&h=160&q=75&slot=demo_avatar_2",
    "phone": "22 333 444",
    "company": "Taverna Elia Ltd",
    "vat": "CY10234567X",
@@ -1237,6 +1240,7 @@ window.CATALOG = {
    "email": "hello@cafekipos.cy",
    "pass_": "demo",
    "type": "business",
+   "avatar": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=160&h=160&q=75&slot=demo_avatar_3",
    "phone": "22 777 123",
    "company": "Kipos Coffee Ltd",
    "vat": "CY10987654B",
@@ -1293,5 +1297,9 @@ window.CATALOG = {
     }
    ]
   }
- ]
+ ],
+ "avatars": {
+  "private": "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=160&h=160&q=75&slot=avatar_default_private",
+  "business": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=160&h=160&q=75&slot=avatar_default_business"
+ }
 };

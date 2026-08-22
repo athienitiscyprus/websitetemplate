@@ -982,3 +982,58 @@ textarea { min-height: 140px; resize: vertical; }
   .how__frame img { transform: none; }
   .page-hero__img { transform: none; }
 }
+
+/* ===== v6: seasonal campaign, dark mode ===== */
+.campaign { padding: clamp(20px, 3vw, 36px) 0 clamp(28px, 4vw, 48px); }
+.campaign__card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 0; border-radius: var(--radius-lg); overflow: hidden; background: var(--orange-tint); border: 1px solid color-mix(in srgb, var(--orange) 25%, transparent); }
+.campaign__copy { padding: clamp(28px, 4vw, 56px); display: grid; gap: 16px; align-content: center; }
+.campaign__copy .eyebrow { color: var(--orange-deep); } .campaign__copy .eyebrow::before { background: var(--orange); }
+.campaign__copy .h2 { margin-top: 0; }
+.campaign__copy .btn { justify-self: start; }
+.campaign__media { position: relative; min-height: 280px; }
+.campaign__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+[data-theme="christmas"] .hero::before { background: radial-gradient(closest-side, #fbe7e7, transparent 70%); }
+[data-theme="easter"] .hero::before { background: radial-gradient(closest-side, #fdf0d5, transparent 70%); }
+
+.mode-toggle { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,.22); background: transparent; color: #c9d2c1; display: grid; place-items: center; margin-right: 4px; }
+.mode-toggle svg { width: 15px; height: 15px; } .mode-toggle .moon { display: none; }
+.dark .mode-toggle .moon { display: block; } .dark .mode-toggle .sun { display: none; }
+.mode-toggle:hover { color: #fff; border-color: rgba(255,255,255,.5); }
+
+/* Dark mode — tuned to the brand greens */
+html.dark {
+  --ink: #eef2e8; --ink-2: #c3cbbb; --ink-3: #8d9785;
+  --line: #2c3a28; --paper: #121a10; --paper-2: #18221a;
+  --orange-tint: #3a2416; --leaf-tint: #1f3320; --lime-tint: #26331a;
+  --shadow: 0 10px 30px rgba(0,0,0,.45); --shadow-lg: 0 24px 60px rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+html.dark body { background: var(--paper); }
+html.dark .header { background: rgba(18,26,16,.85); }
+html.dark .header.is-scrolled { border-color: var(--line); }
+html.dark .brand img, html.dark .footer img { background: #fff; border-radius: 10px; padding: 4px 6px; }
+html.dark .topbar, html.dark .footer, html.dark .bonus .container, html.dark .panel--ink, html.dark .ai__head, html.dark .dept--feature { background: #0b110a; }
+html.dark .dept, html.dark .product, html.dark .post, html.dark .offer, html.dark .feature, html.dark .panel, html.dark .recipe, html.dark .bundle, html.dark .stat, html.dark .hours, html.dark .mega, html.dark .drawer, html.dark .cart-drawer__panel, html.dark .search__results, html.dark .ai__panel, html.dark .ai__msg--bot, html.dark .ai__chip, html.dark .burger, html.dark .icon-btn, html.dark .marquee, html.dark .how__num, html.dark .demo-accounts button, html.dark .qty button, html.dark .tabs button[aria-selected="true"], html.dark .photo__badge, html.dark .recipe__meta, html.dark .how__badge, html.dark .sticker--d, html.dark .manifesto__tags span, html.dark .shops-strip a, html.dark .card, html.dark .phone__row, html.dark .phone__bar, html.dark .subnav, html.dark .btn--white { background-color: var(--paper-2); color: var(--ink); }
+html.dark .card { background: linear-gradient(135deg, #ff8a3d 0%, var(--orange) 45%, #c94f0a 100%); color: #fff; }
+html.dark .sticker--d { background: var(--paper-2); }
+html.dark .sticker--d .sticker__img::after { background: linear-gradient(180deg, rgba(24,34,26,.35), rgba(24,34,26,.95)); }
+html.dark .btn--white { background: #fff; color: #1e2a19; }
+html.dark .btn--ink { background: var(--orange); }
+html.dark .btn--ghost { border-color: var(--line); color: var(--ink); }
+html.dark .section--tint, html.dark .page-hero, html.dark .cart-drawer__foot, html.dark .hours__head, html.dark .ai__log, html.dark .newsletter, html.dark .addr-card, html.dark .tabs, html.dark .search input, html.dark .phone__screen, html.dark .auth-split__form { background: var(--paper-2); }
+html.dark .newsletter input, html.dark input[type="text"], html.dark input[type="email"], html.dark input[type="tel"], html.dark input[type="password"], html.dark select, html.dark textarea, html.dark .ai__form input { background: #0f160d; color: var(--ink); border-color: var(--line); }
+html.dark .skip-link, html.dark .toast { background: var(--orange); }
+html.dark .c-orange { background: #3a2416; color: #ffb27a; } html.dark .c-leaf { background: #1f3320; color: #9ed27a; } html.dark .c-lime { background: #26331a; color: #d8e66a; } html.dark .c-ink { background: #fff; color: #1e2a19; }
+html.dark .hero::before { opacity: .25; }
+html.dark .mark::after { opacity: .35; }
+html.dark .timeline li, html.dark .faq details, html.dark .order, html.dark .cart__row, html.dark .recipe__ings li, html.dark .how__step, html.dark .footer__bottom { border-color: var(--line); }
+html.dark .dept--photo { color: #fff; }
+html.dark .product__price b, html.dark .stat b, html.dark .timeline time { color: #ffb27a; }
+html.dark .app-banner { background: #3a2416; border-color: #5a3a22; color: #ffb27a; }
+html.dark .form-success { background: #1f3320; color: #9ed27a; }
+html.dark .campaign__card { background: #241a14; }
+html.dark .footer p, html.dark .footer li a { color: #c3cbbb; }
+@media (max-width: 820px) { .campaign__card { grid-template-columns: 1fr; } .campaign__media { min-height: 200px; order: -1; } }
+html.dark .lang button[aria-pressed="true"] { background: var(--orange); color: #fff; }
+html.dark .sticker--c { color: #1e2a19; }
+html.dark .ai__fab { background: var(--orange); }

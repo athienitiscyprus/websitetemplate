@@ -24,8 +24,15 @@
 
   /* ----- account ---------------------------------------------------------- */
   function seedUsers() {
-    if (STORE.get("seeded", false) || !C.seedUsers) return;
+    if (!C.seedUsers) return;
     var u = STORE.get("users", {});
+    if (STORE.get("seeded", false)) {   // patch avatars into accounts seeded by an earlier version
+      var changed = false;
+      C.seedUsers.forEach(function (su) { if (u[su.email] && !u[su.email].avatar) { u[su.email].avatar = su.avatar; changed = true; } });
+      Object.keys(u).forEach(function (k) { if (!u[k].avatar) { u[k].avatar = (C.avatars || {})[u[k].type] || ""; changed = true; } });
+      if (changed) STORE.set("users", u);
+      return;
+    }
     C.seedUsers.forEach(function (su) {
       if (u[su.email]) return;
       var orders = su.orders.map(function (o) {
@@ -34,7 +41,7 @@
         if (su.type === "business") total *= 0.95;
         return { id: o.id, at: new Date(o.at).getTime(), status: o.status, items: items, total: Math.round(total * 100) / 100 };
       });
-      u[su.email] = { name: su.name, email: su.email, pass: su.pass_, type: su.type, phone: su.phone || "", company: su.company || "", vat: su.vat || "",
+      u[su.email] = { name: su.name, email: su.email, pass: su.pass_, type: su.type, avatar: su.avatar || "", phone: su.phone || "", company: su.company || "", vat: su.vat || "",
         address: su.address || {}, bonus: su.bonus || 0, created: Date.now(), orders: orders };
     });
     STORE.set("users", u); STORE.set("seeded", true);
@@ -46,7 +53,7 @@
     register: function (name, email, pass, type) {
       var u = Account.users(); email = email.toLowerCase();
       if (u[email]) return { error: "exists" };
-      u[email] = { name: name, email: email, pass: pass, type: type || "private", phone: "", company: "", vat: "", address: {}, bonus: 0, created: Date.now(), orders: [] };
+      u[email] = { name: name, email: email, pass: pass, type: type || "private", avatar: (C.avatars || {})[type || "private"] || "", phone: "", company: "", vat: "", address: {}, bonus: 0, created: Date.now(), orders: [] };
       STORE.set("users", u); STORE.set("session", { email: email }); return { ok: true };
     },
     update: function (patch) { var u = Account.users(); var me = Account.me(); if (!me) return; Object.keys(patch).forEach(function (k) { me[k] = patch[k]; }); u[me.email] = me; STORE.set("users", u); },
@@ -244,6 +251,7 @@
     var page = document.querySelector("[data-account-page]"); if (!page) return;
     if (!me) { window.location.replace(base + "login.html?next=account"); return; }
     page.querySelectorAll("[data-me-name]").forEach(function (e) { e.textContent = me.name; });
+    page.querySelectorAll("[data-me-avatar]").forEach(function (e) { e.src = me.avatar || (C.avatars || {})[me.type] || ""; e.alt = me.name; });
     page.querySelectorAll("[data-me-first]").forEach(function (e) { e.textContent = me.name.split(" ")[0]; });
     page.querySelectorAll("[data-me-email]").forEach(function (e) { e.textContent = me.email; });
     page.querySelectorAll("[data-me-type]").forEach(function (e) { e.textContent = t("account.type." + me.type); });

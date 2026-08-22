@@ -25,6 +25,11 @@ Static, dependency-free website proposal for Athienitis Supermarket (Nicosia). B
 
 Accounts, basket and orders are stored in the browser's `localStorage` so the demo works on GitHub Pages without a server. For production, replace the `STORE`/`Account`/`Cart` functions in `shop.js` with API calls and move the catalog to a CMS or the app backend.
 
+## Configuration — `js/config.js`
+- `theme`: `"auto"` (picks Easter / summer / Christmas by date using the Orthodox Easter calendar), or force `"default"`, `"easter"`, `"summer"`, `"christmas"`. A theme changes the accent colours, adds a campaign card under the hero (EN/EL copy, photo, link) and swaps the announcement ticker. Edit the copy and photos in the same file.
+- `aiEndpoint`: URL of a hosted model for the assistant (optional).
+- Dark mode: follows the visitor's system preference; the moon/sun button in the top bar overrides it and remembers the choice.
+
 ## Demo accounts
 Four template customers are seeded into the browser on first visit (password `demo`): Maria Georgiou and Andreas Christou (private), Taverna Elia and Café Kipos (business, with delivery addresses, VAT numbers and order history). The login page has one-click buttons for each. Edit `SEED_USERS` in `js/catalog.js`.
 
@@ -45,6 +50,7 @@ Four template customers are seeded into the browser on first visit (password `de
 Every image is a named *slot* listed in `images.json` (slot, description, size, hosted URL, files that use it). Photos are hand-picked Unsplash images (free to use, no attribution required) chosen to match each product and counter — e.g. `product_dl1` is a plate of halloumi, `shop_fish` is fish on ice.
 
 ### Replacing a photo — `tools/replace_image.py`
+The script finds the site folder automatically (it can live in `tools/`, in the repo root, or be run from anywhere inside the repo).
 ```
 python tools/replace_image.py list                  # every slot, grouped, with the files it appears in
 python tools/replace_image.py list butchery         # filter
