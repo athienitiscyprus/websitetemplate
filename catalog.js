@@ -1380,5 +1380,99 @@ window.CATALOG = {
  "avatars": {
   "private": "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=160&h=160&q=75&slot=avatar_default_private",
   "business": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=160&h=160&q=75&slot=avatar_default_business"
+ },
+ "desc": {
+  "bakery": {
+   "en": "Baked in our own ovens every morning from a long-fermented dough — no improvers, no shortcuts. Best the day it's baked; slices and freezes well.",
+   "el": "Ψήνεται στους δικούς μας φούρνους κάθε πρωί από ζύμη αργής ζύμωσης — χωρίς βελτιωτικά. Καλύτερο την ημέρα που ψήνεται· κόβεται και καταψύχεται εύκολα."
+  },
+  "butchery": {
+   "en": "Cut to order at the counter by butchers who have been here for decades. Tell us how you'll cook it and we'll portion and trim accordingly.",
+   "el": "Κόβεται κατά παραγγελία από κρεοπώλες με δεκαετίες στον πάγκο. Πείτε μας πώς θα το μαγειρέψετε και το ετοιμάζουμε ανάλογα."
+  },
+  "deli": {
+   "en": "From village dairies and trusted European producers. Ask for a taste at the counter before you buy, and for slicing to your thickness.",
+   "el": "Από χωριάτικα τυροκομεία και έμπιστους Ευρωπαίους παραγωγούς. Ζητήστε να δοκιμάσετε στον πάγκο και να το κόψουμε στο πάχος που θέλετε."
+  },
+  "fish": {
+   "en": "Landed this morning and kept on ice. Cleaned, scaled and filleted while you wait at no extra charge.",
+   "el": "Ψαρεμένο σήμερα το πρωί, στον πάγο. Καθαρισμένο και φιλεταρισμένο όσο περιμένετε, χωρίς χρέωση."
+  },
+  "fruit": {
+   "en": "Seasonal and mostly local — from growers around Nicosia and the Troodos foothills. Weighed to order.",
+   "el": "Εποχιακό και κυρίως ντόπιο — από παραγωγούς γύρω από τη Λευκωσία και τον Τρόοδο. Ζυγίζεται κατά παραγγελία."
+  },
+  "cellar": {
+   "en": "Chosen by our cellar team for value and character. Chilled bottles are available from the cellar fridge; gift wrapping is free.",
+   "el": "Επιλεγμένο από την ομάδα της κάβας για ποιότητα και τιμή. Παγωμένες φιάλες στο ψυγείο της κάβας· δωρεάν περιτύλιγμα δώρου."
+  },
+  "eatery": {
+   "en": "Cooked in our kitchen with ingredients from our own counters. Eat in, or take it home hot.",
+   "el": "Μαγειρεμένο στην κουζίνα μας με υλικά από τους δικούς μας πάγκους. Φάτε εδώ ή πάρτε το ζεστό στο σπίτι."
+  },
+  "living": {
+   "en": "A focused range from brands we trust, chosen to last. Bulky items can be held at the till while you shop.",
+   "el": "Επιλεγμένη γκάμα από μάρκες που εμπιστευόμαστε. Τα ογκώδη μένουν στο ταμείο όσο ψωνίζετε."
+  },
+  "cleaning": {
+   "en": "Full sizes and refills; by the case for businesses with next-morning delivery. Bring your bottle to the refill station and save 20%.",
+   "el": "Μεγάλες συσκευασίες και refills· με το κιβώτιο για επιχειρήσεις με παράδοση το επόμενο πρωί. Φέρτε το μπουκάλι σας στον σταθμό επαναπλήρωσης και κερδίστε 20%."
+  },
+  "gifts": {
+   "en": "Gift-wrapped free at the till. Combine with something from the bakery or the cellar and we'll box it together.",
+   "el": "Δωρεάν περιτύλιγμα στο ταμείο. Συνδυάστε με κάτι από τον φούρνο ή την κάβα και το συσκευάζουμε μαζί."
+  }
+ },
+ "pairs": {
+  "bakery": [
+   "deli",
+   "fruit",
+   "eatery"
+  ],
+  "butchery": [
+   "fruit",
+   "cellar",
+   "bakery"
+  ],
+  "deli": [
+   "bakery",
+   "cellar",
+   "fruit"
+  ],
+  "fish": [
+   "fruit",
+   "cellar",
+   "bakery"
+  ],
+  "fruit": [
+   "deli",
+   "bakery",
+   "fish"
+  ],
+  "cellar": [
+   "deli",
+   "butchery",
+   "gifts"
+  ],
+  "eatery": [
+   "cellar",
+   "bakery",
+   "fruit"
+  ],
+  "living": [
+   "cleaning",
+   "gifts",
+   "deli"
+  ],
+  "cleaning": [
+   "living",
+   "gifts",
+   "fruit"
+  ],
+  "gifts": [
+   "cellar",
+   "deli",
+   "bakery"
+  ]
  }
 };

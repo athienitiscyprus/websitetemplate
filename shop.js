@@ -97,11 +97,11 @@
     var off = p.was ? Math.round((1 - p.price / p.was) * 100) : 0;
     var sec = C.sections[p.section] || {};
     return '<article class="product" data-product="' + p.id + '">' +
-      '<a class="product__img" href="' + base + 'shops/' + p.section + '.html"><img src="' + p.img + '" alt="" loading="lazy">' +
+      '<a class="product__img" href="' + base + 'products/' + p.id + '.html"><img src="' + p.img + '" alt="" loading="lazy">' +
       (off ? '<span class="product__off">-' + off + '%</span>' : '') +
       (p.tag === "fresh" ? '<span class="product__fresh">' + esc(t("dept.tag.fresh")) + '</span>' : '') + '</a>' +
       '<div class="product__body"><a class="product__cat ' + (sec.color || "") + '" href="' + base + 'shops/' + p.section + '.html">' + esc(t("dept." + p.section)) + '</a>' +
-      '<h3>' + esc(p.name[lang()] || p.name.en) + '</h3>' +
+      '<h3><a href="' + base + 'products/' + p.id + '.html">' + esc(p.name[lang()] || p.name.en) + '</a></h3>' +
       '<div class="product__price"><b>' + money(p.price) + '</b>' + (p.was ? '<s>' + money(p.was) + '</s>' : '') + '<small>/ ' + esc(t("unit." + p.unit)) + '</small></div>' +
       '<button class="btn btn--primary btn--sm product__add" type="button" data-add="' + p.id + '">' + esc(t("shop.add")) + '</button></div></article>';
   }
@@ -114,6 +114,8 @@
       var sec = spec.split(":")[1];
       if (sec) list = list.filter(function (p) { return p.section === sec; });
       if (spec === "featured") list = list.filter(function (p) { return p.was || p.tag; });
+      if (spec.indexOf("similar:") === 0) { var cur = byId(spec.split(":")[1]); list = cur ? C.products.filter(function (p) { return p.section === cur.section && p.id !== cur.id; }).slice(0, 4) : []; }
+      if (spec.indexOf("pairs:") === 0) { var cp = byId(spec.split(":")[1]); var secs = cp && C.pairs ? C.pairs[cp.section] || [] : []; list = []; secs.forEach(function (sx) { var cand = C.products.filter(function (p) { return p.section === sx; }); var pick = cand.filter(function (p) { return p.was; })[0] || cand[0]; if (pick) list.push(pick); if (list.length < 4) { var second = cand.filter(function (p) { return p !== pick; })[0]; if (second && list.length < 4 && secs.length < 4) list.push(second); } }); list = list.slice(0, 4); }
       if (limit) list = list.slice(0, limit);
       el.innerHTML = list.length ? list.map(productCard).join("") : '<p class="muted">' + esc(t("shop.none")) + '</p>';
       if (el.hasAttribute("data-count-target")) { var c = document.querySelector(el.getAttribute("data-count-target")); if (c) c.textContent = list.length; }
@@ -191,8 +193,16 @@
   }
 
   /* ----- basket drawer & page --------------------------------------------- */
+  function ensureCartFab() {
+    if (document.querySelector(".cart-fab")) return;
+    var f = document.createElement("button"); f.type = "button"; f.className = "cart-fab"; f.setAttribute("data-cart-open", ""); f.setAttribute("aria-label", "Basket");
+    f.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2 9H5z"/><path d="M8 10l3-6M16 10l-3-6"/></svg><span class="cart-fab__total" data-cart-fab-total></span><b class="cart-fab__badge is-empty" data-cart-count>0</b>';
+    document.body.appendChild(f);
+  }
   function renderCartUI() {
+    ensureCartFab();
     var n = Cart.count();
+    var fab = document.querySelector(".cart-fab"); if (fab) { fab.classList.toggle("has-items", n > 0); var tt = fab.querySelector("[data-cart-fab-total]"); if (tt) tt.textContent = money(Cart.totals().total); }
     document.querySelectorAll("[data-cart-count]").forEach(function (el) { el.textContent = n; el.classList.toggle("is-empty", n === 0); });
     var tot = Cart.totals();
     document.querySelectorAll("[data-cart-list]").forEach(function (el) {
@@ -219,8 +229,7 @@
 
   function flyToCart(btn) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var card = btn.closest(".product"); var img = card && card.querySelector("img"); var target = document.querySelector(".tabbar [data-tab-action=cart]") || document.querySelector(".header [data-cart-open]");
-    if (target && target.offsetParent === null) target = document.querySelector(".header [data-cart-open]");
+    var card = btn.closest(".product") || btn.closest(".pdp__grid"); var img = card && card.querySelector("img"); var target = document.querySelector(".cart-fab");
     if (!img || !target) return;
     var a = img.getBoundingClientRect(), z = target.getBoundingClientRect();
     var ghost = img.cloneNode(); ghost.className = "fly"; ghost.style.cssText = "left:" + a.left + "px;top:" + a.top + "px;width:" + a.width + "px;height:" + a.height + "px";
@@ -248,6 +257,10 @@
     document.querySelectorAll("[data-account-link]").forEach(function (a) {
       var sp = a.querySelector("span"); if (sp) sp.textContent = me ? me.name.split(" ")[0] : t("account.login");
       a.setAttribute("href", base + (me ? "account.html" : "login.html"));
+    });
+    document.querySelectorAll("[data-me-bar]").forEach(function (bar) {
+      bar.hidden = !me;
+      if (me) { bar.querySelector("[data-me-bar-name]").textContent = me.name.split(" ")[0]; bar.querySelector("[data-me-bar-points]").textContent = (me.bonus || 0).toLocaleString(); }
     });
     var page = document.querySelector("[data-account-page]"); if (!page) return;
     if (!me) { window.location.replace(base + "login.html?next=account"); return; }
@@ -282,7 +295,7 @@
   /* ----- events ----------------------------------------------------------- */
   document.addEventListener("click", function (e) {
     var b;
-    if ((b = e.target.closest("[data-add]"))) { flyToCart(b); Cart.add(b.getAttribute("data-add")); toast(t("cart.added")); b.classList.add("is-added"); setTimeout(function () { b.classList.remove("is-added"); }, 600); }
+    if ((b = e.target.closest("[data-add]"))) { flyToCart(b); var pgEl = b.hasAttribute("data-add-qty") && document.querySelector("[data-product-page]"); Cart.add(b.getAttribute("data-add"), pgEl ? pgEl._qty || 1 : 1); toast(t("cart.added")); b.classList.add("is-added"); setTimeout(function () { b.classList.remove("is-added"); }, 600); }
     else if ((b = e.target.closest("[data-add-recipe]"))) { var r = C.recipes.filter(function (x) { return x.id === b.getAttribute("data-add-recipe"); })[0]; if (r) { r.items.forEach(function (it) { Cart.add(it[0], it[1]); }); toast(t("cart.added")); openDrawer(true); } }
     else if ((b = e.target.closest("[data-add-bundle]"))) { var bd = C.bundles.filter(function (x) { return x.id === b.getAttribute("data-add-bundle"); })[0]; if (bd) { bd.items.forEach(function (it) { if (it[1] > 0) Cart.add(it[0], it[1]); }); toast(t("cart.added")); openDrawer(true); } }
     else if ((b = e.target.closest("[data-qty]"))) { var cur = Cart.items().filter(function (x) { return x.id === b.getAttribute("data-qty"); })[0]; if (cur) Cart.setQty(cur.id, cur.qty + parseInt(b.getAttribute("data-delta"), 10)); }
@@ -335,7 +348,28 @@
     var h = location.hash.slice(1); var tb = h && document.querySelector("[data-tab='" + h + "']"); if (tb) tb.click();
   }
 
-  function renderAll() { renderProducts(); renderRecipes(); renderBundles(); renderCartUI(); renderAccountUI(); if (window.ATH && window.ATH.observe) window.ATH.observe(); }
+  function renderProductPage() {
+    var pg = document.querySelector("[data-product-page]"); if (!pg) return;
+    var p = byId(pg.getAttribute("data-product-page")); if (!p) return;
+    pg.querySelectorAll("[data-p-name]").forEach(function (e) { e.textContent = p.name[lang()] || p.name.en; });
+    var d = C.desc && C.desc[p.section]; if (d) pg.querySelector("[data-p-desc]").textContent = d[lang()] || d.en;
+    document.title = (p.name[lang()] || p.name.en) + " — Athienitis";
+    var recs = C.recipes.filter(function (r) { return r.items.some(function (it) { return it[0] === p.id; }); });
+    var sec = pg.querySelector("[data-p-recipes]"), list = pg.querySelector("[data-p-recipe-list]");
+    if (sec && list) {
+      sec.hidden = !recs.length;
+      list.innerHTML = recs.map(function (r) { var rd = r[lang()] || r.en; return '<article class="post"><a class="post__img" href="' + base + 'recipes.html"><img src="' + r.img + '" alt="" loading="lazy"></a><div class="post__body"><div class="post__meta"><span>' + r.minutes + ' min · ' + r.serves + ' ' + esc(t("recipe.serves")) + '</span></div><h3><a href="' + base + 'recipes.html">' + esc(rd.title) + '</a></h3><p>' + esc(rd.desc) + '</p><button class="btn btn--primary btn--sm" type="button" data-add-recipe="' + r.id + '" style="align-self:flex-start;margin-top:auto">' + esc(t("recipe.addall")) + '</button></div></article>'; }).join("");
+    }
+    if (!pg._qty) {
+      pg._qty = 1;
+      pg.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-pqty]"); if (!b) return;
+        pg._qty = Math.max(1, pg._qty + parseInt(b.getAttribute("data-pqty"), 10)); pg.querySelector("[data-pqty-val]").textContent = pg._qty;
+      });
+    }
+  }
+
+  function renderAll() { renderProductPage(); renderProducts(); renderRecipes(); renderBundles(); renderCartUI(); renderAccountUI(); if (window.ATH && window.ATH.observe) window.ATH.observe(); }
 
   document.addEventListener("DOMContentLoaded", function () {
     seedUsers(); initSearch(); initAccountForms(); renderAll();

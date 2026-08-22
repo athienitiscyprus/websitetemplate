@@ -33,7 +33,6 @@
       { id: "counters", href: base + "departments.html", key: "m.counters", icon: ICON.grid, active: page === "departments" || location.pathname.indexOf("/shops/") !== -1 },
       { id: "offers", href: base + "offers.html", key: "nav.offers", icon: ICON.tag, active: page === "offers" },
       { id: "search", href: "#", key: "m.search", icon: ICON.search, active: page === "search", action: "search" },
-      { id: "basket", href: "#", key: "cart.short", icon: ICON.basket + '<b class="tabbar__badge is-empty" data-cart-count>0</b>', action: "cart" },
       { id: "account", href: base + "account.html", key: "nav.account", icon: ICON.user, active: page === "account" || page === "login" || page === "register" }
     ];
     var bar = document.createElement("nav"); bar.className = "tabbar"; bar.setAttribute("aria-label", "Mobile navigation");
@@ -46,11 +45,10 @@
     bar.addEventListener("click", function (e) {
       var a = e.target.closest("[data-tab-action]"); if (!a) return;
       e.preventDefault();
-      if (a.getAttribute("data-tab-action") === "cart") { var btn = document.querySelector("[data-cart-open]"); if (btn) btn.click(); }
-      else openSearch(true);
+      openSearch(true);
     });
     window.addEventListener("resize", function () { positionPill(bar); });
-    if (window.ATHShop) window.ATHShop.Cart.save(window.ATHShop.Cart.items()); // refresh badge into the new tab
+
   }
   function positionPill(bar) {
     var a = bar.querySelector(".is-active"), pill = bar.querySelector(".tabbar__pill"); if (!a || !pill) return;
@@ -158,6 +156,7 @@
     var status = document.querySelector(".topbar .status"), lang = document.querySelector(".topbar .lang"), mode = document.querySelector(".topbar .mode-toggle");
     var right = document.createElement("div"); right.style.cssText = "display:flex;gap:8px;align-items:center";
     if (status) tools.appendChild(status);
+    var me = document.querySelector(".topbar [data-me-bar]"); if (me) { tools.appendChild(me); }
     if (mode) right.appendChild(mode); if (lang) right.appendChild(lang);
     tools.appendChild(right); drawer.insertBefore(tools, drawer.firstChild);
   }
@@ -198,7 +197,7 @@
   function boot() {
     if (!MQ.matches) return;
     document.documentElement.classList.add("is-mobile");
-    buildDrawerTools(); buildTabBar(); buildChips(); buildJourney(); initCarousels(); initBasketPill(); initTouch(); initTop();
+    buildDrawerTools(); buildTabBar(); buildChips(); buildJourney(); initCarousels(); initTouch(); initTop();
     if (window.ATH) window.ATH.onLang(function () { document.querySelectorAll(".tabbar [data-i18n], .mpill [data-i18n]").forEach(function (n) { n.textContent = t(n.getAttribute("data-i18n")); }); });
     // products render asynchronously — re-arm carousels after shop.js paints
     var mo = new MutationObserver(function () { initCarousels(); });

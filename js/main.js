@@ -234,7 +234,7 @@
       "business.f3": "A dedicated contact", "business.f3.p": "One person who knows your menu and calls when something's better this week.",
       "nav.offers": "Offers", "nav.recipes": "Recipes", "nav.business": "For businesses", "nav.business.short": "Business", "nav.account": "Account",
       "home.recipes": "Three dinners from the counters", "home.business": "Run a kitchen? See the trade bundles",
-      "home.more": "More from Athienitis", "m.counters": "Counters", "m.step": "Step", "m.swipe": "Swipe to see the next step", "m.reward": "Free coffee at 200 pts", "m.search": "Search", "cart.short": "Basket", "m.view": "View basket", "m.popular": "Popular searches", "m.deals": "deals",
+      "home.more": "More from Athienitis", "m.counters": "Counters", "account.pts": "pts", "pdp.f1": "Order by 18:00 for next-morning collection", "pdp.f2": "Earns Bonus points — 1 per €1", "pdp.f3": "Delivery across Nicosia for business accounts", "pdp.recipes": "Recipes with this product", "pdp.pairs": "Goes well with", "pdp.pairs.title": "From other counters", "pdp.similar": "Similar products", "pdp.similar.title": "More from the", "m.step": "Step", "m.swipe": "Swipe to see the next step", "m.reward": "Free coffee at 200 pts", "m.search": "Search", "cart.short": "Basket", "m.view": "View basket", "m.popular": "Popular searches", "m.deals": "deals",
       "manifesto.1": "Shop fresh bread,", "manifesto.2": "the day's catch", "manifesto.3": "and a proper bottle", "manifesto.4": "from people who've run the same counters for decades. One basket, one till, one friendly corner of Nicosia.",
       "how.eyebrow": "How it works", "how.title": "From the counter to your kitchen.", "how.badge": "Ready for collection",
       "how.s1": "Browse the counters", "how.s1.p": "Nine specialist counters online, with this week's offers and what's fresh today.",
@@ -416,7 +416,7 @@
       "business.f3": "Προσωπικός συνεργάτης", "business.f3.p": "Ένας άνθρωπος που ξέρει το μενού σας και σας καλεί όταν κάτι είναι καλύτερο αυτή την εβδομάδα.",
       "nav.offers": "Προσφορές", "nav.recipes": "Συνταγές", "nav.business": "Για επιχειρήσεις", "nav.business.short": "Επιχειρήσεις", "nav.account": "Λογαριασμός",
       "home.recipes": "Τρία δείπνα από τους πάγκους", "home.business": "Έχετε κουζίνα; Δείτε τα επαγγελματικά πακέτα",
-      "home.more": "Περισσότερα από τον Αθηαινίτη", "m.counters": "Πάγκοι", "m.step": "Βήμα", "m.swipe": "Σύρετε για το επόμενο βήμα", "m.reward": "Δωρεάν καφές στους 200 πόντους", "m.search": "Αναζήτηση", "cart.short": "Καλάθι", "m.view": "Δείτε το καλάθι", "m.popular": "Δημοφιλείς αναζητήσεις", "m.deals": "προσφορές",
+      "home.more": "Περισσότερα από τον Αθηαινίτη", "m.counters": "Πάγκοι", "account.pts": "πόντοι", "pdp.f1": "Παραγγελία μέχρι 18:00 για παραλαβή το επόμενο πρωί", "pdp.f2": "Δίνει πόντους Bonus — 1 ανά €1", "pdp.f3": "Διανομή σε όλη τη Λευκωσία για επιχειρήσεις", "pdp.recipes": "Συνταγές με αυτό το προϊόν", "pdp.pairs": "Ταιριάζει με", "pdp.pairs.title": "Από άλλους πάγκους", "pdp.similar": "Παρόμοια προϊόντα", "pdp.similar.title": "Περισσότερα από", "m.step": "Βήμα", "m.swipe": "Σύρετε για το επόμενο βήμα", "m.reward": "Δωρεάν καφές στους 200 πόντους", "m.search": "Αναζήτηση", "cart.short": "Καλάθι", "m.view": "Δείτε το καλάθι", "m.popular": "Δημοφιλείς αναζητήσεις", "m.deals": "προσφορές",
       "manifesto.1": "Ψωνίστε φρέσκο ψωμί,", "manifesto.2": "το ψάρι της ημέρας", "manifesto.3": "και μια σωστή φιάλη", "manifesto.4": "από ανθρώπους που κρατούν τους ίδιους πάγκους για δεκαετίες. Ένα καλάθι, ένα ταμείο, μια φιλική γωνιά της Λευκωσίας.",
       "how.eyebrow": "Πώς λειτουργεί", "how.title": "Από τον πάγκο στην κουζίνα σας.", "how.badge": "Έτοιμη για παραλαβή",
       "how.s1": "Δείτε τους πάγκους", "how.s1.p": "Εννέα εξειδικευμένοι πάγκοι online, με τις προσφορές της εβδομάδας και ό,τι είναι φρέσκο σήμερα.",
@@ -442,7 +442,8 @@
 
   function t(key, arg) {
     var dict = I18N[currentLang] || I18N.en;
-    var s = dict[key] != null ? dict[key] : (I18N.en[key] != null ? I18N.en[key] : key);
+    var s = dict[key] != null ? dict[key] : (I18N.en[key] != null ? I18N.en[key] : null);
+    if (s == null) { var last = key.split(".").pop(); s = last.charAt(0).toUpperCase() + last.slice(1); } // never show a raw key
     return arg != null ? s.replace("{0}", arg) : s;
   }
 

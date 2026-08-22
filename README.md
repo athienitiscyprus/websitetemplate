@@ -11,6 +11,7 @@ Static, dependency-free website proposal for Athienitis Supermarket (Nicosia). B
 | `blog.html` · `blog/<slug>.html` · `blog/<slug>.el.html` | Blog index + each article as a separate English and Greek page (hreflang-linked) |
 | `faq.html` | FAQ with `FAQPage` structured data in both languages (for search engines and LLM answer engines) |
 | `app.html` | The Athienitis app — App Store / Google Play "coming soon" landing page, replaces web ordering |
+| `products/<id>.html` | One page per product (60): photo, price/savings, description, quantity + add, recipes using it, "goes well with" from other counters, similar products; Product schema |
 | `offers.html` | Every discounted product, grouped by counter, with a sticky counter sub-nav |
 | `recipes.html` | Recipes built from catalog products, "add all ingredients" to basket |
 | `business.html` | Trade delivery bundles for restaurants, cafés, bars, hotels; business accounts get 5% off |
@@ -32,6 +33,9 @@ Below 820px the top bar is removed (language, dark mode and the live open/closed
 - `theme`: `"auto"` (picks Easter / summer / Christmas by date using the Orthodox Easter calendar), or force `"default"`, `"easter"`, `"summer"`, `"christmas"`. A theme changes the accent colours, adds a campaign card under the hero (EN/EL copy, photo, link) and swaps the announcement ticker. Edit the copy and photos in the same file.
 - `aiEndpoint`: URL of a hosted model for the assistant (optional).
 - Dark mode: follows the visitor's system preference; the moon/sun button in the top bar overrides it and remembers the choice.
+
+## Basket & assistant placement
+The basket is the orange floating button at the bottom right on every page (it shows the running total and item count and the product photo flies into it); the AI assistant sits at the bottom left. There is no basket icon in the header or the mobile tab bar. When a customer is signed in, the top bar (desktop) / menu drawer (mobile) shows their first name and Bonus points.
 
 ## Demo accounts
 Four template customers are seeded into the browser on first visit (password `demo`): Maria Georgiou and Andreas Christou (private), Taverna Elia and Café Kipos (business, with delivery addresses, VAT numbers and order history). The login page has one-click buttons for each. Edit `SEED_USERS` in `js/catalog.js`.
