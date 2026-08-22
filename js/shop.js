@@ -13,6 +13,8 @@
     var ov = JSON.parse(localStorage.getItem("ath:catalogOverrides") || "null");
     if (ov) {
       C.products = C.products.filter(function (p) { return ov.deleted.indexOf(p.id) === -1; }).map(function (p) { return Object.assign({}, p, ov.updated[p.id] || {}); }).concat(ov.added.map(function (p) { return Object.assign({}, p, ov.updated[p.id] || {}); }));
+      var today = new Date().toISOString().slice(0, 10);
+      C.products = C.products.filter(function (p) { return !p.hidden; }).map(function (p) { if (p.offerEnd && p.offerEnd < today) { p = Object.assign({}, p); delete p.was; } return p; });
       window.CATALOG.products = C.products;
     }
   } catch (e) { /* ignore */ }
@@ -366,9 +368,13 @@
     var pg = document.querySelector("[data-product-page]"); if (!pg) return;
     var p = byId(pg.getAttribute("data-product-page")); if (!p) return;
     pg.querySelectorAll("[data-p-name]").forEach(function (e) { e.textContent = p.name[lang()] || p.name.en; });
-    var d = C.desc && C.desc[p.section]; if (d) pg.querySelector("[data-p-desc]").textContent = d[lang()] || d.en;
+    var d = C.desc && C.desc[p.section]; var ov = lang() === "el" ? p.descEl : p.descEn; if (ov || d) pg.querySelector("[data-p-desc]").textContent = ov || d[lang()] || d.en;
     document.title = (p.name[lang()] || p.name.en) + " — Athienitis";
-    var hero = pg.querySelector(".pdp__media img"); if (hero && !/^https?:/.test(p.img)) hero.src = imgUrl(p.img);
+    var hero = pg.querySelector(".pdp__media img"); if (hero && hero.getAttribute("src") !== p.img) hero.src = imgUrl(p.img);
+    // price block & badges always come from the live catalog (staff edits, offers, expiries)
+    var pr = pg.querySelector(".pdp__price"), off = p.was ? Math.round((1 - p.price / p.was) * 100) : 0;
+    if (pr) pr.innerHTML = '<b>' + money(p.price) + '</b>' + (p.was ? '<s>' + money(p.was) + '</s>' : '') + '<small>/ ' + esc(t("unit." + p.unit)) + '</small>' + (off ? '<span class="pdp__save">' + esc(t("offers.save")) + ' ' + money(p.was - p.price) + '</span>' : '') + (p.member ? '<span class="pdp__save" style="background:var(--orange-tint);color:var(--orange-deep)">Bonus: ' + money(p.member) + '</span>' : '');
+    var badge = pg.querySelector(".pdp__media .product__off"); if (off) { if (!badge) { badge = document.createElement("span"); badge.className = "product__off"; pg.querySelector(".pdp__media").appendChild(badge); } badge.textContent = "-" + off + "%"; } else if (badge) badge.remove();
     var recs = C.recipes.filter(function (r) { return r.items.some(function (it) { return it[0] === p.id; }); });
     var sec = pg.querySelector("[data-p-recipes]"), list = pg.querySelector("[data-p-recipe-list]");
     if (sec && list) {

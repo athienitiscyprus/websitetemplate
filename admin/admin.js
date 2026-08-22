@@ -107,6 +107,16 @@
     return added;
   }
 
+  function salesFor(id, days) {
+    var since = Date.now() - (days || 30) * 864e5, units = 0, rev = 0;
+    orders().forEach(function (o) { if (o.status === "cancelled" || o.at < since) return; o.items.forEach(function (it) { if (it.id === id) { units += it.qty; var p = product(id); rev += (p ? p.price : 0) * it.qty; } }); });
+    return { units: units, revenue: rev };
+  }
+  function restock(id, qty, cost, supplier) {
+    adjustStock(id, qty, "restock" + (supplier ? " · " + supplier : "") + (cost ? " · " + money(cost) : ""));
+    var inv = inventory(); inv[id].lastRestock = Date.now(); DB.set("inventory", inv);
+  }
+
   /* ----- auth ------------------------------------------------------------------- */
   var PIN = "1963";
   function initAuth() {
@@ -117,15 +127,15 @@
       e.preventDefault(); var v = $("#pin").value.trim();
       if (v === PIN) { sessionStorage.setItem("ath:staff", "1"); show(true); } else { $("#gate .form-error").hidden = false; $("#pin").value = ""; $("#pin").focus(); }
     });
-    $("[data-logout]").addEventListener("click", function () { sessionStorage.removeItem("ath:staff"); show(false); });
+    $$("[data-logout]").forEach(function (b) { b.addEventListener("click", function () { sessionStorage.removeItem("ath:staff"); show(false); }); });
   }
 
   /* ----- routing ------------------------------------------------------------------- */
-  var VIEWS = { dashboard: renderDashboard, orders: renderOrders, deliveries: renderDeliveries, products: renderProducts, inventory: renderInventory };
+  var VIEWS = { dashboard: renderDashboard, orders: renderOrders, deliveries: renderDeliveries, products: renderProducts, inventory: renderInventory, product: renderProductDetail };
   function route() {
-    var v = (location.hash || "#dashboard").slice(1).split("?")[0]; if (!VIEWS[v]) v = "dashboard";
-    $$(".adm__nav a").forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("href") === "#" + v); });
-    $("#view").innerHTML = ""; VIEWS[v]($("#view"));
+    var h = (location.hash || "#dashboard").slice(1); var v = h.split("/")[0].split("?")[0]; if (!VIEWS[v]) v = "dashboard";
+    $$(".adm__nav a").forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("href") === "#" + (v === "product" ? "products" : v)); });
+    $("#view").innerHTML = ""; VIEWS[v]($("#view"), h.split("/")[1]);
     $("#view").scrollTop = 0; window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
@@ -167,7 +177,7 @@
       '<div class="adm__cols"><div class="acard"><h2>Revenue, last 14 days</h2><div class="bars">' + days.map(function (d) { return '<div class="bar" style="--h:' + (d.v / max * 100) + '%" title="' + money(d.v) + '"><i></i><span>' + d.label[0] + '</span></div>'; }).join("") + '</div></div>' +
       '<div class="acard"><h2>Sales by counter</h2><div class="hbars">' + SECTIONS.sort(function (a, b) { return bySec[b] - bySec[a]; }).map(function (s) { return '<div class="hbar"><span>' + esc(s) + '</span><i style="--w:' + (bySec[s] / secMax * 100) + '%"></i><b>' + money(bySec[s]) + '</b></div>'; }).join("") + '</div></div></div>' +
       '<div class="adm__cols"><div class="acard"><div class="acard__head"><h2>Needs attention</h2><a href="#orders">All orders</a></div><table class="tbl"><thead><tr><th>Order</th><th>Customer</th><th>Slot</th><th>Status</th><th></th></tr></thead><tbody>' + open.slice(0, 8).map(function (o) { return '<tr><td><b>#' + o.id + '</b><br><small>' + fmtDate(o.at) + '</small></td><td>' + esc(o.customer) + '<br><small>' + o.type + '</small></td><td>' + o.slot + '</td><td>' + pill(o.status) + '</td><td><button class="btn btn--ghost btn--sm" data-order="' + o.id + '">Open</button></td></tr>'; }).join("") + '</tbody></table></div>' +
-      '<div class="acard"><div class="acard__head"><h2>Low stock</h2><a href="#inventory">Inventory</a></div><table class="tbl"><thead><tr><th>Product</th><th>Stock</th><th>Reorder at</th><th></th></tr></thead><tbody>' + low.slice(0, 8).map(function (p) { return '<tr><td><img class="thumb" src="' + imgUrl(p.img) + '" alt=""> ' + esc(p.name.en) + '</td><td><b class="warn">' + inv[p.id].stock + '</b></td><td>' + inv[p.id].reorder + '</td><td><button class="btn btn--ghost btn--sm" data-restock="' + p.id + '">+ Restock</button></td></tr>'; }).join("") + '</tbody></table></div></div>';
+      '<div class="acard"><div class="acard__head"><h2>Low stock</h2><a href="#inventory">Inventory</a></div><table class="tbl"><thead><tr><th>Product</th><th>Stock</th><th>Reorder at</th><th></th></tr></thead><tbody>' + low.slice(0, 8).map(function (p) { return '<tr><td><a href="#product/' + p.id + '" class="row-link"><img class="thumb" src="' + imgUrl(p.img) + '" alt=""> ' + esc(p.name.en) + '</a></td><td><b class="warn">' + inv[p.id].stock + '</b></td><td>' + inv[p.id].reorder + '</td><td><button class="btn btn--ghost btn--sm" data-restock="' + p.id + '">+ Restock</button></td></tr>'; }).join("") + '</tbody></table></div></div>';
     root.querySelector("[data-pull]").addEventListener("click", function () { var n = pullNewStorefrontOrders(); toast(n ? n + " new order(s) pulled in" : "No new storefront orders"); route(); });
   }
 
@@ -213,7 +223,7 @@
     root.innerHTML = '<div class="adm__head"><div><h1>Products</h1><p class="muted">' + products().length + ' products · ' + products().filter(function (p) { return p.was; }).length + ' on offer</p></div><div class="adm__actions"><button class="btn btn--ghost btn--sm" data-export>Export CSV</button><button class="btn btn--primary btn--sm" data-new>+ Add product</button></div></div>' +
       '<div class="filters"><input type="search" placeholder="Search name or ID…" value="' + esc(pfilter.q) + '" data-f="q"><select data-f="section"><option value="">All counters</option>' + SECTIONS.map(function (s) { return '<option' + (pfilter.section === s ? " selected" : "") + '>' + s + '</option>'; }).join("") + '</select></div>' +
       '<div class="acard"><table class="tbl"><thead><tr><th>Product</th><th>Counter</th><th>Price</th><th>Offer</th><th>Stock</th><th></th></tr></thead><tbody>' +
-      list.map(function (p) { var st = inv[p.id] ? inv[p.id].stock : 0; return '<tr><td><img class="thumb" src="' + imgUrl(p.img) + '" alt=""> <b>' + esc(p.name.en) + '</b><br><small>' + esc(p.name.el) + ' · ' + p.id + '</small></td><td>' + p.section + '</td><td>' + money(p.price) + ' <small>/ ' + p.unit + '</small></td><td>' + (p.was ? '<span class="st st--ready">-' + Math.round((1 - p.price / p.was) * 100) + '% <small>was ' + money(p.was) + '</small></span>' : "—") + (p.tag === "fresh" ? ' <span class="st st--new">fresh</span>' : "") + '</td><td class="' + (inv[p.id] && st <= inv[p.id].reorder ? "warn" : "") + '"><b>' + st + '</b></td><td><button class="btn btn--ghost btn--sm" data-edit="' + p.id + '">Edit</button> <button class="btn btn--ghost btn--sm" data-del="' + p.id + '" title="Remove">×</button></td></tr>'; }).join("") + '</tbody></table></div>';
+      list.map(function (p) { var st = inv[p.id] ? inv[p.id].stock : 0; return '<tr class="row-link' + (p.hidden ? " is-hidden" : "") + '" data-open-product="' + p.id + '"><td><img class="thumb" src="' + imgUrl(p.img) + '" alt=""> <b>' + esc(p.name.en) + '</b>' + (p.hidden ? ' <span class="st st--cancelled">hidden</span>' : "") + '<br><small>' + esc(p.name.el) + ' · ' + p.id + '</small></td><td>' + p.section + '</td><td>' + money(p.price) + ' <small>/ ' + p.unit + '</small></td><td>' + (p.was ? '<span class="st st--ready">-' + Math.round((1 - p.price / p.was) * 100) + '% <small>was ' + money(p.was) + '</small></span>' : "—") + (p.tag === "fresh" ? ' <span class="st st--new">fresh</span>' : "") + '</td><td class="' + (inv[p.id] && st <= inv[p.id].reorder ? "warn" : "") + '"><b>' + st + '</b></td><td><a class="btn btn--ghost btn--sm" href="#product/' + p.id + '">Open</a></td></tr>'; }).join("") + '</tbody></table></div>';
     $$("[data-f]", root).forEach(function (el) { el.addEventListener(el.tagName === "INPUT" ? "input" : "change", function () { pfilter[el.getAttribute("data-f")] = el.value; var pos = el.selectionStart; renderProducts(root); if (el.tagName === "INPUT") { var n = $("[data-f=q]", root); n.focus(); n.setSelectionRange(pos, pos); } }); });
     root.querySelector("[data-new]").addEventListener("click", function () { editProduct(null); });
     root.querySelector("[data-export]").addEventListener("click", function () { downloadCSV("products.csv", [["ID", "Name EN", "Name EL", "Counter", "Price", "Was", "Unit", "Stock"]].concat(products().map(function (p) { return [p.id, p.name.en, p.name.el, p.section, p.price, p.was || "", p.unit, inv[p.id] ? inv[p.id].stock : 0]; }))); });
@@ -235,9 +245,67 @@
           if (f.was.value && parseFloat(f.was.value) > np.price) np.was = parseFloat(f.was.value); if (f.tag.value) np.tag = f.tag.value;
           saveProduct(np, isNew);
           var inv2 = inventory(); inv2[np.id] = inv2[np.id] || { stock: 0, reorder: 8, log: [] }; inv2[np.id].stock = parseInt(f.stock.value, 10) || 0; inv2[np.id].reorder = parseInt(f.reorder.value, 10) || 0; DB.set("inventory", inv2);
-          closeModal(); toast(isNew ? "Product added" : "Saved — live on the storefront"); route();
+          closeModal(); toast(isNew ? "Product added" : "Saved — live on the storefront"); if (isNew) location.hash = "#product/" + np.id; else route();
         });
       });
+  }
+
+  /* ----- PRODUCT DETAIL (full editor) ------------------------------------------------ */
+  function renderProductDetail(root, id) {
+    var p = product(id); if (!p) { root.innerHTML = '<p>Product not found. <a href="#products">Back to products</a></p>'; return; }
+    var inv = inventory()[p.id] || { stock: 0, reorder: 8, log: [] }; var s30 = salesFor(p.id, 30), s7 = salesFor(p.id, 7);
+    var off = p.was ? Math.round((1 - p.price / p.was) * 100) : 0; var margin = p.cost ? Math.round((1 - p.cost / p.price) * 100) : null;
+    var daysLeft = s30.units ? Math.round(inv.stock / (s30.units / 30)) : null;
+    var desc = C.desc && C.desc[p.section] ? C.desc[p.section] : { en: "", el: "" };
+    root.innerHTML = '<div class="crumbs" style="margin-bottom:10px"><a href="#products">Products</a><span>/</span><span>' + esc(p.name.en) + '</span></div>' +
+      '<div class="adm__head"><div style="display:flex;gap:14px;align-items:center"><img class="pd__img" src="' + imgUrl(p.img) + '" alt=""><div><h1>' + esc(p.name.en) + '</h1><p class="muted">' + p.section + ' · ' + p.id + ' · ' + (p.hidden ? "hidden from storefront" : "live") + '</p></div></div><div class="adm__actions"><a class="btn btn--ghost btn--sm" href="../products/' + p.id + '.html" target="_blank" rel="noopener">View on site ↗</a><button class="btn btn--ghost btn--sm" data-toggle-hidden>' + (p.hidden ? "Publish" : "Hide from storefront") + '</button><button class="btn btn--ghost btn--sm warn" data-del="' + p.id + '">Remove</button></div></div>' +
+      '<div class="kpis"><div class="kpi"><span>Price</span><b>' + money(p.price) + '</b><small>per ' + p.unit + (off ? ' · <span class="warn">-' + off + '% offer</span>' : "") + '</small></div><div class="kpi"><span>Margin</span><b>' + (margin === null ? "—" : margin + "%") + '</b><small>' + (p.cost ? "cost " + money(p.cost) : "add a cost price") + '</small></div><div class="kpi' + (inv.stock <= inv.reorder ? " kpi--warn" : "") + '"><span>In stock</span><b>' + inv.stock + '</b><small>' + (daysLeft !== null ? "≈ " + daysLeft + " days at current sales" : "reorder at " + inv.reorder) + '</small></div><div class="kpi"><span>Sold, 30 days</span><b>' + s30.units + '</b><small>' + money(s30.revenue) + ' · ' + s7.units + ' this week</small></div></div>' +
+      '<form class="adm__cols pd" data-pd-form>' +
+      '<div class="acard"><h2>Product page</h2><div class="pform">' +
+        '<div class="row2"><label>Name (EN)<input name="en" required value="' + esc(p.name.en) + '"></label><label>Name (EL)<input name="el" required value="' + esc(p.name.el) + '"></label></div>' +
+        '<div class="row3"><label>Counter<select name="section">' + SECTIONS.map(function (x) { return '<option' + (p.section === x ? " selected" : "") + '>' + x + '</option>'; }).join("") + '</select></label><label>Unit<select name="unit">' + ["each", "kg", "pack", "loaf", "box", "bottle", "jar", "bunch", "platter", "portion", "cup", "slice", "set"].map(function (u) { return '<option' + (p.unit === u ? " selected" : "") + '>' + u + '</option>'; }).join("") + '</select></label><label>Badge<select name="tag"><option value="">—</option><option value="fresh"' + (p.tag === "fresh" ? " selected" : "") + '>fresh daily</option></select></label></div>' +
+        '<label>Description (EN) <small class="muted">leave empty to use the counter\'s default text</small><textarea name="descEn" rows="3" placeholder="' + esc(desc.en) + '">' + esc(p.descEn || "") + '</textarea></label>' +
+        '<label>Description (EL)<textarea name="descEl" rows="3" placeholder="' + esc(desc.el) + '">' + esc(p.descEl || "") + '</textarea></label>' +
+        '<label>Photo<div class="photo-row"><img src="' + imgUrl(p.img) + '" alt="" data-photo-preview><div><input name="img" value="' + esc(p.img) + '" placeholder="https://… or assets/img/…"><small class="muted">or upload: <input type="file" accept="image/*" data-photo-file></small></div></div></label>' +
+      '</div></div>' +
+      '<div>' +
+      '<div class="acard"><h2>Pricing</h2><div class="pform">' +
+        '<div class="row3"><label>Price (€)<input name="price" type="number" step="0.01" min="0" required value="' + p.price + '"></label><label>Cost price (€)<input name="cost" type="number" step="0.01" min="0" value="' + (p.cost || "") + '"></label><label>Member price (€)<input name="member" type="number" step="0.01" min="0" value="' + (p.member || "") + '"></label></div>' +
+        '<div class="offer-box"><div class="row3"><label>Discount %<input name="discountPct" type="number" min="0" max="90" value="' + (off || "") + '"></label><label>Was price (€)<input name="was" type="number" step="0.01" min="0" value="' + (p.was || "") + '"></label><label>Offer ends<input name="offerEnd" type="date" value="' + (p.offerEnd || "") + '"></label></div><p class="muted" style="font-size:12.5px;margin-top:6px">Enter either a discount % (the current price becomes the offer price and "was" is calculated) or a "was" price. Leave both empty to end the offer. An end date removes the offer automatically on the storefront.</p><div class="btns" style="margin-top:8px">' + [10, 15, 20, 25, 30].map(function (d) { return '<button type="button" class="btn btn--ghost btn--sm" data-quick-disc="' + d + '">-' + d + '%</button>'; }).join("") + '<button type="button" class="btn btn--ghost btn--sm" data-quick-disc="0">End offer</button></div></div>' +
+      '</div></div>' +
+      '<div class="acard"><h2>Inventory</h2><div class="pform">' +
+        '<div class="row3"><label>Stock on hand<input name="stock" type="number" min="0" value="' + inv.stock + '"></label><label>Reorder level<input name="reorder" type="number" min="0" value="' + inv.reorder + '"></label><label>Target stock<input name="target" type="number" min="0" value="' + (inv.target || inv.reorder * 2) + '"></label></div>' +
+        '<div class="row2"><label>Supplier<input name="supplier" value="' + esc(inv.supplier || "") + '" placeholder="e.g. Zorbas Bakeries"></label><label>Lead time (days)<input name="lead" type="number" min="0" value="' + (inv.lead || 1) + '"></label></div>' +
+        '<div class="restock"><b>Restock now</b><div class="row3"><label>Quantity<input name="rqty" type="number" min="1" value="' + Math.max((inv.target || inv.reorder * 2) - inv.stock, 0) + '"></label><label>Unit cost (€)<input name="rcost" type="number" step="0.01" min="0" value="' + (p.cost || "") + '"></label><label>&nbsp;<button type="button" class="btn btn--primary btn--sm" data-restock-now>+ Receive stock</button></label></div></div>' +
+        '<h3>Movements</h3><div class="log">' + (inv.log.length ? inv.log.slice(0, 8).map(function (l) { return '<div><span class="' + (l.delta > 0 ? "ok" : "warn") + '">' + (l.delta > 0 ? "+" : "") + l.delta + '</span><span>' + esc(l.reason || "adjustment") + '</span><small>' + fmtDate(l.at) + '</small></div>'; }).join("") : '<p class="muted">No movements yet.</p>') + '</div>' +
+      '</div></div>' +
+      '</div>' +
+      '<div class="pd__save"><a class="btn btn--ghost" href="#products">Back</a><button class="btn btn--primary" type="submit">Save changes</button></div>' +
+      '</form>';
+    var f = $("[data-pd-form]", root);
+    // discount % <-> was price coupling
+    f.discountPct.addEventListener("input", function () { var d = parseFloat(f.discountPct.value); var pr = parseFloat(f.price.value); if (d > 0 && pr) f.was.value = (pr / (1 - d / 100)).toFixed(2); else if (!d) f.was.value = ""; });
+    f.was.addEventListener("input", function () { var w = parseFloat(f.was.value), pr = parseFloat(f.price.value); f.discountPct.value = w > pr ? Math.round((1 - pr / w) * 100) : ""; });
+    $$("[data-quick-disc]", root).forEach(function (b) { b.addEventListener("click", function () { f.discountPct.value = b.getAttribute("data-quick-disc") === "0" ? "" : b.getAttribute("data-quick-disc"); f.discountPct.dispatchEvent(new Event("input")); }); });
+    f.img.addEventListener("input", function () { $("[data-photo-preview]", root).src = imgUrl(f.img.value); });
+    $("[data-photo-file]", root).addEventListener("change", function (e) {
+      var file = e.target.files[0]; if (!file) return; var img = new Image(); var url = URL.createObjectURL(file);
+      img.onload = function () { var cv = document.createElement("canvas"); var W = 800, H = 600; cv.width = W; cv.height = H; var ctx = cv.getContext("2d"); var r = Math.max(W / img.width, H / img.height); var w = img.width * r, h = img.height * r; ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h); f.img.value = cv.toDataURL("image/jpeg", 0.82); $("[data-photo-preview]", root).src = f.img.value; URL.revokeObjectURL(url); };
+      img.src = url;
+    });
+    $("[data-restock-now]", root).addEventListener("click", function () { var q = parseInt(f.rqty.value, 10); if (!q) return; restock(p.id, q, parseFloat(f.rcost.value) * q || 0, f.supplier.value); toast("+" + q + " received"); renderProductDetail(root, p.id); });
+    $("[data-toggle-hidden]", root).addEventListener("click", function () { var np = Object.assign({}, p, { hidden: !p.hidden }); saveProduct(np, false); toast(np.hidden ? "Hidden from storefront" : "Published"); renderProductDetail(root, p.id); });
+    f.addEventListener("submit", function (e) {
+      e.preventDefault(); if (!f.checkValidity()) { f.reportValidity(); return; }
+      var np = Object.assign({}, p, { section: f.section.value, name: { en: f.en.value.trim(), el: f.el.value.trim() }, price: parseFloat(f.price.value), unit: f.unit.value, img: f.img.value.trim() || p.img, kw: f.en.value.toLowerCase() });
+      ["was", "cost", "member", "tag", "offerEnd", "descEn", "descEl"].forEach(function (k) { delete np[k]; });
+      var w = parseFloat(f.was.value); if (w > np.price) np.was = w; var c = parseFloat(f.cost.value); if (c > 0) np.cost = c; var m = parseFloat(f.member.value); if (m > 0 && m < np.price) np.member = m;
+      if (f.tag.value) np.tag = f.tag.value; if (f.offerEnd.value && np.was) np.offerEnd = f.offerEnd.value; if (f.descEn.value.trim()) np.descEn = f.descEn.value.trim(); if (f.descEl.value.trim()) np.descEl = f.descEl.value.trim();
+      saveProduct(np, false);
+      var inv2 = inventory(); var it = inv2[p.id]; var newStock = parseInt(f.stock.value, 10) || 0; if (newStock !== it.stock) { it.log.unshift({ at: Date.now(), delta: newStock - it.stock, reason: "manual edit" }); it.stock = newStock; }
+      it.reorder = parseInt(f.reorder.value, 10) || 0; it.target = parseInt(f.target.value, 10) || it.reorder * 2; it.supplier = f.supplier.value.trim(); it.lead = parseInt(f.lead.value, 10) || 1; DB.set("inventory", inv2);
+      toast("Saved — live on the storefront"); renderProductDetail(root, p.id);
+    });
   }
 
   /* ----- INVENTORY ------------------------------------------------------------------- */
@@ -251,7 +319,7 @@
       '<div class="kpis kpis--3"><div class="kpi"><span>Lines in stock</span><b>' + all.filter(function (p) { return inv[p.id].stock > 0; }).length + '</b></div><div class="kpi kpi--warn"><span>Below reorder level</span><b>' + low.length + '</b></div><div class="kpi"><span>Out of stock</span><b>' + all.filter(function (p) { return inv[p.id].stock === 0; }).length + '</b></div></div>' +
       '<div class="filters"><input type="search" placeholder="Search product…" value="' + esc(ifilter.q) + '" data-f="q"><select data-f="section"><option value="">All counters</option>' + SECTIONS.map(function (s) { return '<option' + (ifilter.section === s ? " selected" : "") + '>' + s + '</option>'; }).join("") + '</select><label class="chk"><input type="checkbox" data-f="low"' + (ifilter.low ? " checked" : "") + '> Low stock only</label></div>' +
       '<div class="acard"><table class="tbl"><thead><tr><th>Product</th><th>Counter</th><th>Stock</th><th>Reorder at</th><th>Adjust</th><th>Last movement</th></tr></thead><tbody>' +
-      list.map(function (p) { var it = inv[p.id]; var pct = Math.min(100, it.stock / Math.max(it.reorder * 2, 1) * 100); var last = it.log[0]; return '<tr><td><img class="thumb" src="' + imgUrl(p.img) + '" alt=""> ' + esc(p.name.en) + '</td><td>' + p.section + '</td><td><div class="stock' + (it.stock <= it.reorder ? " is-low" : "") + '"><b>' + it.stock + '</b> <small>' + p.unit + '</small><i style="--w:' + pct + '%"></i></div></td><td><input class="mini" type="number" min="0" value="' + it.reorder + '" data-reorder="' + p.id + '"></td><td><div class="adj"><button data-adj="' + p.id + '" data-d="-1">−</button><button data-adj="' + p.id + '" data-d="1">+</button><button data-adj="' + p.id + '" data-d="10">+10</button></div></td><td><small>' + (last ? (last.delta > 0 ? "+" : "") + last.delta + " · " + esc(last.reason || "adjustment") + " · " + fmtDate(last.at) : "—") + '</small></td></tr>'; }).join("") + '</tbody></table></div>';
+      list.map(function (p) { var it = inv[p.id]; var pct = Math.min(100, it.stock / Math.max(it.target || it.reorder * 2, 1) * 100); var last = it.log[0]; return '<tr><td><a href="#product/' + p.id + '" class="row-link"><img class="thumb" src="' + imgUrl(p.img) + '" alt=""> ' + esc(p.name.en) + '</a>' + (it.supplier ? '<br><small>' + esc(it.supplier) + '</small>' : "") + '</td><td>' + p.section + '</td><td><div class="stock' + (it.stock <= it.reorder ? " is-low" : "") + '"><b>' + it.stock + '</b> <small>' + p.unit + '</small><i style="--w:' + pct + '%"></i></div></td><td><input class="mini" type="number" min="0" value="' + it.reorder + '" data-reorder="' + p.id + '"></td><td><div class="adj"><button data-adj="' + p.id + '" data-d="-1">−</button><button data-adj="' + p.id + '" data-d="1">+</button><button data-adj="' + p.id + '" data-d="10">+10</button></div></td><td><small>' + (last ? (last.delta > 0 ? "+" : "") + last.delta + " · " + esc(last.reason || "adjustment") + " · " + fmtDate(last.at) : "—") + '</small></td></tr>'; }).join("") + '</tbody></table></div>';
     $$("[data-f]", root).forEach(function (el) { el.addEventListener(el.type === "search" ? "input" : "change", function () { ifilter[el.getAttribute("data-f")] = el.type === "checkbox" ? el.checked : el.value; var pos = el.selectionStart; renderInventory(root); if (el.type === "search") { var n = $("[data-f=q]", root); n.focus(); n.setSelectionRange(pos, pos); } }); });
     $$("[data-reorder]", root).forEach(function (el) { el.addEventListener("change", function () { var inv2 = inventory(); inv2[el.getAttribute("data-reorder")].reorder = parseInt(el.value, 10) || 0; DB.set("inventory", inv2); toast("Reorder level saved"); }); });
     root.querySelector("[data-reorder-list]").addEventListener("click", function () { downloadCSV("reorder-list.csv", [["ID", "Product", "Counter", "Stock", "Reorder at", "Suggested qty"]].concat(low.map(function (p) { var it = inv[p.id]; return [p.id, p.name.en, p.section, it.stock, it.reorder, Math.max(it.reorder * 2 - it.stock, 0)]; }))); });
@@ -265,8 +333,9 @@
   document.addEventListener("click", function (e) {
     var b;
     if ((b = e.target.closest("[data-order]"))) openOrder(b.getAttribute("data-order"));
+    else if ((b = e.target.closest("[data-open-product]")) && !e.target.closest("a, button")) location.hash = "#product/" + b.getAttribute("data-open-product");
     else if ((b = e.target.closest("[data-edit]"))) editProduct(b.getAttribute("data-edit"));
-    else if ((b = e.target.closest("[data-del]"))) { var p = product(b.getAttribute("data-del")); if (p && confirm("Remove “" + p.name.en + "” from the storefront?")) { deleteProduct(p.id); toast("Product removed"); route(); } }
+    else if ((b = e.target.closest("[data-del]"))) { var p = product(b.getAttribute("data-del")); if (p && confirm("Remove “" + p.name.en + "” from the storefront?")) { deleteProduct(p.id); toast("Product removed"); if (location.hash.indexOf("#product/") === 0) location.hash = "#products"; else route(); } }
     else if ((b = e.target.closest("[data-adj]"))) { adjustStock(b.getAttribute("data-adj"), parseInt(b.getAttribute("data-d"), 10), "manual"); renderInventory($("#view")); }
     else if ((b = e.target.closest("[data-restock]"))) { adjustStock(b.getAttribute("data-restock"), 20, "restock"); toast("+20 added"); route(); }
   });
