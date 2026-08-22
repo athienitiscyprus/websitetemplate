@@ -851,7 +851,7 @@
   }
 
   function initHideHeader() {
-    var h = document.querySelector(".header"); if (!h || REDUCE) return;
+    var h = document.querySelector(".header"); if (!h || REDUCE || IS_MOBILE) return;   // phones: header stays put
     var last = 0, hidden = false, tk = false;
     window.addEventListener("scroll", function () {
       if (tk) return; tk = true;

@@ -33,13 +33,11 @@
   .header__tools .icon-btn { width: 40px; height: 40px; }
   .drawer { padding-bottom: 100px; }
   .drawer .search { display: none !important; }
-  /* phones: the header is fixed (not sticky). A sticky header is re-laid-out by WebKit on every scroll tick, and
-     that re-layout can drag the page vertically while a horizontal strip is being swiped. The body gets the
-     header's height as top padding so nothing shifts. */
+  /* phones: the header is fixed at the top and never hides on scroll */
   .header { position: fixed; top: 0; left: 0; right: 0; width: 100%; }
   body { padding-top: 60px; }
   html { scroll-padding-top: 70px; }
-  .header.is-hidden { transform: translateY(-100%); }
+  .header.is-hidden { transform: none !important; }
   .header { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(255,255,255,.97); }
   html.dark .header { background: rgba(18,26,16,.97); }
   .reveal { transition-duration: .45s; }
@@ -310,8 +308,7 @@
   @keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
 
   /* ---- subnav on offers / counters: rides up to the very top ---- */
-  .subnav { top: 60px; transition: top .4s var(--ease); }
-  .header.is-hidden ~ main .subnav, .header.is-hidden ~ .subnav { top: 0; }
+  .subnav { top: 60px; }
   .subnav ul { padding: 8px 0; }
   .subnav a { font-size: 13px; padding: 7px 12px; }
 
@@ -358,7 +355,7 @@
   .dept:hover .dept__link svg, .tile:hover h3 svg { transform: none; }
   .dept__img img, .post__img img, .product__img img, .tile img, .feature__img img, .dept__link svg, .tile h3 svg { transition: none; }
   .is-pressed { transform: scale(.96) !important; transition: transform .08s ease !important; }
-  .header { transition: transform .28s ease, box-shadow .2s; }
+  .header { transition: box-shadow .2s; }
   .subnav { transition: top .28s ease; }
   .drawer { transition: opacity .2s ease, transform .25s ease; opacity: 0; transform: translateY(-8px); display: block; pointer-events: none; visibility: hidden; }
   .drawer.is-open { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
