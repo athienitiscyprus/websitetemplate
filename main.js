@@ -571,13 +571,16 @@
     document.documentElement.classList.add("has-js");
     requestAnimationFrame(function () { document.body.classList.add("page-in"); });
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var nativeVT = "startViewTransition" in document && CSS.supports && CSS.supports("view-transition-name", "root");
+    if (nativeVT) { document.documentElement.classList.add("has-vt"); }
     document.addEventListener("click", function (e) {
       var a = e.target.closest("a[href]"); if (!a) return;
       var href = a.getAttribute("href");
       if (e.metaKey || e.ctrlKey || e.shiftKey || a.target === "_blank" || /^(https?:|mailto:|tel:|#)/.test(href) || href.indexOf("#") === 0) return;
       if (a.origin !== location.origin && a.protocol !== "file:") return;
+      if (nativeVT) return;                       // the browser cross-fades between pages itself (@view-transition)
       e.preventDefault(); document.body.classList.add("page-out");
-      setTimeout(function () { window.location.href = href; }, 260);
+      setTimeout(function () { window.location.href = href; }, IS_MOBILE ? 140 : 260);
     });
     window.addEventListener("pageshow", function (ev) { if (ev.persisted) document.body.classList.remove("page-out"); });
     var bar = document.createElement("div"); bar.className = "progress"; document.body.appendChild(bar);
@@ -585,25 +588,28 @@
     window.addEventListener("scroll", tick, { passive: true }); tick();
   }
 
+  var IS_MOBILE = window.matchMedia("(max-width: 820px)").matches;
   function initReveal() {
-    // auto-stagger children of grids
+    // auto-stagger children of grids (short, capped stagger on phones so nothing "pops in" late)
+    var step = IS_MOBILE ? 40 : 70, cap = IS_MOBILE ? 3 : 8;
     document.querySelectorAll(".products, .posts, .depts, .features, .bundles, .recipes, .tiles, .gallery, .offers").forEach(function (grid) {
-      Array.prototype.forEach.call(grid.children, function (c, i) { if (!c.classList.contains("reveal")) { c.classList.add("reveal"); c.style.transitionDelay = (Math.min(i, 8) * 70) + "ms"; } });
+      Array.prototype.forEach.call(grid.children, function (c, i) { if (!c.classList.contains("reveal")) { c.classList.add("reveal"); c.style.transitionDelay = (Math.min(i, cap) * step) + "ms"; } });
     });
     var els = document.querySelectorAll(".reveal");
     if (!("IntersectionObserver" in window)) {
       els.forEach(function (el) { el.classList.add("is-visible"); });
       return;
     }
+    // On phones reveal a little *before* the element enters the screen, so fast scrolling never meets a blank card.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, IS_MOBILE ? { threshold: 0, rootMargin: "0px 0px 18% 0px" } : { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
     els.forEach(function (el) { io.observe(el); });
     window.ATH.observe = function (root) {
       (root || document).querySelectorAll(".products, .posts, .bundles, .recipes").forEach(function (grid) {
-        Array.prototype.forEach.call(grid.children, function (c, i) { if (!c.classList.contains("reveal")) { c.classList.add("reveal"); c.style.transitionDelay = (Math.min(i, 8) * 60) + "ms"; } io.observe(c); });
+        Array.prototype.forEach.call(grid.children, function (c, i) { if (!c.classList.contains("reveal")) { c.classList.add("reveal"); c.style.transitionDelay = (Math.min(i, cap) * step) + "ms"; } io.observe(c); });
       });
     };
   }

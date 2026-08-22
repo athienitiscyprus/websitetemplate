@@ -58,8 +58,7 @@
   /* counter chips carousel (replaces stickers) */
   .mchips { --w: 128px; margin: 18px calc(-1 * var(--gutter)) 0; padding-top: 4px; padding-bottom: 14px; }
   .mchips.m-carousel > .mchip { opacity: 1; }
-  .mchips.m-carousel > .mchip.is-focus { box-shadow: var(--shadow-lg); }
-  .mchip.is-focus img { transform: scale(1.04); }
+  .mchip { box-shadow: var(--shadow); }
   .mchip { position: relative; aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden; background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; isolation: isolate; scroll-snap-align: start; animation: chipIn .6s var(--ease) both; animation-delay: calc(var(--i) * 60ms + .3s); }
   .mchip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .5s ease; transform: translateZ(0); }
   .mchip::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(30,42,25,0) 35%, rgba(30,42,25,.9)); }
@@ -73,8 +72,7 @@
      with the neighbours peeking in on both sides */
   .m-carousel { --w: 74vw; display: flex !important; grid-template-columns: none !important; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(50vw - var(--w) / 2); scroll-padding-inline: calc(50vw - var(--w) / 2); }
   .m-carousel::-webkit-scrollbar { display: none; }
-  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; opacity: .78; transition: opacity .3s ease; }
-  .m-carousel > .is-focus { opacity: 1; }
+  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; }   /* no dimming/scaling while swiping — nothing changes on the cards mid-gesture */
   .m-carousel > .reveal { transform: none; }
   .depts.m-carousel { --w: 72vw; } .depts.m-carousel > * { min-height: 230px; }
   .tiles.m-carousel { --w: 78vw; } .tiles.m-carousel > * { aspect-ratio: 16/10; }
@@ -332,4 +330,29 @@
   input, select, textarea, .ai__form input, .search input, .newsletter input { font-size: 16px !important; }
   .tabbar, .cart-fab, .ai, .mtop { transform: translateZ(0); }
   .tabbar { animation: none; }
+}
+
+@media (max-width: 820px) {
+  /* ---- motion hygiene: everything fades, nothing jumps ---- */
+  .reveal { transform: none !important; transition: opacity .5s ease; }
+  .reveal.is-visible { opacity: 1; }
+  .page-hero__img, .shop-hero img, .auth-split__media img { animation: none; transform: none; }     /* no Ken Burns on phones */
+  .hero__copy > * { animation-duration: .5s; }
+  .is-loaded .sticker { animation: none; opacity: 1; transform: none; }
+  .how__frame img { transition: opacity .4s ease; transform: none; }
+  .mstep h3, .mstep p, .mstep__fx, .mstep__tag { transition-delay: 0s; transition-duration: .35s; }
+  .mstep > img { transition: none; transform: none; }
+  .product, .tile, .dept, .post, .bundle, .feature { transition: none; }
+  .product:hover, .tile:hover, .dept:hover, .post:hover, .bundle:hover { transform: none; box-shadow: none; }
+  .is-pressed { transform: scale(.96) !important; transition: transform .08s ease !important; }
+  .header { transition: transform .28s ease, box-shadow .2s; }
+  .subnav { transition: top .28s ease; }
+  .drawer { transition: opacity .2s ease, transform .25s ease; opacity: 0; transform: translateY(-8px); display: block; pointer-events: none; visibility: hidden; }
+  .drawer.is-open { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
+  .cart-drawer__panel { transition: transform .32s cubic-bezier(.2,.8,.2,1); }
+  .msearch { animation: msIn .22s ease; }
+  img { content-visibility: auto; }
+  .marquee__track { animation-duration: 55s; }
+  html { scroll-behavior: auto; }
+  * { -webkit-tap-highlight-color: transparent; }
 }

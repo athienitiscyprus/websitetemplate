@@ -191,7 +191,7 @@
 
   /* ----- tap feedback + fly-to-tab target ----------------------------------- */
   function initTouch() {
-    document.addEventListener("touchstart", function (e) { var el = e.target.closest(".btn, .product, .mchip, .tile, .dept, .tabbar__item, .icon-btn"); if (el) el.classList.add("is-pressed"); }, { passive: true });
+    document.addEventListener("touchstart", function (e) { var el = e.target.closest(".btn, .tabbar__item, .icon-btn, .product__add"); if (el) el.classList.add("is-pressed"); }, { passive: true });
     ["touchend", "touchcancel"].forEach(function (ev) { document.addEventListener(ev, function () { document.querySelectorAll(".is-pressed").forEach(function (x) { x.classList.remove("is-pressed"); }); }, { passive: true }); });
   }
 

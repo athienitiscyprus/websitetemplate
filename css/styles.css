@@ -1083,3 +1083,12 @@ html.dark .cart-fab__badge { border-color: var(--paper); }
 .pdp__facts li { display: flex; gap: 12px; align-items: center; font-size: 14.5px; color: var(--ink-2); }
 .pdp__facts svg { width: 20px; height: 20px; color: var(--leaf-deep); flex-shrink: 0; }
 @media (max-width: 820px) { .pdp__grid { grid-template-columns: 1fr; gap: 18px; } .pdp__info h1 { font-size: 28px; } .pdp__price b { font-size: 32px; } .pdp__buy .btn { flex: 1; justify-content: center; } }
+
+/* Native cross-document page transitions (Safari 18.2+, Chrome 126+): a gentle cross-fade between pages */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: 180ms ease-out both vt-out; }
+::view-transition-new(root) { animation: 240ms ease-out both vt-in; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(6px); } }
+.has-vt body { opacity: 1; transition: none; }
+@media (prefers-reduced-motion: reduce) { ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }
