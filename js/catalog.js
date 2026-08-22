@@ -70,7 +70,7 @@ window.CATALOG = {
    "price": 1.8,
    "unit": "each",
    "kw": "cheese pie pastry",
-   "img": "https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk3"
+   "img": "../assets/img/product_bk3.jpg"
   },
   {
    "id": "bk4",
@@ -82,7 +82,7 @@ window.CATALOG = {
    "price": 2.6,
    "unit": "loaf",
    "kw": "olive bread",
-   "img": "https://images.unsplash.com/photo-1568254183919-78a4f43a2877?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk4",
+   "img": "../assets/img/product_bk4.jpg",
    "was": 3.1
   },
   {
@@ -95,7 +95,7 @@ window.CATALOG = {
    "price": 4.9,
    "unit": "box",
    "kw": "cookies sugar almond",
-   "img": "https://images.unsplash.com/photo-1523294587484-bae6cc870010?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk5"
+   "img": "../assets/img/product_bk5.jpg"
   },
   {
    "id": "bk6",
@@ -107,7 +107,7 @@ window.CATALOG = {
    "price": 4.2,
    "unit": "loaf",
    "kw": "bread sliced",
-   "img": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk6"
+   "img": "../assets/img/product_bk6.jpg"
   },
   {
    "id": "bt1",
@@ -119,7 +119,7 @@ window.CATALOG = {
    "price": 7.9,
    "unit": "kg",
    "kw": "pork meat raw",
-   "img": "https://images.unsplash.com/photo-1602470521007-20293bd1fd31?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt1",
+   "img": "../assets/img/product_bt1.jpg",
    "was": 9.5
   },
   {
@@ -144,7 +144,7 @@ window.CATALOG = {
    "price": 9.8,
    "unit": "kg",
    "kw": "sausage grill",
-   "img": "https://images.unsplash.com/photo-1606677661991-446cea8ee182?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt3",
+   "img": "../assets/img/product_bt3.jpg",
    "tag": "fresh"
   },
   {
@@ -170,7 +170,7 @@ window.CATALOG = {
    "price": 9.2,
    "unit": "kg",
    "kw": "beef mince",
-   "img": "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt5"
+   "img": "../assets/img/product_bt5.jpg"
   },
   {
    "id": "bt6",
@@ -182,7 +182,7 @@ window.CATALOG = {
    "price": 8.6,
    "unit": "kg",
    "kw": "pork chops",
-   "img": "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt6"
+   "img": "../assets/img/product_bt6.jpg"
   },
   {
    "id": "dl1",
@@ -207,7 +207,7 @@ window.CATALOG = {
    "price": 3.2,
    "unit": "pack",
    "kw": "cured meat sliced",
-   "img": "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl2"
+   "img": "../assets/img/product_dl2.jpg"
   },
   {
    "id": "dl3",
@@ -219,7 +219,7 @@ window.CATALOG = {
    "price": 2.8,
    "unit": "pack",
    "kw": "ricotta cheese",
-   "img": "https://images.unsplash.com/photo-1559561853-08451507cbe7?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl3",
+   "img": "../assets/img/product_dl3.jpg",
    "tag": "fresh"
   },
   {
@@ -232,7 +232,7 @@ window.CATALOG = {
    "price": 2.95,
    "unit": "pack",
    "kw": "olives black",
-   "img": "https://images.unsplash.com/photo-1632932693914-5d8a9d9b2a94?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl4"
+   "img": "../assets/img/product_dl4.jpg"
   },
   {
    "id": "dl5",
@@ -244,7 +244,7 @@ window.CATALOG = {
    "price": 5.4,
    "unit": "pack",
    "kw": "manchego cheese",
-   "img": "https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl5",
+   "img": "../assets/img/product_dl5.jpg",
    "was": 6.2
   },
   {
@@ -257,7 +257,7 @@ window.CATALOG = {
    "price": 24.0,
    "unit": "platter",
    "kw": "cheese platter meze",
-   "img": "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl6"
+   "img": "../assets/img/product_dl6.jpg"
   },
   {
    "id": "fs1",
@@ -269,7 +269,7 @@ window.CATALOG = {
    "price": 11.9,
    "unit": "kg",
    "kw": "sea bream fish",
-   "img": "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs1",
+   "img": "../assets/img/product_fs1.jpg",
    "tag": "fresh"
   },
   {
@@ -282,7 +282,7 @@ window.CATALOG = {
    "price": 12.5,
    "unit": "kg",
    "kw": "sea bass fish",
-   "img": "https://images.unsplash.com/photo-1611214774777-3d997a9d0e35?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs2",
+   "img": "../assets/img/product_fs2.jpg",
    "was": 14.0
   },
   {
@@ -295,7 +295,7 @@ window.CATALOG = {
    "price": 9.8,
    "unit": "kg",
    "kw": "squid seafood",
-   "img": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs3"
+   "img": "../assets/img/product_fs3.jpg"
   },
   {
    "id": "fs4",
@@ -307,7 +307,7 @@ window.CATALOG = {
    "price": 14.9,
    "unit": "kg",
    "kw": "octopus seafood",
-   "img": "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs4"
+   "img": "../assets/img/product_fs4.jpg"
   },
   {
    "id": "fs5",
@@ -319,7 +319,7 @@ window.CATALOG = {
    "price": 8.9,
    "unit": "pack",
    "kw": "prawns shrimp",
-   "img": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs5",
+   "img": "../assets/img/product_fs5.jpg",
    "was": 10.5
   },
   {
@@ -332,7 +332,7 @@ window.CATALOG = {
    "price": 6.7,
    "unit": "pack",
    "kw": "cod fish salted",
-   "img": "https://images.unsplash.com/photo-1580317092099-ade9937dee4f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs6"
+   "img": "../assets/img/product_fs6.jpg"
   },
   {
    "id": "fr1",
@@ -395,7 +395,7 @@ window.CATALOG = {
    "price": 0.8,
    "unit": "bunch",
    "kw": "mint herb",
-   "img": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr5"
+   "img": "../assets/img/product_fr5.jpg"
   },
   {
    "id": "fr6",
@@ -407,7 +407,7 @@ window.CATALOG = {
    "price": 7.9,
    "unit": "jar",
    "kw": "honey jar",
-   "img": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr6"
+   "img": "../assets/img/product_fr6.jpg"
   },
   {
    "id": "cl1",
@@ -469,7 +469,7 @@ window.CATALOG = {
    "price": 9.9,
    "unit": "pack",
    "kw": "craft beer bottles",
-   "img": "https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl5"
+   "img": "../assets/img/product_cl5.jpg"
   },
   {
    "id": "cl6",
@@ -519,7 +519,7 @@ window.CATALOG = {
    "price": 7.9,
    "unit": "portion",
    "kw": "stuffed peppers tomatoes",
-   "img": "https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et3"
+   "img": "../assets/img/product_et3.jpg"
   },
   {
    "id": "et4",
@@ -531,7 +531,7 @@ window.CATALOG = {
    "price": 4.5,
    "unit": "each",
    "kw": "souvlaki pita",
-   "img": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et4"
+   "img": "../assets/img/product_et4.jpg"
   },
   {
    "id": "et5",
@@ -543,7 +543,7 @@ window.CATALOG = {
    "price": 2.5,
    "unit": "cup",
    "kw": "iced coffee",
-   "img": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et5"
+   "img": "../assets/img/product_et5.jpg"
   },
   {
    "id": "et6",
@@ -555,7 +555,7 @@ window.CATALOG = {
    "price": 3.2,
    "unit": "slice",
    "kw": "custard pastry dessert",
-   "img": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et6",
+   "img": "../assets/img/product_et6.jpg",
    "was": 3.8
   },
   {
@@ -568,7 +568,7 @@ window.CATALOG = {
    "price": 9.9,
    "unit": "each",
    "kw": "bath towel",
-   "img": "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv1",
+   "img": "../assets/img/product_lv1.jpg",
    "was": 12.9
   },
   {
@@ -581,7 +581,7 @@ window.CATALOG = {
    "price": 18.5,
    "unit": "each",
    "kw": "wooden cutting board",
-   "img": "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv2"
+   "img": "../assets/img/product_lv2.jpg"
   },
   {
    "id": "lv3",
@@ -593,7 +593,7 @@ window.CATALOG = {
    "price": 7.5,
    "unit": "each",
    "kw": "candle scented",
-   "img": "https://images.unsplash.com/photo-1602874801006-e26c4f2f5a7e?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv3"
+   "img": "../assets/img/product_lv3.jpg"
   },
   {
    "id": "lv4",
@@ -605,7 +605,7 @@ window.CATALOG = {
    "price": 22.0,
    "unit": "each",
    "kw": "frying pan",
-   "img": "https://images.unsplash.com/photo-1585515320310-259814faf1d8?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv4",
+   "img": "../assets/img/product_lv4.jpg",
    "was": 27.0
   },
   {
@@ -618,7 +618,7 @@ window.CATALOG = {
    "price": 34.0,
    "unit": "set",
    "kw": "bed sheets linen",
-   "img": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv5"
+   "img": "../assets/img/product_lv5.jpg"
   },
   {
    "id": "lv6",
@@ -630,7 +630,7 @@ window.CATALOG = {
    "price": 11.9,
    "unit": "set",
    "kw": "glass jars",
-   "img": "https://images.unsplash.com/photo-1584285405429-136bf988919c?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv6"
+   "img": "../assets/img/product_lv6.jpg"
   },
   {
    "id": "cn1",
@@ -642,7 +642,7 @@ window.CATALOG = {
    "price": 8.9,
    "unit": "each",
    "kw": "laundry",
-   "img": "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn1",
+   "img": "../assets/img/product_cn1.jpg",
    "was": 10.5
   },
   {
@@ -655,7 +655,7 @@ window.CATALOG = {
    "price": 2.4,
    "unit": "each",
    "kw": "dish soap",
-   "img": "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn2"
+   "img": "../assets/img/product_cn2.jpg"
   },
   {
    "id": "cn3",
@@ -680,7 +680,7 @@ window.CATALOG = {
    "price": 2.9,
    "unit": "each",
    "kw": "refill eco",
-   "img": "https://images.unsplash.com/photo-1615486363873-05cfe8dc2f6d?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn4",
+   "img": "../assets/img/product_cn4.jpg",
    "tag": "fresh"
   },
   {
@@ -693,7 +693,7 @@ window.CATALOG = {
    "price": 4.6,
    "unit": "each",
    "kw": "floor",
-   "img": "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn5"
+   "img": "../assets/img/product_cn5.jpg"
   },
   {
    "id": "cn6",
@@ -705,7 +705,7 @@ window.CATALOG = {
    "price": 5.4,
    "unit": "pack",
    "kw": "paper roll",
-   "img": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn6",
+   "img": "../assets/img/product_cn6.jpg",
    "was": 6.2
   },
   {
@@ -731,7 +731,7 @@ window.CATALOG = {
    "price": 14.5,
    "unit": "each",
    "kw": "wooden toy train",
-   "img": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf2"
+   "img": "../assets/img/product_gf2.jpg"
   },
   {
    "id": "gf3",
@@ -743,7 +743,7 @@ window.CATALOG = {
    "price": 6.9,
    "unit": "each",
    "kw": "notebook stationery",
-   "img": "https://images.unsplash.com/photo-1517971053567-8bde93bc6a58?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf3"
+   "img": "../assets/img/product_gf3.jpg"
   },
   {
    "id": "gf4",
@@ -755,7 +755,7 @@ window.CATALOG = {
    "price": 5.4,
    "unit": "each",
    "kw": "hand cream cosmetic",
-   "img": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf4",
+   "img": "../assets/img/product_gf4.jpg",
    "was": 6.5
   },
   {
@@ -780,7 +780,7 @@ window.CATALOG = {
    "price": 3.9,
    "unit": "pack",
    "kw": "greeting cards",
-   "img": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf6"
+   "img": "../assets/img/product_gf6.jpg"
   }
  ],
  "recipes": [
