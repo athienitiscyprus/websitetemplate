@@ -456,7 +456,7 @@ window.CATALOG = {
    "price": 11.0,
    "unit": "bottle",
    "kw": "spirit bottle glass",
-   "img": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl4",
+   "img": "assets/img/product_cl4.jpg",
    "was": 12.5
   },
   {
