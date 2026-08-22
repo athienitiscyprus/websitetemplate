@@ -837,6 +837,19 @@
     document.addEventListener("mouseout", function (e) { var c = e.target.closest(".dept, .tile, .post, .bundle, .feature, .recipe"); if (c && !c.contains(e.relatedTarget)) { c.style.transform = ""; c.classList.remove("is-tilt"); } });
   }
 
+  function initTop() {
+    if (document.querySelector(".mtop")) return;
+    var b = document.createElement("button"); b.type = "button"; b.className = "mtop"; b.setAttribute("aria-label", "Back to top");
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+    document.body.appendChild(b);
+    var on = false, tk = false;
+    window.addEventListener("scroll", function () {
+      if (tk) return; tk = true;
+      requestAnimationFrame(function () { tk = false; var want = window.scrollY > 700; if (want !== on) { on = want; b.classList.toggle("is-in", want); } });
+    }, { passive: true });
+    b.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: REDUCE ? "auto" : "smooth" }); });
+  }
+
   function initHideHeader() {
     var h = document.querySelector(".header"); if (!h || REDUCE) return;
     var last = 0, hidden = false, tk = false;
@@ -903,7 +916,7 @@
     applyTheme(); initMode();
     document.body.classList.add("is-loaded");
     initTransitions();
-    initHeroWords(); initManifesto(); initSteps(); initMarquee(); initMagnetic(); initTilt(); initHideHeader();
+    initHeroWords(); initManifesto(); initSteps(); initMarquee(); initMagnetic(); initTilt(); initHideHeader(); initTop();
     initCounters();
     initParallax();
     initFaq();

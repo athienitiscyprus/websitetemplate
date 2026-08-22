@@ -212,13 +212,6 @@
     ["touchend", "touchcancel"].forEach(function (ev) { document.addEventListener(ev, function () { document.querySelectorAll(".is-pressed").forEach(function (x) { x.classList.remove("is-pressed"); }); }, { passive: true }); });
   }
 
-  /* ----- "back to top" on long pages ----------------------------------------- */
-  function initTop() {
-    var b = document.createElement("button"); b.type = "button"; b.className = "mtop"; b.setAttribute("aria-label", "Top"); b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
-    document.body.appendChild(b);
-    window.addEventListener("scroll", function () { b.classList.toggle("is-in", window.scrollY > 1200); }, { passive: true });
-    b.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: REDUCE ? "auto" : "smooth" }); });
-  }
 
   function boot() {
     if (!MQ.matches) return;
@@ -228,7 +221,7 @@
       document.addEventListener("focusout", function () { setTimeout(function () { if (vv.scale > 1.01) { var m = document.querySelector('meta[name="viewport"]'); if (m) { var c = m.getAttribute("content"); m.setAttribute("content", c + ", maximum-scale=1"); setTimeout(function () { m.setAttribute("content", c); }, 300); } } }, 50); });
     }
     document.documentElement.classList.add("is-mobile");
-    buildDrawerTools(); buildTabBar(); buildChips(); buildJourney(); initCarousels(); initTouch(); initTop();
+    buildDrawerTools(); buildTabBar(); buildChips(); buildJourney(); initCarousels(); initTouch();
     if (window.ATH) window.ATH.onLang(function () { document.querySelectorAll(".tabbar [data-i18n], .mpill [data-i18n]").forEach(function (n) { n.textContent = t(n.getAttribute("data-i18n")); }); });
     // products render asynchronously — re-arm carousels after shop.js paints
     var mo = new MutationObserver(function () { initCarousels(); });

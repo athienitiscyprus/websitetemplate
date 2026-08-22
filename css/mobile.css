@@ -70,9 +70,10 @@
   /* ---- generic horizontal snap carousel ---- */
   /* centered snap carousels: the focused card sits exactly in the middle,
      with the neighbours peeking in on both sides */
-  .m-carousel { --w: 74vw; display: flex !important; grid-template-columns: none !important; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(50vw - var(--w) / 2); scroll-padding-inline: calc(50vw - var(--w) / 2); }
+  .m-carousel { --w: 74vw; display: flex !important; grid-template-columns: none !important; gap: 12px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; -webkit-perspective: 1000px; perspective: 1000px; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(50vw - var(--w) / 2); scroll-padding-inline: calc(50vw - var(--w) / 2); }
   .m-carousel::-webkit-scrollbar { display: none; }
-  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; }   /* no dimming/scaling while swiping — nothing changes on the cards mid-gesture */
+  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; transform: translate3d(0,0,0); backface-visibility: hidden; -webkit-backface-visibility: hidden; will-change: transform; }
+  .m-carousel img { transform: translate3d(0,0,0); backface-visibility: hidden; -webkit-backface-visibility: hidden; }   /* no dimming/scaling while swiping — nothing changes on the cards mid-gesture */
   /* own GPU layer + no vertical slide-in: the scroll-reveal only fades, so nothing re-rasterises mid-swipe */
   .m-carousel > .reveal, .m-carousel > .reveal.is-visible { transform: translateZ(0); }
   .depts.m-carousel { --w: 72vw; } .depts.m-carousel > * { min-height: 230px; }
@@ -201,10 +202,8 @@
   html.dark .mpill em { color: #fff; }
   .mpill.is-in { animation: pillIn .5s var(--ease); }
   @keyframes pillIn { from { transform: translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }
-  .mtop { position: fixed; right: 14px; bottom: calc(146px + env(safe-area-inset-bottom)); z-index: 330; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--ink); display: grid; place-items: center; opacity: 0; transform: translateY(10px) scale(.9); pointer-events: none; transition: opacity .3s, transform .3s var(--ease); }
+  .mtop { right: 14px; bottom: calc(146px + env(safe-area-inset-bottom)); width: 42px; height: 42px; }
   .mtop svg { width: 18px; height: 18px; }
-  .mtop.is-in { opacity: 1; transform: none; pointer-events: auto; }
-  html.dark .mtop { background: #fff; color: #1e2a19; border-color: rgba(255,255,255,.6); }
   .ai { left: 14px; right: auto; bottom: calc(84px + env(safe-area-inset-bottom)); }
   .cart-fab { right: 14px; bottom: calc(84px + env(safe-area-inset-bottom)); width: 52px; height: 52px; padding: 0; }
   .cart-fab svg { width: 22px; height: 22px; }
@@ -357,10 +356,10 @@
   .drawer.is-open { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
   .cart-drawer__panel { transition: transform .32s cubic-bezier(.2,.8,.2,1); }
   .msearch { animation: msIn .22s ease; }
-  img { content-visibility: auto; }
-  /* never inside a horizontal scroller: content-visibility skips painting off-screen cards and
-     re-paints them as they slide in, which shows as a blank flash mid-swipe */
-  .m-carousel img, .mchip img, .mstep img { content-visibility: visible; }
+  /* `img { content-visibility: auto }` removed: on iOS it applies size containment to every image that is
+     off-screen, so photos collapse to 0px and re-grow as they approach the viewport — the page height keeps
+     changing under the momentum scroll and the page rocks up and down after you lift your finger. */
+  img { content-visibility: visible; }
   .m-carousel > .reveal, .m-carousel > .reveal.is-visible { transform: translateZ(0) !important; }
   .marquee__track { animation-duration: 55s; }
   html { scroll-behavior: auto; }

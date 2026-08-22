@@ -1053,6 +1053,13 @@ html.dark .subnav--counters { background: var(--paper-2); }
 .cart-fab__badge.is-empty { transform: scale(0); }
 .cart-fab.is-bump { animation: bump .4s var(--ease); }
 html.dark .cart-fab__badge { border-color: var(--paper); }
+/* back-to-top: white circle with a black arrow, stacked right above the basket circle */
+.mtop { position: fixed; right: 22px; bottom: 92px; z-index: 330; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: #1e2a19; display: grid; place-items: center; box-shadow: var(--shadow); opacity: 0; transform: translateY(10px) scale(.9); pointer-events: none; transition: opacity .3s, transform .3s var(--ease), background .2s; cursor: pointer; }
+.mtop svg { width: 20px; height: 20px; }
+.mtop.is-in { opacity: 1; transform: none; pointer-events: auto; }
+.mtop:hover { background: var(--paper-2); }
+html.dark .mtop { background: #fff; color: #1e2a19; border-color: rgba(255,255,255,.6); }
+html.dark .mtop:hover { background: #f3f5ef; }
 .topbar__me { display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px 4px 6px; border-radius: 999px; background: rgba(255,255,255,.1); color: #fff; font-weight: 700; }
 .topbar__me svg { width: 16px; height: 16px; }
 .topbar__me:hover { background: rgba(255,255,255,.18); }
