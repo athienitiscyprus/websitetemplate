@@ -59,7 +59,7 @@
   .mchips { --w: 128px; margin: 18px calc(-1 * var(--gutter)) 0; padding-top: 4px; padding-bottom: 14px; }
   .mchips.m-carousel > .mchip { opacity: 1; }
   .mchip { box-shadow: var(--shadow); }
-  .mchip { position: relative; aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden; background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; isolation: isolate; scroll-snap-align: start; animation: chipIn .6s var(--ease) both; animation-delay: calc(var(--i) * 60ms + .3s); }
+  .mchip { position: relative; aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden; background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; isolation: isolate; scroll-snap-align: none start; animation: chipIn .6s var(--ease) both; animation-delay: calc(var(--i) * 60ms + .3s); }
   .mchip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .5s ease; transform: translateZ(0); }
   .mchip::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(30,42,25,0) 35%, rgba(30,42,25,.9)); }
   .mchip span { font-family: var(--font-display); font-weight: 600; font-size: 16px; line-height: 1.1; }
@@ -70,9 +70,11 @@
   /* ---- generic horizontal snap carousel ---- */
   /* centered snap carousels: the focused card sits exactly in the middle,
      with the neighbours peeking in on both sides */
-  .m-carousel { --w: 74vw; display: flex !important; grid-template-columns: none !important; gap: 12px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; -webkit-perspective: 1000px; perspective: 1000px; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(50vw - var(--w) / 2); scroll-padding-inline: calc(50vw - var(--w) / 2); }
+  .m-carousel { --w: 74vw; display: flex !important; grid-template-columns: none !important; gap: 12px; overflow-x: auto; overflow-y: hidden; overscroll-behavior: contain; scroll-snap-stop: normal; -webkit-perspective: 1000px; perspective: 1000px; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(50vw - var(--w) / 2); scroll-padding-inline: calc(50vw - var(--w) / 2); }
   .m-carousel::-webkit-scrollbar { display: none; }
-  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; transform: translate3d(0,0,0); backface-visibility: hidden; -webkit-backface-visibility: hidden; will-change: transform; }
+  /* `scroll-snap-align: center` is two-axis (block + inline). Declaring a vertical alignment on every card lets
+     WebKit nudge the *page* up and down while the strip is being swiped. Block axis is now explicitly `none`. */
+  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: none center; transform: translate3d(0,0,0); backface-visibility: hidden; -webkit-backface-visibility: hidden; will-change: transform; }
   .m-carousel img { transform: translate3d(0,0,0); backface-visibility: hidden; -webkit-backface-visibility: hidden; }   /* no dimming/scaling while swiping — nothing changes on the cards mid-gesture */
   /* own GPU layer + no vertical slide-in: the scroll-reveal only fades, so nothing re-rasterises mid-swipe */
   .m-carousel > .reveal, .m-carousel > .reveal.is-visible { transform: translateZ(0); }
@@ -165,8 +167,8 @@
   .subnav { top: 60px; }
   .subnav ul { gap: 2px; padding: 8px 0; }
   .shop-info { grid-template-columns: 1fr; }
-  .shops-strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 8px; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); }
-  .shops-strip a { flex: 0 0 104px; scroll-snap-align: start; }
+  .shops-strip { display: flex; overflow-x: auto; overflow-y: hidden; overscroll-behavior: contain; scroll-snap-type: x mandatory; gap: 8px; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); }
+  .shops-strip a { flex: 0 0 104px; scroll-snap-align: none start; }
 
   /* ---- basket: bottom sheet ---- */
   .cart-drawer__panel { top: auto; right: 0; left: 0; bottom: 0; width: 100%; max-height: 88vh; border-radius: 24px 24px 0 0; transform: translateY(100%); }
