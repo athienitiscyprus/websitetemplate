@@ -210,6 +210,17 @@
     document.body.style.overflow = open ? "hidden" : "";
   }
 
+  function flyToCart(btn) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var card = btn.closest(".product"); var img = card && card.querySelector("img"); var target = document.querySelector(".header [data-cart-open]");
+    if (!img || !target) return;
+    var a = img.getBoundingClientRect(), z = target.getBoundingClientRect();
+    var ghost = img.cloneNode(); ghost.className = "fly"; ghost.style.cssText = "left:" + a.left + "px;top:" + a.top + "px;width:" + a.width + "px;height:" + a.height + "px";
+    document.body.appendChild(ghost);
+    requestAnimationFrame(function () { ghost.style.cssText += ";left:" + (z.left + z.width / 2 - 14) + "px;top:" + (z.top + z.height / 2 - 14) + "px;width:28px;height:28px;opacity:.4;border-radius:50%"; });
+    setTimeout(function () { ghost.remove(); target.classList.add("is-bump"); setTimeout(function () { target.classList.remove("is-bump"); }, 400); }, 700);
+  }
+
   function toast(msg) {
     var el = document.querySelector(".toast"); if (!el) { el = document.createElement("div"); el.className = "toast"; document.body.appendChild(el); }
     el.textContent = msg; el.classList.add("is-visible");
@@ -262,7 +273,7 @@
   /* ----- events ----------------------------------------------------------- */
   document.addEventListener("click", function (e) {
     var b;
-    if ((b = e.target.closest("[data-add]"))) { Cart.add(b.getAttribute("data-add")); toast(t("cart.added")); b.classList.add("is-added"); setTimeout(function () { b.classList.remove("is-added"); }, 600); }
+    if ((b = e.target.closest("[data-add]"))) { flyToCart(b); Cart.add(b.getAttribute("data-add")); toast(t("cart.added")); b.classList.add("is-added"); setTimeout(function () { b.classList.remove("is-added"); }, 600); }
     else if ((b = e.target.closest("[data-add-recipe]"))) { var r = C.recipes.filter(function (x) { return x.id === b.getAttribute("data-add-recipe"); })[0]; if (r) { r.items.forEach(function (it) { Cart.add(it[0], it[1]); }); toast(t("cart.added")); openDrawer(true); } }
     else if ((b = e.target.closest("[data-add-bundle]"))) { var bd = C.bundles.filter(function (x) { return x.id === b.getAttribute("data-add-bundle"); })[0]; if (bd) { bd.items.forEach(function (it) { if (it[1] > 0) Cart.add(it[0], it[1]); }); toast(t("cart.added")); openDrawer(true); } }
     else if ((b = e.target.closest("[data-qty]"))) { var cur = Cart.items().filter(function (x) { return x.id === b.getAttribute("data-qty"); })[0]; if (cur) Cart.setQty(cur.id, cur.qty + parseInt(b.getAttribute("data-delta"), 10)); }

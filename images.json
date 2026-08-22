@@ -1,0 +1,1241 @@
+[
+ {
+  "slot": "shop_bakery",
+  "description": "Bakery counter hero — breads on display shelf",
+  "photo_id": "1568254183919-78a4f43a2877",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1568254183919-78a4f43a2877?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_bakery",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/bakery.html"
+  ]
+ },
+ {
+  "slot": "shop_butchery",
+  "description": "Butchery hero — meat display counter",
+  "photo_id": "1625643269470-5d3e7b69fa34",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1625643269470-5d3e7b69fa34?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_butchery",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/butchery.html"
+  ]
+ },
+ {
+  "slot": "shop_deli",
+  "description": "Delicatessen hero — cheese board",
+  "photo_id": "1486297678162-eb2a19b0a32d",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_deli",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/deli.html"
+  ]
+ },
+ {
+  "slot": "shop_fish",
+  "description": "Fish market hero — fresh fish on ice",
+  "photo_id": "1611214774777-3d997a9d0e35",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1611214774777-3d997a9d0e35?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_fish",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/fish.html"
+  ]
+ },
+ {
+  "slot": "shop_fruit",
+  "description": "Fruit market hero — vegetable display",
+  "photo_id": "1488459716781-31db52582fe9",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_fruit",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/fruit.html"
+  ]
+ },
+ {
+  "slot": "shop_cellar",
+  "description": "Cellar hero — wine bottles and glasses",
+  "photo_id": "1510812431401-41d2bd2722f3",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_cellar",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/cellar.html"
+  ]
+ },
+ {
+  "slot": "shop_eatery",
+  "description": "Eatery hero — restaurant table",
+  "photo_id": "1414235077428-338989a2e8c0",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_eatery",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/eatery.html"
+  ]
+ },
+ {
+  "slot": "shop_living",
+  "description": "Living hero — kitchen interior",
+  "photo_id": "1556910103-1c02745aae4d",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_living",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/living.html"
+  ]
+ },
+ {
+  "slot": "shop_gifts",
+  "description": "Gifts hero — wrapped presents",
+  "photo_id": "1513201099705-a9746e1e201f",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=900&h=675&q=75&slot=shop_gifts",
+  "files": [
+   "departments.html",
+   "index.html",
+   "shops/gifts.html"
+  ]
+ },
+ {
+  "slot": "blog_souvla",
+  "description": "Blog: souvla guide — grilled skewers",
+  "photo_id": "1529006557810-274b9b2fc783",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&h=675&q=75&slot=blog_souvla",
+  "files": [
+   "blog.html",
+   "blog/flaounes-easter-bakery.el.html",
+   "blog/flaounes-easter-bakery.html",
+   "blog/halloumi-buying-guide.el.html",
+   "blog/halloumi-buying-guide.html",
+   "blog/sunday-souvla-guide.el.html",
+   "blog/sunday-souvla-guide.html",
+   "index.html"
+  ]
+ },
+ {
+  "slot": "blog_halloumi",
+  "description": "Blog: halloumi guide — grilled halloumi salad",
+  "photo_id": "1757522745249-d9a075cf38de",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1757522745249-d9a075cf38de?auto=format&fit=crop&w=900&h=675&q=75&slot=blog_halloumi",
+  "files": [
+   "blog.html",
+   "blog/flaounes-easter-bakery.el.html",
+   "blog/flaounes-easter-bakery.html",
+   "blog/halloumi-buying-guide.el.html",
+   "blog/halloumi-buying-guide.html",
+   "blog/sunday-souvla-guide.el.html",
+   "blog/sunday-souvla-guide.html",
+   "index.html"
+  ]
+ },
+ {
+  "slot": "blog_flaounes",
+  "description": "Blog: Easter bakery — pastries on tray",
+  "photo_id": "1483695028939-5bb13f8648b0",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=900&h=675&q=75&slot=blog_flaounes",
+  "files": [
+   "blog.html",
+   "blog/flaounes-easter-bakery.el.html",
+   "blog/flaounes-easter-bakery.html",
+   "blog/halloumi-buying-guide.el.html",
+   "blog/halloumi-buying-guide.html",
+   "blog/sunday-souvla-guide.el.html",
+   "blog/sunday-souvla-guide.html",
+   "index.html"
+  ]
+ },
+ {
+  "slot": "product_bk1",
+  "description": "Product photo: Village bread, 1kg",
+  "photo_id": "1608198093002-ad4e005484ec",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bk2",
+  "description": "Product photo: Koulouri with sesame",
+  "photo_id": "1599819055803-717bba43890f",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1599819055803-717bba43890f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bk3",
+  "description": "Product photo: Tyropita (cheese pie)",
+  "photo_id": "1483695028939-5bb13f8648b0",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bk4",
+  "description": "Product photo: Olive bread, 500g",
+  "photo_id": "1568254183919-78a4f43a2877",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1568254183919-78a4f43a2877?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bk5",
+  "description": "Product photo: Kourabiedes, 300g",
+  "photo_id": "1523294587484-bae6cc870010",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1523294587484-bae6cc870010?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bk6",
+  "description": "Product photo: Gluten-free loaf, 600g",
+  "photo_id": "1555507036-ab1f4038808a",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bt1",
+  "description": "Product photo: Pork souvla, shoulder",
+  "photo_id": "1602470521007-20293bd1fd31",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1602470521007-20293bd1fd31?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bt2",
+  "description": "Product photo: Lamb shoulder",
+  "photo_id": "1603048297172-c92544798d5a",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bt3",
+  "description": "Product photo: Sheftalia, handmade",
+  "photo_id": "1606677661991-446cea8ee182",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1606677661991-446cea8ee182?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bt4",
+  "description": "Product photo: Chicken thighs, free-range",
+  "photo_id": "1587593810167-a84920ea0781",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bt5",
+  "description": "Product photo: Beef mince, Irish",
+  "photo_id": "1602470520998-f4a52199a3d6",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_bt6",
+  "description": "Product photo: Marinated pork chops",
+  "photo_id": "1588168333986-5078d3ae3976",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_dl1",
+  "description": "Product photo: Halloumi, village, 250g",
+  "photo_id": "1691200007743-0652bbbc1d7d",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1691200007743-0652bbbc1d7d?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_dl2",
+  "description": "Product photo: Lountza, sliced, 100g",
+  "photo_id": "1541529086526-db283c563270",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_dl3",
+  "description": "Product photo: Anari, fresh, 300g",
+  "photo_id": "1559561853-08451507cbe7",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1559561853-08451507cbe7?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_dl4",
+  "description": "Product photo: Kalamata olives, 250g",
+  "photo_id": "1632932693914-5d8a9d9b2a94",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1632932693914-5d8a9d9b2a94?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_dl5",
+  "description": "Product photo: Manchego, 200g",
+  "photo_id": "1452195100486-9cc805987862",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_dl6",
+  "description": "Product photo: Meze platter for 6",
+  "photo_id": "1505253716362-afaea1d3d1af",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fs1",
+  "description": "Product photo: Sea bream, whole",
+  "photo_id": "1510130387422-82bed34b37e9",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fs2",
+  "description": "Product photo: Sea bass, whole",
+  "photo_id": "1611214774777-3d997a9d0e35",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1611214774777-3d997a9d0e35?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fs3",
+  "description": "Product photo: Squid, cleaned",
+  "photo_id": "1615141982883-c7ad0e69fd62",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fs4",
+  "description": "Product photo: Octopus",
+  "photo_id": "1559737558-2f5a35f4523b",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fs5",
+  "description": "Product photo: Prawns, large, 500g",
+  "photo_id": "1565680018434-b513d5e5fd47",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fs6",
+  "description": "Product photo: Salt cod, 400g",
+  "photo_id": "1580317092099-ade9937dee4f",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1580317092099-ade9937dee4f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fr1",
+  "description": "Product photo: Tomatoes, Cypriot",
+  "photo_id": "1592924357228-91a4daadcfea",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fr2",
+  "description": "Product photo: Cucumbers",
+  "photo_id": "1449300079323-02e209d9d3a6",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fr3",
+  "description": "Product photo: Lemons",
+  "photo_id": "1590502593747-42a996133562",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fr4",
+  "description": "Product photo: Watermelon",
+  "photo_id": "1589984662646-e7b2e4962f18",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1589984662646-e7b2e4962f18?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fr5",
+  "description": "Product photo: Fresh mint, bunch",
+  "photo_id": "1466637574441-749b8f19452f",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_fr6",
+  "description": "Product photo: Local honey, 450g",
+  "photo_id": "1587049352846-4a222e784d38",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cl1",
+  "description": "Product photo: Xynisteri, 750ml",
+  "photo_id": "1510812431401-41d2bd2722f3",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cl2",
+  "description": "Product photo: Maratheftiko, 750ml",
+  "photo_id": "1506377247377-2a5b3b417ebb",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cl3",
+  "description": "Product photo: Commandaria, 500ml",
+  "photo_id": "1474722883778-792e7990302f",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cl4",
+  "description": "Product photo: Zivania, 500ml",
+  "photo_id": "1514933651103-005eec06c04b",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cl5",
+  "description": "Product photo: Craft lager, 6×330ml",
+  "photo_id": "1535958636474-b021ee887b13",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_cl6",
+  "description": "Product photo: Prosecco, 750ml",
+  "photo_id": "1547595628-c61a29f496f0",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1547595628-c61a29f496f0?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_et1",
+  "description": "Product photo: Daily special, lunch",
+  "photo_id": "1559339352-11d035aa65de",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_et2",
+  "description": "Product photo: Grilled halloumi salad",
+  "photo_id": "1757522745249-d9a075cf38de",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1757522745249-d9a075cf38de?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_et3",
+  "description": "Product photo: Stuffed vegetables (gemista)",
+  "photo_id": "1606923829579-0cb981a83e2e",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_et4",
+  "description": "Product photo: Souvlaki pita",
+  "photo_id": "1529006557810-274b9b2fc783",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_et5",
+  "description": "Product photo: Freddo espresso",
+  "photo_id": "1509042239860-f550ce710b93",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_et6",
+  "description": "Product photo: Galaktoboureko",
+  "photo_id": "1551024506-0bccd828d307",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_lv1",
+  "description": "Product photo: Cotton bath towel",
+  "photo_id": "1620626011761-996317b8d101",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_lv2",
+  "description": "Product photo: Olive-wood cutting board",
+  "photo_id": "1594736797933-d0501ba2fe65",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_lv3",
+  "description": "Product photo: Scented candle, lemon",
+  "photo_id": "1602874801006-e26c4f2f5a7e",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1602874801006-e26c4f2f5a7e?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_lv4",
+  "description": "Product photo: Non-stick frying pan, 28cm",
+  "photo_id": "1585515320310-259814faf1d8",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1585515320310-259814faf1d8?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_lv5",
+  "description": "Product photo: Bed sheet set, double",
+  "photo_id": "1522771739844-6a9f6d5f14af",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_lv6",
+  "description": "Product photo: Storage jars, set of 3",
+  "photo_id": "1584285405429-136bf988919c",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1584285405429-136bf988919c?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_gf1",
+  "description": "Product photo: Gift box: Cyprus flavours",
+  "photo_id": "1549465220-1a8b9238cd48",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf1",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_gf2",
+  "description": "Product photo: Wooden toy train",
+  "photo_id": "1515488042361-ee00e0ddd4e4",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf2",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_gf3",
+  "description": "Product photo: Notebook, A5, linen",
+  "photo_id": "1517971053567-8bde93bc6a58",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1517971053567-8bde93bc6a58?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf3",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_gf4",
+  "description": "Product photo: Hand cream, olive oil",
+  "photo_id": "1556228720-195a672e8a03",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf4",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_gf5",
+  "description": "Product photo: Cotton T-shirt, plain",
+  "photo_id": "1521572163474-6864f9cf17ab",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf5",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "product_gf6",
+  "description": "Product photo: Greeting cards, pack of 5",
+  "photo_id": "1513885535751-8b9238bd345a",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf6",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "recipe_souvla",
+  "description": "Recipe: Sunday souvla",
+  "photo_id": "1544025162-d76694265947",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&h=675&q=75&slot=recipe_souvla",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "recipe_halloumi",
+  "description": "Recipe: halloumi & watermelon",
+  "photo_id": "1757522745249-d9a075cf38de",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1757522745249-d9a075cf38de?auto=format&fit=crop&w=900&h=675&q=75&slot=recipe_halloumi",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "recipe_fish",
+  "description": "Recipe: oven sea bream",
+  "photo_id": "1510130387422-82bed34b37e9",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&h=675&q=75&slot=recipe_fish",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "bundle_taverna",
+  "description": "Bundle: Taverna weekly — chef in kitchen",
+  "photo_id": "1556911220-bff31c812dba",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&h=675&q=75&slot=bundle_taverna",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "bundle_cafe",
+  "description": "Bundle: Café morning — café interior",
+  "photo_id": "1554118811-1e0d58224f24",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&h=675&q=75&slot=bundle_cafe",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "bundle_hotel",
+  "description": "Bundle: Hotel breakfast",
+  "photo_id": "1533089860892-a7c6f0a88666",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&h=675&q=75&slot=bundle_hotel",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "bundle_bar",
+  "description": "Bundle: Bar cellar case",
+  "photo_id": "1514933651103-005eec06c04b",
+  "size": "900x675",
+  "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&h=675&q=75&slot=bundle_bar",
+  "files": [
+   "js/catalog.js"
+  ]
+ },
+ {
+  "slot": "hero_sticker_bakery",
+  "description": "Home hero sticker — bakery & butchery",
+  "photo_id": "1608198093002-ad4e005484ec",
+  "size": "600x600",
+  "url": "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=600&h=600&q=75&slot=hero_sticker_bakery",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "hero_sticker_cellar",
+  "description": "Home hero sticker — the cellar",
+  "photo_id": "1506377247377-2a5b3b417ebb",
+  "size": "600x600",
+  "url": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&h=600&q=75&slot=hero_sticker_cellar",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "hero_sticker_living",
+  "description": "Home hero sticker — living & gifts",
+  "photo_id": "1600585154340-be6161a56a0c",
+  "size": "600x600",
+  "url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&h=600&q=75&slot=hero_sticker_living",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "hero_sticker_bonus",
+  "description": "Home hero sticker — Bonus Card",
+  "photo_id": "1556742049-0cfed4f6a45d",
+  "size": "500x400",
+  "url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&h=400&q=75&slot=hero_sticker_bonus",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "manifesto_bread",
+  "description": "Home manifesto inline chip — bread",
+  "photo_id": "1599819055803-717bba43890f",
+  "size": "160x120",
+  "url": "https://images.unsplash.com/photo-1599819055803-717bba43890f?auto=format&fit=crop&w=160&h=120&q=75&slot=manifesto_bread",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "manifesto_fish",
+  "description": "Home manifesto inline chip — fish",
+  "photo_id": "1611214774777-3d997a9d0e35",
+  "size": "160x120",
+  "url": "https://images.unsplash.com/photo-1611214774777-3d997a9d0e35?auto=format&fit=crop&w=160&h=120&q=75&slot=manifesto_fish",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "manifesto_wine",
+  "description": "Home manifesto inline chip — wine",
+  "photo_id": "1506377247377-2a5b3b417ebb",
+  "size": "160x120",
+  "url": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=160&h=120&q=75&slot=manifesto_wine",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "how_1",
+  "description": "How it works step 1 — browse the counters",
+  "photo_id": "1542838132-92c53300491e",
+  "size": "800x1000",
+  "url": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&h=1000&q=75&slot=how_1",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "how_2",
+  "description": "How it works step 2 — basket on phone",
+  "photo_id": "1512428559087-560fa5ceab42",
+  "size": "800x1000",
+  "url": "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&h=1000&q=75&slot=how_2",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "how_3",
+  "description": "How it works step 3 — collect at the counter",
+  "photo_id": "1598902507944-679c1f6d4081",
+  "size": "800x1000",
+  "url": "https://images.unsplash.com/photo-1598902507944-679c1f6d4081?auto=format&fit=crop&w=800&h=1000&q=75&slot=how_3",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "how_4",
+  "description": "How it works step 4 — Bonus points at the till",
+  "photo_id": "1556742049-0cfed4f6a45d",
+  "size": "800x1000",
+  "url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&h=1000&q=75&slot=how_4",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "home_story",
+  "description": "Home — about/story photo (inside the store)",
+  "photo_id": "1542838132-92c53300491e",
+  "size": "900x1125",
+  "url": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&h=1125&q=75&slot=home_story",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "tile_recipes",
+  "description": "Home tile — Recipes",
+  "photo_id": "1556909114-f6e7ad7d3136",
+  "size": "800x600",
+  "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&h=600&q=75&slot=tile_recipes",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "tile_business",
+  "description": "Home tile — For businesses",
+  "photo_id": "1556911220-bff31c812dba",
+  "size": "800x600",
+  "url": "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&h=600&q=75&slot=tile_business",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "tile_app",
+  "description": "Home tile — The app",
+  "photo_id": "1512428559087-560fa5ceab42",
+  "size": "800x600",
+  "url": "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&h=600&q=75&slot=tile_app",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "gallery_1",
+  "description": "Home gallery 1 — fruit & veg crates (large)",
+  "photo_id": "1534723452862-4c874018d66d",
+  "size": "800x600",
+  "url": "https://images.unsplash.com/photo-1534723452862-4c874018d66d?auto=format&fit=crop&w=800&h=600&q=75&slot=gallery_1",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "gallery_2",
+  "description": "Home gallery 2 — bakery",
+  "photo_id": "1555507036-ab1f4038808a",
+  "size": "400x300",
+  "url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&h=300&q=75&slot=gallery_2",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "gallery_3",
+  "description": "Home gallery 3 — deli",
+  "photo_id": "1486297678162-eb2a19b0a32d",
+  "size": "400x300",
+  "url": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=400&h=300&q=75&slot=gallery_3",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "gallery_4",
+  "description": "Home gallery 4 — cellar (wide)",
+  "photo_id": "1474722883778-792e7990302f",
+  "size": "800x300",
+  "url": "https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&w=800&h=300&q=75&slot=gallery_4",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "gallery_5",
+  "description": "Home gallery 5 — fish",
+  "photo_id": "1507991426709-5bbee2c6a189",
+  "size": "400x300",
+  "url": "https://images.unsplash.com/photo-1507991426709-5bbee2c6a189?auto=format&fit=crop&w=400&h=300&q=75&slot=gallery_5",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "gallery_6",
+  "description": "Home gallery 6 — eatery (tall)",
+  "photo_id": "1517248135467-4c7edcad34c4",
+  "size": "400x600",
+  "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&h=600&q=75&slot=gallery_6",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "gallery_7",
+  "description": "Home gallery 7 — gifts",
+  "photo_id": "1549465220-1a8b9238cd48",
+  "size": "400x300",
+  "url": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&h=300&q=75&slot=gallery_7",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "gallery_8",
+  "description": "Home gallery 8 — living",
+  "photo_id": "1556228453-efd6c1ff04f6",
+  "size": "400x300",
+  "url": "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=400&h=300&q=75&slot=gallery_8",
+  "files": [
+   "index.html"
+  ]
+ },
+ {
+  "slot": "departments_hero",
+  "description": "Departments page backdrop",
+  "photo_id": "1534723452862-4c874018d66d",
+  "size": "1600x700",
+  "url": "https://images.unsplash.com/photo-1534723452862-4c874018d66d?auto=format&fit=crop&w=1600&h=700&q=75&slot=departments_hero",
+  "files": [
+   "departments.html"
+  ]
+ },
+ {
+  "slot": "contact_hero",
+  "description": "Contact page hero — storefront",
+  "photo_id": "1441986300917-64674bd600d8",
+  "size": "1400x800",
+  "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&h=800&q=75&slot=contact_hero",
+  "files": [
+   "contact.html"
+  ]
+ },
+ {
+  "slot": "app_feature_f1",
+  "description": "App page feature card: f1",
+  "photo_id": "1543168256-418811576931",
+  "size": "600x400",
+  "url": "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=600&h=400&q=75&slot=app_feature_f1",
+  "files": [
+   "app.html"
+  ]
+ },
+ {
+  "slot": "app_feature_f2",
+  "description": "App page feature card: f2",
+  "photo_id": "1556740749-887f6717d7e4",
+  "size": "600x400",
+  "url": "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=600&h=400&q=75&slot=app_feature_f2",
+  "files": [
+   "app.html"
+  ]
+ },
+ {
+  "slot": "app_feature_f3",
+  "description": "App page feature card: f3",
+  "photo_id": "1556742049-0cfed4f6a45d",
+  "size": "600x400",
+  "url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&h=400&q=75&slot=app_feature_f3",
+  "files": [
+   "app.html"
+  ]
+ },
+ {
+  "slot": "app_feature_f4",
+  "description": "App page feature card: f4",
+  "photo_id": "1526367790999-0150786686a2",
+  "size": "600x400",
+  "url": "https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=600&h=400&q=75&slot=app_feature_f4",
+  "files": [
+   "app.html"
+  ]
+ },
+ {
+  "slot": "faq_hero",
+  "description": "FAQ page backdrop",
+  "photo_id": "1598902507944-679c1f6d4081",
+  "size": "1600x700",
+  "url": "https://images.unsplash.com/photo-1598902507944-679c1f6d4081?auto=format&fit=crop&w=1600&h=700&q=75&slot=faq_hero",
+  "files": [
+   "faq.html"
+  ]
+ },
+ {
+  "slot": "blog_hero",
+  "description": "Blog index backdrop",
+  "photo_id": "1568254183919-78a4f43a2877",
+  "size": "1600x700",
+  "url": "https://images.unsplash.com/photo-1568254183919-78a4f43a2877?auto=format&fit=crop&w=1600&h=700&q=75&slot=blog_hero",
+  "files": [
+   "blog.html"
+  ]
+ },
+ {
+  "slot": "offers_hero",
+  "description": "Offers page backdrop",
+  "photo_id": "1542838132-92c53300491e",
+  "size": "1600x700",
+  "url": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&h=700&q=75&slot=offers_hero",
+  "files": [
+   "offers.html"
+  ]
+ },
+ {
+  "slot": "recipes_hero",
+  "description": "Recipes page backdrop",
+  "photo_id": "1466637574441-749b8f19452f",
+  "size": "1600x700",
+  "url": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1600&h=700&q=75&slot=recipes_hero",
+  "files": [
+   "recipes.html"
+  ]
+ },
+ {
+  "slot": "business_hero",
+  "description": "Business page hero — chef kitchen",
+  "photo_id": "1556911220-bff31c812dba",
+  "size": "1400x900",
+  "url": "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1400&h=900&q=75&slot=business_hero",
+  "files": [
+   "business.html"
+  ]
+ },
+ {
+  "slot": "business_feature_f1",
+  "description": "Business page feature card: f1",
+  "photo_id": "1526367790999-0150786686a2",
+  "size": "600x400",
+  "url": "https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=600&h=400&q=75&slot=business_feature_f1",
+  "files": [
+   "business.html"
+  ]
+ },
+ {
+  "slot": "business_feature_f2",
+  "description": "Business page feature card: f2",
+  "photo_id": "1554224155-6726b3ff858f",
+  "size": "600x400",
+  "url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&h=400&q=75&slot=business_feature_f2",
+  "files": [
+   "business.html"
+  ]
+ },
+ {
+  "slot": "business_feature_f3",
+  "description": "Business page feature card: f3",
+  "photo_id": "1556157382-97eda2d62296",
+  "size": "600x400",
+  "url": "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&h=400&q=75&slot=business_feature_f3",
+  "files": [
+   "business.html"
+  ]
+ },
+ {
+  "slot": "account_avatar",
+  "description": "Account page avatar placeholder",
+  "photo_id": "1494790108377-be9c29b29330",
+  "size": "120x120",
+  "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&h=120&q=75&slot=account_avatar",
+  "files": [
+   "account.html"
+  ]
+ },
+ {
+  "slot": "account_tile_offers",
+  "description": "Account tile — offers",
+  "photo_id": "1542838132-92c53300491e",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&h=450&q=75&slot=account_tile_offers",
+  "files": [
+   "account.html"
+  ]
+ },
+ {
+  "slot": "account_tile_recipes",
+  "description": "Account tile — recipes",
+  "photo_id": "1556909114-f6e7ad7d3136",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&h=450&q=75&slot=account_tile_recipes",
+  "files": [
+   "account.html"
+  ]
+ },
+ {
+  "slot": "account_tile_business",
+  "description": "Account tile — business",
+  "photo_id": "1556911220-bff31c812dba",
+  "size": "600x450",
+  "url": "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=600&h=450&q=75&slot=account_tile_business",
+  "files": [
+   "account.html"
+  ]
+ },
+ {
+  "slot": "login_side",
+  "description": "Login page side photo",
+  "photo_id": "1543168256-418811576931",
+  "size": "1000x1200",
+  "url": "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=1000&h=1200&q=75&slot=login_side",
+  "files": [
+   "login.html"
+  ]
+ },
+ {
+  "slot": "demo_avatar_0",
+  "description": "Login page demo account avatar: Maria Georgiou",
+  "photo_id": "1494790108377-be9c29b29330",
+  "size": "80x80",
+  "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=75&slot=demo_avatar_0",
+  "files": [
+   "login.html"
+  ]
+ },
+ {
+  "slot": "demo_avatar_1",
+  "description": "Login page demo account avatar: Andreas Christou",
+  "photo_id": "1500648767791-00dcc994a43e",
+  "size": "80x80",
+  "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=75&slot=demo_avatar_1",
+  "files": [
+   "login.html"
+  ]
+ },
+ {
+  "slot": "demo_avatar_2",
+  "description": "Login page demo account avatar: Taverna Elia",
+  "photo_id": "1517248135467-4c7edcad34c4",
+  "size": "80x80",
+  "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=80&h=80&q=75&slot=demo_avatar_2",
+  "files": [
+   "login.html"
+  ]
+ },
+ {
+  "slot": "demo_avatar_3",
+  "description": "Login page demo account avatar: Café Kipos",
+  "photo_id": "1554118811-1e0d58224f24",
+  "size": "80x80",
+  "url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=80&h=80&q=75&slot=demo_avatar_3",
+  "files": [
+   "login.html"
+  ]
+ },
+ {
+  "slot": "register_side",
+  "description": "Register page side photo",
+  "photo_id": "1498579150354-977475b7ea0b",
+  "size": "1000x1200",
+  "url": "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?auto=format&fit=crop&w=1000&h=1200&q=75&slot=register_side",
+  "files": [
+   "register.html"
+  ]
+ }
+]

@@ -40,7 +40,7 @@ window.CATALOG = {
    "price": 2.2,
    "unit": "loaf",
    "kw": "bread loaf",
-   "img": "https://loremflickr.com/600/450/bread,loaf?lock=2001",
+   "img": "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk1",
    "was": 2.9,
    "tag": "fresh"
   },
@@ -54,7 +54,7 @@ window.CATALOG = {
    "price": 0.9,
    "unit": "each",
    "kw": "sesame bread ring",
-   "img": "https://loremflickr.com/600/450/sesame,bread,ring?lock=2002",
+   "img": "https://images.unsplash.com/photo-1599819055803-717bba43890f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk2",
    "tag": "fresh"
   },
   {
@@ -67,7 +67,7 @@ window.CATALOG = {
    "price": 1.8,
    "unit": "each",
    "kw": "cheese pie pastry",
-   "img": "https://loremflickr.com/600/450/cheese,pie,pastry?lock=2003"
+   "img": "https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk3"
   },
   {
    "id": "bk4",
@@ -79,7 +79,7 @@ window.CATALOG = {
    "price": 2.6,
    "unit": "loaf",
    "kw": "olive bread",
-   "img": "https://loremflickr.com/600/450/olive,bread?lock=2004",
+   "img": "https://images.unsplash.com/photo-1568254183919-78a4f43a2877?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk4",
    "was": 3.1
   },
   {
@@ -92,7 +92,7 @@ window.CATALOG = {
    "price": 4.9,
    "unit": "box",
    "kw": "cookies sugar almond",
-   "img": "https://loremflickr.com/600/450/cookies,sugar,almond?lock=2005"
+   "img": "https://images.unsplash.com/photo-1523294587484-bae6cc870010?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk5"
   },
   {
    "id": "bk6",
@@ -104,7 +104,7 @@ window.CATALOG = {
    "price": 4.2,
    "unit": "loaf",
    "kw": "bread sliced",
-   "img": "https://loremflickr.com/600/450/bread,sliced?lock=2006"
+   "img": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk6"
   },
   {
    "id": "bt1",
@@ -116,7 +116,7 @@ window.CATALOG = {
    "price": 7.9,
    "unit": "kg",
    "kw": "pork meat raw",
-   "img": "https://loremflickr.com/600/450/pork,meat,raw?lock=2011",
+   "img": "https://images.unsplash.com/photo-1602470521007-20293bd1fd31?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt1",
    "was": 9.5
   },
   {
@@ -129,7 +129,7 @@ window.CATALOG = {
    "price": 13.5,
    "unit": "kg",
    "kw": "lamb meat",
-   "img": "https://loremflickr.com/600/450/lamb,meat?lock=2012"
+   "img": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt2"
   },
   {
    "id": "bt3",
@@ -141,7 +141,7 @@ window.CATALOG = {
    "price": 9.8,
    "unit": "kg",
    "kw": "sausage grill",
-   "img": "https://loremflickr.com/600/450/sausage,grill?lock=2013",
+   "img": "https://images.unsplash.com/photo-1606677661991-446cea8ee182?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt3",
    "tag": "fresh"
   },
   {
@@ -154,7 +154,7 @@ window.CATALOG = {
    "price": 6.4,
    "unit": "kg",
    "kw": "chicken raw",
-   "img": "https://loremflickr.com/600/450/chicken,raw?lock=2014",
+   "img": "https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt4",
    "was": 7.2
   },
   {
@@ -167,7 +167,7 @@ window.CATALOG = {
    "price": 9.2,
    "unit": "kg",
    "kw": "beef mince",
-   "img": "https://loremflickr.com/600/450/beef,mince?lock=2015"
+   "img": "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt5"
   },
   {
    "id": "bt6",
@@ -179,7 +179,7 @@ window.CATALOG = {
    "price": 8.6,
    "unit": "kg",
    "kw": "pork chops",
-   "img": "https://loremflickr.com/600/450/pork,chops?lock=2016"
+   "img": "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt6"
   },
   {
    "id": "dl1",
@@ -191,7 +191,7 @@ window.CATALOG = {
    "price": 3.45,
    "unit": "pack",
    "kw": "halloumi cheese",
-   "img": "https://loremflickr.com/600/450/halloumi,cheese?lock=2021",
+   "img": "https://images.unsplash.com/photo-1691200007743-0652bbbc1d7d?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl1",
    "was": 4.1
   },
   {
@@ -204,7 +204,7 @@ window.CATALOG = {
    "price": 3.2,
    "unit": "pack",
    "kw": "cured meat sliced",
-   "img": "https://loremflickr.com/600/450/cured,meat,sliced?lock=2022"
+   "img": "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl2"
   },
   {
    "id": "dl3",
@@ -216,7 +216,7 @@ window.CATALOG = {
    "price": 2.8,
    "unit": "pack",
    "kw": "ricotta cheese",
-   "img": "https://loremflickr.com/600/450/ricotta,cheese?lock=2023",
+   "img": "https://images.unsplash.com/photo-1559561853-08451507cbe7?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl3",
    "tag": "fresh"
   },
   {
@@ -229,7 +229,7 @@ window.CATALOG = {
    "price": 2.95,
    "unit": "pack",
    "kw": "olives black",
-   "img": "https://loremflickr.com/600/450/olives,black?lock=2024"
+   "img": "https://images.unsplash.com/photo-1632932693914-5d8a9d9b2a94?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl4"
   },
   {
    "id": "dl5",
@@ -241,7 +241,7 @@ window.CATALOG = {
    "price": 5.4,
    "unit": "pack",
    "kw": "manchego cheese",
-   "img": "https://loremflickr.com/600/450/manchego,cheese?lock=2025",
+   "img": "https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl5",
    "was": 6.2
   },
   {
@@ -254,7 +254,7 @@ window.CATALOG = {
    "price": 24.0,
    "unit": "platter",
    "kw": "cheese platter meze",
-   "img": "https://loremflickr.com/600/450/cheese,platter,meze?lock=2026"
+   "img": "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl6"
   },
   {
    "id": "fs1",
@@ -266,7 +266,7 @@ window.CATALOG = {
    "price": 11.9,
    "unit": "kg",
    "kw": "sea bream fish",
-   "img": "https://loremflickr.com/600/450/sea,bream,fish?lock=2031",
+   "img": "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs1",
    "tag": "fresh"
   },
   {
@@ -279,7 +279,7 @@ window.CATALOG = {
    "price": 12.5,
    "unit": "kg",
    "kw": "sea bass fish",
-   "img": "https://loremflickr.com/600/450/sea,bass,fish?lock=2032",
+   "img": "https://images.unsplash.com/photo-1611214774777-3d997a9d0e35?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs2",
    "was": 14.0
   },
   {
@@ -292,7 +292,7 @@ window.CATALOG = {
    "price": 9.8,
    "unit": "kg",
    "kw": "squid seafood",
-   "img": "https://loremflickr.com/600/450/squid,seafood?lock=2033"
+   "img": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs3"
   },
   {
    "id": "fs4",
@@ -304,7 +304,7 @@ window.CATALOG = {
    "price": 14.9,
    "unit": "kg",
    "kw": "octopus seafood",
-   "img": "https://loremflickr.com/600/450/octopus,seafood?lock=2034"
+   "img": "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs4"
   },
   {
    "id": "fs5",
@@ -316,7 +316,7 @@ window.CATALOG = {
    "price": 8.9,
    "unit": "pack",
    "kw": "prawns shrimp",
-   "img": "https://loremflickr.com/600/450/prawns,shrimp?lock=2035",
+   "img": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs5",
    "was": 10.5
   },
   {
@@ -329,7 +329,7 @@ window.CATALOG = {
    "price": 6.7,
    "unit": "pack",
    "kw": "cod fish salted",
-   "img": "https://loremflickr.com/600/450/cod,fish,salted?lock=2036"
+   "img": "https://images.unsplash.com/photo-1580317092099-ade9937dee4f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fs6"
   },
   {
    "id": "fr1",
@@ -341,7 +341,7 @@ window.CATALOG = {
    "price": 1.9,
    "unit": "kg",
    "kw": "tomatoes fresh",
-   "img": "https://loremflickr.com/600/450/tomatoes,fresh?lock=2041",
+   "img": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr1",
    "tag": "fresh"
   },
   {
@@ -354,7 +354,7 @@ window.CATALOG = {
    "price": 1.4,
    "unit": "kg",
    "kw": "cucumber fresh",
-   "img": "https://loremflickr.com/600/450/cucumber,fresh?lock=2042"
+   "img": "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr2"
   },
   {
    "id": "fr3",
@@ -366,7 +366,7 @@ window.CATALOG = {
    "price": 1.6,
    "unit": "kg",
    "kw": "lemons citrus",
-   "img": "https://loremflickr.com/600/450/lemons,citrus?lock=2043",
+   "img": "https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr3",
    "was": 2.0
   },
   {
@@ -379,7 +379,7 @@ window.CATALOG = {
    "price": 0.7,
    "unit": "kg",
    "kw": "watermelon fruit",
-   "img": "https://loremflickr.com/600/450/watermelon,fruit?lock=2044",
+   "img": "https://images.unsplash.com/photo-1589984662646-e7b2e4962f18?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr4",
    "was": 0.95
   },
   {
@@ -392,7 +392,7 @@ window.CATALOG = {
    "price": 0.8,
    "unit": "bunch",
    "kw": "mint herb",
-   "img": "https://loremflickr.com/600/450/mint,herb?lock=2045"
+   "img": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr5"
   },
   {
    "id": "fr6",
@@ -404,7 +404,7 @@ window.CATALOG = {
    "price": 7.9,
    "unit": "jar",
    "kw": "honey jar",
-   "img": "https://loremflickr.com/600/450/honey,jar?lock=2046"
+   "img": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr6"
   },
   {
    "id": "cl1",
@@ -416,7 +416,7 @@ window.CATALOG = {
    "price": 8.5,
    "unit": "bottle",
    "kw": "white wine bottle",
-   "img": "https://loremflickr.com/600/450/white,wine,bottle?lock=2051",
+   "img": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl1",
    "was": 10.9
   },
   {
@@ -429,7 +429,7 @@ window.CATALOG = {
    "price": 12.9,
    "unit": "bottle",
    "kw": "red wine bottle",
-   "img": "https://loremflickr.com/600/450/red,wine,bottle?lock=2052"
+   "img": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl2"
   },
   {
    "id": "cl3",
@@ -441,7 +441,7 @@ window.CATALOG = {
    "price": 14.5,
    "unit": "bottle",
    "kw": "dessert wine bottle",
-   "img": "https://loremflickr.com/600/450/dessert,wine,bottle?lock=2053"
+   "img": "https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl3"
   },
   {
    "id": "cl4",
@@ -453,7 +453,7 @@ window.CATALOG = {
    "price": 11.0,
    "unit": "bottle",
    "kw": "spirit bottle glass",
-   "img": "https://loremflickr.com/600/450/spirit,bottle,glass?lock=2054",
+   "img": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl4",
    "was": 12.5
   },
   {
@@ -466,7 +466,7 @@ window.CATALOG = {
    "price": 9.9,
    "unit": "pack",
    "kw": "craft beer bottles",
-   "img": "https://loremflickr.com/600/450/craft,beer,bottles?lock=2055"
+   "img": "https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl5"
   },
   {
    "id": "cl6",
@@ -478,7 +478,7 @@ window.CATALOG = {
    "price": 10.9,
    "unit": "bottle",
    "kw": "prosecco sparkling",
-   "img": "https://loremflickr.com/600/450/prosecco,sparkling?lock=2056"
+   "img": "https://images.unsplash.com/photo-1547595628-c61a29f496f0?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl6"
   },
   {
    "id": "et1",
@@ -490,7 +490,7 @@ window.CATALOG = {
    "price": 8.5,
    "unit": "portion",
    "kw": "greek food plate",
-   "img": "https://loremflickr.com/600/450/greek,food,plate?lock=2061",
+   "img": "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et1",
    "tag": "fresh"
   },
   {
@@ -503,7 +503,7 @@ window.CATALOG = {
    "price": 7.2,
    "unit": "portion",
    "kw": "halloumi salad",
-   "img": "https://loremflickr.com/600/450/halloumi,salad?lock=2062",
+   "img": "https://images.unsplash.com/photo-1757522745249-d9a075cf38de?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et2",
    "was": 8.0
   },
   {
@@ -516,7 +516,7 @@ window.CATALOG = {
    "price": 7.9,
    "unit": "portion",
    "kw": "stuffed peppers tomatoes",
-   "img": "https://loremflickr.com/600/450/stuffed,peppers,tomatoes?lock=2063"
+   "img": "https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et3"
   },
   {
    "id": "et4",
@@ -528,7 +528,7 @@ window.CATALOG = {
    "price": 4.5,
    "unit": "each",
    "kw": "souvlaki pita",
-   "img": "https://loremflickr.com/600/450/souvlaki,pita?lock=2064"
+   "img": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et4"
   },
   {
    "id": "et5",
@@ -540,7 +540,7 @@ window.CATALOG = {
    "price": 2.5,
    "unit": "cup",
    "kw": "iced coffee",
-   "img": "https://loremflickr.com/600/450/iced,coffee?lock=2065"
+   "img": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et5"
   },
   {
    "id": "et6",
@@ -552,7 +552,7 @@ window.CATALOG = {
    "price": 3.2,
    "unit": "slice",
    "kw": "custard pastry dessert",
-   "img": "https://loremflickr.com/600/450/custard,pastry,dessert?lock=2066",
+   "img": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et6",
    "was": 3.8
   },
   {
@@ -565,7 +565,7 @@ window.CATALOG = {
    "price": 9.9,
    "unit": "each",
    "kw": "bath towel",
-   "img": "https://loremflickr.com/600/450/bath,towel?lock=2071",
+   "img": "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv1",
    "was": 12.9
   },
   {
@@ -578,7 +578,7 @@ window.CATALOG = {
    "price": 18.5,
    "unit": "each",
    "kw": "wooden cutting board",
-   "img": "https://loremflickr.com/600/450/wooden,cutting,board?lock=2072"
+   "img": "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv2"
   },
   {
    "id": "lv3",
@@ -590,7 +590,7 @@ window.CATALOG = {
    "price": 7.5,
    "unit": "each",
    "kw": "candle scented",
-   "img": "https://loremflickr.com/600/450/candle,scented?lock=2073"
+   "img": "https://images.unsplash.com/photo-1602874801006-e26c4f2f5a7e?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv3"
   },
   {
    "id": "lv4",
@@ -602,7 +602,7 @@ window.CATALOG = {
    "price": 22.0,
    "unit": "each",
    "kw": "frying pan",
-   "img": "https://loremflickr.com/600/450/frying,pan?lock=2074",
+   "img": "https://images.unsplash.com/photo-1585515320310-259814faf1d8?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv4",
    "was": 27.0
   },
   {
@@ -615,7 +615,7 @@ window.CATALOG = {
    "price": 34.0,
    "unit": "set",
    "kw": "bed sheets linen",
-   "img": "https://loremflickr.com/600/450/bed,sheets,linen?lock=2075"
+   "img": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv5"
   },
   {
    "id": "lv6",
@@ -627,7 +627,7 @@ window.CATALOG = {
    "price": 11.9,
    "unit": "set",
    "kw": "glass jars",
-   "img": "https://loremflickr.com/600/450/glass,jars?lock=2076"
+   "img": "https://images.unsplash.com/photo-1584285405429-136bf988919c?auto=format&fit=crop&w=600&h=450&q=75&slot=product_lv6"
   },
   {
    "id": "gf1",
@@ -639,7 +639,7 @@ window.CATALOG = {
    "price": 29.0,
    "unit": "box",
    "kw": "gift box food",
-   "img": "https://loremflickr.com/600/450/gift,box,food?lock=2081",
+   "img": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf1",
    "was": 34.0
   },
   {
@@ -652,7 +652,7 @@ window.CATALOG = {
    "price": 14.5,
    "unit": "each",
    "kw": "wooden toy train",
-   "img": "https://loremflickr.com/600/450/wooden,toy,train?lock=2082"
+   "img": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf2"
   },
   {
    "id": "gf3",
@@ -664,7 +664,7 @@ window.CATALOG = {
    "price": 6.9,
    "unit": "each",
    "kw": "notebook stationery",
-   "img": "https://loremflickr.com/600/450/notebook,stationery?lock=2083"
+   "img": "https://images.unsplash.com/photo-1517971053567-8bde93bc6a58?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf3"
   },
   {
    "id": "gf4",
@@ -676,7 +676,7 @@ window.CATALOG = {
    "price": 5.4,
    "unit": "each",
    "kw": "hand cream cosmetic",
-   "img": "https://loremflickr.com/600/450/hand,cream,cosmetic?lock=2084",
+   "img": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf4",
    "was": 6.5
   },
   {
@@ -689,7 +689,7 @@ window.CATALOG = {
    "price": 8.9,
    "unit": "each",
    "kw": "tshirt cotton",
-   "img": "https://loremflickr.com/600/450/tshirt,cotton?lock=2085"
+   "img": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf5"
   },
   {
    "id": "gf6",
@@ -701,13 +701,13 @@ window.CATALOG = {
    "price": 3.9,
    "unit": "pack",
    "kw": "greeting cards",
-   "img": "https://loremflickr.com/600/450/greeting,cards?lock=2086"
+   "img": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf6"
   }
  ],
  "recipes": [
   {
    "id": "r1",
-   "img": "https://loremflickr.com/900/675/souvla,grilled,pork?lock=2101",
+   "img": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&h=675&q=75&slot=recipe_souvla",
    "minutes": 90,
    "serves": 6,
    "items": [
@@ -749,7 +749,7 @@ window.CATALOG = {
   },
   {
    "id": "r2",
-   "img": "https://loremflickr.com/900/675/halloumi,salad,grilled?lock=2102",
+   "img": "https://images.unsplash.com/photo-1757522745249-d9a075cf38de?auto=format&fit=crop&w=900&h=675&q=75&slot=recipe_halloumi",
    "minutes": 20,
    "serves": 2,
    "items": [
@@ -791,7 +791,7 @@ window.CATALOG = {
   },
   {
    "id": "r3",
-   "img": "https://loremflickr.com/900/675/baked,fish,lemon?lock=2103",
+   "img": "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&h=675&q=75&slot=recipe_fish",
    "minutes": 35,
    "serves": 2,
    "items": [
@@ -835,7 +835,7 @@ window.CATALOG = {
  "bundles": [
   {
    "id": "b1",
-   "img": "https://loremflickr.com/900/675/restaurant,kitchen,chef?lock=2201",
+   "img": "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&h=675&q=75&slot=bundle_taverna",
    "price": 189.0,
    "was": 215.0,
    "items": [
@@ -877,7 +877,7 @@ window.CATALOG = {
   },
   {
    "id": "b2",
-   "img": "https://loremflickr.com/900/675/cafe,coffee,pastry?lock=2202",
+   "img": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&h=675&q=75&slot=bundle_cafe",
    "price": 96.0,
    "was": 110.0,
    "items": [
@@ -915,7 +915,7 @@ window.CATALOG = {
   },
   {
    "id": "b3",
-   "img": "https://loremflickr.com/900/675/hotel,breakfast,buffet?lock=2203",
+   "img": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&h=675&q=75&slot=bundle_hotel",
    "price": 240.0,
    "was": 270.0,
    "items": [
@@ -957,7 +957,7 @@ window.CATALOG = {
   },
   {
    "id": "b4",
-   "img": "https://loremflickr.com/900/675/wine,bottles,bar?lock=2204",
+   "img": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&h=675&q=75&slot=bundle_bar",
    "price": 138.0,
    "was": 155.0,
    "items": [

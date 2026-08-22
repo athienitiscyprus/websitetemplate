@@ -89,7 +89,7 @@
       "nav.departments": "All departments",
 
       "hero.eyebrow": "Pallouriotissa, Nicosia · since 1963",
-      "hero.title": "Your neighbourhood supermarket, done properly.",
+      "hero.title": "Your neighbourhood supermarket,",
       "hero.lead": "Fresh bread from our own bakery, a butcher who knows your name, and a cellar worth browsing. Everything for the house, in one friendly place on John Kennedy Avenue.",
       "hero.cta1": "Explore the departments",
       "story.t4": "Bonus Card launches; the Athienitis app is announced.",
@@ -233,7 +233,14 @@
       "business.f3": "A dedicated contact", "business.f3.p": "One person who knows your menu and calls when something's better this week.",
       "nav.offers": "Offers", "nav.recipes": "Recipes", "nav.business": "For businesses", "nav.business.short": "Business", "nav.account": "Account",
       "home.recipes": "Three dinners from the counters", "home.business": "Run a kitchen? See the trade bundles",
-      "home.more": "More from Athienitis", "home.app": "The app, coming soon", "home.gallery": "Inside the market",
+      "home.more": "More from Athienitis",
+      "manifesto.1": "Shop fresh bread,", "manifesto.2": "the day's catch", "manifesto.3": "and a proper bottle", "manifesto.4": "from people who've run the same counters for decades. One basket, one till, one friendly corner of Nicosia.",
+      "how.eyebrow": "How it works", "how.title": "From the counter to your kitchen.", "how.badge": "Ready for collection",
+      "how.s1": "Browse the counters", "how.s1.p": "Nine specialist counters online, with this week's offers and what's fresh today.",
+      "how.s2": "Build your basket", "how.s2.p": "Add products, recipes or a whole business bundle. Sign in to keep it between visits.",
+      "how.s3": "Collect or get it delivered", "how.s3.p": "Pick a slot. We pack it and it's waiting at the collection desk — or on your restaurant's doorstep.",
+      "how.s4": "Earn Bonus points", "how.s4.p": "Every euro earns a point, doubled on Wednesdays. Redeem at the till with one tap.",
+      "hero.rot.1": "done properly.", "hero.rot.2": "open 7 days.", "hero.rot.3": "since 1963.", "hero.rot.4": "in your pocket.", "home.app": "The app, coming soon", "home.gallery": "Inside the market",
       "order.status.preparing": "Being prepared", "order.status.collected": "Collected", "order.status.delivered": "Delivered", "order.reorder": "Order again",
       "account.overview": "Overview", "account.details": "Personal details", "account.address": "Delivery address", "account.noaddress": "No address saved yet", "account.saved": "Details saved",
       "account.phone": "Phone", "account.company": "Company name", "account.vat": "VAT number", "account.street": "Street & number", "account.area": "Area", "account.city": "City", "account.postcode": "Postcode", "account.notes": "Delivery notes", "account.save": "Save details",
@@ -263,7 +270,7 @@
       "nav.departments": "Όλα τα τμήματα",
 
       "hero.eyebrow": "Παλλουριώτισσα, Λευκωσία · από το 1963",
-      "hero.title": "Η υπεραγορά της γειτονιάς σας, όπως πρέπει.",
+      "hero.title": "Η υπεραγορά της γειτονιάς σας,",
       "hero.lead": "Φρέσκο ψωμί από τον δικό μας φούρνο, κρεοπώλης που σας ξέρει με το όνομα και κάβα που αξίζει μια βόλτα. Όλα για το σπίτι, σε ένα φιλικό μέρος στη λεωφόρο Τζων Κέννεντυ.",
       "hero.cta1": "Δείτε τα τμήματα",
       "hero.cta2": "Προσφορές εβδομάδας",
@@ -407,7 +414,14 @@
       "business.f3": "Προσωπικός συνεργάτης", "business.f3.p": "Ένας άνθρωπος που ξέρει το μενού σας και σας καλεί όταν κάτι είναι καλύτερο αυτή την εβδομάδα.",
       "nav.offers": "Προσφορές", "nav.recipes": "Συνταγές", "nav.business": "Για επιχειρήσεις", "nav.business.short": "Επιχειρήσεις", "nav.account": "Λογαριασμός",
       "home.recipes": "Τρία δείπνα από τους πάγκους", "home.business": "Έχετε κουζίνα; Δείτε τα επαγγελματικά πακέτα",
-      "home.more": "Περισσότερα από τον Αθηαινίτη", "home.app": "Η εφαρμογή, σύντομα", "home.gallery": "Μέσα στην αγορά",
+      "home.more": "Περισσότερα από τον Αθηαινίτη",
+      "manifesto.1": "Ψωνίστε φρέσκο ψωμί,", "manifesto.2": "το ψάρι της ημέρας", "manifesto.3": "και μια σωστή φιάλη", "manifesto.4": "από ανθρώπους που κρατούν τους ίδιους πάγκους για δεκαετίες. Ένα καλάθι, ένα ταμείο, μια φιλική γωνιά της Λευκωσίας.",
+      "how.eyebrow": "Πώς λειτουργεί", "how.title": "Από τον πάγκο στην κουζίνα σας.", "how.badge": "Έτοιμη για παραλαβή",
+      "how.s1": "Δείτε τους πάγκους", "how.s1.p": "Εννέα εξειδικευμένοι πάγκοι online, με τις προσφορές της εβδομάδας και ό,τι είναι φρέσκο σήμερα.",
+      "how.s2": "Φτιάξτε το καλάθι σας", "how.s2.p": "Προσθέστε προϊόντα, συνταγές ή ολόκληρο επαγγελματικό πακέτο. Συνδεθείτε για να το κρατήσετε.",
+      "how.s3": "Παραλαβή ή διανομή", "how.s3.p": "Διαλέξτε ώρα. Το ετοιμάζουμε και σας περιμένει στο γκισέ — ή στην πόρτα του εστιατορίου σας.",
+      "how.s4": "Κερδίστε πόντους Bonus", "how.s4.p": "Κάθε ευρώ δίνει έναν πόντο, διπλό την Τετάρτη. Εξαργύρωση στο ταμείο με ένα άγγιγμα.",
+      "hero.rot.1": "όπως πρέπει.", "hero.rot.2": "7 μέρες τη βδομάδα.", "hero.rot.3": "από το 1963.", "hero.rot.4": "στην τσέπη σας.", "home.app": "Η εφαρμογή, σύντομα", "home.gallery": "Μέσα στην αγορά",
       "order.status.preparing": "Σε προετοιμασία", "order.status.collected": "Παραλήφθηκε", "order.status.delivered": "Παραδόθηκε", "order.reorder": "Ξανά η ίδια",
       "account.overview": "Επισκόπηση", "account.details": "Προσωπικά στοιχεία", "account.address": "Διεύθυνση παράδοσης", "account.noaddress": "Δεν έχει αποθηκευτεί διεύθυνση", "account.saved": "Τα στοιχεία αποθηκεύτηκαν",
       "account.phone": "Τηλέφωνο", "account.company": "Επωνυμία", "account.vat": "ΑΦΜ", "account.street": "Οδός & αριθμός", "account.area": "Περιοχή", "account.city": "Πόλη", "account.postcode": "Τ.Κ.", "account.notes": "Σημειώσεις παράδοσης", "account.save": "Αποθήκευση",
@@ -702,9 +716,118 @@
     });
   }
 
+  /* -----------------------------------------------------------------------
+     11. Motion: word-split headline, rotating word, scroll-linked manifesto,
+         sticky "how it works", photo marquee, magnetic buttons, card tilt,
+         header that hides on scroll down.
+     ----------------------------------------------------------------------- */
+  var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function splitWords(el) {
+    var text = el.textContent.trim(); el.textContent = "";
+    text.split(/\s+/).forEach(function (w, i) {
+      var sp = document.createElement("span"); sp.className = "w"; sp.style.transitionDelay = (i * 55) + "ms";
+      sp.innerHTML = "<i>" + w + "</i>"; el.appendChild(sp); el.appendChild(document.createTextNode(" "));
+    });
+  }
+  function initHeroWords() {
+    var h = document.querySelector(".hero h1"); if (!h) return;
+    var rot = document.createElement("span"); rot.className = "rot"; rot.innerHTML = "<b></b>";
+    function build() {
+      splitWords(h); h.appendChild(document.createTextNode(" ")); h.appendChild(rot);
+      rot.querySelector("b").textContent = t("hero.rot.1");
+      requestAnimationFrame(function () { h.classList.add("is-split"); });
+    }
+    build();
+    var i = 0;
+    if (!REDUCE) setInterval(function () {
+      i = (i + 1) % 4; var b = rot.querySelector("b"); b.classList.add("out");
+      setTimeout(function () { b.textContent = t("hero.rot." + (i + 1)); b.classList.remove("out"); b.classList.add("in"); setTimeout(function () { b.classList.remove("in"); }, 500); }, 350);
+    }, 3200);
+    window.ATH.onLang(function () { initMarquee(); h.classList.remove("is-split"); h.textContent = t("hero.title"); build(); });
+  }
+
+  function initManifesto() {
+    var el = document.querySelector("[data-words]"); if (!el) return;
+    function build() {
+      var nodes = Array.prototype.slice.call(el.childNodes);
+      nodes.forEach(function (n) {
+        if (n.nodeType === 3 && !n.textContent.trim()) return;
+        if (n.nodeType === 1 && n.tagName === "SPAN") {
+          var frag = document.createDocumentFragment();
+          n.textContent.trim().split(/\s+/).forEach(function (w) { var sp = document.createElement("span"); sp.className = "mw"; sp.textContent = w; frag.appendChild(sp); frag.appendChild(document.createTextNode(" ")); });
+          n.replaceWith(frag);
+        }
+      });
+    }
+    build();
+    var words = function () { return el.querySelectorAll(".mw, .chip"); };
+    function onScroll() {
+      var r = el.getBoundingClientRect(); var vh = window.innerHeight;
+      var p = (vh * 0.85 - r.top) / (r.height + vh * 0.35); p = Math.max(0, Math.min(1, p));
+      var ws = words(); var n = Math.floor(p * (ws.length + 2));
+      ws.forEach(function (w, i) { w.classList.toggle("on", i < n); });
+    }
+    if (REDUCE) { words().forEach(function (w) { w.classList.add("on"); }); return; }
+    window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+    window.ATH.onLang(function () {
+      // re-translate the text spans then re-split
+      el.querySelectorAll(".mw").forEach(function (x) { x.remove(); });
+      var keys = ["manifesto.1", "manifesto.2", "manifesto.3", "manifesto.4"]; var chips = el.querySelectorAll(".chip"); var k = 0;
+      var out = document.createDocumentFragment();
+      keys.forEach(function (key, idx) { var sp = document.createElement("span"); sp.textContent = t(key); out.appendChild(sp); if (chips[idx]) out.appendChild(chips[idx]); });
+      el.innerHTML = ""; el.appendChild(out); build(); onScroll();
+    });
+  }
+
+  function initSteps() {
+    var wrap = document.querySelector("[data-steps]"); if (!wrap) return;
+    var steps = wrap.querySelectorAll(".how__step"), imgs = wrap.querySelectorAll(".how__frame img");
+    function activate(i) { steps.forEach(function (s, k) { s.classList.toggle("is-active", k === i); }); imgs.forEach(function (im, k) { im.classList.toggle("is-active", k === i); }); }
+    if (!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) activate(parseInt(e.target.getAttribute("data-step"), 10)); }); }, { rootMargin: "-45% 0px -45% 0px" });
+    steps.forEach(function (s) { io.observe(s); s.addEventListener("click", function () { activate(parseInt(s.getAttribute("data-step"), 10)); }); });
+  }
+
+  function initMarquee() {
+    var track = document.querySelector("[data-marquee]"); if (!track || !window.CATALOG) return;
+    var items = window.CATALOG.products.filter(function (p) { return p.was || p.tag; }).slice(0, 12);
+    var html = items.map(function (p) { return '<a class="marquee__item" href="' + (document.body.getAttribute("data-base") || "") + 'shops/' + p.section + '.html"><img src="' + p.img + '" alt="" loading="lazy"><span>' + (p.name[currentLang] || p.name.en) + '</span></a>'; }).join("");
+    track.innerHTML = html + html;
+  }
+
+  function initMagnetic() {
+    if (REDUCE || !window.matchMedia("(hover: hover)").matches) return;
+    document.querySelectorAll(".btn--primary, .ai__fab, .icon-btn").forEach(function (b) {
+      b.addEventListener("mousemove", function (e) { var r = b.getBoundingClientRect(); var x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2; b.style.transform = "translate(" + x * 0.18 + "px," + y * 0.18 + "px)"; });
+      b.addEventListener("mouseleave", function () { b.style.transform = ""; });
+    });
+  }
+
+  function initTilt() {
+    if (REDUCE || !window.matchMedia("(hover: hover)").matches) return;
+    document.addEventListener("mousemove", function (e) {
+      var c = e.target.closest(".dept, .tile, .post, .bundle, .feature, .recipe"); if (!c) return;
+      var r = c.getBoundingClientRect(); var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      c.style.transform = "perspective(900px) rotateX(" + (-y * 5) + "deg) rotateY(" + (x * 6) + "deg) translateY(-4px)";
+      c.classList.add("is-tilt");
+    });
+    document.addEventListener("mouseout", function (e) { var c = e.target.closest(".dept, .tile, .post, .bundle, .feature, .recipe"); if (c && !c.contains(e.relatedTarget)) { c.style.transform = ""; c.classList.remove("is-tilt"); } });
+  }
+
+  function initHideHeader() {
+    var h = document.querySelector(".header"); if (!h || REDUCE) return;
+    var last = 0;
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY; if (Math.abs(y - last) < 8) return;
+      h.classList.toggle("is-hidden", y > last && y > 240); last = y;
+    }, { passive: true });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("is-loaded");
     initTransitions();
+    initHeroWords(); initManifesto(); initSteps(); initMarquee(); initMagnetic(); initTilt(); initHideHeader();
     initCounters();
     initParallax();
     initFaq();

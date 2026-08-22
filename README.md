@@ -35,13 +35,26 @@ Four template customers are seeded into the browser on first visit (password `de
 - **EN / EL switch** with no reload; remembered across visits, Greek browsers default to EL. UI strings live in `js/main.js` (`I18N`); shop-page copy is injected per page (`window.SHOP_CONTENT`); blog articles are separate files per language and the switch navigates between them.
 - **Live "Open now / Closed"** badge in Europe/Nicosia time, today highlighted in the hours table. Edit `HOURS` in `js/main.js`.
 - **SEO / GEO:** canonical + Open Graph on every page, `GroceryStore` schema with departments and opening hours, `Store` schema per counter, `Article` schema per post, `FAQPage` schema (EN + EL), `MobileApplication` schema, sitemap and robots.
+- **Motion (Grabbit-inspired):** hero headline splits into words that rise in, with a rotating last phrase; a large manifesto line whose words light up as you scroll, with inline photo chips that pop in; a sticky "How it works" panel whose photo swaps as each step scrolls into view; a product photo marquee; magnetic primary buttons; 3D tilt on cards; add-to-basket fly animation; header that hides on scroll down and returns on scroll up.
 - **Page transitions:** fade-out on internal links and fade-in on load, a scroll progress bar under the header, and staggered scroll-reveal for every grid (products, posts, tiles, gallery, features).
 - **Animations:** orchestrated hero load sequence, count-up stats, pointer-follow stickers, image zoom on hover, Ken Burns shop heroes, floating phone mockup, FAQ accordion, scroll reveals — all disabled under `prefers-reduced-motion`.
 - Sticky header with mega menus, mobile drawer, keyboard-visible focus, skip link.
 - Forms work without a backend (local success state). Add `data-endpoint="https://formspree.io/f/XXXX"` to any `<form>` to receive submissions.
 
 ## Photos
-Template photos are hot-linked from **LoremFlickr** (`https://loremflickr.com/W/H/keyword?lock=N`) — Creative Commons Flickr photos matched by keyword with a credit burned into the corner. They are placeholders: replace each `src` with the store's own photography before launch (ideally in `assets/img/`). Photo URLs are defined once in the build data and reused across cards, heroes and articles.
+Every image is a named *slot* listed in `images.json` (slot, description, size, hosted URL, files that use it). Photos are hand-picked Unsplash images (free to use, no attribution required) chosen to match each product and counter — e.g. `product_dl1` is a plate of halloumi, `shop_fish` is fish on ice.
+
+### Replacing a photo — `tools/replace_image.py`
+```
+python tools/replace_image.py list                  # every slot, grouped, with the files it appears in
+python tools/replace_image.py list butchery         # filter
+python tools/replace_image.py preview               # contact sheet of all current images (opens in browser)
+python tools/replace_image.py show shop_bakery      # details + preview of one slot
+python tools/replace_image.py set shop_bakery https://…/photo.jpg     # use a hosted image
+python tools/replace_image.py set shop_bakery ~/Desktop/bakery.jpg    # local file → resized to slot size, saved in assets/img/, all pages updated
+python tools/replace_image.py undo shop_bakery      # back to the original
+```
+Local files are resized with Pillow (`pip install pillow`); relative paths are computed per page so `shops/` and `blog/` keep working. Commit the changed files and `assets/img/` afterwards.
 
 ## Deploy on GitHub Pages
 1. Push the contents of this folder to the repository root (`main` branch).
