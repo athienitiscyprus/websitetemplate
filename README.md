@@ -25,6 +25,9 @@ Static, dependency-free website proposal for Athienitis Supermarket (Nicosia). B
 
 Accounts, basket and orders are stored in the browser's `localStorage` so the demo works on GitHub Pages without a server. For production, replace the `STORE`/`Account`/`Cart` functions in `shop.js` with API calls and move the catalog to a CMS or the app backend.
 
+## Mobile experience (`css/mobile.css` + `js/mobile.js`)
+Below 820px the site becomes app-like rather than a squeezed desktop page: a bottom tab bar (Home, Counters, Offers, Search, Basket, Account) with an animated active indicator and live basket badge; counter chips that slide in under the hero instead of the sticker cluster; horizontal snap carousels for departments, tiles, articles and feature cards (the card in view scales up); a basket that rises as a bottom sheet; a full-screen search with popular terms and counter shortcuts; a floating "n items · €total · View basket" pill; 2-up product cards with a round "+" add button and fly-to-basket towards the tab bar; tap-press feedback; a back-to-top button; compact top bar and header that hides while scrolling down. "How it works" becomes a vertical stepper and long copy is trimmed.
+
 ## Configuration — `js/config.js`
 - `theme`: `"auto"` (picks Easter / summer / Christmas by date using the Orthodox Easter calendar), or force `"default"`, `"easter"`, `"summer"`, `"christmas"`. A theme changes the accent colours, adds a campaign card under the hero (EN/EL copy, photo, link) and swaps the announcement ticker. Edit the copy and photos in the same file.
 - `aiEndpoint`: URL of a hosted model for the assistant (optional).

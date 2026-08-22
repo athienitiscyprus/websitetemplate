@@ -219,7 +219,8 @@
 
   function flyToCart(btn) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var card = btn.closest(".product"); var img = card && card.querySelector("img"); var target = document.querySelector(".header [data-cart-open]");
+    var card = btn.closest(".product"); var img = card && card.querySelector("img"); var target = document.querySelector(".tabbar [data-tab-action=cart]") || document.querySelector(".header [data-cart-open]");
+    if (target && target.offsetParent === null) target = document.querySelector(".header [data-cart-open]");
     if (!img || !target) return;
     var a = img.getBoundingClientRect(), z = target.getBoundingClientRect();
     var ghost = img.cloneNode(); ghost.className = "fly"; ghost.style.cssText = "left:" + a.left + "px;top:" + a.top + "px;width:" + a.width + "px;height:" + a.height + "px";
