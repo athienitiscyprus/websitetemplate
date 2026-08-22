@@ -603,7 +603,13 @@
     // On phones reveal a little *before* the element enters the screen, so fast scrolling never meets a blank card.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); }
+        if (!en.isIntersecting) return;
+        // Cards in a horizontal carousel live in one row: reveal the whole row together, otherwise
+        // off-screen cards stay invisible and fade in mid-swipe (visible as a flicker on phones).
+        var row = en.target.parentNode;
+        if (row && row.classList && row.classList.contains("m-carousel")) {
+          Array.prototype.forEach.call(row.children, function (k) { k.classList.add("is-visible"); io.unobserve(k); });
+        } else { en.target.classList.add("is-visible"); io.unobserve(en.target); }
       });
     }, IS_MOBILE ? { threshold: 0, rootMargin: "0px 0px 18% 0px" } : { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
     els.forEach(function (el) { io.observe(el); });

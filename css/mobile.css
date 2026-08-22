@@ -72,8 +72,9 @@
      with the neighbours peeking in on both sides */
   .m-carousel { --w: 74vw; display: flex !important; grid-template-columns: none !important; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(50vw - var(--w) / 2); scroll-padding-inline: calc(50vw - var(--w) / 2); }
   .m-carousel::-webkit-scrollbar { display: none; }
-  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; }   /* no dimming/scaling while swiping — nothing changes on the cards mid-gesture */
-  .m-carousel > .reveal { transform: none; }
+  .m-carousel > * { flex: 0 0 var(--w); scroll-snap-align: center; transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; }   /* no dimming/scaling while swiping — nothing changes on the cards mid-gesture */
+  /* own GPU layer + no vertical slide-in: the scroll-reveal only fades, so nothing re-rasterises mid-swipe */
+  .m-carousel > .reveal, .m-carousel > .reveal.is-visible { transform: translateZ(0); }
   .depts.m-carousel { --w: 72vw; } .depts.m-carousel > * { min-height: 230px; }
   .tiles.m-carousel { --w: 78vw; } .tiles.m-carousel > * { aspect-ratio: 16/10; }
   .posts.m-carousel { --w: 80vw; }
@@ -204,12 +205,11 @@
   .mtop svg { width: 18px; height: 18px; }
   .mtop.is-in { opacity: 1; transform: none; pointer-events: auto; }
   .ai { left: 14px; right: auto; bottom: calc(84px + env(safe-area-inset-bottom)); }
-  .cart-fab { right: 14px; bottom: calc(84px + env(safe-area-inset-bottom)); height: 52px; padding: 0 14px; }
+  .cart-fab { right: 14px; bottom: calc(84px + env(safe-area-inset-bottom)); width: 52px; height: 52px; padding: 0; }
   .cart-fab svg { width: 22px; height: 22px; }
   .mtop { right: 14px; bottom: calc(146px + env(safe-area-inset-bottom)); }
   .ai__fab { width: 50px; height: 50px; }
   .ai__panel { bottom: 62px; width: calc(100vw - 28px); height: min(520px, calc(100vh - 200px)); }
-  .cart-drawer.is-open ~ .cart-fab { visibility: hidden; }
   .drawer__tools .topbar__me { background: var(--leaf-tint); color: var(--ink); }
   .drawer__tools .topbar__pts { color: var(--leaf-deep); border-color: var(--line); }
 
@@ -249,7 +249,7 @@
 
 @media (max-width: 820px) and (prefers-reduced-motion: reduce) {
   .mchip, .tabbar, .mpill, .msearch { animation: none; }
-  .m-carousel > * { transform: none; opacity: 1; }
+  .m-carousel > * { transform: translateZ(0); opacity: 1; }
 }
 @media (max-width: 820px) {
   .product__price small { display: none; }

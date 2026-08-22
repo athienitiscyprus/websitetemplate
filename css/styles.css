@@ -1045,16 +1045,14 @@ html.dark .ai__fab { background: var(--orange); }
 html.dark .subnav--counters { background: var(--paper-2); }
 
 /* ----- basket FAB (bottom right) + signed-in top bar ---------------------- */
-.cart-fab { position: fixed; right: 22px; bottom: 22px; z-index: 400; display: inline-flex; align-items: center; gap: 10px; height: 58px; padding: 0 17px; border-radius: 999px; border: 0; background: var(--orange); color: #fff; box-shadow: 0 14px 30px rgba(242,111,33,.4); transition: transform .3s var(--ease), background .2s, padding .3s var(--ease); animation: fabIn .7s var(--ease) 1.2s both; }
+.cart-fab { position: fixed; right: 22px; bottom: 22px; z-index: 400; display: grid; place-items: center; width: 58px; height: 58px; padding: 0; border-radius: 50%; border: 0; background: var(--orange); color: #fff; box-shadow: 0 14px 30px rgba(242,111,33,.4); transition: transform .3s var(--ease), background .2s; }
 .cart-fab:hover { transform: scale(1.05); background: var(--orange-deep); }
-.cart-fab svg { width: 26px; height: 26px; flex-shrink: 0; }
-.cart-fab__total { font-family: var(--font-display); font-weight: 600; font-size: 17px; max-width: 0; overflow: hidden; white-space: nowrap; transition: max-width .4s var(--ease), opacity .3s; opacity: 0; }
-.cart-fab.has-items .cart-fab__total { max-width: 120px; opacity: 1; }
+.cart-fab svg { width: 26px; height: 26px; display: block; flex-shrink: 0; }
+.cart-fab__total { display: none; }
 .cart-fab__badge { position: absolute; top: -4px; right: -4px; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 12px; font-weight: 800; display: grid; place-items: center; border: 2px solid #fff; transition: transform .3s var(--ease); }
 .cart-fab__badge.is-empty { transform: scale(0); }
 .cart-fab.is-bump { animation: bump .4s var(--ease); }
 html.dark .cart-fab__badge { border-color: var(--paper); }
-.cart-drawer.is-open ~ .cart-fab { visibility: hidden; }
 .topbar__me { display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px 4px 6px; border-radius: 999px; background: rgba(255,255,255,.1); color: #fff; font-weight: 700; }
 .topbar__me svg { width: 16px; height: 16px; }
 .topbar__me:hover { background: rgba(255,255,255,.18); }

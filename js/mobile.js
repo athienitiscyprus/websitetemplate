@@ -108,25 +108,40 @@
       if (c._armed) { c._update && c._update(); return; }
       var dots = c.nextElementSibling && c.nextElementSibling.classList.contains("m-dots") ? c.nextElementSibling : null;
       if (!dots && !c.classList.contains("mchips") && !c.classList.contains("mjourney__cards")) { dots = document.createElement("div"); dots.className = "m-dots"; c.parentNode.insertBefore(dots, c.nextSibling); }
-      var lastBest = null;
-      function update() {
-        // Uses offsetLeft (no layout reads per child) and only touches the DOM when the centred card changes.
-        var kids = Array.prototype.filter.call(c.children, function (k) { return !k.hidden; }); if (!kids.length) return;
+      var lastBest = null, pending = null;
+      function nearest() {
+        // Uses offsetLeft (no layout reads per child) — the card whose centre is closest to the viewport centre.
+        var kids = Array.prototype.filter.call(c.children, function (k) { return !k.hidden; }); if (!kids.length) return null;
         var mid = c.scrollLeft + c.clientWidth / 2, best = null, bd = 1e9;
         for (var i = 0; i < kids.length; i++) { var k = kids[i]; var d = Math.abs(k.offsetLeft + k.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = k; } }
+        return { kids: kids, best: best };
+      }
+      function paintDots(kids, best) {
+        if (!dots) return;
+        if (dots.children.length !== kids.length) dots.innerHTML = kids.map(function () { return "<i></i>"; }).join("");
+        Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle("is-on", kids[i] === best); });
+      }
+      // Live pass (while the finger is down / momentum runs): only the dots + progress bar move.
+      function live() {
+        var n = nearest(); if (!n || n.best === pending) return; pending = n.best;
+        paintDots(n.kids, n.best);
+        if (c._onFocus) c._onFocus(n.kids.indexOf(n.best), n.kids.length);
+      }
+      // Settled pass: the .is-focus class (which drives the card's text/chip entrance) is applied only
+      // once the snap has finished, so a card can never focus, blur and re-focus inside one swipe.
+      function update() {
+        var n = nearest(); if (!n) return; var best = n.best; pending = best;
+        paintDots(n.kids, best);
+        if (c._onFocus) c._onFocus(n.kids.indexOf(best), n.kids.length);
         if (best === lastBest) return;
         if (lastBest) lastBest.classList.remove("is-focus"); best.classList.add("is-focus"); lastBest = best;
-        if (dots) { if (dots.children.length !== kids.length) dots.innerHTML = kids.map(function () { return "<i></i>"; }).join(""); Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle("is-on", kids[i] === best); }); }
-        if (c._onFocus) c._onFocus(kids.indexOf(best), kids.length);
       }
-      // While the finger is down or momentum is running we only sample every ~120ms; the final
-      // position is settled on scrollend (or a short quiet period), so nothing fights the snap.
       var timer = null, throttled = false;
       c.addEventListener("scroll", function () {
-        if (!throttled) { throttled = true; setTimeout(function () { throttled = false; update(); }, 120); }
-        clearTimeout(timer); timer = setTimeout(update, 90);
+        if (!throttled) { throttled = true; setTimeout(function () { throttled = false; live(); }, 120); }
+        clearTimeout(timer); timer = setTimeout(update, 110);
       }, { passive: true });
-      if ("onscrollend" in window) c.addEventListener("scrollend", update);
+      if ("onscrollend" in window) c.addEventListener("scrollend", function () { clearTimeout(timer); update(); });
       window.addEventListener("resize", function () { lastBest = null; update(); });
       c._update = function () { lastBest = null; update(); }; c._armed = true; update();
     });
