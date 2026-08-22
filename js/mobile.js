@@ -205,6 +205,11 @@
 
   function boot() {
     if (!MQ.matches) return;
+    // If the page is pinch/auto-zoomed, fixed bars appear mid-screen; snap the zoom back when an input blurs.
+    if (window.visualViewport) {
+      var vv = window.visualViewport;
+      document.addEventListener("focusout", function () { setTimeout(function () { if (vv.scale > 1.01) { var m = document.querySelector('meta[name="viewport"]'); if (m) { var c = m.getAttribute("content"); m.setAttribute("content", c + ", maximum-scale=1"); setTimeout(function () { m.setAttribute("content", c); }, 300); } } }, 50); });
+    }
     document.documentElement.classList.add("is-mobile");
     buildDrawerTools(); buildTabBar(); buildChips(); buildJourney(); initCarousels(); initTouch(); initTop();
     if (window.ATH) window.ATH.onLang(function () { document.querySelectorAll(".tabbar [data-i18n], .mpill [data-i18n]").forEach(function (n) { n.textContent = t(n.getAttribute("data-i18n")); }); });
