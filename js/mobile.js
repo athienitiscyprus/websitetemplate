@@ -105,6 +105,8 @@
   function initCarousels() {
     document.querySelectorAll("[data-mobile='carousel']").forEach(function (el) { el.classList.add("m-carousel"); });
     document.querySelectorAll(".m-carousel").forEach(function (c) {
+      // eager-load card photos: lazy images only start loading as a card slides in, which looks like a flash
+      c.querySelectorAll("img[loading='lazy']").forEach(function (im) { im.loading = "eager"; });
       if (c._armed) { c._update && c._update(); return; }
       var dots = c.nextElementSibling && c.nextElementSibling.classList.contains("m-dots") ? c.nextElementSibling : null;
       if (!dots && !c.classList.contains("mchips") && !c.classList.contains("mjourney__cards")) { dots = document.createElement("div"); dots.className = "m-dots"; c.parentNode.insertBefore(dots, c.nextSibling); }
