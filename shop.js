@@ -8,6 +8,14 @@
 (function () {
   "use strict";
   var C = window.CATALOG || { products: [], recipes: [], bundles: [], sections: {} };
+  // Apply product edits made in the staff panel (admin/), stored in localStorage
+  try {
+    var ov = JSON.parse(localStorage.getItem("ath:catalogOverrides") || "null");
+    if (ov) {
+      C.products = C.products.filter(function (p) { return ov.deleted.indexOf(p.id) === -1; }).map(function (p) { return Object.assign({}, p, ov.updated[p.id] || {}); }).concat(ov.added.map(function (p) { return Object.assign({}, p, ov.updated[p.id] || {}); }));
+      window.CATALOG.products = C.products;
+    }
+  } catch (e) { /* ignore */ }
   var base = document.body.getAttribute("data-base") || "";
 
   function t(k, a) { return window.ATH ? window.ATH.t(k, a) : k; }
@@ -289,6 +297,10 @@
     var tot = Cart.totals();
     var order = { id: String(Date.now()).slice(-6), at: Date.now(), items: Cart.items(), total: tot.total };
     Account.addOrder(order); Cart.clear(); openDrawer(false);
+    try { // hand the order to the staff panel too
+      var ao = JSON.parse(localStorage.getItem("ath:adminOrders") || "null");
+      if (ao) { ao.unshift({ id: order.id, at: order.at, customer: me.name, email: me.email, type: me.type === "business" ? "delivery" : "collection", address: me.address && me.address.street ? me.address.street + ", " + (me.address.area || "") : "", phone: me.phone || "", items: order.items, total: order.total, status: "new", slot: me.type === "business" ? "06:00–07:00" : "11:30–12:00", driver: "", notes: me.address && me.address.notes || "" }); localStorage.setItem("ath:adminOrders", JSON.stringify(ao)); }
+    } catch (e) { /* ignore */ }
     window.location.href = base + "account.html?placed=" + order.id;
   }
 

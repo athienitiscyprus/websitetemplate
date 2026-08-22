@@ -313,8 +313,8 @@
 @media (max-width: 820px) {
   .header:has(.burger[aria-expanded="true"]) { transform: none !important; }
   body:has(.drawer.is-open) .ai, body:has(.drawer.is-open) .mtop, body:has(.drawer.is-open) .mpill { visibility: hidden; }
-  .burger { position: relative; }
-  .burger span { position: absolute; left: 50%; top: 50%; width: 20px; height: 2px; margin: -1px 0 0 -10px; transform-origin: center; transition: transform .25s var(--ease), opacity .2s; }
+  .burger { position: relative; display: block; }
+  .burger span, .burger span + span { position: absolute; left: 50%; top: 50%; width: 20px; height: 2px; margin: -1px 0 0 -10px; border-radius: 2px; transform-origin: center; transition: transform .25s var(--ease), opacity .2s; }
   .burger span:nth-child(1) { transform: translateY(-6px); }
   .burger span:nth-child(3) { transform: translateY(6px); }
   .burger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg); }

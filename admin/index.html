@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff panel — Athienitis Supermarket</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1e2a19">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css?v=11">
+<link rel="stylesheet" href="admin.css?v=11">
+</head>
+<body data-base="../">
+<div id="gate">
+  <form class="gate__box">
+    <img src="../assets/logo.png" alt="Athienitis">
+    <h1>Staff panel</h1>
+    <p>Enter the staff PIN to continue. Demo PIN: <b>1963</b></p>
+    <label class="visually-hidden" for="pin">PIN</label>
+    <input id="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="one-time-code" required autofocus>
+    <div class="form-error" hidden style="margin-top:10px">Wrong PIN — try again.</div>
+    <button class="btn btn--primary" type="submit">Sign in</button>
+    <p style="margin:16px 0 0"><a href="../index.html" style="color:var(--orange-deep);font-weight:700">← Back to the shop</a></p>
+  </form>
+</div>
+
+<div id="app" class="adm" hidden>
+  <aside class="adm__side">
+    <a class="brand" href="#dashboard"><img src="../assets/logo.png" alt=""><span>Staff<small>Athienitis</small></span></a>
+    <nav class="adm__nav">
+      <a href="#dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Dashboard</span></a>
+      <a href="#orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Orders</span></a>
+      <a href="#deliveries"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><span>Deliveries</span></a>
+      <a href="#products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9h9v9l-9 9z"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/></svg><span>Products</span></a>
+      <a href="#inventory"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v10l-8 4-8-4z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg><span>Inventory</span></a>
+    </nav>
+    <div class="spacer"></div>
+    <a class="btn btn--ghost btn--sm" href="../index.html" style="color:#fff;border-color:rgba(255,255,255,.25)">View storefront</a>
+    <button class="btn btn--ghost btn--sm" type="button" data-reset style="color:#c9d2c1;border-color:rgba(255,255,255,.15)">Reset demo data</button>
+    <button class="btn btn--ghost btn--sm" type="button" data-logout style="color:#fff;border-color:rgba(255,255,255,.25)">Sign out</button>
+    <p class="muted">Demo: data is stored in this browser. Product edits appear on the storefront immediately.</p>
+  </aside>
+  <main class="adm__main" id="view"></main>
+</div>
+
+<div id="modal" hidden><div class="modal__box"><button class="icon-btn modal__close" type="button" data-modal-close aria-label="Close">×</button><div class="modal__body"></div></div></div>
+
+<script src="../js/config.js?v=11"></script>
+<script src="../js/catalog.js?v=11"></script>
+<script src="admin.js?v=11"></script>
+</body>
+</html>
