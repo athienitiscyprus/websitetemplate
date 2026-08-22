@@ -5,7 +5,7 @@ window.ATH_CONFIG = {
   /* Seasonal theme. Set to "default", "easter", "summer" or "christmas" — or
      "auto" to pick by date (Easter: the 5 weeks before Orthodox Easter,
      Summer: Jun–Aug, Christmas: 1 Dec–6 Jan). */
-  theme: "auto",
+  theme: "easter",
 
   /* Optional: hosted model endpoint for the assistant (see js/assistant.js). */
   aiEndpoint: "",
