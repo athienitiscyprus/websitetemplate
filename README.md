@@ -72,6 +72,8 @@ python tools/replace_image.py undo shop_bakery      # back to the original
 ```
 Local files are resized with Pillow (`pip install pillow`). HTML pages get a path relative to their folder; `js/catalog.js` gets a site-root path (`assets/img/…`) that the storefront resolves at runtime, because that one script is shared by pages at every depth. Commit the changed files and `assets/img/` afterwards.
 
+`python tools/reapply_images.py` re-applies every replacement recorded in `tools/replacements.json` (e.g. after pulling a new version of the site, or on a fresh clone) using the files already in `assets/img/`.
+
 **Upgrading from an earlier tool version:** if your `js/catalog.js` contains `../assets/img/...`, run `python tools/replace_image.py set <slot> assets/img/<slot>.jpg --no-resize` for each replaced slot (or just re-run your original `set` commands) — the new tool rewrites the old form.
 
 ## Deploy on GitHub Pages
