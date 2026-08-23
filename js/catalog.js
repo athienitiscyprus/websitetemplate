@@ -120,7 +120,11 @@ window.CATALOG = {
    "unit": "kg",
    "kw": "pork meat raw",
    "img": "assets/img/product_bt1.jpg",
-   "was": 9.5
+   "was": 9.5,
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bt2",
@@ -132,7 +136,11 @@ window.CATALOG = {
    "price": 13.5,
    "unit": "kg",
    "kw": "lamb meat",
-   "img": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt2"
+   "img": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt2",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bt3",
@@ -145,7 +153,11 @@ window.CATALOG = {
    "unit": "kg",
    "kw": "sausage grill",
    "img": "assets/img/product_bt3.jpg",
-   "tag": "fresh"
+   "tag": "fresh",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bt4",
@@ -158,7 +170,11 @@ window.CATALOG = {
    "unit": "kg",
    "kw": "chicken raw",
    "img": "https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bt4",
-   "was": 7.2
+   "was": 7.2,
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bt5",
@@ -170,7 +186,11 @@ window.CATALOG = {
    "price": 9.2,
    "unit": "kg",
    "kw": "beef mince",
-   "img": "assets/img/product_bt5.jpg"
+   "img": "assets/img/product_bt5.jpg",
+   "origin": {
+    "en": "Ireland",
+    "el": "Ιρλανδία"
+   }
   },
   {
    "id": "bt6",
@@ -182,7 +202,11 @@ window.CATALOG = {
    "price": 8.6,
    "unit": "kg",
    "kw": "pork chops",
-   "img": "assets/img/product_bt6.jpg"
+   "img": "assets/img/product_bt6.jpg",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "dl1",
@@ -195,7 +219,11 @@ window.CATALOG = {
    "unit": "pack",
    "kw": "halloumi cheese",
    "img": "https://images.unsplash.com/photo-1691200007743-0652bbbc1d7d?auto=format&fit=crop&w=600&h=450&q=75&slot=product_dl1",
-   "was": 4.1
+   "was": 4.1,
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "dl2",
@@ -207,7 +235,11 @@ window.CATALOG = {
    "price": 3.2,
    "unit": "pack",
    "kw": "cured meat sliced",
-   "img": "assets/img/product_dl2.jpg"
+   "img": "assets/img/product_dl2.jpg",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "dl3",
@@ -220,7 +252,11 @@ window.CATALOG = {
    "unit": "pack",
    "kw": "ricotta cheese",
    "img": "assets/img/product_dl3.jpg",
-   "tag": "fresh"
+   "tag": "fresh",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "dl4",
@@ -232,7 +268,11 @@ window.CATALOG = {
    "price": 2.95,
    "unit": "pack",
    "kw": "olives black",
-   "img": "assets/img/product_dl4.jpg"
+   "img": "assets/img/product_dl4.jpg",
+   "origin": {
+    "en": "Greece",
+    "el": "Ελλάδα"
+   }
   },
   {
    "id": "dl5",
@@ -245,7 +285,11 @@ window.CATALOG = {
    "unit": "pack",
    "kw": "manchego cheese",
    "img": "assets/img/product_dl5.jpg",
-   "was": 6.2
+   "was": 6.2,
+   "origin": {
+    "en": "Spain",
+    "el": "Ισπανία"
+   }
   },
   {
    "id": "dl6",
@@ -257,7 +301,11 @@ window.CATALOG = {
    "price": 24.0,
    "unit": "platter",
    "kw": "cheese platter meze",
-   "img": "assets/img/product_dl6.jpg"
+   "img": "assets/img/product_dl6.jpg",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fs1",
@@ -270,7 +318,11 @@ window.CATALOG = {
    "unit": "kg",
    "kw": "sea bream fish",
    "img": "assets/img/product_fs1.jpg",
-   "tag": "fresh"
+   "tag": "fresh",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fs2",
@@ -283,7 +335,11 @@ window.CATALOG = {
    "unit": "kg",
    "kw": "sea bass fish",
    "img": "assets/img/product_fs2.jpg",
-   "was": 14.0
+   "was": 14.0,
+   "origin": {
+    "en": "Greece",
+    "el": "Ελλάδα"
+   }
   },
   {
    "id": "fs3",
@@ -295,7 +351,11 @@ window.CATALOG = {
    "price": 9.8,
    "unit": "kg",
    "kw": "squid seafood",
-   "img": "assets/img/product_fs3.jpg"
+   "img": "assets/img/product_fs3.jpg",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fs4",
@@ -307,7 +367,11 @@ window.CATALOG = {
    "price": 14.9,
    "unit": "kg",
    "kw": "octopus seafood",
-   "img": "assets/img/product_fs4.jpg"
+   "img": "assets/img/product_fs4.jpg",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fs5",
@@ -320,7 +384,11 @@ window.CATALOG = {
    "unit": "pack",
    "kw": "prawns shrimp",
    "img": "assets/img/product_fs5.jpg",
-   "was": 10.5
+   "was": 10.5,
+   "origin": {
+    "en": "Ecuador",
+    "el": "Ισημερινός"
+   }
   },
   {
    "id": "fs6",
@@ -332,7 +400,11 @@ window.CATALOG = {
    "price": 6.7,
    "unit": "pack",
    "kw": "cod fish salted",
-   "img": "assets/img/product_fs6.jpg"
+   "img": "assets/img/product_fs6.jpg",
+   "origin": {
+    "en": "Norway",
+    "el": "Νορβηγία"
+   }
   },
   {
    "id": "fr1",
@@ -345,7 +417,11 @@ window.CATALOG = {
    "unit": "kg",
    "kw": "tomatoes fresh",
    "img": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr1",
-   "tag": "fresh"
+   "tag": "fresh",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fr2",
@@ -357,7 +433,11 @@ window.CATALOG = {
    "price": 1.4,
    "unit": "kg",
    "kw": "cucumber fresh",
-   "img": "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr2"
+   "img": "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr2",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fr3",
@@ -370,7 +450,11 @@ window.CATALOG = {
    "unit": "kg",
    "kw": "lemons citrus",
    "img": "https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr3",
-   "was": 2.0
+   "was": 2.0,
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fr4",
@@ -383,7 +467,11 @@ window.CATALOG = {
    "unit": "kg",
    "kw": "watermelon fruit",
    "img": "https://images.unsplash.com/photo-1589984662646-e7b2e4962f18?auto=format&fit=crop&w=600&h=450&q=75&slot=product_fr4",
-   "was": 0.95
+   "was": 0.95,
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fr5",
@@ -395,7 +483,11 @@ window.CATALOG = {
    "price": 0.8,
    "unit": "bunch",
    "kw": "mint herb",
-   "img": "assets/img/product_fr5.jpg"
+   "img": "assets/img/product_fr5.jpg",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "fr6",
@@ -407,7 +499,11 @@ window.CATALOG = {
    "price": 7.9,
    "unit": "jar",
    "kw": "honey jar",
-   "img": "assets/img/product_fr6.jpg"
+   "img": "assets/img/product_fr6.jpg",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "cl1",

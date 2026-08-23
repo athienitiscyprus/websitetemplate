@@ -19,6 +19,10 @@
     }
   } catch (e) { /* ignore */ }
   var base = document.body.getAttribute("data-base") || "";
+  // A counter page (shops/*.html) only ever lists products from that one counter, so the
+  // category chip on every card just repeats the page title. Home, search, offers and
+  // product pages mix counters, so they keep it.
+  var onShopPage = /\/shops\/[^/]*$/.test(location.pathname);
 
   function t(k, a) { return window.ATH ? window.ATH.t(k, a) : k; }
   function lang() { return window.ATH ? window.ATH.lang() : "en"; }
@@ -50,6 +54,10 @@
     return "";
   }
   function unitLabelKey(p) { return { each: "piece", loaf: "piece", slice: "piece", cup: "piece" }[p.unit] || p.unit; }
+  // Country of origin, carried by the loose goods on the fresh counters.
+  function originOf(p) { return p && p.origin ? (p.origin[lang()] || p.origin.en || "") : ""; }
+  var PIN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+  var PLUS_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
@@ -135,6 +143,13 @@
     var sec = C.sections[p.section] || {};
     var unitKey = unitLabelKey(p);
     var ref = refPrice(p);
+    var orig = originOf(p);
+    var origin = orig
+      ? '<div class="product__origin" title="' + esc(t("product.origin")) + ": " + esc(orig) + '">' +
+        PIN_SVG + '<span>' + esc(orig) + '</span></div>'
+      : "";
+    // Sold by weight: its own row, full width, sitting directly above the add button
+    // so it is never covered by it and never mistaken for part of the price.
     var weight = isKg(p)
       ? '<div class="product__weight"><span>' + esc(t("shop.weight")) + '</span>' +
         '<div class="qty qty--w"><button type="button" data-wstep="-1" aria-label="−">−</button>' +
@@ -147,10 +162,12 @@
       '<div class="product__body">' +
       (noCat ? '' : '<a class="product__cat ' + (sec.color || "") + '" href="' + base + 'shops/' + p.section + '.html">' + esc(t("dept." + p.section)) + '</a>') +
       '<h3><a href="' + base + 'products/' + p.id + '.html">' + esc(p.name[lang()] || p.name.en) + '</a></h3>' +
+      origin +
       '<div class="product__price"><b>' + money(p.price) + '</b>' + (p.was ? '<s>' + money(p.was) + '</s>' : '') + '<small>/ ' + esc(t("unit." + unitKey)) + '</small></div>' +
       (ref ? '<div class="product__ref">' + esc(ref) + '</div>' : '') +
-      weight +
-      '<button class="btn btn--primary btn--sm product__add" type="button" data-add="' + p.id + '">' + esc(t("shop.add")) + '</button></div></article>';
+      '<div class="product__foot">' + weight +
+      '<button class="btn btn--primary btn--sm product__add" type="button" data-add="' + p.id + '">' +
+      PLUS_SVG + '<span>' + esc(t("shop.add")) + '</span></button></div></div></article>';
   }
 
   function renderProducts() {
@@ -164,8 +181,8 @@
       if (spec.indexOf("similar:") === 0) { var cur = byId(spec.split(":")[1]); list = cur ? C.products.filter(function (p) { return p.section === cur.section && p.id !== cur.id; }).slice(0, 4) : []; }
       if (spec.indexOf("pairs:") === 0) { var cp = byId(spec.split(":")[1]); var secs = cp && C.pairs ? C.pairs[cp.section] || [] : []; list = []; secs.forEach(function (sx) { var cand = C.products.filter(function (p) { return p.section === sx; }); var pick = cand.filter(function (p) { return p.was; })[0] || cand[0]; if (pick) list.push(pick); if (list.length < 4) { var second = cand.filter(function (p) { return p !== pick; })[0]; if (second && list.length < 4 && secs.length < 4) list.push(second); } }); list = list.slice(0, 4); }
       if (limit) list = list.slice(0, limit);
-      // a counter page (and the "more from this counter" strip) lists one counter only — no need to repeat it on every card
-      var noCat = (sec && C.sections[sec]) || spec.indexOf("similar:") === 0;
+      // a counter page lists one counter only — no need to repeat it on every card
+      var noCat = onShopPage;
       if (!el.hidden) el.innerHTML = list.length ? list.map(function (p) { return productCard(p, noCat); }).join("") : '<p class="muted">' + esc(t("shop.none")) + '</p>';
       if (el.hasAttribute("data-count-target")) { var c = document.querySelector(el.getAttribute("data-count-target")); if (c) c.textContent = list.length; }
     });
@@ -470,6 +487,16 @@
     var pr = pg.querySelector(".pdp__price"), off = p.was ? Math.round((1 - p.price / p.was) * 100) : 0;
     if (pr) pr.innerHTML = '<b>' + money(p.price) + '</b>' + (p.was ? '<s>' + money(p.was) + '</s>' : '') + '<small>/ ' + esc(t("unit." + p.unit)) + '</small>' + (off ? '<span class="pdp__save">' + esc(t("offers.save")) + ' ' + money(p.was - p.price) + '</span>' : '') + (p.member ? '<span class="pdp__save" style="background:var(--orange-tint);color:var(--orange-deep)">Bonus: ' + money(p.member) + '</span>' : '');
     var badge = pg.querySelector(".pdp__media .product__off"); if (off) { if (!badge) { badge = document.createElement("span"); badge.className = "product__off"; pg.querySelector(".pdp__media").appendChild(badge); } badge.textContent = "-" + off + "%"; } else if (badge) badge.remove();
+    // Country of origin — the page markup does not carry it, so build the line here.
+    var origTxt = originOf(p), origEl = pg.querySelector(".pdp__origin");
+    if (origTxt) {
+      if (!origEl) {
+        origEl = document.createElement("p"); origEl.className = "pdp__origin";
+        if (pr && pr.parentNode) pr.parentNode.insertBefore(origEl, pr.nextSibling);
+        else { var info = pg.querySelector(".pdp__info"); if (info) info.appendChild(origEl); }
+      }
+      origEl.innerHTML = PIN_SVG + '<span>' + esc(t("product.origin")) + ': <b>' + esc(origTxt) + '</b></span>';
+    } else if (origEl) origEl.remove();
     var recs = C.recipes.filter(function (r) { return r.items.some(function (it) { return it[0] === p.id; }); });
     var sec = pg.querySelector("[data-p-recipes]"), list = pg.querySelector("[data-p-recipe-list]");
     if (sec && list) {

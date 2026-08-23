@@ -691,6 +691,11 @@ textarea { min-height: 140px; resize: vertical; }
 .product:hover .product__img img { transform: scale(1.06); }
 .product__off { position: absolute; top: 12px; left: 12px; background: var(--orange); color: #fff; font-weight: 800; font-size: 12.5px; padding: 5px 9px; border-radius: 999px; }
 .product__ref { font-size: 12.5px; color: var(--ink-3); margin-top: -6px; }
+.product__origin { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--ink-3); }
+.product__origin svg { width: 13px; height: 13px; flex: none; color: var(--leaf-deep); }
+.product__origin span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* weight picker and add button travel together, pinned to the bottom of every card */
+.product__foot { margin-top: auto; padding-top: 10px; display: flex; flex-direction: column; gap: 8px; }
 .product__weight { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--ink-3); }
 .product__weight > span { font-weight: 700; letter-spacing: .04em; text-transform: uppercase; font-size: 11px; }
 .qty--w { display: flex; align-items: center; gap: 2px; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
@@ -723,7 +728,8 @@ textarea { min-height: 140px; resize: vertical; }
 .product__price b { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--orange-deep); }
 .product__price s { color: var(--ink-3); font-size: 13px; }
 .product__price small { color: var(--ink-3); font-size: 12px; }
-.product__add { margin-top: auto; justify-content: center; width: 100%; }
+.product__add { justify-content: center; width: 100%; gap: 6px; }
+.product__add svg { width: 15px; height: 15px; flex: none; }
 .product__add.is-added { background: var(--leaf-deep); transform: scale(.97); }
 
 /* ----- Basket drawer ------------------------------------------------------ */
@@ -1109,6 +1115,9 @@ html.dark .mtop:hover { background: #f3f5ef; }
 .pdp__price b { font-family: var(--font-display); font-size: 40px; font-weight: 600; color: var(--orange-deep); line-height: 1; }
 .pdp__price s { color: var(--ink-3); font-size: 18px; }
 .pdp__price small { color: var(--ink-3); font-size: 14px; }
+.pdp__origin { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--ink-2); margin-top: -8px; }
+.pdp__origin svg { width: 18px; height: 18px; flex: none; color: var(--leaf-deep); }
+.pdp__origin b { font-weight: 700; color: var(--ink); }
 .pdp__save { padding: 5px 10px; border-radius: 8px; background: var(--lime-tint); color: #7f8f1a; font-size: 13px; font-weight: 800; }
 .pdp__buy { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .qty--lg button { width: 44px; height: 44px; font-size: 18px; }

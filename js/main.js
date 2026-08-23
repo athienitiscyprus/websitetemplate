@@ -213,7 +213,7 @@
 
       "shop.items": "What you'll find", "shop.tip": "Counter tip", "shop.hours": "Hours",
       "shop.other": "Other counters", "shop.order": "Order ahead",
-      "shop.add": "Add to basket", "shop.none": "No products to show.", "shop.products": "Products", "shop.deals": "Deals at this counter",
+      "shop.add": "Add to basket", "product.origin": "Origin", "shop.none": "No products to show.", "shop.products": "Products", "shop.deals": "Deals at this counter",
       "shop.allproducts": "All products at this counter",
       "unit.loaf": "loaf", "unit.each": "each", "unit.box": "box", "unit.kg": "kg", "unit.pack": "pack", "unit.platter": "platter", "unit.bunch": "bunch", "unit.jar": "jar", "unit.bottle": "bottle", "unit.portion": "portion", "unit.cup": "cup", "unit.slice": "slice", "unit.set": "set",
       "unit.piece": "piece", "unit.g": "g", "unit.L": "L", "unit.ml": "ml", "shop.weight": "Weight", "search.all": "All products", "search.for": "Results for",
@@ -399,7 +399,7 @@
 
       "shop.items": "Τι θα βρείτε", "shop.tip": "Συμβουλή πάγκου", "shop.hours": "Ωράριο",
       "shop.other": "Άλλοι πάγκοι", "shop.order": "Παραγγείλτε εκ των προτέρων",
-      "shop.add": "Στο καλάθι", "shop.none": "Δεν υπάρχουν προϊόντα.", "shop.products": "Προϊόντα", "shop.deals": "Προσφορές αυτού του πάγκου",
+      "shop.add": "Στο καλάθι", "product.origin": "Προέλευση", "shop.none": "Δεν υπάρχουν προϊόντα.", "shop.products": "Προϊόντα", "shop.deals": "Προσφορές αυτού του πάγκου",
       "shop.allproducts": "Όλα τα προϊόντα του πάγκου",
       "unit.loaf": "τεμ.", "unit.each": "τεμ.", "unit.box": "κουτί", "unit.kg": "κιλό", "unit.pack": "συσκ.", "unit.platter": "πλατό", "unit.bunch": "ματσάκι", "unit.jar": "βάζο", "unit.bottle": "φιάλη", "unit.portion": "μερίδα", "unit.cup": "ποτήρι", "unit.slice": "κομμάτι", "unit.set": "σετ",
       "unit.piece": "τεμ.", "unit.g": "g", "unit.L": "L", "unit.ml": "ml", "shop.weight": "Βάρος", "search.all": "Όλα τα προϊόντα", "search.for": "Αποτελέσματα για",
