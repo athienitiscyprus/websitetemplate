@@ -50,7 +50,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bk2",
@@ -68,7 +71,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bk3",
@@ -85,7 +91,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bk4",
@@ -103,7 +112,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bk5",
@@ -137,7 +149,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "new"
+   ]
   },
   {
    "id": "bt1",
@@ -155,7 +170,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bt2",
@@ -172,7 +190,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bt3",
@@ -190,7 +211,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bt4",
@@ -208,7 +232,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bt5",
@@ -225,7 +252,10 @@ window.CATALOG = {
     "en": "Ireland",
     "el": "Ιρλανδία"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "bt6",
@@ -242,7 +272,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "dl1",
@@ -260,7 +293,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Kyrenia Dairies"
+   "brand": "Kyrenia Dairies",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "dl2",
@@ -277,7 +313,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Troodos Smokehouse"
+   "brand": "Troodos Smokehouse",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "dl3",
@@ -295,7 +334,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Kyrenia Dairies"
+   "brand": "Kyrenia Dairies",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "dl4",
@@ -347,7 +389,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fs1",
@@ -365,7 +410,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fs2",
@@ -383,7 +431,10 @@ window.CATALOG = {
     "en": "Greece",
     "el": "Ελλάδα"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fs3",
@@ -400,7 +451,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fs4",
@@ -417,7 +471,11 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ],
+   "oos": true
   },
   {
    "id": "fs5",
@@ -435,7 +493,10 @@ window.CATALOG = {
     "en": "Ecuador",
     "el": "Ισημερινός"
    },
-   "brand": "Nireas"
+   "brand": "Nireas",
+   "labels": [
+    "frozen"
+   ]
   },
   {
    "id": "fs6",
@@ -470,7 +531,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fr2",
@@ -487,7 +551,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fr3",
@@ -505,7 +572,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fr4",
@@ -523,7 +593,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fr5",
@@ -540,7 +613,10 @@ window.CATALOG = {
     "en": "Cyprus",
     "el": "Κύπρος"
    },
-   "brand": "Athienitis"
+   "brand": "Athienitis",
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "fr6",
@@ -661,7 +737,10 @@ window.CATALOG = {
    "origin": {
     "en": "Italy",
     "el": "Ιταλία"
-   }
+   },
+   "labels": [
+    "new"
+   ]
   },
   {
    "id": "et1",
@@ -679,7 +758,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "et2",
@@ -697,7 +779,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "et3",
@@ -714,7 +799,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "et4",
@@ -731,7 +819,10 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "labels": [
+    "fresh"
+   ]
   },
   {
    "id": "et5",
@@ -820,7 +911,8 @@ window.CATALOG = {
    "kw": "frying pan",
    "img": "assets/img/product_lv4.jpg",
    "was": 27.0,
-   "brand": "Terra Cook"
+   "brand": "Terra Cook",
+   "oos": true
   },
   {
    "id": "lv5",
@@ -846,7 +938,10 @@ window.CATALOG = {
    "unit": "set",
    "kw": "glass jars",
    "img": "assets/img/product_lv6.jpg",
-   "brand": "Terra Cook"
+   "brand": "Terra Cook",
+   "labels": [
+    "new"
+   ]
   },
   {
    "id": "cn1",
@@ -901,7 +996,10 @@ window.CATALOG = {
    "kw": "refill eco",
    "img": "assets/img/product_cn4.jpg",
    "tag": "fresh",
-   "brand": "Verde Eco"
+   "brand": "Verde Eco",
+   "labels": [
+    "new"
+   ]
   },
   {
    "id": "cn5",
@@ -968,7 +1066,10 @@ window.CATALOG = {
    "unit": "each",
    "kw": "notebook stationery",
    "img": "assets/img/product_gf3.jpg",
-   "brand": "Little Acorn"
+   "brand": "Little Acorn",
+   "labels": [
+    "new"
+   ]
   },
   {
    "id": "gf4",
@@ -1702,5 +1803,181 @@ window.CATALOG = {
    "deli",
    "bakery"
   ]
+ },
+ "shopItems": {
+  "bakery": {
+   "0": [
+    "bk1"
+   ],
+   "1": [
+    "bk2"
+   ],
+   "2": [
+    "bk3"
+   ],
+   "5": [
+    "bk6"
+   ]
+  },
+  "butchery": {
+   "0": [
+    "bt2"
+   ],
+   "1": [
+    "bt1"
+   ],
+   "2": [
+    "bt5"
+   ],
+   "3": [
+    "bt4"
+   ],
+   "4": [
+    "bt3"
+   ],
+   "5": [
+    "bt6"
+   ]
+  },
+  "cellar": {
+   "0": [
+    "cl1",
+    "cl2"
+   ],
+   "1": [
+    "cl3"
+   ],
+   "2": [
+    "cl4"
+   ],
+   "3": [
+    "cl6"
+   ],
+   "4": [
+    "cl5"
+   ]
+  },
+  "cleaning": {
+   "0": [
+    "cn1"
+   ],
+   "1": [
+    "cn2"
+   ],
+   "2": [
+    "cn3"
+   ],
+   "4": [
+    "cn5"
+   ],
+   "5": [
+    "cn4"
+   ],
+   "6": [
+    "cn6"
+   ]
+  },
+  "deli": {
+   "0": [
+    "dl1",
+    "dl3"
+   ],
+   "1": [
+    "dl2"
+   ],
+   "2": [
+    "dl4"
+   ],
+   "3": [
+    "dl5"
+   ],
+   "5": [
+    "dl6"
+   ]
+  },
+  "eatery": {
+   "0": [
+    "et1"
+   ],
+   "1": [
+    "et4"
+   ],
+   "2": [
+    "et2",
+    "et3"
+   ],
+   "4": [
+    "et5"
+   ],
+   "5": [
+    "et6"
+   ]
+  },
+  "fish": {
+   "0": [
+    "fs1",
+    "fs2"
+   ],
+   "2": [
+    "fs3",
+    "fs4"
+   ],
+   "3": [
+    "fs5"
+   ],
+   "4": [
+    "fs6"
+   ]
+  },
+  "fruit": {
+   "0": [
+    "fr3",
+    "fr4"
+   ],
+   "1": [
+    "fr1",
+    "fr2"
+   ],
+   "2": [
+    "fr5"
+   ],
+   "4": [
+    "fr6"
+   ]
+  },
+  "gifts": {
+   "0": [
+    "gf4"
+   ],
+   "1": [
+    "gf5"
+   ],
+   "2": [
+    "gf3"
+   ],
+   "3": [
+    "gf2"
+   ],
+   "4": [
+    "gf6"
+   ],
+   "5": [
+    "gf1"
+   ]
+  },
+  "living": {
+   "0": [
+    "lv1",
+    "lv5"
+   ],
+   "1": [
+    "lv2",
+    "lv4",
+    "lv6"
+   ],
+   "2": [
+    "lv3"
+   ]
+  }
  }
 };

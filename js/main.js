@@ -213,14 +213,16 @@
 
       "shop.items": "What you'll find", "shop.tip": "Counter tip", "shop.hours": "Hours",
       "shop.other": "Other counters", "shop.order": "Order ahead",
-      "shop.add": "Add to basket", "product.origin": "Origin", "product.brand": "Brand", "shop.none": "No products to show.", "shop.products": "Products", "shop.deals": "Deals at this counter",
+      "shop.add": "Add to basket", "product.origin": "Origin", "product.brand": "Brand",
+      "label.fresh": "Fresh", "label.frozen": "Frozen", "label.new": "New", "label.sale": "Sale",
+      "label.local": "Cypriot", "label.oos": "Out of stock", "shop.none": "No products to show.", "shop.products": "Products", "shop.deals": "Deals at this counter",
       "shop.allproducts": "All products at this counter",
       "unit.loaf": "loaf", "unit.each": "each", "unit.box": "box", "unit.kg": "kg", "unit.pack": "pack", "unit.platter": "platter", "unit.bunch": "bunch", "unit.jar": "jar", "unit.bottle": "bottle", "unit.portion": "portion", "unit.cup": "cup", "unit.slice": "slice", "unit.set": "set",
       "unit.piece": "piece", "unit.g": "g", "unit.L": "L", "unit.ml": "ml", "shop.weight": "Weight", "search.all": "All products", "search.for": "Results for",
       "filter.title": "Filters", "filter.dept": "Departments", "filter.price": "Price (€)", "filter.offers": "On offer only", "filter.sort": "Sort by",
       "sort.rel": "Featured", "sort.priceasc": "Price: low to high", "sort.pricedesc": "Price: high to low", "sort.name": "Name A–Z",
       "filter.clear": "Clear all", "filter.min": "Min", "filter.max": "Max",
-      "filter.brand": "Brand", "filter.origin": "Country of origin", "filter.more": "Show all {0}", "filter.less": "Show fewer",
+      "filter.brand": "Brand", "filter.origin": "Country of origin", "filter.selection": "Selected items", "filter.more": "Show all {0}", "filter.less": "Show fewer",
       "filter.show": "Show {0} products", "filter.close": "Close filters",
       "cart.title": "Your basket", "cart.empty": "Your basket is empty.", "cart.added": "Added to basket", "cart.items": "items",
       "cart.sub": "Subtotal", "cart.saved": "You save", "cart.trade": "Business discount (5%)", "cart.total": "Total", "cart.checkout": "Place order", "cart.continue": "Keep shopping", "cart.note": "Collection in-store · delivery for business accounts. Demo checkout — no payment is taken.",
@@ -401,14 +403,16 @@
 
       "shop.items": "Τι θα βρείτε", "shop.tip": "Συμβουλή πάγκου", "shop.hours": "Ωράριο",
       "shop.other": "Άλλοι πάγκοι", "shop.order": "Παραγγείλτε εκ των προτέρων",
-      "shop.add": "Στο καλάθι", "product.origin": "Προέλευση", "product.brand": "Μάρκα", "shop.none": "Δεν υπάρχουν προϊόντα.", "shop.products": "Προϊόντα", "shop.deals": "Προσφορές αυτού του πάγκου",
+      "shop.add": "Στο καλάθι", "product.origin": "Προέλευση", "product.brand": "Μάρκα",
+      "label.fresh": "Φρέσκο", "label.frozen": "Κατεψυγμένο", "label.new": "Νέο", "label.sale": "Προσφορά",
+      "label.local": "Κυπριακό", "label.oos": "Εξαντλήθηκε", "shop.none": "Δεν υπάρχουν προϊόντα.", "shop.products": "Προϊόντα", "shop.deals": "Προσφορές αυτού του πάγκου",
       "shop.allproducts": "Όλα τα προϊόντα του πάγκου",
       "unit.loaf": "τεμ.", "unit.each": "τεμ.", "unit.box": "κουτί", "unit.kg": "κιλό", "unit.pack": "συσκ.", "unit.platter": "πλατό", "unit.bunch": "ματσάκι", "unit.jar": "βάζο", "unit.bottle": "φιάλη", "unit.portion": "μερίδα", "unit.cup": "ποτήρι", "unit.slice": "κομμάτι", "unit.set": "σετ",
       "unit.piece": "τεμ.", "unit.g": "g", "unit.L": "L", "unit.ml": "ml", "shop.weight": "Βάρος", "search.all": "Όλα τα προϊόντα", "search.for": "Αποτελέσματα για",
       "filter.title": "Φίλτρα", "filter.dept": "Τμήματα", "filter.price": "Τιμή (€)", "filter.offers": "Μόνο προσφορές", "filter.sort": "Ταξινόμηση",
       "sort.rel": "Προτεινόμενα", "sort.priceasc": "Τιμή: αύξουσα", "sort.pricedesc": "Τιμή: φθίνουσα", "sort.name": "Όνομα Α–Ω",
       "filter.clear": "Καθαρισμός", "filter.min": "Ελάχ.", "filter.max": "Μέγ.",
-      "filter.brand": "Μάρκα", "filter.origin": "Χώρα προέλευσης", "filter.more": "Όλες ({0})", "filter.less": "Λιγότερα",
+      "filter.brand": "Μάρκα", "filter.origin": "Χώρα προέλευσης", "filter.selection": "Επιλεγμένα", "filter.more": "Όλες ({0})", "filter.less": "Λιγότερα",
       "filter.show": "Δείτε {0} προϊόντα", "filter.close": "Κλείσιμο φίλτρων",
       "cart.title": "Το καλάθι σας", "cart.empty": "Το καλάθι σας είναι άδειο.", "cart.added": "Προστέθηκε στο καλάθι", "cart.items": "προϊόντα",
       "cart.sub": "Υποσύνολο", "cart.saved": "Κερδίζετε", "cart.trade": "Έκπτωση επιχείρησης (5%)", "cart.total": "Σύνολο", "cart.checkout": "Ολοκλήρωση παραγγελίας", "cart.continue": "Συνέχεια αγορών", "cart.note": "Παραλαβή από το κατάστημα · διανομή για επιχειρήσεις. Δοκιμαστικό ταμείο — δεν γίνεται χρέωση.",
@@ -459,6 +463,18 @@
     return arg != null ? s.replace("{0}", arg) : s;
   }
 
+  // Where a "What you'll find" keyword should go: straight to the product when it
+  // names exactly one, otherwise into search filtered to those products.
+  function shopItemHref(shop, index, label) {
+    var C = window.CATALOG;
+    if (!C || !C.shopItems || !C.shopItems[shop]) return "";
+    var ids = C.shopItems[shop][String(index)];
+    if (!ids || !ids.length) return "";
+    var base = document.body.getAttribute("data-base") || "";
+    if (ids.length === 1) return base + "products/" + ids[0] + ".html";
+    return base + "search.html?ids=" + ids.join(",") + "&label=" + encodeURIComponent(label);
+  }
+
   function applyLang(lang) {
     var fixed = document.body.getAttribute("data-lang-fixed");
     if (fixed) lang = fixed; // page content is in one language; chrome follows it
@@ -484,10 +500,23 @@
         var shop = window.SHOP_CONTENT[el.getAttribute("data-shop")];
         if (!shop) return;
         var d = shop[currentLang] || shop.en;
-        var v = d[el.getAttribute("data-field")];
+        var field = el.getAttribute("data-field");
+        var v = d[field];
         var i = el.getAttribute("data-index");
         if (i !== null && Array.isArray(v)) v = v[parseInt(i, 10)];
-        if (typeof v === "string") el.textContent = v;
+        if (typeof v !== "string") return;
+        // "What you'll find" keywords link through to the products they describe.
+        // Anything with no product in the catalogue stays as plain text.
+        var href = field === "items" && i !== null ? shopItemHref(el.getAttribute("data-shop"), i, v) : "";
+        if (href) {
+          var a = el.firstElementChild && el.firstElementChild.tagName === "A" ? el.firstElementChild : null;
+          if (!a) { el.textContent = ""; a = document.createElement("a"); el.appendChild(a); }
+          a.className = "shop-item__link";
+          a.href = href;
+          a.textContent = v;
+        } else {
+          el.textContent = v;
+        }
       });
     }
     if (!fixed) { try { localStorage.setItem("athienitis-lang", currentLang); } catch (e) { /* private mode */ } }

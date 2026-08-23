@@ -691,6 +691,30 @@ textarea { min-height: 140px; resize: vertical; }
 .product:hover .product__img img { transform: scale(1.06); }
 .product__off { position: absolute; top: 12px; left: 12px; background: var(--orange); color: #fff; font-weight: 800; font-size: 12.5px; padding: 5px 9px; border-radius: 999px; }
 .product__ref { font-size: 12.5px; color: var(--ink-3); margin-top: -6px; }
+/* "What you'll find" keywords that lead to a product */
+.shop-item__link { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); text-decoration-thickness: 2px; }
+.shop-item__link:hover { color: var(--orange-deep); text-decoration-color: var(--orange); }
+/* ---- product labels ------------------------------------------------------ */
+.product__labels, .pdp__labels { display: flex; flex-wrap: wrap; gap: 5px; }
+.pdp__labels { margin-bottom: 12px; gap: 7px; }
+.plabel { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 6px; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; line-height: 1.45; white-space: nowrap; }
+.pdp__labels .plabel { font-size: 12px; padding: 5px 11px; border-radius: 7px; }
+.plabel--fresh  { background: var(--leaf-tint); color: var(--leaf-deep); }
+.plabel--frozen { background: #e2f0fa; color: #2b6c96; }
+.plabel--new    { background: var(--lime-tint); color: #6a7a1c; }
+.plabel--sale   { background: var(--orange); color: #fff; }
+.plabel--local  { background: #fdf3e0; color: #9a6b17; }
+.plabel--oos    { background: #efeeea; color: var(--ink-3); }
+/* the fresh/new/local tints follow --*-tint into dark mode; these two are literals */
+html.dark .plabel--frozen { background: #16303f; color: #8fc4e4; }
+html.dark .plabel--local { background: #33280f; color: #d9b364; }
+html.dark .plabel--oos { background: #232a20; color: var(--ink-3); }
+html.dark .plabel--fresh { color: #9ed37c; }
+html.dark .plabel--new { color: #c3d95a; }
+/* out of stock: dim the goods, keep the text readable */
+.product.is-oos .product__img { opacity: .5; filter: saturate(.55); }
+.product.is-oos .product__price b { color: var(--ink-3); }
+.pdp__grid.is-oos .pdp__media img, [data-product-page].is-oos .pdp__media img { opacity: .55; filter: saturate(.55); }
 .product__origin { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--ink-3); }
 .product__origin svg { width: 13px; height: 13px; flex: none; color: var(--leaf-deep); }
 .product__origin span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -756,6 +780,7 @@ textarea { min-height: 140px; resize: vertical; }
 .cart-drawer__bg { position: absolute; inset: 0; background: rgba(30,42,25,.5); opacity: 0; transition: opacity .3s; }
 .cart-drawer__panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(440px, 100%); background: #fff; display: flex; flex-direction: column; transform: translateX(100%); transition: transform .4s var(--ease); box-shadow: var(--shadow-lg); }
 .cart-drawer.is-open { visibility: visible; }
+body.cart-open .cart-fab, body.cart-open .mtop { visibility: hidden; }
 .cart-drawer.is-open .cart-drawer__bg { opacity: 1; }
 .cart-drawer.is-open .cart-drawer__panel { transform: none; }
 .cart-drawer__head { display: flex; justify-content: space-between; align-items: center; padding: 20px 22px; border-bottom: 1px solid var(--line); }
@@ -891,6 +916,8 @@ textarea { min-height: 140px; resize: vertical; }
 .dash__nav button[aria-selected="true"] { background: var(--leaf-tint); color: var(--ink); }
 .dash__nav .btn { margin-top: 10px; justify-content: center; }
 .dash__hello { display: flex; gap: 18px; align-items: center; margin-bottom: 24px; }
+/* second sign-out, for the narrow layout where the sidebar becomes a scroll strip */
+.dash__signout { display: none; }
 .dash__hello img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .stat { padding: 18px 20px; border-radius: var(--radius); border: 1px solid var(--line); background: #fff; }

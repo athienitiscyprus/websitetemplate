@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 #
-# apply-update.sh — search filters, mobile search-overlay fixes, brand data.
+# apply-update.sh — keyword links, product labels, mobile sign-out, cart FAB.
 #
 # Files handed back from a session arrive without their folder, so js/shop.js
-# becomes a bare shop.js in your downloads. Copy all eight files anywhere into
-# the repo root and run this: it puts each one where the site actually loads it
-# from, merges with whatever is already committed, verifies, commits and pushes.
+# becomes a bare shop.js in your downloads. Copy all six files into the repo
+# root and run this: it puts each one where the site loads it from, merges with
+# what is already committed, verifies, commits and pushes.
 #
-#   bash apply-update.sh          # organise, verify, commit, push
-#   bash apply-update.sh --no-push # stop after the commit
+#   bash apply-update.sh            # organise, verify, commit, push
+#   bash apply-update.sh --no-push  # stop after the commit
 #
 set -euo pipefail
 
@@ -44,23 +44,20 @@ move() {
 move shop.js    js/shop.js
 move catalog.js js/catalog.js
 move main.js    js/main.js
-move mobile.js  js/mobile.js
 move styles.css css/styles.css
 move mobile.css css/mobile.css
-move admin.js   admin/admin.js
-# search.html belongs at the top level, so it needs no move.
+# account.html belongs at the top level, so it needs no move.
 
 # ---------------------------------------------------------------------------
-echo "==> 3/6  Clearing out the previous update's helper files"
+echo "==> 3/6  Clearing out previous helper files"
 git rm -q --ignore-unmatch \
   fix-file-locations.sh organise-repo.sh finish-update.sh changes-summary.md
-# any stray copies that were never committed
 rm -f fix-file-locations.sh organise-repo.sh finish-update.sh changes-summary.md
 
 # ---------------------------------------------------------------------------
-echo "==> 4/6  Bumping the cache-buster to v=22"
-if grep -rlq '?v=2[01]' --include='*.html' .; then
-  grep -rl '?v=2[01]' --include='*.html' . | xargs sed -i.bak -E 's/\?v=2[01]/?v=22/g'
+echo "==> 4/6  Bumping the cache-buster to v=23"
+if grep -rlq '?v=2[12]' --include='*.html' .; then
+  grep -rl '?v=2[12]' --include='*.html' . | xargs sed -i.bak -E 's/\?v=2[12]/?v=23/g'
   find . -name '*.html.bak' -delete
 fi
 echo "    versions in use: $(grep -rho '?v=[0-9]*' --include='*.html' . | sort -u | tr '\n' ' ')"
@@ -68,20 +65,17 @@ echo "    versions in use: $(grep -rho '?v=[0-9]*' --include='*.html' . | sort -
 # ---------------------------------------------------------------------------
 echo "==> 5/6  Verifying"
 python3 - <<'PY'
-import os, re, glob, sys
+import os, re, glob, json, sys
 
 problems = []
 
-# a) the live files must be the new ones
 markers = {
-    "js/shop.js":     ["data-search-toolbar", "facetGroup", "data-f-brand", "data-f-origin", "product__foot"],
-    "js/catalog.js":  ['"brand"', '"origin"'],
-    "js/main.js":     ["filter.brand", "filter.origin", "product.brand"],
-    "js/mobile.js":   ["msearch-open", "popstate"],
-    "css/styles.css": [".search-toolbar", ".fchip", ".fgroup__more"],
-    "css/mobile.css": [".filters__scrim", "msearch-open", "filters__foot"],
-    "admin/admin.js": ['name="brand"', "originEn"],
-    "search.html":    ["data-search-toolbar", "filters__scrim"],
+    "js/shop.js":     ["labelsHTML", "LABEL_ORDER", 'classList.toggle("cart-open"', "SP.ids"],
+    "js/catalog.js":  ['"shopItems"', '"labels"', '"oos"'],
+    "js/main.js":     ["shopItemHref", "label.frozen", "filter.selection"],
+    "css/styles.css": [".plabel", ".shop-item__link", "body.cart-open .cart-fab", ".dash__signout { display: none"],
+    "css/mobile.css": [".dash__nav .btn { display: none", ".dash__signout { display: inline-flex", "body.cart-open .ai"],
+    "account.html":   ["dash__signout"],
 }
 for path, keys in markers.items():
     if not os.path.exists(path):
@@ -91,31 +85,38 @@ for path, keys in markers.items():
     if absent:
         problems.append(f"{path} is missing: {', '.join(absent)}")
 
-# b) no loose assets left at the top level
 loose = [f for f in os.listdir(".") if f.endswith((".js", ".css")) and os.path.isfile(f)]
 if loose:
     problems.append(f"assets still loose at the top level: {', '.join(loose)}")
 
-# c) the old floating "+" rule must be gone
-mob = open("css/mobile.css", encoding="utf-8").read()
-if "right: 10px; bottom: 10px" in mob:
-    problems.append("css/mobile.css still has the old floating + button rule")
-
-# d) brace balance in the stylesheets
 for f in ("css/styles.css", "css/mobile.css"):
     s = open(f, encoding="utf-8").read()
     if s.count("{") != s.count("}"):
         problems.append(f"{f} braces unbalanced ({s.count('{')}/{s.count('}')})")
+    bad = [c for c in re.findall(r"#[0-9a-zA-Z]+", s)
+           if not re.fullmatch(r"#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})", c)]
+    if bad:
+        problems.append(f"{f} has malformed colour values: {', '.join(sorted(set(bad)))}")
 
-# e) every product carries a brand
+acct = open("account.html", encoding="utf-8").read()
+if acct.count("data-logout") != 2:
+    problems.append(f"account.html has {acct.count('data-logout')} sign-out buttons, expected 2")
+
 cat = open("js/catalog.js", encoding="utf-8").read()
-import json
-obj = json.loads(cat[cat.index("{"):cat.rindex("}") + 1])
-nobrand = [p["id"] for p in obj["products"] if not p.get("brand")]
-if nobrand:
-    problems.append(f"products with no brand: {', '.join(nobrand)}")
+C = json.loads(cat[cat.index("{"):cat.rindex("}") + 1])
+by_id = {p["id"]: p for p in C["products"]}
+linked = 0
+for shop, m in C.get("shopItems", {}).items():
+    for idx, ids in m.items():
+        linked += 1
+        for pid in ids:
+            if pid not in by_id:
+                problems.append(f"keyword {shop}[{idx}] points at unknown product {pid}")
+            elif by_id[pid]["section"] != shop:
+                problems.append(f"keyword {shop}[{idx}] -> {pid}, which sits in {by_id[pid]['section']}")
+            elif len(ids) == 1 and not os.path.exists(f"products/{pid}.html"):
+                problems.append(f"keyword {shop}[{idx}] -> products/{pid}.html does not exist")
 
-# f) nothing points at a file that no longer exists
 missing = []
 pages = glob.glob("**/*.html", recursive=True)
 for f in pages:
@@ -127,10 +128,9 @@ for f in pages:
         if not os.path.exists(os.path.normpath(os.path.join(d, u))):
             missing.append((f, u))
 
+labelled = len([p for p in C["products"] if p.get("labels") or p.get("was") or p.get("oos")])
 print(f"    {len(pages)} pages checked, {len(missing)} broken links")
-print(f"    {len(obj['products'])} products, "
-      f"{len({p['brand'] for p in obj['products']})} brands, "
-      f"{len({p['origin']['en'] for p in obj['products'] if p.get('origin')})} countries")
+print(f"    {linked} keywords linked, {labelled} of {len(C['products'])} products carry a label")
 for f, u in missing[:20]:
     print("      BROKEN:", f, "->", u)
 for p in problems:
@@ -138,10 +138,14 @@ for p in problems:
 sys.exit(1 if (problems or missing) else 0)
 PY
 
-for f in js/shop.js js/catalog.js js/main.js js/mobile.js admin/admin.js; do
-  if command -v node >/dev/null 2>&1; then node --check "$f" >/dev/null || { echo "    SYNTAX ERROR in $f" >&2; exit 1; }; fi
-done
-command -v node >/dev/null 2>&1 && echo "    all scripts parse" || echo "    (node not installed — skipped the syntax check)"
+if command -v node >/dev/null 2>&1; then
+  for f in js/shop.js js/catalog.js js/main.js js/mobile.js admin/admin.js; do
+    node --check "$f" >/dev/null || { echo "    SYNTAX ERROR in $f" >&2; exit 1; }
+  done
+  echo "    all scripts parse"
+else
+  echo "    (node not installed — skipped the syntax check)"
+fi
 
 # ---------------------------------------------------------------------------
 echo "==> 6/6  Committing"
@@ -149,7 +153,7 @@ git add -A
 if git diff --cached --quiet; then
   echo "    nothing to commit — the repo already matches this update"
 else
-  git commit -q -m "search: brand and country-of-origin filters; fix mobile search overlay"
+  git commit -q -m "shop keyword links, product labels, mobile sign-out, hide cart FAB behind drawer"
   echo "    committed"
 fi
 
@@ -163,6 +167,6 @@ fi
 
 cat <<'MSG'
 
-Done. On the phone, hard-refresh or use a private tab so you get v=22.
+Done. On the phone, hard-refresh or use a private tab so you get v=23.
 This script can be deleted now; the next update will bring its own.
 MSG

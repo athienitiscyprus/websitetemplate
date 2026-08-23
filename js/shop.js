@@ -55,6 +55,26 @@
   }
   function unitLabelKey(p) { return { each: "piece", loaf: "piece", slice: "piece", cup: "piece" }[p.unit] || p.unit; }
   // Country of origin, carried by the loose goods on the fresh counters.
+  /* Labels shown above each listing. Order is deliberate: stock state first,
+     then the commercial flag, then what the product is. Capped so a card never
+     turns into a wall of chips. */
+  var LABEL_ORDER = ["oos", "sale", "new", "frozen", "fresh", "local"];
+  var LABEL_MAX = 3;
+  function labelsOf(p) {
+    var set = {};
+    (p.labels || []).forEach(function (k) { set[k] = 1; });
+    if (p.was) set.sale = 1;
+    if (p.origin && p.origin.en === "Cyprus") set.local = 1;
+    if (p.oos) { set = { oos: 1 }; }          // out of stock says all there is to say
+    return LABEL_ORDER.filter(function (k) { return set[k]; }).slice(0, LABEL_MAX);
+  }
+  function labelsHTML(p) {
+    var ls = labelsOf(p);
+    if (!ls.length) return "";
+    return '<div class="product__labels">' + ls.map(function (k) {
+      return '<span class="plabel plabel--' + k + '">' + esc(t("label." + k)) + '</span>';
+    }).join("") + '</div>';
+  }
   function originOf(p) { return p && p.origin ? (p.origin[lang()] || p.origin.en || "") : ""; }
   var PIN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
   var TAG_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V5a2 2 0 0 1 2-2h7l9 9-9 9z"/><circle cx="8" cy="8" r="1.4"/></svg>';
@@ -157,18 +177,20 @@
         '<b data-weight data-w="' + startW(p) + '" data-step="' + stepOf(p) + '">' + wLabel(startW(p)) + '</b>' +
         '<button type="button" data-wstep="1" aria-label="+">+</button></div></div>'
       : "";
-    return '<article class="product" data-product="' + p.id + '">' +
+    return '<article class="product' + (p.oos ? " is-oos" : "") + '" data-product="' + p.id + '">' +
       '<a class="product__img" href="' + base + 'products/' + p.id + '.html"><img src="' + imgUrl(p.img) + '" alt="" loading="lazy">' +
       (off ? '<span class="product__off">-' + off + '%</span>' : '') + '</a>' +
-      '<div class="product__body">' +
+      '<div class="product__body">' + labelsHTML(p) +
       (noCat ? '' : '<a class="product__cat ' + (sec.color || "") + '" href="' + base + 'shops/' + p.section + '.html">' + esc(t("dept." + p.section)) + '</a>') +
       '<h3><a href="' + base + 'products/' + p.id + '.html">' + esc(p.name[lang()] || p.name.en) + '</a></h3>' +
       origin +
       '<div class="product__price"><b>' + money(p.price) + '</b>' + (p.was ? '<s>' + money(p.was) + '</s>' : '') + '<small>/ ' + esc(t("unit." + unitKey)) + '</small></div>' +
       (ref ? '<div class="product__ref">' + esc(ref) + '</div>' : '') +
       '<div class="product__foot">' + weight +
-      '<button class="btn btn--primary btn--sm product__add" type="button" data-add="' + p.id + '">' +
-      PLUS_SVG + '<span>' + esc(t("shop.add")) + '</span></button></div></div></article>';
+      (p.oos
+        ? '<button class="btn btn--ghost btn--sm product__add" type="button" disabled>' + esc(t("label.oos")) + '</button>'
+        : '<button class="btn btn--primary btn--sm product__add" type="button" data-add="' + p.id + '">' +
+          PLUS_SVG + '<span>' + esc(t("shop.add")) + '</span></button>') + '</div></div></article>';
   }
 
   function renderProducts() {
@@ -268,6 +290,8 @@
         SP.secs = {}; (u.get("dept") || "").split(",").forEach(function (v) { if (v) SP.secs[v] = true; });
         SP.brands = {}; (u.get("brand") || "").split("|").forEach(function (v) { if (v) SP.brands[v] = true; });
         SP.origins = {}; (u.get("origin") || "").split("|").forEach(function (v) { if (v) SP.origins[v] = true; });
+        SP.ids = (u.get("ids") || "").split(",").filter(Boolean);
+        SP.label = u.get("label") || "";
         SP.offers = u.get("offers") === "1";
         SP.min = u.get("min") || ""; SP.max = u.get("max") || "";
         SP.sort = u.get("sort") || "rel";
@@ -278,6 +302,7 @@
         var d = keysOn(SP.secs); if (d.length) u.set("dept", d.join(","));
         var b = keysOn(SP.brands); if (b.length) u.set("brand", b.join("|"));
         var o = keysOn(SP.origins); if (o.length) u.set("origin", o.join("|"));
+        if (SP.ids && SP.ids.length) { u.set("ids", SP.ids.join(",")); if (SP.label) u.set("label", SP.label); }
         if (SP.offers) u.set("offers", "1");
         if (SP.min !== "") u.set("min", SP.min);
         if (SP.max !== "") u.set("max", SP.max);
@@ -301,6 +326,7 @@
         if (skip !== "dept" && d.length && d.indexOf(p.section) === -1) return false;
         if (skip !== "brand" && b.length && b.indexOf(p.brand || "") === -1) return false;
         if (skip !== "origin" && o.length && (!p.origin || o.indexOf(p.origin.en) === -1)) return false;
+        if (skip !== "ids" && SP.ids && SP.ids.length && SP.ids.indexOf(p.id) === -1) return false;
         if (skip !== "offers" && SP.offers && !p.was) return false;
         if (skip !== "price") {
           if (SP.min !== "" && p.price < parseFloat(SP.min)) return false;
@@ -318,7 +344,7 @@
       }
       function activeCount() {
         return keysOn(SP.secs).length + keysOn(SP.brands).length + keysOn(SP.origins).length +
-          (SP.offers ? 1 : 0) + (SP.min !== "" || SP.max !== "" ? 1 : 0);
+          (SP.ids && SP.ids.length ? 1 : 0) + (SP.offers ? 1 : 0) + (SP.min !== "" || SP.max !== "" ? 1 : 0);
       }
 
       function facetGroup(id, title, values, counts, state, labelOf) {
@@ -345,6 +371,7 @@
 
       function chipsHTML() {
         var out = [];
+        if (SP.ids && SP.ids.length) out.push(chip("ids", "1", SP.label || t("filter.selection")));
         keysOn(SP.secs).forEach(function (v) { out.push(chip("dept", v, t("dept." + v))); });
         keysOn(SP.brands).forEach(function (v) { out.push(chip("brand", v, v)); });
         keysOn(SP.origins).forEach(function (v) { out.push(chip("origin", v, v)); });
@@ -374,7 +401,8 @@
 
         var n = document.querySelector("[data-search-count]"); if (n) n.textContent = list.length;
         var ttl = document.querySelector("[data-search-title]");
-        if (ttl) ttl.textContent = (SP.q || "").trim().length >= 2 ? t("search.for") + " \u201C" + SP.q + "\u201D" : t("search.all");
+        if (ttl) ttl.textContent = (SP.q || "").trim().length >= 2 ? t("search.for") + " \u201C" + SP.q + "\u201D"
+          : (SP.label || t("search.all"));
 
         var sorts = [["rel", t("sort.rel")], ["priceasc", t("sort.priceasc")], ["pricedesc", t("sort.pricedesc")], ["name", t("sort.name")]];
         if (toolbar) {
@@ -445,7 +473,7 @@
         var onClick = function (e) {
           var b;
           if ((b = e.target.closest("[data-f-more]"))) { var id = b.getAttribute("data-f-more"); SP.show[id] = !SP.show[id]; renderSearchPage(); }
-          else if (e.target.closest("[data-f-clear]")) { SP.secs = {}; SP.brands = {}; SP.origins = {}; SP.offers = false; SP.min = SP.max = ""; writeURL(true); renderSearchPage(); }
+          else if (e.target.closest("[data-f-clear]")) { SP.secs = {}; SP.brands = {}; SP.origins = {}; SP.ids = []; SP.label = ""; SP.offers = false; SP.min = SP.max = ""; writeURL(true); renderSearchPage(); }
           else if ((b = e.target.closest("[data-f-drop]"))) {
             var kind = b.getAttribute("data-f-drop"), v = b.getAttribute("data-f-val");
             if (kind === "dept") SP.secs[v] = false;
@@ -453,6 +481,7 @@
             else if (kind === "origin") SP.origins[v] = false;
             else if (kind === "offers") SP.offers = false;
             else if (kind === "price") { SP.min = SP.max = ""; }
+            else if (kind === "ids") { SP.ids = []; SP.label = ""; }
             writeURL(true); renderSearchPage();
           }
           else if (e.target.closest("[data-f-open]")) openFilters(true);
@@ -511,6 +540,9 @@
     var d = document.querySelector(".cart-drawer"); if (!d) return;
     d.classList.toggle("is-open", open); d.setAttribute("aria-hidden", open ? "false" : "true");
     document.body.style.overflow = open ? "hidden" : "";
+    // the basket button and the other floating controls sit above the drawer, so
+    // they have to be taken out of the way while it is open
+    document.body.classList.toggle("cart-open", !!open);
   }
 
   function flyToCart(btn) {
@@ -653,6 +685,21 @@
     var hero = pg.querySelector(".pdp__media img"); if (hero && hero.getAttribute("src") !== p.img) hero.src = imgUrl(p.img);
     // price block & badges always come from the live catalog (staff edits, offers, expiries)
     var pr = pg.querySelector(".pdp__price"), off = p.was ? Math.round((1 - p.price / p.was) * 100) : 0;
+    // labels, above the title, built here so no product page needed editing
+    var labEl = pg.querySelector(".pdp__labels"), labHTML = labelsHTML(p);
+    if (labHTML) {
+      if (!labEl) {
+        labEl = document.createElement("div");
+        var h1 = pg.querySelector(".pdp__info h1, .pdp__info .h1");
+        if (h1 && h1.parentNode) h1.parentNode.insertBefore(labEl, h1);
+        else { var inf = pg.querySelector(".pdp__info"); if (inf) inf.insertBefore(labEl, inf.firstChild); }
+      }
+      labEl.className = "pdp__labels";
+      labEl.innerHTML = labHTML;
+    } else if (labEl) labEl.remove();
+    // out of stock: nothing to add to the basket
+    pg.classList.toggle("is-oos", !!p.oos);
+    pg.querySelectorAll("[data-add], [data-add-qty]").forEach(function (b) { b.disabled = !!p.oos; });
     if (pr) pr.innerHTML = '<b>' + money(p.price) + '</b>' + (p.was ? '<s>' + money(p.was) + '</s>' : '') + '<small>/ ' + esc(t("unit." + p.unit)) + '</small>' + (off ? '<span class="pdp__save">' + esc(t("offers.save")) + ' ' + money(p.was - p.price) + '</span>' : '') + (p.member ? '<span class="pdp__save" style="background:var(--orange-tint);color:var(--orange-deep)">Bonus: ' + money(p.member) + '</span>' : '');
     var badge = pg.querySelector(".pdp__media .product__off"); if (off) { if (!badge) { badge = document.createElement("span"); badge.className = "product__off"; pg.querySelector(".pdp__media").appendChild(badge); } badge.textContent = "-" + off + "%"; } else if (badge) badge.remove();
     // Brand and country of origin — the page markup does not carry either, so build
