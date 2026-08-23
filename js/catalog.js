@@ -45,7 +45,12 @@ window.CATALOG = {
    "kw": "bread loaf",
    "img": "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk1",
    "was": 2.9,
-   "tag": "fresh"
+   "tag": "fresh",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bk2",
@@ -58,7 +63,12 @@ window.CATALOG = {
    "unit": "each",
    "kw": "sesame bread ring",
    "img": "https://images.unsplash.com/photo-1599819055803-717bba43890f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_bk2",
-   "tag": "fresh"
+   "tag": "fresh",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bk3",
@@ -70,7 +80,12 @@ window.CATALOG = {
    "price": 1.8,
    "unit": "each",
    "kw": "cheese pie pastry",
-   "img": "assets/img/product_bk3.jpg"
+   "img": "assets/img/product_bk3.jpg",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bk4",
@@ -83,7 +98,12 @@ window.CATALOG = {
    "unit": "loaf",
    "kw": "olive bread",
    "img": "assets/img/product_bk4.jpg",
-   "was": 3.1
+   "was": 3.1,
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bk5",
@@ -95,7 +115,12 @@ window.CATALOG = {
    "price": 4.9,
    "unit": "box",
    "kw": "cookies sugar almond",
-   "img": "assets/img/product_bk5.jpg"
+   "img": "assets/img/product_bk5.jpg",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bk6",
@@ -107,7 +132,12 @@ window.CATALOG = {
    "price": 4.2,
    "unit": "loaf",
    "kw": "bread sliced",
-   "img": "assets/img/product_bk6.jpg"
+   "img": "assets/img/product_bk6.jpg",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "bt1",
@@ -124,7 +154,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "bt2",
@@ -140,7 +171,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "bt3",
@@ -157,7 +189,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "bt4",
@@ -174,7 +207,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "bt5",
@@ -190,7 +224,8 @@ window.CATALOG = {
    "origin": {
     "en": "Ireland",
     "el": "Ιρλανδία"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "bt6",
@@ -206,7 +241,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "dl1",
@@ -223,7 +259,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Kyrenia Dairies"
   },
   {
    "id": "dl2",
@@ -239,7 +276,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Troodos Smokehouse"
   },
   {
    "id": "dl3",
@@ -256,7 +294,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Kyrenia Dairies"
   },
   {
    "id": "dl4",
@@ -272,7 +311,8 @@ window.CATALOG = {
    "origin": {
     "en": "Greece",
     "el": "Ελλάδα"
-   }
+   },
+   "brand": "Olivo"
   },
   {
    "id": "dl5",
@@ -289,7 +329,8 @@ window.CATALOG = {
    "origin": {
     "en": "Spain",
     "el": "Ισπανία"
-   }
+   },
+   "brand": "Casa Verde"
   },
   {
    "id": "dl6",
@@ -305,7 +346,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fs1",
@@ -322,7 +364,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fs2",
@@ -339,7 +382,8 @@ window.CATALOG = {
    "origin": {
     "en": "Greece",
     "el": "Ελλάδα"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fs3",
@@ -355,7 +399,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fs4",
@@ -371,7 +416,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fs5",
@@ -388,7 +434,8 @@ window.CATALOG = {
    "origin": {
     "en": "Ecuador",
     "el": "Ισημερινός"
-   }
+   },
+   "brand": "Nireas"
   },
   {
    "id": "fs6",
@@ -404,7 +451,8 @@ window.CATALOG = {
    "origin": {
     "en": "Norway",
     "el": "Νορβηγία"
-   }
+   },
+   "brand": "Nireas"
   },
   {
    "id": "fr1",
@@ -421,7 +469,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fr2",
@@ -437,7 +486,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fr3",
@@ -454,7 +504,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fr4",
@@ -471,7 +522,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fr5",
@@ -487,7 +539,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Athienitis"
   },
   {
    "id": "fr6",
@@ -503,7 +556,8 @@ window.CATALOG = {
    "origin": {
     "en": "Cyprus",
     "el": "Κύπρος"
-   }
+   },
+   "brand": "Troodos Apiary"
   },
   {
    "id": "cl1",
@@ -516,7 +570,12 @@ window.CATALOG = {
    "unit": "bottle",
    "kw": "white wine bottle",
    "img": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl1",
-   "was": 10.9
+   "was": 10.9,
+   "brand": "Aphrodite Cellars",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "cl2",
@@ -528,7 +587,12 @@ window.CATALOG = {
    "price": 12.9,
    "unit": "bottle",
    "kw": "red wine bottle",
-   "img": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl2"
+   "img": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl2",
+   "brand": "Aphrodite Cellars",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "cl3",
@@ -540,7 +604,12 @@ window.CATALOG = {
    "price": 14.5,
    "unit": "bottle",
    "kw": "dessert wine bottle",
-   "img": "https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl3"
+   "img": "https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl3",
+   "brand": "Kolossi Estate",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "cl4",
@@ -553,7 +622,12 @@ window.CATALOG = {
    "unit": "bottle",
    "kw": "spirit bottle glass",
    "img": "assets/img/product_cl4.jpg",
-   "was": 12.5
+   "was": 12.5,
+   "brand": "Kolossi Estate",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "cl5",
@@ -565,7 +639,12 @@ window.CATALOG = {
    "price": 9.9,
    "unit": "pack",
    "kw": "craft beer bottles",
-   "img": "assets/img/product_cl5.jpg"
+   "img": "assets/img/product_cl5.jpg",
+   "brand": "Larnaca Brewing Co.",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "cl6",
@@ -577,7 +656,12 @@ window.CATALOG = {
    "price": 10.9,
    "unit": "bottle",
    "kw": "prosecco sparkling",
-   "img": "https://images.unsplash.com/photo-1547595628-c61a29f496f0?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl6"
+   "img": "https://images.unsplash.com/photo-1547595628-c61a29f496f0?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cl6",
+   "brand": "Ca' Bellini",
+   "origin": {
+    "en": "Italy",
+    "el": "Ιταλία"
+   }
   },
   {
    "id": "et1",
@@ -590,7 +674,12 @@ window.CATALOG = {
    "unit": "portion",
    "kw": "greek food plate",
    "img": "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et1",
-   "tag": "fresh"
+   "tag": "fresh",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "et2",
@@ -603,7 +692,12 @@ window.CATALOG = {
    "unit": "portion",
    "kw": "halloumi salad",
    "img": "https://images.unsplash.com/photo-1757522745249-d9a075cf38de?auto=format&fit=crop&w=600&h=450&q=75&slot=product_et2",
-   "was": 8.0
+   "was": 8.0,
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "et3",
@@ -615,7 +709,12 @@ window.CATALOG = {
    "price": 7.9,
    "unit": "portion",
    "kw": "stuffed peppers tomatoes",
-   "img": "assets/img/product_et3.jpg"
+   "img": "assets/img/product_et3.jpg",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "et4",
@@ -627,7 +726,12 @@ window.CATALOG = {
    "price": 4.5,
    "unit": "each",
    "kw": "souvlaki pita",
-   "img": "assets/img/product_et4.jpg"
+   "img": "assets/img/product_et4.jpg",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "et5",
@@ -639,7 +743,12 @@ window.CATALOG = {
    "price": 2.5,
    "unit": "cup",
    "kw": "iced coffee",
-   "img": "assets/img/product_et5.jpg"
+   "img": "assets/img/product_et5.jpg",
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "et6",
@@ -652,7 +761,12 @@ window.CATALOG = {
    "unit": "slice",
    "kw": "custard pastry dessert",
    "img": "assets/img/product_et6.jpg",
-   "was": 3.8
+   "was": 3.8,
+   "brand": "Athienitis",
+   "origin": {
+    "en": "Cyprus",
+    "el": "Κύπρος"
+   }
   },
   {
    "id": "lv1",
@@ -665,7 +779,8 @@ window.CATALOG = {
    "unit": "each",
    "kw": "bath towel",
    "img": "assets/img/product_lv1.jpg",
-   "was": 12.9
+   "was": 12.9,
+   "brand": "Helios Home"
   },
   {
    "id": "lv2",
@@ -677,7 +792,8 @@ window.CATALOG = {
    "price": 18.5,
    "unit": "each",
    "kw": "wooden cutting board",
-   "img": "assets/img/product_lv2.jpg"
+   "img": "assets/img/product_lv2.jpg",
+   "brand": "Olivo"
   },
   {
    "id": "lv3",
@@ -689,7 +805,8 @@ window.CATALOG = {
    "price": 7.5,
    "unit": "each",
    "kw": "candle scented",
-   "img": "assets/img/product_lv3.jpg"
+   "img": "assets/img/product_lv3.jpg",
+   "brand": "Helios Home"
   },
   {
    "id": "lv4",
@@ -702,7 +819,8 @@ window.CATALOG = {
    "unit": "each",
    "kw": "frying pan",
    "img": "assets/img/product_lv4.jpg",
-   "was": 27.0
+   "was": 27.0,
+   "brand": "Terra Cook"
   },
   {
    "id": "lv5",
@@ -714,7 +832,8 @@ window.CATALOG = {
    "price": 34.0,
    "unit": "set",
    "kw": "bed sheets linen",
-   "img": "assets/img/product_lv5.jpg"
+   "img": "assets/img/product_lv5.jpg",
+   "brand": "Helios Home"
   },
   {
    "id": "lv6",
@@ -726,7 +845,8 @@ window.CATALOG = {
    "price": 11.9,
    "unit": "set",
    "kw": "glass jars",
-   "img": "assets/img/product_lv6.jpg"
+   "img": "assets/img/product_lv6.jpg",
+   "brand": "Terra Cook"
   },
   {
    "id": "cn1",
@@ -739,7 +859,8 @@ window.CATALOG = {
    "unit": "each",
    "kw": "laundry",
    "img": "assets/img/product_cn1.jpg",
-   "was": 10.5
+   "was": 10.5,
+   "brand": "PureLine"
   },
   {
    "id": "cn2",
@@ -751,7 +872,8 @@ window.CATALOG = {
    "price": 2.4,
    "unit": "each",
    "kw": "dish soap",
-   "img": "assets/img/product_cn2.jpg"
+   "img": "assets/img/product_cn2.jpg",
+   "brand": "PureLine"
   },
   {
    "id": "cn3",
@@ -764,7 +886,8 @@ window.CATALOG = {
    "unit": "each",
    "kw": "spray",
    "img": "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=600&h=450&q=75&slot=product_cn3",
-   "was": 3.8
+   "was": 3.8,
+   "brand": "PureLine"
   },
   {
    "id": "cn4",
@@ -777,7 +900,8 @@ window.CATALOG = {
    "unit": "each",
    "kw": "refill eco",
    "img": "assets/img/product_cn4.jpg",
-   "tag": "fresh"
+   "tag": "fresh",
+   "brand": "Verde Eco"
   },
   {
    "id": "cn5",
@@ -789,7 +913,8 @@ window.CATALOG = {
    "price": 4.6,
    "unit": "each",
    "kw": "floor",
-   "img": "assets/img/product_cn5.jpg"
+   "img": "assets/img/product_cn5.jpg",
+   "brand": "PureLine"
   },
   {
    "id": "cn6",
@@ -802,7 +927,8 @@ window.CATALOG = {
    "unit": "pack",
    "kw": "paper roll",
    "img": "assets/img/product_cn6.jpg",
-   "was": 6.2
+   "was": 6.2,
+   "brand": "Verde Eco"
   },
   {
    "id": "gf1",
@@ -815,7 +941,8 @@ window.CATALOG = {
    "unit": "box",
    "kw": "gift box food",
    "img": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf1",
-   "was": 34.0
+   "was": 34.0,
+   "brand": "Athienitis"
   },
   {
    "id": "gf2",
@@ -827,7 +954,8 @@ window.CATALOG = {
    "price": 14.5,
    "unit": "each",
    "kw": "wooden toy train",
-   "img": "assets/img/product_gf2.jpg"
+   "img": "assets/img/product_gf2.jpg",
+   "brand": "Little Acorn"
   },
   {
    "id": "gf3",
@@ -839,7 +967,8 @@ window.CATALOG = {
    "price": 6.9,
    "unit": "each",
    "kw": "notebook stationery",
-   "img": "assets/img/product_gf3.jpg"
+   "img": "assets/img/product_gf3.jpg",
+   "brand": "Little Acorn"
   },
   {
    "id": "gf4",
@@ -852,7 +981,8 @@ window.CATALOG = {
    "unit": "each",
    "kw": "hand cream cosmetic",
    "img": "assets/img/product_gf4.jpg",
-   "was": 6.5
+   "was": 6.5,
+   "brand": "Olivo"
   },
   {
    "id": "gf5",
@@ -864,7 +994,8 @@ window.CATALOG = {
    "price": 8.9,
    "unit": "each",
    "kw": "tshirt cotton",
-   "img": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf5"
+   "img": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&h=450&q=75&slot=product_gf5",
+   "brand": "Helios Home"
   },
   {
    "id": "gf6",
@@ -876,7 +1007,8 @@ window.CATALOG = {
    "price": 3.9,
    "unit": "pack",
    "kw": "greeting cards",
-   "img": "assets/img/product_gf6.jpg"
+   "img": "assets/img/product_gf6.jpg",
+   "brand": "Little Acorn"
   }
  ],
  "recipes": [

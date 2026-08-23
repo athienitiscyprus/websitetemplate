@@ -57,6 +57,7 @@
   // Country of origin, carried by the loose goods on the fresh counters.
   function originOf(p) { return p && p.origin ? (p.origin[lang()] || p.origin.en || "") : ""; }
   var PIN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+  var TAG_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V5a2 2 0 0 1 2-2h7l9 9-9 9z"/><circle cx="8" cy="8" r="1.4"/></svg>';
   var PLUS_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
@@ -249,62 +250,229 @@
     });
     var results = document.querySelector("[data-search-results]");
     if (results) {
-      var SP = window._searchPage = window._searchPage || { secs: {}, offers: false, min: "", max: "", sort: "rel" };
-      SP.q = new URLSearchParams(location.search).get("q") || "";
-      document.querySelectorAll("[data-search] input").forEach(function (i) { i.value = SP.q; });
+      /* ---------------------------------------------------------------------
+         Faceted search page. Facets: counter, brand, country of origin, price,
+         offers. Counts on each value are worked out against everything except
+         that facet, so ticking one box never makes its own siblings read zero.
+         State lives in the URL, so results are shareable and Back steps through
+         filter changes.
+      --------------------------------------------------------------------- */
+      var SP = window._searchPage = window._searchPage || { secs: {}, brands: {}, origins: {}, offers: false, min: "", max: "", sort: "rel", show: {} };
       var aside = document.querySelector("[data-search-filters]");
-      function matches(p) {
-        var q = SP.q.trim().toLowerCase();
-        return q.length < 2 || (p.name.en + " " + p.name.el + " " + (p.kw || "") + " " + t("dept." + p.section) + " " + p.section).toLowerCase().indexOf(q) !== -1;
+      var toolbar = document.querySelector("[data-search-toolbar]");
+      var FACET_CAP = 8;   // values shown before "show all"
+
+      function readURL() {
+        var u = new URLSearchParams(location.search);
+        SP.q = u.get("q") || "";
+        SP.secs = {}; (u.get("dept") || "").split(",").forEach(function (v) { if (v) SP.secs[v] = true; });
+        SP.brands = {}; (u.get("brand") || "").split("|").forEach(function (v) { if (v) SP.brands[v] = true; });
+        SP.origins = {}; (u.get("origin") || "").split("|").forEach(function (v) { if (v) SP.origins[v] = true; });
+        SP.offers = u.get("offers") === "1";
+        SP.min = u.get("min") || ""; SP.max = u.get("max") || "";
+        SP.sort = u.get("sort") || "rel";
       }
-      function renderSearchPage() {
-        var byQ = C.products.filter(matches);
-        var active = Object.keys(SP.secs).filter(function (k) { return SP.secs[k]; });
-        var list = byQ.filter(function (p) {
-          if (active.length && active.indexOf(p.section) === -1) return false;
-          if (SP.offers && !p.was) return false;
+      function writeURL(push) {
+        var u = new URLSearchParams();
+        if (SP.q) u.set("q", SP.q);
+        var d = keysOn(SP.secs); if (d.length) u.set("dept", d.join(","));
+        var b = keysOn(SP.brands); if (b.length) u.set("brand", b.join("|"));
+        var o = keysOn(SP.origins); if (o.length) u.set("origin", o.join("|"));
+        if (SP.offers) u.set("offers", "1");
+        if (SP.min !== "") u.set("min", SP.min);
+        if (SP.max !== "") u.set("max", SP.max);
+        if (SP.sort !== "rel") u.set("sort", SP.sort);
+        var qs = u.toString();
+        var url = location.pathname + (qs ? "?" + qs : "");
+        try { history[push ? "pushState" : "replaceState"]({}, "", url); } catch (e) { /* file:// */ }
+      }
+      function keysOn(o) { return Object.keys(o).filter(function (k) { return o[k]; }); }
+
+      function matches(p) {
+        var q = (SP.q || "").trim().toLowerCase();
+        if (q.length < 2) return true;
+        var hay = p.name.en + " " + p.name.el + " " + (p.kw || "") + " " + (p.brand || "") + " " +
+          (p.origin ? p.origin.en + " " + p.origin.el : "") + " " + t("dept." + p.section) + " " + p.section;
+        return hay.toLowerCase().indexOf(q) !== -1;
+      }
+      // `skip` names a facet to leave out, which is how the counts are produced
+      function pass(p, skip) {
+        var d = keysOn(SP.secs), b = keysOn(SP.brands), o = keysOn(SP.origins);
+        if (skip !== "dept" && d.length && d.indexOf(p.section) === -1) return false;
+        if (skip !== "brand" && b.length && b.indexOf(p.brand || "") === -1) return false;
+        if (skip !== "origin" && o.length && (!p.origin || o.indexOf(p.origin.en) === -1)) return false;
+        if (skip !== "offers" && SP.offers && !p.was) return false;
+        if (skip !== "price") {
           if (SP.min !== "" && p.price < parseFloat(SP.min)) return false;
           if (SP.max !== "" && p.price > parseFloat(SP.max)) return false;
-          return true;
+        }
+        return true;
+      }
+      function listFor(skip) {
+        return C.products.filter(function (p) { return matches(p) && pass(p, skip); });
+      }
+      function countBy(skip, key) {
+        var m = {};
+        listFor(skip).forEach(function (p) { var v = key(p); if (v) m[v] = (m[v] || 0) + 1; });
+        return m;
+      }
+      function activeCount() {
+        return keysOn(SP.secs).length + keysOn(SP.brands).length + keysOn(SP.origins).length +
+          (SP.offers ? 1 : 0) + (SP.min !== "" || SP.max !== "" ? 1 : 0);
+      }
+
+      function facetGroup(id, title, values, counts, state, labelOf) {
+        // Ticked first, then most results, then alphabetical. Alphabetical alone
+        // pushes everything useful below the "show all" cut once a filter is on.
+        var ordered = values.slice().sort(function (a, b) {
+          if (!!state[a] !== !!state[b]) return state[a] ? -1 : 1;
+          var d = (counts[b] || 0) - (counts[a] || 0);
+          if (d) return d;
+          return String(labelOf ? labelOf(a) : a).localeCompare(String(labelOf ? labelOf(b) : b));
         });
+        var shown = SP.show[id] ? ordered : ordered.slice(0, FACET_CAP);
+        var rows = shown.map(function (v) {
+          var c = counts[v] || 0;
+          return '<label class="fcheck' + (!c && !state[v] ? " is-empty" : "") + '"><input type="checkbox" data-f-' + id + '="' + esc(v) + '"' +
+            (state[v] ? " checked" : "") + (!c && !state[v] ? " disabled" : "") + '><span>' + esc(labelOf ? labelOf(v) : v) + '</span><em>' + c + '</em></label>';
+        }).join("");
+        var more = ordered.length > FACET_CAP
+          ? '<button type="button" class="fgroup__more" data-f-more="' + id + '">' +
+            esc(SP.show[id] ? t("filter.less") : t("filter.more", ordered.length)) + '</button>'
+          : "";
+        return '<div class="fgroup"><h4>' + esc(title) + '</h4>' + rows + more + '</div>';
+      }
+
+      function chipsHTML() {
+        var out = [];
+        keysOn(SP.secs).forEach(function (v) { out.push(chip("dept", v, t("dept." + v))); });
+        keysOn(SP.brands).forEach(function (v) { out.push(chip("brand", v, v)); });
+        keysOn(SP.origins).forEach(function (v) { out.push(chip("origin", v, v)); });
+        if (SP.offers) out.push(chip("offers", "1", t("filter.offers")));
+        if (SP.min !== "" || SP.max !== "") {
+          out.push(chip("price", "1", (SP.min !== "" ? money(parseFloat(SP.min)) : "€0") + " – " + (SP.max !== "" ? money(parseFloat(SP.max)) : "∞")));
+        }
+        if (!out.length) return "";
+        return '<div class="fchips">' + out.join("") +
+          '<button type="button" class="fchips__clear" data-f-clear>' + esc(t("filter.clear")) + '</button></div>';
+      }
+      function chip(kind, value, label) {
+        return '<button type="button" class="fchip" data-f-drop="' + kind + '" data-f-val="' + esc(value) + '">' +
+          esc(label) + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+      }
+
+      function renderSearchPage() {
+        var list = C.products.filter(function (p) { return matches(p) && pass(p, null); });
         if (SP.sort === "priceasc") list.sort(function (a, b) { return a.price - b.price; });
         if (SP.sort === "pricedesc") list.sort(function (a, b) { return b.price - a.price; });
         if (SP.sort === "name") list.sort(function (a, b) { return (a.name[lang()] || a.name.en).localeCompare(b.name[lang()] || b.name.en); });
-        results.innerHTML = list.length ? list.map(function (p) { return productCard(p); }).join("") : '<p class="lead">' + esc(t("search.none")) + '</p>';
+
+        results.innerHTML = list.length
+          ? list.map(function (p) { return productCard(p); }).join("")
+          : '<div class="search-empty"><p class="lead">' + esc(t("search.none")) + '</p>' +
+            (activeCount() ? '<button type="button" class="btn btn--ghost btn--sm" data-f-clear>' + esc(t("filter.clear")) + '</button>' : "") + '</div>';
+
         var n = document.querySelector("[data-search-count]"); if (n) n.textContent = list.length;
-        var ttl = document.querySelector("[data-search-title]"); if (ttl) ttl.textContent = SP.q.trim().length >= 2 ? t("search.for") + " \u201C" + SP.q + "\u201D" : t("search.all");
-        if (!aside) return;
+        var ttl = document.querySelector("[data-search-title]");
+        if (ttl) ttl.textContent = (SP.q || "").trim().length >= 2 ? t("search.for") + " \u201C" + SP.q + "\u201D" : t("search.all");
+
         var sorts = [["rel", t("sort.rel")], ["priceasc", t("sort.priceasc")], ["pricedesc", t("sort.pricedesc")], ["name", t("sort.name")]];
-        aside.innerHTML = '<div class="filters__head"><h3>' + esc(t("filter.title")) + '</h3><button type="button" class="filters__clear" data-f-clear>' + esc(t("filter.clear")) + '</button></div>' +
-          '<div class="filters__body"><div class="fgroup"><h4>' + esc(t("filter.sort")) + '</h4><select data-f-sort>' + sorts.map(function (o) { return '<option value="' + o[0] + '"' + (SP.sort === o[0] ? " selected" : "") + '>' + esc(o[1]) + '</option>'; }).join("") + '</select></div>' +
-          '<div class="fgroup"><h4>' + esc(t("filter.dept")) + '</h4>' + Object.keys(C.sections).map(function (sec) {
-            var cnt = byQ.filter(function (p) { return p.section === sec; }).length; if (!cnt) return "";
-            return '<label class="fcheck"><input type="checkbox" data-f-sec="' + sec + '"' + (SP.secs[sec] ? " checked" : "") + '><span>' + esc(t("dept." + sec)) + '</span><em>' + cnt + '</em></label>';
-          }).join("") + '</div>' +
-          '<div class="fgroup"><h4>' + esc(t("filter.price")) + '</h4><div class="frange"><input type="number" min="0" step="0.5" inputmode="decimal" placeholder="' + esc(t("filter.min")) + '" value="' + SP.min + '" data-f-min><span>–</span><input type="number" min="0" step="0.5" inputmode="decimal" placeholder="' + esc(t("filter.max")) + '" value="' + SP.max + '" data-f-max></div></div>' +
-          '<label class="fcheck fcheck--offers"><input type="checkbox" data-f-offers' + (SP.offers ? " checked" : "") + '><span>' + esc(t("filter.offers")) + '</span></label></div>';
+        if (toolbar) {
+          toolbar.innerHTML =
+            '<div class="search-toolbar__row">' +
+            '<button type="button" class="btn btn--ghost btn--sm search-toolbar__filters" data-f-open>' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>' +
+            '<span>' + esc(t("filter.title")) + '</span>' + (activeCount() ? '<em>' + activeCount() + '</em>' : "") + '</button>' +
+            '<span class="search-toolbar__count">' + list.length + " " + esc(t("search.count")) + '</span>' +
+            '<label class="search-toolbar__sort"><span>' + esc(t("filter.sort")) + '</span><select data-f-sort>' +
+            sorts.map(function (o) { return '<option value="' + o[0] + '"' + (SP.sort === o[0] ? " selected" : "") + '>' + esc(o[1]) + '</option>'; }).join("") +
+            '</select></label></div>' + chipsHTML();
+        }
+
+        if (!aside) return;
+        var secs = Object.keys(C.sections).filter(function (s) { return C.products.some(function (p) { return p.section === s; }); });
+        var brands = uniqSorted(C.products.map(function (p) { return p.brand; }));
+        var origins = uniqSorted(C.products.map(function (p) { return p.origin && p.origin.en; }));
+        aside.innerHTML =
+          '<div class="filters__head"><h3>' + esc(t("filter.title")) + '</h3>' +
+          '<button type="button" class="filters__clear" data-f-clear>' + esc(t("filter.clear")) + '</button>' +
+          '<button type="button" class="filters__close" data-f-close aria-label="' + esc(t("filter.close")) + '">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
+          '<div class="filters__body">' +
+          facetGroup("dept", t("filter.dept"), secs, countBy("dept", function (p) { return p.section; }), SP.secs, function (v) { return t("dept." + v); }) +
+          facetGroup("brand", t("filter.brand"), brands, countBy("brand", function (p) { return p.brand; }), SP.brands, null) +
+          facetGroup("origin", t("filter.origin"), origins, countBy("origin", function (p) { return p.origin && p.origin.en; }), SP.origins, function (v) { return originLabel(v); }) +
+          '<div class="fgroup"><h4>' + esc(t("filter.price")) + '</h4><div class="frange">' +
+          '<input type="number" min="0" step="0.5" inputmode="decimal" placeholder="' + esc(t("filter.min")) + '" value="' + esc(SP.min) + '" data-f-min>' +
+          '<span>–</span><input type="number" min="0" step="0.5" inputmode="decimal" placeholder="' + esc(t("filter.max")) + '" value="' + esc(SP.max) + '" data-f-max></div></div>' +
+          '<label class="fcheck fcheck--offers"><input type="checkbox" data-f-offers' + (SP.offers ? " checked" : "") + '><span>' + esc(t("filter.offers")) + '</span>' +
+          '<em>' + listFor("offers").filter(function (p) { return p.was; }).length + '</em></label>' +
+          '</div>' +
+          '<div class="filters__foot"><button type="button" class="btn btn--primary" data-f-close>' + esc(t("filter.show", list.length)) + '</button></div>';
         if (window.ATH && window.ATH.observe) window.ATH.observe();
       }
-      if (aside && !aside._wired) {
-        aside._wired = true;
-        aside.addEventListener("change", function (e) {
-          var el = e.target;
-          if (el.hasAttribute("data-f-sec")) SP.secs[el.getAttribute("data-f-sec")] = el.checked;
+
+      function uniqSorted(arr) {
+        var seen = {};
+        return arr.filter(function (v) { if (!v || seen[v]) return false; seen[v] = 1; return true; })
+          .sort(function (a, b) { return a.localeCompare(b); });
+      }
+      // origin values are keyed on the English name; show the visitor's language
+      function originLabel(en) {
+        var p = C.products.filter(function (x) { return x.origin && x.origin.en === en; })[0];
+        return p ? (p.origin[lang()] || en) : en;
+      }
+      function openFilters(open) {
+        if (!aside) return;
+        aside.classList.toggle("is-open", !!open);
+        document.body.classList.toggle("filters-open", !!open);
+      }
+
+      if (!results._wired) {
+        results._wired = true;
+        var onChange = function (e) {
+          var el = e.target, k;
+          if ((k = el.getAttribute("data-f-dept")) !== null && el.hasAttribute("data-f-dept")) SP.secs[k] = el.checked;
+          else if (el.hasAttribute("data-f-brand")) SP.brands[el.getAttribute("data-f-brand")] = el.checked;
+          else if (el.hasAttribute("data-f-origin")) SP.origins[el.getAttribute("data-f-origin")] = el.checked;
           else if (el.hasAttribute("data-f-offers")) SP.offers = el.checked;
           else if (el.hasAttribute("data-f-sort")) SP.sort = el.value;
           else if (el.hasAttribute("data-f-min")) SP.min = el.value;
           else if (el.hasAttribute("data-f-max")) SP.max = el.value;
-          renderSearchPage();
-        });
-        aside.addEventListener("click", function (e) {
-          if (e.target.closest("[data-f-clear]")) { SP.secs = {}; SP.offers = false; SP.min = SP.max = ""; SP.sort = "rel"; renderSearchPage(); }
-          else if (e.target.closest(".filters__head h3") && window.innerWidth <= 820) aside.classList.toggle("is-open");
+          else return;
+          writeURL(true); renderSearchPage();
+        };
+        var onClick = function (e) {
+          var b;
+          if ((b = e.target.closest("[data-f-more]"))) { var id = b.getAttribute("data-f-more"); SP.show[id] = !SP.show[id]; renderSearchPage(); }
+          else if (e.target.closest("[data-f-clear]")) { SP.secs = {}; SP.brands = {}; SP.origins = {}; SP.offers = false; SP.min = SP.max = ""; writeURL(true); renderSearchPage(); }
+          else if ((b = e.target.closest("[data-f-drop]"))) {
+            var kind = b.getAttribute("data-f-drop"), v = b.getAttribute("data-f-val");
+            if (kind === "dept") SP.secs[v] = false;
+            else if (kind === "brand") SP.brands[v] = false;
+            else if (kind === "origin") SP.origins[v] = false;
+            else if (kind === "offers") SP.offers = false;
+            else if (kind === "price") { SP.min = SP.max = ""; }
+            writeURL(true); renderSearchPage();
+          }
+          else if (e.target.closest("[data-f-open]")) openFilters(true);
+          else if (e.target.closest("[data-f-close]")) openFilters(false);
+        };
+        [aside, toolbar, results, document.querySelector(".filters__scrim")].forEach(function (el) {
+          if (!el) return;
+          el.addEventListener("change", onChange);
+          el.addEventListener("click", onClick);
         });
         document.querySelectorAll("[data-search]").forEach(function (form) {
           var input = form.querySelector("input");
-          input.addEventListener("input", function () { SP.q = input.value; renderSearchPage(); });
+          if (input) input.addEventListener("input", function () { SP.q = input.value; writeURL(false); renderSearchPage(); });
         });
+        // Back/forward should walk the filter history rather than leave the page
+        window.addEventListener("popstate", function () { readURL(); openFilters(false); renderSearchPage(); });
       }
+
+      readURL();
+      document.querySelectorAll("[data-search] input").forEach(function (i) { i.value = SP.q; });
       window._renderSearchPage = renderSearchPage;
       renderSearchPage();
     }
@@ -487,16 +655,21 @@
     var pr = pg.querySelector(".pdp__price"), off = p.was ? Math.round((1 - p.price / p.was) * 100) : 0;
     if (pr) pr.innerHTML = '<b>' + money(p.price) + '</b>' + (p.was ? '<s>' + money(p.was) + '</s>' : '') + '<small>/ ' + esc(t("unit." + p.unit)) + '</small>' + (off ? '<span class="pdp__save">' + esc(t("offers.save")) + ' ' + money(p.was - p.price) + '</span>' : '') + (p.member ? '<span class="pdp__save" style="background:var(--orange-tint);color:var(--orange-deep)">Bonus: ' + money(p.member) + '</span>' : '');
     var badge = pg.querySelector(".pdp__media .product__off"); if (off) { if (!badge) { badge = document.createElement("span"); badge.className = "product__off"; pg.querySelector(".pdp__media").appendChild(badge); } badge.textContent = "-" + off + "%"; } else if (badge) badge.remove();
-    // Country of origin — the page markup does not carry it, so build the line here.
-    var origTxt = originOf(p), origEl = pg.querySelector(".pdp__origin");
-    if (origTxt) {
-      if (!origEl) {
-        origEl = document.createElement("p"); origEl.className = "pdp__origin";
-        if (pr && pr.parentNode) pr.parentNode.insertBefore(origEl, pr.nextSibling);
-        else { var info = pg.querySelector(".pdp__info"); if (info) info.appendChild(origEl); }
+    // Brand and country of origin — the page markup does not carry either, so build
+    // the lines here rather than editing sixty product pages.
+    var origTxt = originOf(p), metaEl = pg.querySelector(".pdp__origin"), meta = [];
+    if (p.brand) meta.push(TAG_SVG + '<span>' + esc(t("product.brand")) + ': <b>' +
+      '<a href="' + base + 'search.html?brand=' + encodeURIComponent(p.brand) + '">' + esc(p.brand) + '</a></b></span>');
+    if (origTxt) meta.push(PIN_SVG + '<span>' + esc(t("product.origin")) + ': <b>' +
+      '<a href="' + base + 'search.html?origin=' + encodeURIComponent((p.origin && p.origin.en) || origTxt) + '">' + esc(origTxt) + '</a></b></span>');
+    if (meta.length) {
+      if (!metaEl) {
+        metaEl = document.createElement("div"); metaEl.className = "pdp__origin";
+        if (pr && pr.parentNode) pr.parentNode.insertBefore(metaEl, pr.nextSibling);
+        else { var info = pg.querySelector(".pdp__info"); if (info) info.appendChild(metaEl); }
       }
-      origEl.innerHTML = PIN_SVG + '<span>' + esc(t("product.origin")) + ': <b>' + esc(origTxt) + '</b></span>';
-    } else if (origEl) origEl.remove();
+      metaEl.innerHTML = meta.map(function (m) { return '<p>' + m + '</p>'; }).join("");
+    } else if (metaEl) metaEl.remove();
     var recs = C.recipes.filter(function (r) { return r.items.some(function (it) { return it[0] === p.id; }); });
     var sec = pg.querySelector("[data-p-recipes]"), list = pg.querySelector("[data-p-recipe-list]");
     if (sec && list) {

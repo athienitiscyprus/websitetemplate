@@ -267,6 +267,7 @@
         '<div class="row3"><label>Counter<select name="section">' + SECTIONS.map(function (x) { return '<option' + (p.section === x ? " selected" : "") + '>' + x + '</option>'; }).join("") + '</select></label><label>Sold per<select name="unit">' + ["each", "kg", "g", "L", "ml", "pack", "loaf", "box", "bottle", "jar", "bunch", "platter", "portion", "cup", "slice", "set"].map(function (u) { return '<option' + (p.unit === u ? " selected" : "") + '>' + u + '</option>'; }).join("") + '</select></label><label>Badge<select name="tag"><option value="">—</option><option value="fresh"' + (p.tag === "fresh" ? " selected" : "") + '>fresh daily</option></select></label></div>' +
         '<div class="row2"><label>Custom weight ordering<select name="byWeight"><option value="">Automatic (on when sold per kg)</option><option value="yes"' + (p.byWeight === true ? " selected" : "") + '>On — customers pick the weight</option><option value="no"' + (p.byWeight === false ? " selected" : "") + '>Off — whole units only</option></select></label><label>Weight step<select name="wStep">' + [[0.25, "250 g"], [0.5, "500 g"], [1, "1 kg"]].map(function (w) { return '<option value="' + w[0] + '"' + ((p.wStep || 0.25) === w[0] ? " selected" : "") + '>' + w[1] + '</option>'; }).join("") + '</select></label></div>' +
         '<p class="muted" style="font-size:12.5px;margin:-4px 0 4px">The price above is the price for one of the unit chosen in "Sold per" (so for meat, the price per kilo). With custom weight ordering on, the storefront shows − / + buttons stepping by the weight step and the basket charges pro rata.</p>' +
+        '<label>Brand <small class="muted">supplier or own label; used by the brand filter on search</small><input name="brand" value=\'' + esc(p.brand || "") + '\' placeholder="e.g. Athienitis"></label>' +
         '<div class="row2"><label>Country of origin (EN) <small class="muted">shown on the card and product page; leave empty to hide</small><input name="originEn" value="' + esc((p.origin && p.origin.en) || "") + '" placeholder="e.g. Cyprus"></label><label>Country of origin (EL)<input name="originEl" value="' + esc((p.origin && p.origin.el) || "") + '" placeholder="π.χ. Κύπρος"></label></div>' +
         '<label>Description (EN) <small class="muted">leave empty to use the counter\'s default text</small><textarea name="descEn" rows="3" placeholder="' + esc(desc.en) + '">' + esc(p.descEn || "") + '</textarea></label>' +
         '<label>Description (EL)<textarea name="descEl" rows="3" placeholder="' + esc(desc.el) + '">' + esc(p.descEl || "") + '</textarea></label>' +
@@ -302,11 +303,12 @@
     f.addEventListener("submit", function (e) {
       e.preventDefault(); if (!f.checkValidity()) { f.reportValidity(); return; }
       var np = Object.assign({}, p, { section: f.section.value, name: { en: f.en.value.trim(), el: f.el.value.trim() }, price: parseFloat(f.price.value), unit: f.unit.value, img: f.img.value.trim() || p.img, kw: f.en.value.toLowerCase() });
-      ["was", "cost", "member", "tag", "offerEnd", "descEn", "descEl", "byWeight", "wStep", "origin"].forEach(function (k) { delete np[k]; });
+      ["was", "cost", "member", "tag", "offerEnd", "descEn", "descEl", "byWeight", "wStep", "origin", "brand"].forEach(function (k) { delete np[k]; });
       if (f.byWeight.value === "yes") np.byWeight = true; else if (f.byWeight.value === "no") np.byWeight = false;
       var ws = parseFloat(f.wStep.value); if (ws && ws !== 0.25) np.wStep = ws;
       var oEn = f.originEn.value.trim(), oEl = f.originEl.value.trim();
       if (oEn || oEl) np.origin = { en: oEn || oEl, el: oEl || oEn };
+      var br = f.brand.value.trim(); if (br) np.brand = br;
       var w = parseFloat(f.was.value); if (w > np.price) np.was = w; var c = parseFloat(f.cost.value); if (c > 0) np.cost = c; var m = parseFloat(f.member.value); if (m > 0 && m < np.price) np.member = m;
       if (f.tag.value) np.tag = f.tag.value; if (f.offerEnd.value && np.was) np.offerEnd = f.offerEnd.value; if (f.descEn.value.trim()) np.descEn = f.descEn.value.trim(); if (f.descEl.value.trim()) np.descEl = f.descEl.value.trim();
       saveProduct(np, false);

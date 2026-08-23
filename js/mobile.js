@@ -80,9 +80,17 @@
       });
       form.addEventListener("submit", function (e) { e.preventDefault(); if (input.value.trim()) window.location.href = base + "search.html?q=" + encodeURIComponent(input.value); });
     }
-    searchEl.hidden = !open; document.body.style.overflow = open ? "hidden" : "";
-    if (open) setTimeout(function () { searchEl.querySelector("input").focus(); }, 60);
+    searchEl.hidden = !open;
+    document.body.style.overflow = open ? "hidden" : "";
+    document.body.classList.toggle("msearch-open", !!open);
+    // Back should dismiss the overlay instead of leaving the page
+    if (open) { try { history.pushState({ msearch: 1 }, ""); } catch (e) { /* file:// */ } }
+    else if (history.state && history.state.msearch) { try { history.back(); } catch (e) { /* ignore */ } }
+    if (open) setTimeout(function () { var i = searchEl.querySelector("input"); if (i) i.focus(); }, 60);
   }
+  window.addEventListener("popstate", function () {
+    if (searchEl && !searchEl.hidden) { searchEl.hidden = true; document.body.style.overflow = ""; document.body.classList.remove("msearch-open"); }
+  });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && searchEl && !searchEl.hidden) openSearch(false); });
 
   /* ----- home page: counter chips replace the sticker cluster --------------- */
