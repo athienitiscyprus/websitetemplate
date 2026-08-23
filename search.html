@@ -17,9 +17,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=16">
-<link rel="stylesheet" href="css/mobile.css?v=16">
-<script src="js/config.js?v=16"></script>
+<link rel="stylesheet" href="css/styles.css?v=17">
+<link rel="stylesheet" href="css/mobile.css?v=17">
+<script src="js/config.js?v=17"></script>
 <meta name="robots" content="noindex">
 </head>
 <body data-base="">
@@ -111,12 +111,17 @@
 <main id="main">
 <section class="page-hero">
   <div class="container">
-    <div class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="search.title">Results for</span></div>
-    <h1 class="h1"><span data-i18n="search.title">Results for</span> “<span data-search-query></span>”</h1>
+    <div class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="search.all">All products</span></div>
+    <h1 class="h1" data-search-title>All products</h1>
     <p class="lead" style="margin-top:12px"><span data-search-count>0</span> <span data-i18n="search.count">products found</span></p>
   </div>
 </section>
-<section class="section"><div class="container"><div class="products" data-search-results></div></div></section>
+<section class="section" style="padding-top:28px"><div class="container">
+  <div class="search-layout">
+    <aside class="filters" data-search-filters aria-label="Product filters"></aside>
+    <div class="products products--search" data-search-results></div>
+  </div>
+</div></section>
 </main>
 
 <footer class="footer">
@@ -160,10 +165,10 @@
     </div>
   </div>
 </footer>
-<script src="js/main.js?v=16"></script>
-<script src="js/catalog.js?v=16"></script>
-<script src="js/shop.js?v=16"></script>
-<script src="js/assistant.js?v=16"></script>
-<script src="js/mobile.js?v=16"></script>
+<script src="js/main.js?v=17"></script>
+<script src="js/catalog.js?v=17"></script>
+<script src="js/shop.js?v=17"></script>
+<script src="js/assistant.js?v=17"></script>
+<script src="js/mobile.js?v=17"></script>
 </body>
 </html>
