@@ -691,9 +691,12 @@ textarea { min-height: 140px; resize: vertical; }
 .product:hover .product__img img { transform: scale(1.06); }
 .product__off { position: absolute; top: 12px; left: 12px; background: var(--orange); color: #fff; font-weight: 800; font-size: 12.5px; padding: 5px 9px; border-radius: 999px; }
 .product__ref { font-size: 12.5px; color: var(--ink-3); margin-top: -6px; }
-.product__weight { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); }
-.product__weight span { font-weight: 700; }
-.product__weight select { flex: 1; min-width: 0; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; font-size: 13.5px; }
+.product__weight { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--ink-3); }
+.product__weight > span { font-weight: 700; letter-spacing: .04em; text-transform: uppercase; font-size: 11px; }
+.qty--w { display: flex; align-items: center; gap: 2px; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
+.qty--w button { width: 26px; height: 26px; border: 0; border-radius: 50%; background: var(--paper-2); color: var(--ink); font-size: 16px; line-height: 1; cursor: pointer; }
+.qty--w button:hover { background: var(--orange); color: #fff; }
+.qty--w b { min-width: 56px; text-align: center; font-size: 13px; color: var(--ink); font-variant-numeric: tabular-nums; }
 /* search page: filter rail + results */
 .search-layout { display: grid; grid-template-columns: 264px 1fr; gap: 32px; align-items: start; }
 .filters { position: sticky; top: 96px; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); padding: 18px; }

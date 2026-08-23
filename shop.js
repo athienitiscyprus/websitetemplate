@@ -26,9 +26,15 @@
   function imgUrl(src) { return !src || /^(https?:)?\/\//.test(src) || src.indexOf("data:") === 0 ? src : base + src.replace(/^(\.\.\/)+/, ""); }
   window.ATHimg = imgUrl;
   function byId(id) { for (var i = 0; i < C.products.length; i++) if (C.products[i].id === id) return C.products[i]; return null; }
-  function isKg(p) { return !!p && p.unit === "kg"; }
+  // A product is sold by weight when its unit is kg, unless the staff panel says otherwise
+  // (byWeight: true forces the stepper on, false forces it off).
+  function isKg(p) { return !!p && (typeof p.byWeight === "boolean" ? p.byWeight : p.unit === "kg"); }
+  var STEP = 0.25;   // 250 g default; the staff panel can set wStep per product
+  function stepOf(p) { return (p && p.wStep) || STEP; }
+  function startW(p) { return Math.max(1, stepOf(p)); }   // cards open at 1 kg (or one step, if the step is larger)
   function fq(q) { return String(Math.round(q * 100) / 100); }
-  function qtyLabel(p, q) { return isKg(p) ? fq(q) + " kg" : fq(q); }
+  function wLabel(q) { return q < 1 ? Math.round(q * 1000) + " g" : fq(q) + " kg"; }
+  function qtyLabel(p, q) { return isKg(p) ? wLabel(q) : fq(q); }
   // €/kg or €/L reference computed from the size in the product name ("450g", "750ml", "1L", …)
   function refPrice(p) {
     if (isKg(p)) return "";
@@ -44,7 +50,7 @@
     return "";
   }
   function unitLabelKey(p) { return { each: "piece", loaf: "piece", slice: "piece", cup: "piece" }[p.unit] || p.unit; }
-  var WEIGHTS = [[0.25, "250 g"], [0.5, "500 g"], [0.75, "750 g"], [1, "1 kg"], [1.5, "1.5 kg"], [2, "2 kg"]];
+
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
   /* ----- storage ---------------------------------------------------------- */
@@ -130,7 +136,10 @@
     var unitKey = unitLabelKey(p);
     var ref = refPrice(p);
     var weight = isKg(p)
-      ? '<label class="product__weight"><span>' + esc(t("shop.weight")) + '</span><select data-weight>' + WEIGHTS.map(function (w) { return '<option value="' + w[0] + '"' + (w[0] === 1 ? " selected" : "") + '>' + w[1] + '</option>'; }).join("") + '</select></label>'
+      ? '<div class="product__weight"><span>' + esc(t("shop.weight")) + '</span>' +
+        '<div class="qty qty--w"><button type="button" data-wstep="-1" aria-label="−">−</button>' +
+        '<b data-weight data-w="' + startW(p) + '" data-step="' + stepOf(p) + '">' + wLabel(startW(p)) + '</b>' +
+        '<button type="button" data-wstep="1" aria-label="+">+</button></div></div>'
       : "";
     return '<article class="product" data-product="' + p.id + '">' +
       '<a class="product__img" href="' + base + 'products/' + p.id + '.html"><img src="' + imgUrl(p.img) + '" alt="" loading="lazy">' +
@@ -155,7 +164,8 @@
       if (spec.indexOf("similar:") === 0) { var cur = byId(spec.split(":")[1]); list = cur ? C.products.filter(function (p) { return p.section === cur.section && p.id !== cur.id; }).slice(0, 4) : []; }
       if (spec.indexOf("pairs:") === 0) { var cp = byId(spec.split(":")[1]); var secs = cp && C.pairs ? C.pairs[cp.section] || [] : []; list = []; secs.forEach(function (sx) { var cand = C.products.filter(function (p) { return p.section === sx; }); var pick = cand.filter(function (p) { return p.was; })[0] || cand[0]; if (pick) list.push(pick); if (list.length < 4) { var second = cand.filter(function (p) { return p !== pick; })[0]; if (second && list.length < 4 && secs.length < 4) list.push(second); } }); list = list.slice(0, 4); }
       if (limit) list = list.slice(0, limit);
-      var noCat = spec.indexOf("section:") === 0;   // a counter page lists its own counter — no need to repeat it on every card
+      // a counter page (and the "more from this counter" strip) lists one counter only — no need to repeat it on every card
+      var noCat = (sec && C.sections[sec]) || spec.indexOf("similar:") === 0;
       if (!el.hidden) el.innerHTML = list.length ? list.map(function (p) { return productCard(p, noCat); }).join("") : '<p class="muted">' + esc(t("shop.none")) + '</p>';
       if (el.hasAttribute("data-count-target")) { var c = document.querySelector(el.getAttribute("data-count-target")); if (c) c.textContent = list.length; }
     });
@@ -390,10 +400,16 @@
   /* ----- events ----------------------------------------------------------- */
   document.addEventListener("click", function (e) {
     var b;
-    if ((b = e.target.closest("[data-add]"))) { flyToCart(b); var pgEl = b.hasAttribute("data-add-qty") && document.querySelector("[data-product-page]"); var card = b.closest(".product"); var w = card && card.querySelector("[data-weight]"); Cart.add(b.getAttribute("data-add"), pgEl ? pgEl._qty || 1 : (w ? parseFloat(w.value) || 1 : 1)); toast(t("cart.added")); b.classList.add("is-added"); setTimeout(function () { b.classList.remove("is-added"); }, 600); }
+    if ((b = e.target.closest("[data-wstep]"))) {
+      var wc = b.closest(".product__weight").querySelector("[data-weight]");
+      var st = parseFloat(wc.getAttribute("data-step")) || STEP;
+      var nw = Math.max(st, Math.round((parseFloat(wc.getAttribute("data-w")) + parseInt(b.getAttribute("data-wstep"), 10) * st) * 100) / 100);
+      wc.setAttribute("data-w", nw); wc.textContent = wLabel(nw); return;
+    }
+    if ((b = e.target.closest("[data-add]"))) { flyToCart(b); var pgEl = b.hasAttribute("data-add-qty") && document.querySelector("[data-product-page]"); var card = b.closest(".product"); var w = card && card.querySelector("[data-weight]"); Cart.add(b.getAttribute("data-add"), pgEl ? pgEl._qty || 1 : (w ? parseFloat(w.getAttribute("data-w")) || 1 : 1)); toast(t("cart.added")); b.classList.add("is-added"); setTimeout(function () { b.classList.remove("is-added"); }, 600); }
     else if ((b = e.target.closest("[data-add-recipe]"))) { var r = C.recipes.filter(function (x) { return x.id === b.getAttribute("data-add-recipe"); })[0]; if (r) { r.items.forEach(function (it) { Cart.add(it[0], it[1]); }); toast(t("cart.added")); openDrawer(true); } }
     else if ((b = e.target.closest("[data-add-bundle]"))) { var bd = C.bundles.filter(function (x) { return x.id === b.getAttribute("data-add-bundle"); })[0]; if (bd) { bd.items.forEach(function (it) { if (it[1] > 0) Cart.add(it[0], it[1]); }); toast(t("cart.added")); openDrawer(true); } }
-    else if ((b = e.target.closest("[data-qty]"))) { var cur = Cart.items().filter(function (x) { return x.id === b.getAttribute("data-qty"); })[0]; if (cur) { var stp = isKg(byId(cur.id)) ? 0.25 : 1; Cart.setQty(cur.id, Math.round((cur.qty + parseInt(b.getAttribute("data-delta"), 10) * stp) * 100) / 100); } }
+    else if ((b = e.target.closest("[data-qty]"))) { var cur = Cart.items().filter(function (x) { return x.id === b.getAttribute("data-qty"); })[0]; if (cur) { var stp = isKg(byId(cur.id)) ? stepOf(byId(cur.id)) : 1; Cart.setQty(cur.id, Math.round((cur.qty + parseInt(b.getAttribute("data-delta"), 10) * stp) * 100) / 100); } }
     else if ((b = e.target.closest("[data-remove]"))) Cart.remove(b.getAttribute("data-remove"));
     else if (e.target.closest("[data-cart-open]")) { e.preventDefault(); openDrawer(true); }
     else if (e.target.closest("[data-cart-close]")) openDrawer(false);
@@ -461,9 +477,9 @@
       list.innerHTML = recs.map(function (r) { var rd = r[lang()] || r.en; return '<article class="post"><a class="post__img" href="' + base + 'recipes.html"><img src="' + imgUrl(r.img) + '" alt="" loading="lazy"></a><div class="post__body"><div class="post__meta"><span>' + r.minutes + ' min · ' + r.serves + ' ' + esc(t("recipe.serves")) + '</span></div><h3><a href="' + base + 'recipes.html">' + esc(rd.title) + '</a></h3><p>' + esc(rd.desc) + '</p><button class="btn btn--primary btn--sm" type="button" data-add-recipe="' + r.id + '" style="align-self:flex-start;margin-top:auto">' + esc(t("recipe.addall")) + '</button></div></article>'; }).join("");
     }
     if (!pg._qty) {
-      pg._qty = 1;
+      var pp0 = byId(pg.getAttribute("data-product-page")); pg._qty = isKg(pp0) ? startW(pp0) : 1;
       var pp = byId(pg.getAttribute("data-product-page"));
-      var stp = isKg(pp) ? 0.25 : 1, min = isKg(pp) ? 0.25 : 1;
+      var stp = isKg(pp) ? stepOf(pp) : 1, min = isKg(pp) ? stepOf(pp) : 1;
       var out = pg.querySelector("[data-pqty-val]"); if (out) out.textContent = qtyLabel(pp, pg._qty);
       pg.addEventListener("click", function (e) {
         var b = e.target.closest("[data-pqty]"); if (!b) return;
