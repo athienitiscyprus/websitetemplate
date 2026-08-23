@@ -38,6 +38,13 @@
   body { padding-top: 60px; }
   html { scroll-padding-top: 70px; }
   .header.is-hidden { transform: none !important; }
+  .search-layout { grid-template-columns: 1fr; gap: 18px; }
+  .filters { position: static; padding: 14px 16px; }
+  .filters__head h3 { cursor: pointer; }
+  .filters__head h3::after { content: " ▾"; color: var(--ink-3); }
+  .filters__body { display: none; }
+  .filters.is-open .filters__body { display: flex; }
+  .products--search { grid-template-columns: repeat(2, 1fr); }
   .header { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(255,255,255,.97); }
   html.dark .header { background: rgba(18,26,16,.97); }
   .reveal { transition-duration: .45s; }
